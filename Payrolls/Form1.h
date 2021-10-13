@@ -8,6 +8,7 @@ namespace Payrolls {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Data::OleDb;
 
 	/// <summary>
 	/// Summary for Form1
@@ -44,6 +45,7 @@ namespace Payrolls {
 	private: System::Windows::Forms::TextBox^ textBox2;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private: System::Windows::Forms::Button^ button1;
+
 	protected:
 
 	private:
@@ -117,6 +119,7 @@ namespace Payrolls {
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(275, 34);
 			this->textBox1->TabIndex = 4;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &Form1::textBox1_TextChanged);
 			// 
 			// textBox2
 			// 
@@ -143,6 +146,7 @@ namespace Payrolls {
 			this->button1->TabIndex = 7;
 			this->button1->Text = L"Login";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
 			// 
 			// Form1
 			// 
@@ -179,5 +183,52 @@ private: System::Void textBox2_TextChanged(System::Object^ sender, System::Event
 }
 private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
+private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	if ((textBox1->Text == "") || (textBox2->Text == "") || (comboBox1->Text == "")) {
+		MessageBox::Show("Please enter data in all field!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
+	else {
+		OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Zhuowei Hu/Documents/Payroll Info.accdb");
+		conn->Open();
+		OleDbCommand^ cmd = conn->CreateCommand();
+		cmd->CommandType = CommandType::Text;
+		cmd->CommandText = "Select [*] from EmployeeInfo where [ID] = " + textBox1->Text + " and [Password]= '" + textBox2->Text + "'";
+		cmd->ExecuteNonQuery();
+		DataTable^ dt = gcnew DataTable();
+		OleDbDataAdapter^ da = gcnew OleDbDataAdapter(cmd);
+		da->Fill(dt);
+		if (dt->Rows->Count == 1) {
+			OleDbCommand^ command = conn->CreateCommand();
+			command->CommandType = CommandType::Text;
+			command->CommandText = "Select [*] from EmployeeInfo where [ID] =" + textBox1->Text + " and ([Position] = 'Human Resource' or [Position] = 'human resource' or [Position] = 'Human resource' or [Position] = 'HR' or [Position] = 'hr' or [Position] = 'Hr')";
+			command->ExecuteNonQuery();
+			DataTable^ datatable = gcnew DataTable();
+			OleDbDataAdapter^ dataAdapter = gcnew OleDbDataAdapter(command);
+			dataAdapter->Fill(datatable);
+			int status = int(comboBox1->SelectedIndex);
+			textBox1->Clear();
+			textBox2->Clear();
+			if (status == 0 && datatable->Rows->Count == 1)
+			{
+				MessageBox::Show("Login Succeed!");
+			}
+
+			else if (status == 1 && datatable->Rows->Count == 0)
+			{
+				MessageBox::Show("Login Succeed!");
+			}
+			else
+			{
+				MessageBox::Show("Please choose the right position", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+		}
+		else
+		{
+			MessageBox::Show("Uncorrect username or password", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		}
+	}
 };
 }
