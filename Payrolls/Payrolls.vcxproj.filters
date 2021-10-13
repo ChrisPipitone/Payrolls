@@ -27,6 +27,12 @@
     <ClInclude Include="Admin2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HR Menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cApp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GrossIncome.cpp">
@@ -39,6 +45,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Admin2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HR Menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
