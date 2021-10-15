@@ -1,5 +1,6 @@
 #pragma once
 #include "MyForm.h"
+#include "EmployeeView.h"
 
 namespace Payrolls {
 
@@ -183,5 +184,6 @@ private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e)
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
+
 };
 }
