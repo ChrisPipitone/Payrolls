@@ -27,10 +27,10 @@
     <ClInclude Include="Admin2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
+    <ClInclude Include="MyForm1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EmployeeView.h">
+    <ClInclude Include="AddEmployee.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,13 +47,11 @@
     <ClCompile Include="Admin2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EmployeeView.cpp">
+    <ClCompile Include="MyForm1.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AddEmployee.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="Payrolls.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
   </ItemGroup>
 </Project>
