@@ -184,57 +184,61 @@ private: System::Void textBox2_TextChanged(System::Object^ sender, System::Event
 }
 private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
-<<<<<<< HEAD
 private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	if ((textBox1->Text == "") || (textBox2->Text == "") || (comboBox1->Text == "")) {
-		MessageBox::Show("Please enter data in all field!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-	}
-	else {
-		OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Zhuowei Hu/Documents/Payroll Info.accdb");
-		conn->Open();
-		OleDbCommand^ cmd = conn->CreateCommand();
-		cmd->CommandType = CommandType::Text;
-		cmd->CommandText = "Select [*] from EmployeeInfo where [ID] = " + textBox1->Text + " and [Password]= '" + textBox2->Text + "'";
-		cmd->ExecuteNonQuery();
-		DataTable^ dt = gcnew DataTable();
-		OleDbDataAdapter^ da = gcnew OleDbDataAdapter(cmd);
-		da->Fill(dt);
-		if (dt->Rows->Count == 1) {
-			OleDbCommand^ command = conn->CreateCommand();
-			command->CommandType = CommandType::Text;
-			command->CommandText = "Select [*] from EmployeeInfo where [ID] =" + textBox1->Text + " and ([Position] = 'Human Resource' or [Position] = 'human resource' or [Position] = 'Human resource' or [Position] = 'HR' or [Position] = 'hr' or [Position] = 'Hr')";
-			command->ExecuteNonQuery();
-			DataTable^ datatable = gcnew DataTable();
-			OleDbDataAdapter^ dataAdapter = gcnew OleDbDataAdapter(command);
-			dataAdapter->Fill(datatable);
-			int status = int(comboBox1->SelectedIndex);
-			textBox1->Clear();
-			textBox2->Clear();
-			if (status == 0 && datatable->Rows->Count == 1)
-			{
-				MessageBox::Show("Login Succeed!");
-			}
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		if ((textBox1->Text == "") || (textBox2->Text == "") || (comboBox1->Text == "")) {
+			MessageBox::Show("Please enter data in all field!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		else {
+			OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Zhuowei Hu/Documents/Payroll Info.accdb");
+			conn->Open();
+			OleDbCommand^ cmd = conn->CreateCommand();
+			cmd->CommandType = CommandType::Text;
+			cmd->CommandText = "select * from EmployeeInfo where ([ID] = @ID) and ([Password] = @Password)";
+			cmd->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
+			cmd->Parameters->AddWithValue("@Password", textBox2->Text);
+			cmd->ExecuteNonQuery();
+			DataTable^ dt = gcnew DataTable();
+			OleDbDataAdapter^ da = gcnew OleDbDataAdapter(cmd);
+			da->Fill(dt);
+			if (dt->Rows->Count == 1) {
+				OleDbCommand^ command = conn->CreateCommand();
+				command->CommandType = CommandType::Text;
+				command->CommandText = "select * from EmployeeInfo where [ID] = @ID and ([Position] = 'Human Resource' or [Position] = 'human resource' or [Position] = 'Human resource' or [Position] = 'HR' or [Position] = 'hr' or [Position] = 'Hr')";
+				command->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
+				command->ExecuteNonQuery();
+				DataTable^ datatable = gcnew DataTable();
+				OleDbDataAdapter^ dataAdapter = gcnew OleDbDataAdapter(command);
+				dataAdapter->Fill(datatable);
+				int status = int(comboBox1->SelectedIndex);
+				textBox1->Clear();
+				textBox2->Clear();
+				if (status == 0 && datatable->Rows->Count == 1)
+				{
+					MessageBox::Show("Login Succeed!");
+				}
 
-			else if (status == 1 && datatable->Rows->Count == 0)
-			{
-				MessageBox::Show("Login Succeed!");
+				else if (status == 1 && datatable->Rows->Count == 0)
+				{
+					MessageBox::Show("Login Succeed!");
+				}
+
+				else if (status == 2 && datatable->Rows->Count == 0)
+				{
+					MessageBox::Show("Login Succeed!");
+				}
+
+				else
+				{
+					MessageBox::Show("Please choose the right position", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				}
 			}
 			else
 			{
-				MessageBox::Show("Please choose the right position", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				MessageBox::Show("Uncorrect username or password", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			}
 		}
-		else
-		{
-			MessageBox::Show("Uncorrect username or password", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-		}
-		}
 	}
-=======
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-}
->>>>>>> 5c259ef08c4ef71a2821e09617e36466e690620d
 };
 }
