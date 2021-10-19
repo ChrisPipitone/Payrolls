@@ -1,4 +1,5 @@
 #include "Form1.h"
+#include "EmployeeView.h"
 
 using namespace System;
 using namespace System::Windows::Forms;

@@ -179,11 +179,16 @@ namespace Payrolls {
 	}
 private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
 }
+
 private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	this->textBox2->PasswordChar = '*';
 }
 private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
+<<<<<<< HEAD
+=======
+//<<<<<<< HEAD
+>>>>>>> eb276e2dc9156f47a02ed22cb77923e0239fcb8d
 private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
