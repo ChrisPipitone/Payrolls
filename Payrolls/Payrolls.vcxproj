@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -121,24 +121,27 @@
     <ClInclude Include="Admin2.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Employee.h" />
+    <ClInclude Include="EmployeeMainMenu.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="GrossIncome.h" />
+    <ClInclude Include="Login.h" />
     <ClInclude Include="MyForm.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="MyForm1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddEmployee.cpp" />
     <ClCompile Include="Admin2.cpp" />
+    <ClCompile Include="Employee.cpp" />
+    <ClCompile Include="EmployeeMainMenu.cpp" />
     <ClCompile Include="Form1.cpp" />
     <ClCompile Include="GrossIncome.cpp" />
-    <ClCompile Include="MyForm.cpp" />
-    <ClCompile Include="MyForm1.cpp" />
+    <ClCompile Include="Login.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -150,6 +153,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AddEmployee.resx">
       <DependentUpon>AddEmployee.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeMainMenu.resx">
+      <DependentUpon>EmployeeMainMenu.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.h</DependentUpon>
