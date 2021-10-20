@@ -21,16 +21,19 @@
     <ClInclude Include="Form1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MyForm.h">
+    <ClInclude Include="HRMenu1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Admin2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HR Menu.h">
+    <ClInclude Include="HRMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cApp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyForm1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,11 +50,14 @@
     <ClCompile Include="Admin2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HR Menu.cpp">
+    <ClCompile Include="HRMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="cApp.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyForm1.cpp">
+      <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

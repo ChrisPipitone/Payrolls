@@ -1,12 +1,12 @@
 #pragma once
 #include "wx/wx.h"
-#include ".h"
+#include "cApp.h"
 
 class cMain : public wxFrame
 {
 public:
-	cMain();
-	~cMain();
+	cApp();
+	~cApp();
 
 	wxTextCtrl* m_txt1 = nullptr;
 	wxListBox* m_list1 = nullptr;

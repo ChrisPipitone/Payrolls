@@ -1,5 +1,5 @@
 #include "cApp.h"
-#include "HR Menu.h"
+#include "HRMenu.h"
 
 wxIMPLEMENT_APP(cApp);
 

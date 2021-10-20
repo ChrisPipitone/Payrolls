@@ -1,4 +1,4 @@
-#include "HR Menu.h"
+#include "HRMenu.h"
 
 /*HR Menu
 1. Search Employee

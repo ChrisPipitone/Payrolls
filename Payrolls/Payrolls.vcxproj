@@ -125,8 +125,11 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="GrossIncome.h" />
-    <ClInclude Include="HR Menu.h" />
-    <ClInclude Include="MyForm.h">
+    <ClInclude Include="HRMenu.h" />
+    <ClInclude Include="HRMenu1.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="MyForm1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
@@ -135,8 +138,9 @@
     <ClCompile Include="cApp.cpp" />
     <ClCompile Include="Form1.cpp" />
     <ClCompile Include="GrossIncome.cpp" />
-    <ClCompile Include="HR Menu.cpp" />
+    <ClCompile Include="HRMenu.cpp" />
     <ClCompile Include="MyForm.cpp" />
+    <ClCompile Include="MyForm1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -149,8 +153,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyForm.resx">
-      <DependentUpon>MyForm.h</DependentUpon>
+    <EmbeddedResource Include="HRMenu1.resx">
+      <DependentUpon>HRMenu1.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
