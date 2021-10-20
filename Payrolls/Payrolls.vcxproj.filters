@@ -33,9 +33,6 @@
     <ClInclude Include="cApp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MyForm1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GrossIncome.cpp">
@@ -44,7 +41,7 @@
     <ClCompile Include="Form1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MyForm.cpp">
+    <ClCompile Include="HRMenu1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Admin2.cpp">
@@ -55,9 +52,6 @@
     </ClCompile>
     <ClCompile Include="cApp.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MyForm1.cpp">
-      <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

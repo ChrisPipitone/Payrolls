@@ -35,8 +35,14 @@ namespace Payrolls {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::Button^ button1; //Search Employee
+	private: System::Windows::Forms::Button^ button2; //Remove Employee	
+	private: System::Windows::Forms::Button^ button3; //
+	private: System::Windows::Forms::Button^ button4; //
+	private: System::Windows::Forms::Button^ button5; //
+	private: System::Windows::Forms::Button^ button6; //
+	private: System::Windows::Forms::Button^ button7; //
+	private: System::Windows::Forms::Button^ button8; //
 	private: System::Windows::Forms::TextBox^ Adm_txt;
 
 	private: System::Windows::Forms::Label^ label1;
@@ -69,6 +75,13 @@ namespace Payrolls {
 		{
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->button6 = (gcnew System::Windows::Forms::Button());
+			this->button7 = (gcnew System::Windows::Forms::Button());
+			this->button8 = (gcnew System::Windows::Forms::Button());
+
 			this->Adm_txt = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -97,9 +110,21 @@ namespace Payrolls {
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(185, 32);
 			this->button2->TabIndex = 1;
-			this->button2->Text = L"Build/Modify Schedule";
+			this->button2->Text = L"Remove Employee";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
+			// 
+			// button3
+			// 
+			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button3->Location = System::Drawing::Point(33, 168);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(185, 32);
+			this->button3->TabIndex = 1;
+			this->button3->Text = L"View Schedule";
+			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
 			// 
 			// Adm_txt
 			// 

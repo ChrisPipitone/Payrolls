@@ -8,9 +8,6 @@ public:
 	cApp();
 	~cApp();
 
-	wxTextCtrl* m_txt1 = nullptr;
-	wxListBox* m_list1 = nullptr;
-
 	wxButton* m_btn1 = nullptr;
 	wxButton* m_btn2 = nullptr;
 	wxButton* m_btn3 = nullptr;

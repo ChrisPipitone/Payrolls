@@ -22,9 +22,6 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "HR Menu", wxPoint(30, 30), wxSize(8
 	m_btn7 = new wxButton(this, wxID_ANY, "View Vacation/Sick Days", wxPoint(10, 10), wxSize(150, 50));
 	m_btn8 = new wxButton(this, wxID_ANY, "View Pay Stub", wxPoint(10, 10), wxSize(150, 50));
 
-	m_txt1 = new wxTextCtrl(this, wxID_ANY, "", wxPoint(10, 70), wxSize(300, 30));
-	m_list1 = new wxListBox(this, wxID_ANY, wxPoint(10, 110), wxSize(300, 300));
-
 }
 
 cMain::~cMain() {

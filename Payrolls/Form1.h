@@ -82,6 +82,7 @@ namespace Payrolls {
 			this->label1->Size = System::Drawing::Size(413, 36);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Welcome to Hmoney Payroll";
+			this->label1->Click += gcnew System::EventHandler(this, &Form1::label1_Click);
 			// 
 			// label2
 			// 
@@ -152,7 +153,7 @@ namespace Payrolls {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::BlanchedAlmond;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->ClientSize = System::Drawing::Size(1246, 839);
+			this->ClientSize = System::Drawing::Size(1246, 749);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->textBox2);
@@ -182,6 +183,8 @@ private: System::Void textBox2_TextChanged(System::Object^ sender, System::Event
 private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

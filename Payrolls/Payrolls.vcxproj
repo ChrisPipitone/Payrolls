@@ -129,9 +129,6 @@
     <ClInclude Include="HRMenu1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="MyForm1.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Admin2.cpp" />
@@ -139,8 +136,7 @@
     <ClCompile Include="Form1.cpp" />
     <ClCompile Include="GrossIncome.cpp" />
     <ClCompile Include="HRMenu.cpp" />
-    <ClCompile Include="MyForm.cpp" />
-    <ClCompile Include="MyForm1.cpp" />
+    <ClCompile Include="HRMenu1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
