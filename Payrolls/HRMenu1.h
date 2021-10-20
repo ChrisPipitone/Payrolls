@@ -36,13 +36,13 @@ namespace Payrolls {
 			}
 		}
 	private: System::Windows::Forms::Button^ button1; //Search Employee
-	private: System::Windows::Forms::Button^ button2; //Remove Employee	
-	private: System::Windows::Forms::Button^ button3; //
-	private: System::Windows::Forms::Button^ button4; //
-	private: System::Windows::Forms::Button^ button5; //
-	private: System::Windows::Forms::Button^ button6; //
-	private: System::Windows::Forms::Button^ button7; //
-	private: System::Windows::Forms::Button^ button8; //
+	private: System::Windows::Forms::Button^ button2; //Add Employee	
+	private: System::Windows::Forms::Button^ button3; //Remove Employee
+	private: System::Windows::Forms::Button^ button4; //View Information
+	private: System::Windows::Forms::Button^ button5; //View Timesheet
+	private: System::Windows::Forms::Button^ button6; //View Vacation/Sick Days
+	private: System::Windows::Forms::Button^ button7; //View Pay Stub
+	private: System::Windows::Forms::Button^ button8; //View Benefits
 	private: System::Windows::Forms::TextBox^ Adm_txt;
 
 	private: System::Windows::Forms::Label^ label1;
@@ -81,7 +81,6 @@ namespace Payrolls {
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->button7 = (gcnew System::Windows::Forms::Button());
 			this->button8 = (gcnew System::Windows::Forms::Button());
-
 			this->Adm_txt = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -110,7 +109,7 @@ namespace Payrolls {
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(185, 32);
 			this->button2->TabIndex = 1;
-			this->button2->Text = L"Remove Employee";
+			this->button2->Text = L"Add Employee";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
 			// 
@@ -122,9 +121,59 @@ namespace Payrolls {
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(185, 32);
 			this->button3->TabIndex = 1;
-			this->button3->Text = L"View Schedule";
+			this->button3->Text = L"Remove Employee";
 			this->button3->UseVisualStyleBackColor = true;
-			this->button3->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
+			this->button3->Click += gcnew System::EventHandler(this, &MyForm::button3_Click);
+			// 
+			// button4
+			// 
+			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button4->Location = System::Drawing::Point(33, 168);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(185, 32);
+			this->button4->TabIndex = 1;
+			this->button4->Text = L"View Information";
+			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
+			// 
+			// button5
+			// 
+			this->button5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button5->Location = System::Drawing::Point(33, 168);
+			this->button5->Name = L"button5";
+			this->button5->Size = System::Drawing::Size(185, 32);
+			this->button5->TabIndex = 1;
+			this->button5->Text = L"View Timesheet";
+			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &MyForm::button5_Click);
+			// 
+			// button6
+			// 
+			this->button6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button6->Location = System::Drawing::Point(33, 168);
+			this->button6->Name = L"button6";
+			this->button6->Size = System::Drawing::Size(185, 32);
+			this->button6->TabIndex = 1;
+			this->button6->Text = L"View Vacation/Sick Days";
+			this->button6->UseVisualStyleBackColor = true;
+			this->button6->Click += gcnew System::EventHandler(this, &MyForm::button6_Click);
+			// 
+			// button7
+			// 
+			this->button7->Location = System::Drawing::Point(0, 0);
+			this->button7->Name = L"button7";
+			this->button7->Size = System::Drawing::Size(75, 23);
+			this->button7->TabIndex = 0;
+			// 
+			// button8
+			// 
+			this->button8->Location = System::Drawing::Point(0, 0);
+			this->button8->Name = L"button8";
+			this->button8->Size = System::Drawing::Size(75, 23);
+			this->button8->TabIndex = 0;
 			// 
 			// Adm_txt
 			// 
@@ -143,44 +192,25 @@ namespace Payrolls {
 				static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(106, 21);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(134, 31);
+			this->label1->Size = System::Drawing::Size(247, 31);
 			this->label1->TabIndex = 3;
-			this->label1->Text = L"Welcome:";
+			this->label1->Text = L"Human Resources:";
 			this->label1->Click += gcnew System::EventHandler(this, &MyForm::label1_Click);
 			// 
 			// label2
 			// 
-			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Pixel,
-				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(30, 63);
+			this->label2->Location = System::Drawing::Point(0, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(32, 18);
-			this->label2->TabIndex = 4;
-			this->label2->Text = L"sss";
-			this->label2->Click += gcnew System::EventHandler(this, &MyForm::label2_Click);
+			this->label2->Size = System::Drawing::Size(100, 23);
+			this->label2->TabIndex = 9;
 			// 
 			// label3
 			// 
-			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(269, 21);
+			this->label3->Location = System::Drawing::Point(0, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(56, 31);
-			this->label3->TabIndex = 5;
-			this->label3->Text = L"sss";
-			this->label3->Click += gcnew System::EventHandler(this, &MyForm::label3_Click);
-			// 
-			// listBox1
-			// 
-			this->listBox1->FormattingEnabled = true;
-			this->listBox1->Location = System::Drawing::Point(448, 104);
-			this->listBox1->Name = L"listBox1";
-			this->listBox1->Size = System::Drawing::Size(162, 212);
-			this->listBox1->TabIndex = 6;
-			this->listBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::listBox1_SelectedIndexChanged);
-			// 
+			this->label3->Size = System::Drawing::Size(100, 23);
+			this->label3->TabIndex = 8;
+			this->label3->Click += gcnew System::EventHandler(this, &MyForm::label3_Click_1);
 			// label4
 			// 
 			this->label4->AutoSize = true;
@@ -225,6 +255,18 @@ namespace Payrolls {
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -237,5 +279,7 @@ namespace Payrolls {
 	}
 	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void label3_Click_1(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }
