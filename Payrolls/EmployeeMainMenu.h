@@ -56,6 +56,8 @@ namespace Payrolls {
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::Panel^ editPersonal_panel;
+	private: System::Windows::Forms::Label^ label5;
 
 
 
@@ -96,7 +98,10 @@ namespace Payrolls {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->editPersonal_panel = (gcnew System::Windows::Forms::Panel());
+			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->toolStrip1->SuspendLayout();
+			this->editPersonal_panel->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// toolStrip1
@@ -232,11 +237,30 @@ namespace Payrolls {
 			this->label4->TabIndex = 1;
 			this->label4->Text = L"Current Benefit Chosen:";
 			// 
+			// editPersonal_panel
+			// 
+			this->editPersonal_panel->Controls->Add(this->label5);
+			this->editPersonal_panel->Location = System::Drawing::Point(0, 28);
+			this->editPersonal_panel->Name = L"editPersonal_panel";
+			this->editPersonal_panel->Size = System::Drawing::Size(1072, 661);
+			this->editPersonal_panel->TabIndex = 2;
+			this->editPersonal_panel->Hide();
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(57, 51);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(35, 13);
+			this->label5->TabIndex = 0;
+			this->label5->Text = L"label5";
+			// 
 			// EmployeeMainMenu
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1072, 688);
+			this->ClientSize = System::Drawing::Size(1072, 704);
+			this->Controls->Add(this->editPersonal_panel);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->toolStrip1);
@@ -247,6 +271,8 @@ namespace Payrolls {
 			this->Text = L"EmployeeMainMenu";
 			this->toolStrip1->ResumeLayout(false);
 			this->toolStrip1->PerformLayout();
+			this->editPersonal_panel->ResumeLayout(false);
+			this->editPersonal_panel->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -271,7 +297,9 @@ namespace Payrolls {
 	}
 
 	private: System::Void editPersonalInfo_button_Click(System::Object^ sender, System::EventArgs^ e) {
-
+		this->editPersonal_panel->Show();
 	}
+
+
 };
 }

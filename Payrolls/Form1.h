@@ -207,11 +207,13 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		MessageBox::Show("Please enter data in all field!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 	}
 	else {
-		OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/chris/Desktop/Payroll_Info.accdb"); 
+		OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Chris/Desktop/Payroll_Info.accdb");
 		conn->Open();
 		OleDbCommand^ cmd = conn->CreateCommand();
 		cmd->CommandType = CommandType::Text;
-		cmd->CommandText = "Select [*] from EmployeeInfo where [ID] = " + textBox1->Text + " and [Password]= '" + textBox2->Text + "'";
+		cmd->CommandText = "select * from EmployeeInfo where ([ID] = @ID) and ([Password] = @Password)";
+		cmd->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
+		cmd->Parameters->AddWithValue("@Password", textBox2->Text);
 		cmd->ExecuteNonQuery();
 		DataTable^ dt = gcnew DataTable();
 		OleDbDataAdapter^ da = gcnew OleDbDataAdapter(cmd);
@@ -219,7 +221,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		if (dt->Rows->Count == 1) {
 			OleDbCommand^ command = conn->CreateCommand();
 			command->CommandType = CommandType::Text;
-			command->CommandText = "Select [*] from EmployeeInfo where [ID] =" + textBox1->Text + " and ([Position] = 'Human Resource' or [Position] = 'human resource' or [Position] = 'Human resource' or [Position] = 'HR' or [Position] = 'hr' or [Position] = 'Hr')";
+			command->CommandText = "select * from EmployeeInfo where [ID] = @ID and ([Position] = 'Human Resource' or [Position] = 'human resource' or [Position] = 'Human resource' or [Position] = 'HR' or [Position] = 'hr' or [Position] = 'Hr')";
+			command->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
 			command->ExecuteNonQuery();
 			DataTable^ datatable = gcnew DataTable();
 			OleDbDataAdapter^ dataAdapter = gcnew OleDbDataAdapter(command);
@@ -236,6 +239,12 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			{
 				MessageBox::Show("Login Succeed!");
 			}
+
+			else if (status == 2 && datatable->Rows->Count == 0)
+			{
+				MessageBox::Show("Login Succeed!");
+			}
+
 			else
 			{
 				MessageBox::Show("Please choose the right position", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -245,8 +254,9 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		{
 			MessageBox::Show("Uncorrect username or password", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
-		}
 	}
+	}
+
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		Payrolls::EmployeeMainMenu empMenu;
 		this->Hide();
