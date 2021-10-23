@@ -48,7 +48,6 @@ namespace Payrolls {
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::ListBox^ listBox1;
 	private: System::Windows::Forms::Label^ label4;
 
 
@@ -81,19 +80,17 @@ namespace Payrolls {
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->button7 = (gcnew System::Windows::Forms::Button());
 			this->button8 = (gcnew System::Windows::Forms::Button());
-			this->Adm_txt = (gcnew System::Windows::Forms::TextBox());
+
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
-			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// button1
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(33, 120);
+			this->button1->Location = System::Drawing::Point(33, 99);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(185, 30);
 			this->button1->TabIndex = 0;
@@ -105,7 +102,7 @@ namespace Payrolls {
 			// 
 			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(33, 168);
+			this->button2->Location = System::Drawing::Point(33, 135);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(185, 32);
 			this->button2->TabIndex = 1;
@@ -117,7 +114,7 @@ namespace Payrolls {
 			// 
 			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button3->Location = System::Drawing::Point(33, 168);
+			this->button3->Location = System::Drawing::Point(33, 175);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(185, 32);
 			this->button3->TabIndex = 1;
@@ -129,7 +126,7 @@ namespace Payrolls {
 			// 
 			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button4->Location = System::Drawing::Point(33, 168);
+			this->button4->Location = System::Drawing::Point(33, 213);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(185, 32);
 			this->button4->TabIndex = 1;
@@ -141,7 +138,7 @@ namespace Payrolls {
 			// 
 			this->button5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button5->Location = System::Drawing::Point(33, 168);
+			this->button5->Location = System::Drawing::Point(247, 99);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(185, 32);
 			this->button5->TabIndex = 1;
@@ -153,7 +150,7 @@ namespace Payrolls {
 			// 
 			this->button6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button6->Location = System::Drawing::Point(33, 168);
+			this->button6->Location = System::Drawing::Point(247, 137);
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(185, 32);
 			this->button6->TabIndex = 1;
@@ -163,38 +160,38 @@ namespace Payrolls {
 			// 
 			// button7
 			// 
-			this->button7->Location = System::Drawing::Point(0, 0);
+			this->button7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button7->Location = System::Drawing::Point(247, 175);
 			this->button7->Name = L"button7";
-			this->button7->Size = System::Drawing::Size(75, 23);
-			this->button7->TabIndex = 0;
+			this->button7->Size = System::Drawing::Size(185, 32);
+			this->button7->TabIndex = 1;
+			this->button7->Text = L"View Pay Stub";
+			this->button7->UseVisualStyleBackColor = true;
+			this->button7->Click += gcnew System::EventHandler(this, &MyForm::button7_Click);
 			// 
 			// button8
 			// 
-			this->button8->Location = System::Drawing::Point(0, 0);
-			this->button8->Name = L"button8";
-			this->button8->Size = System::Drawing::Size(75, 23);
-			this->button8->TabIndex = 0;
-			// 
-			// Adm_txt
-			// 
-			this->Adm_txt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->Adm_txt->Location = System::Drawing::Point(247, 293);
-			this->Adm_txt->Name = L"Adm_txt";
-			this->Adm_txt->Size = System::Drawing::Size(158, 23);
-			this->Adm_txt->TabIndex = 2;
-			this->Adm_txt->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
+			this->button8->Location = System::Drawing::Point(247, 213);
+			this->button8->Name = L"button8";
+			this->button8->Size = System::Drawing::Size(185, 32);
+			this->button8->TabIndex = 1;
+			this->button8->Text = L"View Benefits";
+			this->button8->UseVisualStyleBackColor = true;
+			this->button8->Click += gcnew System::EventHandler(this, &MyForm::button8_Click);
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(106, 21);
+			this->label1->Location = System::Drawing::Point(158, 37);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(247, 31);
+			this->label1->Size = System::Drawing::Size(239, 31);
 			this->label1->TabIndex = 3;
-			this->label1->Text = L"Human Resources:";
+			this->label1->Text = L"Human Resources";
 			this->label1->Click += gcnew System::EventHandler(this, &MyForm::label1_Click);
 			// 
 			// label2
@@ -211,33 +208,26 @@ namespace Payrolls {
 			this->label3->Size = System::Drawing::Size(100, 23);
 			this->label3->TabIndex = 8;
 			this->label3->Click += gcnew System::EventHandler(this, &MyForm::label3_Click_1);
-			// label4
-			// 
-			this->label4->AutoSize = true;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Pixel,
-				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(445, 83);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(49, 18);
-			this->label4->TabIndex = 7;
-			this->label4->Text = L"Alerts:";
-			this->label4->Click += gcnew System::EventHandler(this, &MyForm::label4_Click);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(622, 435);
-			this->Controls->Add(this->label4);
-			this->Controls->Add(this->listBox1);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->Adm_txt);
-			this->Controls->Add(this->button2);
+
 			this->Controls->Add(this->button1);
+			this->Controls->Add(this->button2);
+			this->Controls->Add(this->button3);
+			this->Controls->Add(this->button4);
+			this->Controls->Add(this->button5);
+			this->Controls->Add(this->button6);
+			this->Controls->Add(this->button7);
+			this->Controls->Add(this->button8);
 			this->Name = L"MyForm";
-			this->Text = L"Form1";
+			this->Text = L"HRMenu1";
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
