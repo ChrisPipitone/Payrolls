@@ -84,9 +84,9 @@ namespace Payrolls {
 			this->label1->Location = System::Drawing::Point(462, 53);
 			this->label1->Margin = System::Windows::Forms::Padding(6, 0, 6, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(413, 36);
+			this->label1->Size = System::Drawing::Size(434, 36);
 			this->label1->TabIndex = 0;
-			this->label1->Text = L"Welcome to Hmoney Payroll";
+			this->label1->Text = L"Welcome to SHmoney Payroll";
 			// 
 			// label2
 			// 
@@ -232,17 +232,21 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			textBox2->Clear();
 			if (status == 0 && datatable->Rows->Count == 1)
 			{
-				MessageBox::Show("Login Succeed!");
+				MessageBox::Show("Login Succeed! ");
 			}
 
 			else if (status == 1 && datatable->Rows->Count == 0)
 			{
-				MessageBox::Show("Login Succeed!");
+				MessageBox::Show("Login Succeed! ");
 			}
 
+			//Employee Branch
 			else if (status == 2 && datatable->Rows->Count == 0)
 			{
-				MessageBox::Show("Login Succeed!");
+				MessageBox::Show("Login Succeed! ");
+				Payrolls::EmployeeMainMenu empMenu;
+				this->Hide();
+				empMenu.ShowDialog();
 			}
 
 			else
