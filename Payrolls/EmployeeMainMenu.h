@@ -192,6 +192,7 @@ namespace Payrolls {
 			this->mainMenuLeft_title->Size = System::Drawing::Size(437, 37);
 			this->mainMenuLeft_title->TabIndex = 0;
 			this->mainMenuLeft_title->Text = L"Your Information At A Glance";
+			this->mainMenuLeft_title->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::mainMenuLeft_title_Click);
 			// 
 			// label1
 			// 
@@ -244,7 +245,6 @@ namespace Payrolls {
 			this->editPersonal_panel->Name = L"editPersonal_panel";
 			this->editPersonal_panel->Size = System::Drawing::Size(1072, 661);
 			this->editPersonal_panel->TabIndex = 2;
-			this->editPersonal_panel->Hide();
 			// 
 			// label5
 			// 
@@ -301,5 +301,7 @@ namespace Payrolls {
 	}
 
 
+private: System::Void mainMenuLeft_title_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
