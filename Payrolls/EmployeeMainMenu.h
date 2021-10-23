@@ -46,11 +46,11 @@ namespace Payrolls {
 	protected:
 
 
-	private: System::Windows::Forms::Label^ mainMenuLeft_title;
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::Label^ infoAtGlance_title_label;
+	private: System::Windows::Forms::Label^ infoAtGlance_ID_label;
+	private: System::Windows::Forms::Label^ infoAtGlance_name_label;
+	private: System::Windows::Forms::Label^ infoAtGlance_department_label;
+	private: System::Windows::Forms::Label^ infoAtGlance_benefitChosen_label;
 	private: System::Windows::Forms::Panel^ editPersonal_panel;
 	private: System::Windows::Forms::Panel^ viewBenefits_panel;
 	private: System::Windows::Forms::Panel^ ViewPaystubs_panel;
@@ -88,7 +88,7 @@ namespace Payrolls {
 	private: System::Windows::Forms::ToolStripSeparator^ toolStripSeparator3;
 	private: System::Windows::Forms::ToolStripButton^ viewTimesheet_button;
 	private: System::Windows::Forms::ToolStripSeparator^ toolStripSeparator4;
-	private: System::Windows::Forms::ToolStripButton^ InfoAtGlance_button;
+	private: System::Windows::Forms::ToolStripButton^ infoAtGlance_button;
 	private: System::Windows::Forms::ToolStripSeparator^ toolStripSeparator5;
 	private: System::Windows::Forms::ToolStripButton^ logout_button;
 	private: System::Windows::Forms::ToolStrip^ toolStrip1;
@@ -134,11 +134,11 @@ namespace Payrolls {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(EmployeeMainMenu::typeid));
-			this->mainMenuLeft_title = (gcnew System::Windows::Forms::Label());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->infoAtGlance_title_label = (gcnew System::Windows::Forms::Label());
+			this->infoAtGlance_ID_label = (gcnew System::Windows::Forms::Label());
+			this->infoAtGlance_name_label = (gcnew System::Windows::Forms::Label());
+			this->infoAtGlance_department_label = (gcnew System::Windows::Forms::Label());
+			this->infoAtGlance_benefitChosen_label = (gcnew System::Windows::Forms::Label());
 			this->editPersonal_panel = (gcnew System::Windows::Forms::Panel());
 			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
 			this->Emp_ID = (gcnew System::Windows::Forms::Label());
@@ -192,7 +192,7 @@ namespace Payrolls {
 			this->toolStripSeparator3 = (gcnew System::Windows::Forms::ToolStripSeparator());
 			this->viewTimesheet_button = (gcnew System::Windows::Forms::ToolStripButton());
 			this->toolStripSeparator4 = (gcnew System::Windows::Forms::ToolStripSeparator());
-			this->InfoAtGlance_button = (gcnew System::Windows::Forms::ToolStripButton());
+			this->infoAtGlance_button = (gcnew System::Windows::Forms::ToolStripButton());
 			this->toolStripSeparator5 = (gcnew System::Windows::Forms::ToolStripSeparator());
 			this->logout_button = (gcnew System::Windows::Forms::ToolStripButton());
 			this->toolStrip1 = (gcnew System::Windows::Forms::ToolStrip());
@@ -207,58 +207,58 @@ namespace Payrolls {
 			// 
 			// mainMenuLeft_title
 			// 
-			this->mainMenuLeft_title->AutoSize = true;
-			this->mainMenuLeft_title->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->infoAtGlance_title_label->AutoSize = true;
+			this->infoAtGlance_title_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->mainMenuLeft_title->Location = System::Drawing::Point(278, 91);
-			this->mainMenuLeft_title->Name = L"mainMenuLeft_title";
-			this->mainMenuLeft_title->Size = System::Drawing::Size(437, 37);
-			this->mainMenuLeft_title->TabIndex = 0;
-			this->mainMenuLeft_title->Text = L"Your Information At A Glance";
+			this->infoAtGlance_title_label->Location = System::Drawing::Point(278, 91);
+			this->infoAtGlance_title_label->Name = L"mainMenuLeft_title";
+			this->infoAtGlance_title_label->Size = System::Drawing::Size(437, 37);
+			this->infoAtGlance_title_label->TabIndex = 0;
+			this->infoAtGlance_title_label->Text = L"Your Information At A Glance";
 			// 
 			// label1
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->infoAtGlance_ID_label->AutoSize = true;
+			this->infoAtGlance_ID_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(84, 208);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(38, 25);
-			this->label1->TabIndex = 1;
-			this->label1->Text = L"ID:";
+			this->infoAtGlance_ID_label->Location = System::Drawing::Point(84, 208);
+			this->infoAtGlance_ID_label->Name = L"label1";
+			this->infoAtGlance_ID_label->Size = System::Drawing::Size(38, 25);
+			this->infoAtGlance_ID_label->TabIndex = 1;
+			this->infoAtGlance_ID_label->Text = L"ID:";
 			// 
 			// label2
 			// 
-			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->infoAtGlance_name_label->AutoSize = true;
+			this->infoAtGlance_name_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(84, 295);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(74, 25);
-			this->label2->TabIndex = 1;
-			this->label2->Text = L"Name:";
+			this->infoAtGlance_name_label->Location = System::Drawing::Point(84, 295);
+			this->infoAtGlance_name_label->Name = L"label2";
+			this->infoAtGlance_name_label->Size = System::Drawing::Size(74, 25);
+			this->infoAtGlance_name_label->TabIndex = 1;
+			this->infoAtGlance_name_label->Text = L"Name:";
 			// 
 			// label3
 			// 
-			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->infoAtGlance_department_label->AutoSize = true;
+			this->infoAtGlance_department_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(84, 388);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(129, 25);
-			this->label3->TabIndex = 1;
-			this->label3->Text = L"Department:";
+			this->infoAtGlance_department_label->Location = System::Drawing::Point(84, 388);
+			this->infoAtGlance_department_label->Name = L"label3";
+			this->infoAtGlance_department_label->Size = System::Drawing::Size(129, 25);
+			this->infoAtGlance_department_label->TabIndex = 1;
+			this->infoAtGlance_department_label->Text = L"Department:";
 			// 
 			// label4
 			// 
-			this->label4->AutoSize = true;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->infoAtGlance_benefitChosen_label->AutoSize = true;
+			this->infoAtGlance_benefitChosen_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(84, 472);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(242, 25);
-			this->label4->TabIndex = 1;
-			this->label4->Text = L"Current Benefit Chosen:";
+			this->infoAtGlance_benefitChosen_label->Location = System::Drawing::Point(84, 472);
+			this->infoAtGlance_benefitChosen_label->Name = L"label4";
+			this->infoAtGlance_benefitChosen_label->Size = System::Drawing::Size(242, 25);
+			this->infoAtGlance_benefitChosen_label->TabIndex = 1;
+			this->infoAtGlance_benefitChosen_label->Text = L"Current Benefit Chosen:";
 			// 
 			// editPersonal_panel
 			// 
@@ -816,13 +816,13 @@ namespace Payrolls {
 			// 
 			// InfoAtGlance_button
 			// 
-			this->InfoAtGlance_button->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
-			this->InfoAtGlance_button->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"InfoAtGlance_button.Image")));
-			this->InfoAtGlance_button->ImageTransparentColor = System::Drawing::Color::Magenta;
-			this->InfoAtGlance_button->Name = L"InfoAtGlance_button";
-			this->InfoAtGlance_button->Size = System::Drawing::Size(139, 22);
-			this->InfoAtGlance_button->Text = L"Information At A Glance";
-			this->InfoAtGlance_button->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::InfoAtGlance_button_Click);
+			this->infoAtGlance_button->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
+			this->infoAtGlance_button->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"infoAtGlance_button.Image")));
+			this->infoAtGlance_button->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->infoAtGlance_button->Name = L"InfoAtGlance_button";
+			this->infoAtGlance_button->Size = System::Drawing::Size(139, 22);
+			this->infoAtGlance_button->Text = L"Information At A Glance";
+			this->infoAtGlance_button->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::infoAtGlance_button_Click);
 			// 
 			// toolStripSeparator5
 			// 
@@ -843,7 +843,7 @@ namespace Payrolls {
 			this->toolStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(11) {
 				this->editPersonalInfo_button,
 					this->toolStripSeparator1, this->viewBenefits_button, this->toolStripSeparator2, this->viewPaystub_botton, this->toolStripSeparator3,
-					this->viewTimesheet_button, this->toolStripSeparator4, this->InfoAtGlance_button, this->toolStripSeparator5, this->logout_button
+					this->viewTimesheet_button, this->toolStripSeparator4, this->infoAtGlance_button, this->toolStripSeparator5, this->logout_button
 			});
 			this->toolStrip1->Location = System::Drawing::Point(0, 0);
 			this->toolStrip1->Name = L"toolStrip1";
@@ -858,12 +858,12 @@ namespace Payrolls {
 			this->ClientSize = System::Drawing::Size(1072, 704);
 			this->Controls->Add(this->editPersonal_panel);
 			this->Controls->Add(this->viewBenefits_panel);
-			this->Controls->Add(this->label4);
-			this->Controls->Add(this->label3);
+			this->Controls->Add(this->infoAtGlance_benefitChosen_label);
+			this->Controls->Add(this->infoAtGlance_department_label);
 			this->Controls->Add(this->toolStrip1);
-			this->Controls->Add(this->label2);
-			this->Controls->Add(this->mainMenuLeft_title);
-			this->Controls->Add(this->label1);
+			this->Controls->Add(this->infoAtGlance_name_label);
+			this->Controls->Add(this->infoAtGlance_title_label);
+			this->Controls->Add(this->infoAtGlance_ID_label);
 			this->Name = L"EmployeeMainMenu";
 			this->Text = L"EmployeeMainMenu";
 			this->editPersonal_panel->ResumeLayout(false);
@@ -907,7 +907,7 @@ namespace Payrolls {
 		this->viewBenefits_panel->Hide();
 		this->editPersonal_panel->Show();
 	}
-	private: System::Void InfoAtGlance_button_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void infoAtGlance_button_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->viewBenefits_panel->Hide();
 		this->editPersonal_panel->Hide();
 	}
