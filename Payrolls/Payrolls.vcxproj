@@ -122,6 +122,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Employee.h" />
+    <ClInclude Include="EmployeeDetailAdmin.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="EmployeeMainMenu.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -133,15 +136,20 @@
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="timeSheetAdmin.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddEmployee.cpp" />
     <ClCompile Include="Admin2.cpp" />
     <ClCompile Include="Employee.cpp" />
+    <ClCompile Include="EmployeeDetailAdmin.cpp" />
     <ClCompile Include="EmployeeMainMenu.cpp" />
     <ClCompile Include="Form1.cpp" />
     <ClCompile Include="GrossIncome.cpp" />
     <ClCompile Include="Login.cpp" />
+    <ClCompile Include="timeSheetAdmin.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -154,6 +162,12 @@
     <EmbeddedResource Include="AddEmployee.resx">
       <DependentUpon>AddEmployee.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin2.resx">
+      <DependentUpon>Admin2.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeDetailAdmin.resx">
+      <DependentUpon>EmployeeDetailAdmin.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EmployeeMainMenu.resx">
       <DependentUpon>EmployeeMainMenu.h</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="timeSheetAdmin.resx">
+      <DependentUpon>timeSheetAdmin.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
