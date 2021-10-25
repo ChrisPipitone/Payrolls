@@ -45,6 +45,9 @@
     <ClInclude Include="timeSheetAdmin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HrView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GrossIncome.cpp">
@@ -73,6 +76,9 @@
     </ClCompile>
     <ClCompile Include="timeSheetAdmin.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HrView.cpp">
+      <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
