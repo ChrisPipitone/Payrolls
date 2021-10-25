@@ -1,4 +1,5 @@
 #pragma once
+#include "Admin2.h"
 
 namespace Payrolls {
 
@@ -9,12 +10,17 @@ namespace Payrolls {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
-	/// Zusammenfassung für Form1
+
+
 	/// </summary>
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
+	private:
+		String^ word;
+	private: System::Windows::Forms::Label^ label5;
 	public:
+		String^ word1 = "dont know yet";
+
 		MyForm(void)
 		{
 			InitializeComponent();
@@ -23,10 +29,18 @@ namespace Payrolls {
 			//TODO: Konstruktorcode hier hinzufügen.
 			//
 		}
+		MyForm(System::Windows::Forms::Form^ Admin, String ^text)
+		{
+			
+			InitializeComponent();
+			otherform = Admin;
+			word = text;
+			
+		}
+
 
 	protected:
-		/// <summary>
-		/// Verwendete Ressourcen bereinigen.
+		
 		/// </summary>
 		~MyForm()
 		{
@@ -44,6 +58,8 @@ namespace Payrolls {
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::ListBox^ listBox1;
 	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::LinkLabel^ Logout;
+
 
 
 	protected:
@@ -59,6 +75,7 @@ namespace Payrolls {
 		/// Erforderliche Designervariable.
 		/// </summary>
 		System::ComponentModel::Container^ components;
+	private: System::Windows::Forms::Form^ otherform;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -75,6 +92,8 @@ namespace Payrolls {
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->Logout = (gcnew System::Windows::Forms::LinkLabel());
+			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// button1
@@ -130,9 +149,9 @@ namespace Payrolls {
 				static_cast<System::Byte>(0)));
 			this->label2->Location = System::Drawing::Point(30, 63);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(32, 18);
+			this->label2->Size = System::Drawing::Size(87, 18);
 			this->label2->TabIndex = 4;
-			this->label2->Text = L"sss";
+			this->label2->Text = L"Manager of ";
 			this->label2->Click += gcnew System::EventHandler(this, &MyForm::label2_Click);
 			// 
 			// label3
@@ -142,9 +161,9 @@ namespace Payrolls {
 				static_cast<System::Byte>(0)));
 			this->label3->Location = System::Drawing::Point(184, 21);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(56, 31);
+			this->label3->Size = System::Drawing::Size(215, 31);
 			this->label3->TabIndex = 5;
-			this->label3->Text = L"sss";
+			this->label3->Text = L" Employee name";
 			this->label3->Click += gcnew System::EventHandler(this, &MyForm::label3_Click);
 			// 
 			// listBox1
@@ -168,11 +187,35 @@ namespace Payrolls {
 			this->label4->Text = L"Alerts:";
 			this->label4->Click += gcnew System::EventHandler(this, &MyForm::label4_Click);
 			// 
+			// Logout
+			// 
+			this->Logout->AutoSize = true;
+			this->Logout->Location = System::Drawing::Point(533, 9);
+			this->Logout->Name = L"Logout";
+			this->Logout->Size = System::Drawing::Size(42, 13);
+			this->Logout->TabIndex = 8;
+			this->Logout->TabStop = true;
+			this->Logout->Text = L"LogOut";
+			this->Logout->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &MyForm::Logout_LinkClicked);
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Pixel,
+				static_cast<System::Byte>(0)));
+			this->label5->Location = System::Drawing::Point(114, 63);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(66, 18);
+			this->label5->TabIndex = 9;
+			this->label5->Text = L" Position";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(622, 435);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->Logout);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->listBox1);
 			this->Controls->Add(this->label3);
@@ -181,8 +224,9 @@ namespace Payrolls {
 			this->Controls->Add(this->Adm_txt);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
-			this->Name = L"Form1";
-			this->Text = L"Form1";
+			this->Name = L"MyForm";
+			this->Text = L"Admin";
+			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -190,11 +234,10 @@ namespace Payrolls {
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		String^ L = L"kjkj";
+		Admin2^ Admin = gcnew Admin2 (this, otherform, Adm_txt->Text);
 
-		//ADMform f2 = new Form2();
-
-
+		this->Hide();
+		Admin->Show();
 
 
 	}
@@ -205,6 +248,9 @@ namespace Payrolls {
 	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		
+
 	}
 	private: System::Void listBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -212,5 +258,16 @@ namespace Payrolls {
 	}
 	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void Logout_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+		
+		this->Hide();
+		
+		otherform->Show();
+	}
+private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+
+	label3->Text = word;
+	label5->Text = word1;
+}
+};
 }
