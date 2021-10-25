@@ -1,5 +1,8 @@
 #pragma once
 #include "MyForm.h"
+#include "EmployeeMainMenu.h"
+#include "Admin2.h"
+#include "HrView.h"
 
 namespace Payrolls {
 
@@ -9,6 +12,7 @@ namespace Payrolls {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Data::OleDb;
 
 	/// <summary>
 	/// Summary for Form1
@@ -45,6 +49,9 @@ namespace Payrolls {
 	private: System::Windows::Forms::TextBox^ textBox2;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private: System::Windows::Forms::Button^ button1;
+
+
+
 	protected:
 
 	private:
@@ -79,17 +86,16 @@ namespace Payrolls {
 			this->label1->Location = System::Drawing::Point(462, 53);
 			this->label1->Margin = System::Windows::Forms::Padding(6, 0, 6, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(413, 36);
+			this->label1->Size = System::Drawing::Size(552, 44);
 			this->label1->TabIndex = 0;
-			this->label1->Text = L"Welcome to Hmoney Payroll";
-			this->label1->Click += gcnew System::EventHandler(this, &Form1::label1_Click);
+			this->label1->Text = L"Welcome to SHmoney Payroll";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
 			this->label2->Location = System::Drawing::Point(440, 270);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(129, 24);
+			this->label2->Size = System::Drawing::Size(162, 29);
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"Employee ID";
 			this->label2->Click += gcnew System::EventHandler(this, &Form1::label2_Click);
@@ -99,7 +105,7 @@ namespace Payrolls {
 			this->label3->AutoSize = true;
 			this->label3->Location = System::Drawing::Point(465, 323);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(100, 24);
+			this->label3->Size = System::Drawing::Size(128, 29);
 			this->label3->TabIndex = 2;
 			this->label3->Text = L"Password";
 			this->label3->Click += gcnew System::EventHandler(this, &Form1::label3_Click);
@@ -109,7 +115,7 @@ namespace Payrolls {
 			this->label4->AutoSize = true;
 			this->label4->Location = System::Drawing::Point(494, 385);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(84, 24);
+			this->label4->Size = System::Drawing::Size(108, 29);
 			this->label4->TabIndex = 3;
 			this->label4->Text = L"Position";
 			// 
@@ -117,14 +123,15 @@ namespace Payrolls {
 			// 
 			this->textBox1->Location = System::Drawing::Point(646, 270);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(275, 28);
+			this->textBox1->Size = System::Drawing::Size(275, 34);
 			this->textBox1->TabIndex = 4;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &Form1::textBox1_TextChanged);
 			// 
 			// textBox2
 			// 
 			this->textBox2->Location = System::Drawing::Point(646, 323);
 			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(275, 28);
+			this->textBox2->Size = System::Drawing::Size(275, 34);
 			this->textBox2->TabIndex = 5;
 			this->textBox2->TextChanged += gcnew System::EventHandler(this, &Form1::textBox2_TextChanged);
 			// 
@@ -134,7 +141,7 @@ namespace Payrolls {
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"HR", L"Admin", L"Employee" });
 			this->comboBox1->Location = System::Drawing::Point(646, 385);
 			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(281, 30);
+			this->comboBox1->Size = System::Drawing::Size(281, 37);
 			this->comboBox1->TabIndex = 6;
 			// 
 			// button1
@@ -149,11 +156,11 @@ namespace Payrolls {
 			// 
 			// Form1
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(11, 22);
+			this->AutoScaleDimensions = System::Drawing::SizeF(15, 29);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::BlanchedAlmond;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->ClientSize = System::Drawing::Size(1246, 749);
+			this->ClientSize = System::Drawing::Size(1246, 839);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->textBox2);
@@ -177,14 +184,79 @@ namespace Payrolls {
 	}
 private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
 }
+
 private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	this->textBox2->PasswordChar = '*';
 }
 private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
+//<<<<<<< HEAD
+private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-}
+	if ((textBox1->Text == "") || (textBox2->Text == "") || (comboBox1->Text == "")) {
+		MessageBox::Show("Please enter data in all field!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
+	else {
+		OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Zhuowei Hu/Documents/Payroll Info.accdb");
+		conn->Open();
+		OleDbCommand^ cmd = conn->CreateCommand();
+		cmd->CommandType = CommandType::Text;
+		cmd->CommandText = "select * from EmployeeInfo where ([ID] = @ID) and ([Password] = @Password)";
+		cmd->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
+		cmd->Parameters->AddWithValue("@Password", textBox2->Text);
+		cmd->ExecuteNonQuery();
+		DataTable^ dt = gcnew DataTable();
+		OleDbDataAdapter^ da = gcnew OleDbDataAdapter(cmd);
+		da->Fill(dt);
+		if (dt->Rows->Count == 1) {
+			OleDbCommand^ command = conn->CreateCommand();
+			command->CommandType = CommandType::Text;
+			command->CommandText = "select * from EmployeeInfo where [ID] = @ID and ([Position] = 'Human Resource' or [Position] = 'human resource' or [Position] = 'Human resource' or [Position] = 'HR' or [Position] = 'hr' or [Position] = 'Hr')";
+			command->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
+			command->ExecuteNonQuery();
+			DataTable^ datatable = gcnew DataTable();
+			OleDbDataAdapter^ dataAdapter = gcnew OleDbDataAdapter(command);
+			dataAdapter->Fill(datatable);
+			int status = int(comboBox1->SelectedIndex);
+			textBox1->Clear();
+			textBox2->Clear();
+			if (status == 0 && datatable->Rows->Count == 1)
+			{
+				MessageBox::Show("Login Succeed!");
+				HrView^ hr = gcnew HrView();
+				this->Hide();
+				hr->ShowDialog();
+			}
+
+			else if (status == 1 && datatable->Rows->Count == 0)
+			{
+				MessageBox::Show("Login Succeed!");
+				Admin2^ admin = gcnew Admin2();
+				this->Hide();
+				admin->ShowDialog();
+
+			}
+
+			else if (status == 2 && datatable->Rows->Count == 0)
+			{
+				MessageBox::Show("Login Succeed!");
+				EmployeeMainMenu^ empMenu = gcnew EmployeeMainMenu();
+				this->Hide();
+				empMenu->ShowDialog();
+			}
+
+			else
+			{
+				MessageBox::Show("Please choose the right position", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+		}
+		else
+		{
+			MessageBox::Show("Uncorrect username or password", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+	}
+	}
+
 };
 }
