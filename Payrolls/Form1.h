@@ -232,7 +232,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			else if (status == 1 && datatable->Rows->Count == 0)
 			{
 				MessageBox::Show("Login Succeed!");
-				Admin2^ admin = gcnew Admin2();
+				MyForm^ admin = gcnew MyForm(this, textBox1->Text);
 				this->Hide();
 				admin->ShowDialog();
 
