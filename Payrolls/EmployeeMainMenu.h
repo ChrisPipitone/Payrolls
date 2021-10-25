@@ -19,8 +19,8 @@ namespace Payrolls {
 		void init()
 		{
 			//this->empName->Text = "should display this text on start up";
-			this->editPersonal_panel->Hide();
-			this->viewBenefits_panel->Hide();
+			//this->editPersonal_panel->Hide();
+			//this->viewBenefits_panel->Hide();
 		}
 		EmployeeMainMenu(void)
 		{
@@ -137,7 +137,7 @@ namespace Payrolls {
 			// 
 			// EmployeeMainMenu
 			// 
-			this->ClientSize = System::Drawing::Size(284, 261);
+			this->ClientSize = System::Drawing::Size(794, 608);
 			this->Name = L"EmployeeMainMenu";
 			this->Load += gcnew System::EventHandler(this, &EmployeeMainMenu::EmployeeMainMenu_Load);
 			this->ResumeLayout(false);
