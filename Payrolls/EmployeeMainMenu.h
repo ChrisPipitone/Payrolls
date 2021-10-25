@@ -2,8 +2,6 @@
 #include "Employee.h"
 
 namespace Payrolls {
-	//pls work
-	int a;
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
