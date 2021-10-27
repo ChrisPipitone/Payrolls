@@ -51,6 +51,9 @@
     <ClInclude Include="HrMenu2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="removeEmployee.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GrossIncome.cpp">
@@ -84,6 +87,9 @@
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="HrMenu2.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="removeEmployee.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -142,6 +142,9 @@
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="removeEmployee.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="timeSheetAdmin.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -157,6 +160,7 @@
     <ClCompile Include="HrMenu2.cpp" />
     <ClCompile Include="HrView.cpp" />
     <ClCompile Include="Login.cpp" />
+    <ClCompile Include="removeEmployee.cpp" />
     <ClCompile Include="timeSheetAdmin.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -191,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="removeEmployee.resx">
+      <DependentUpon>removeEmployee.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="timeSheetAdmin.resx">
       <DependentUpon>timeSheetAdmin.h</DependentUpon>
