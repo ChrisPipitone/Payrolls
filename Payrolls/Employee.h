@@ -4,12 +4,26 @@
 enum class HireType { PartTime, FullTime };
 enum class WageType { Salary, Hourly };
 
+
+using namespace System;
+using namespace System::ComponentModel;
+using namespace System::Collections;
+using namespace System::Windows::Forms;
+using namespace System::Data;
+using namespace System::Drawing;
+using namespace System::Data::OleDb;
+
+
 class Employee : public Login
 {
 public:
 	Employee(std::string lastName, std::string firstName);
 	Employee();
+
 	static Employee* CreateEmp(std::string lastName, std::string firstName, WageType type);
+
+
+
 
 
 	std::string lastName;

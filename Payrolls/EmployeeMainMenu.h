@@ -1,6 +1,6 @@
 #pragma once
 #include "Employee.h"
-
+#include<string>
 namespace Payrolls {
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -20,6 +20,7 @@ namespace Payrolls {
 			//this->empName->Text = "should display this text on start up";
 			this->editPersonal_panel->Hide();
 			this->viewBenefits_panel->Hide();
+			
 		}
 		EmployeeMainMenu(void)
 		{
@@ -109,15 +110,11 @@ namespace Payrolls {
 	private: System::Windows::Forms::Label^ label36;
 	private: System::Windows::Forms::Label^ label37;
 	private: System::Windows::Forms::Label^ label39;
+private: System::Windows::Forms::Label^ label40;
+
+
+
 	private: System::Windows::Forms::Label^ label8;
-
-
-
-
-
-
-
-
 
 	private:
 		/// <summary>
@@ -132,7 +129,6 @@ namespace Payrolls {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(EmployeeMainMenu::typeid));
 			this->mainMenuLeft_title = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -140,6 +136,7 @@ namespace Payrolls {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->editPersonal_panel = (gcnew System::Windows::Forms::Panel());
 			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
+			this->label40 = (gcnew System::Windows::Forms::Label());
 			this->Emp_ID = (gcnew System::Windows::Forms::Label());
 			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->label22 = (gcnew System::Windows::Forms::Label());
@@ -266,7 +263,6 @@ namespace Payrolls {
 			this->editPersonal_panel->Name = L"editPersonal_panel";
 			this->editPersonal_panel->Size = System::Drawing::Size(1072, 661);
 			this->editPersonal_panel->TabIndex = 2;
-			this->editPersonal_panel->Hide();
 			// 
 			// splitContainer1
 			// 
@@ -276,6 +272,7 @@ namespace Payrolls {
 			// 
 			// splitContainer1.Panel1
 			// 
+			this->splitContainer1->Panel1->Controls->Add(this->label40);
 			this->splitContainer1->Panel1->Controls->Add(this->Emp_ID);
 			this->splitContainer1->Panel1->Controls->Add(this->label14);
 			this->splitContainer1->Panel1->Controls->Add(this->label22);
@@ -311,6 +308,17 @@ namespace Payrolls {
 			this->splitContainer1->Size = System::Drawing::Size(1072, 661);
 			this->splitContainer1->SplitterDistance = 541;
 			this->splitContainer1->TabIndex = 0;
+			// 
+			// label40
+			// 
+			this->label40->AutoSize = true;
+			this->label40->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label40->Location = System::Drawing::Point(356, 247);
+			this->label40->Name = L"label40";
+			this->label40->Size = System::Drawing::Size(27, 13);
+			this->label40->TabIndex = 4;
+			this->label40->Text = L"help";
 			// 
 			// Emp_ID
 			// 
@@ -816,7 +824,6 @@ namespace Payrolls {
 			// InfoAtGlance_button
 			// 
 			this->InfoAtGlance_button->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
-			this->InfoAtGlance_button->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"InfoAtGlance_button.Image")));
 			this->InfoAtGlance_button->ImageTransparentColor = System::Drawing::Color::Magenta;
 			this->InfoAtGlance_button->Name = L"InfoAtGlance_button";
 			this->InfoAtGlance_button->Size = System::Drawing::Size(139, 22);
@@ -878,8 +885,6 @@ namespace Payrolls {
 			this->toolStrip1->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
-			this->editPersonal_panel->Hide();
-			this->viewBenefits_panel->Hide();
 
 		}
 #pragma endregion
@@ -911,5 +916,6 @@ namespace Payrolls {
 		this->editPersonal_panel->Hide();
 	}
 
-	};
+
+};
 }
