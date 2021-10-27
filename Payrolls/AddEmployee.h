@@ -575,7 +575,7 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 	conn->Open();
 	OleDbCommand^ cmd = conn->CreateCommand();
 	cmd->CommandType = CommandType::Text;
-	cmd->CommandText = "Insert into EmployeeInfo([ID], [Password], [SSN], [Firstname], [Lastname], [DateofBirth], [Age], [Gender], [Email], [honeNumber], [Address1], [Zipcode], [Position], [Hours], [OvertimeHours], )" +
+	cmd->CommandText = "Insert into EmployeeInfo([ID], [Password], [SSN], [Firstname], [Lastname], [DateofBirth], [Age], [Gender], [Email], [PhoneNumber], [Address1], [Zipcode], [Position], [Hours], [OvertimeHours], " +
 		"[OvertimePay], [HourlyPay], [Weeklygrosspay]) VALUES(@ID,@Password,@SSN,@Firstname,@Lastname,@DateofBirth,@Age,@Gender,@Email,@PhoneNumber,@Address1,@Zipcode,@Position,@Hours," +
 		"@OvertimeHours, @OvertimePay, @HourlyPay, @Weeklygrosspay)";
 	cmd->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
