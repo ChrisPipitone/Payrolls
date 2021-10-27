@@ -245,7 +245,6 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 				this->Hide();
 				empMenu->ShowDialog();
 			}
-
 			else
 			{
 				MessageBox::Show("Please choose the right position", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
