@@ -42,10 +42,11 @@ namespace Payrolls {
 		/// Required designer variable.
 		/// </summary>
 		System::ComponentModel::Container ^components;
+		/*
 		this->button1 = (gcnew System::Windows::Forms::Button());
 
 		this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-
+		*/
 #pragma region Windows Form Designer generated code
 		/// <summary>
 		/// Required method for Designer support - do not modify
@@ -68,7 +69,8 @@ namespace Payrolls {
 		}
 		// 
 		// label1
-		// 
+		//
+		/*
 		this->label1->AutoSize = true;
 		this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 			System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
@@ -78,10 +80,11 @@ namespace Payrolls {
 		this->label1->Size = System::Drawing::Size(552, 44);
 		this->label1->TabIndex = 0;
 		this->label1->Text = L"Type reason for employee removal";
-
+		*/
 		// 
 		// button1
-		// 
+		//
+		/*
 		this->button1->Location = System::Drawing::Point(646, 452);
 		this->button1->Name = L"button1";
 		this->button1->Size = System::Drawing::Size(207, 51);
@@ -89,6 +92,7 @@ namespace Payrolls {
 		this->button1->Text = L"Terminate";
 		this->button1->UseVisualStyleBackColor = true;
 		this->button1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
+		*/
 #pragma endregion
 	private: System::Void removeEmployee_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
