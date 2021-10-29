@@ -132,7 +132,6 @@ namespace Payrolls {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(EmployeeMainMenu::typeid));
 			this->mainMenuLeft_title = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -214,6 +213,7 @@ namespace Payrolls {
 			this->mainMenuLeft_title->Size = System::Drawing::Size(437, 37);
 			this->mainMenuLeft_title->TabIndex = 0;
 			this->mainMenuLeft_title->Text = L"Your Information At A Glance";
+			this->mainMenuLeft_title->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::mainMenuLeft_title_Click);
 			// 
 			// label1
 			// 
@@ -225,6 +225,7 @@ namespace Payrolls {
 			this->label1->Size = System::Drawing::Size(38, 25);
 			this->label1->TabIndex = 1;
 			this->label1->Text = L"ID:";
+			this->label1->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::label1_Click);
 			// 
 			// label2
 			// 
@@ -266,7 +267,6 @@ namespace Payrolls {
 			this->editPersonal_panel->Name = L"editPersonal_panel";
 			this->editPersonal_panel->Size = System::Drawing::Size(1072, 661);
 			this->editPersonal_panel->TabIndex = 2;
-			this->editPersonal_panel->Hide();
 			// 
 			// splitContainer1
 			// 
@@ -816,7 +816,6 @@ namespace Payrolls {
 			// InfoAtGlance_button
 			// 
 			this->InfoAtGlance_button->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
-			this->InfoAtGlance_button->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"InfoAtGlance_button.Image")));
 			this->InfoAtGlance_button->ImageTransparentColor = System::Drawing::Color::Magenta;
 			this->InfoAtGlance_button->Name = L"InfoAtGlance_button";
 			this->InfoAtGlance_button->Size = System::Drawing::Size(139, 22);
@@ -849,6 +848,7 @@ namespace Payrolls {
 			this->toolStrip1->Size = System::Drawing::Size(1072, 25);
 			this->toolStrip1->TabIndex = 0;
 			this->toolStrip1->Text = L"toolStrip1";
+			this->toolStrip1->ItemClicked += gcnew System::Windows::Forms::ToolStripItemClickedEventHandler(this, &EmployeeMainMenu::toolStrip1_ItemClicked);
 			// 
 			// EmployeeMainMenu
 			// 
@@ -865,6 +865,7 @@ namespace Payrolls {
 			this->Controls->Add(this->label1);
 			this->Name = L"EmployeeMainMenu";
 			this->Text = L"EmployeeMainMenu";
+			this->Load += gcnew System::EventHandler(this, &EmployeeMainMenu::EmployeeMainMenu_Load);
 			this->editPersonal_panel->ResumeLayout(false);
 			this->splitContainer1->Panel1->ResumeLayout(false);
 			this->splitContainer1->Panel1->PerformLayout();
@@ -878,8 +879,6 @@ namespace Payrolls {
 			this->toolStrip1->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
-			this->editPersonal_panel->Hide();
-			this->viewBenefits_panel->Hide();
 
 		}
 #pragma endregion
@@ -911,5 +910,13 @@ namespace Payrolls {
 		this->editPersonal_panel->Hide();
 	}
 
-	};
+	private: System::Void mainMenuLeft_title_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void EmployeeMainMenu_Load(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void toolStrip1_ItemClicked(System::Object^ sender, System::Windows::Forms::ToolStripItemClickedEventArgs^ e) {
+}
+};
 }
