@@ -18,6 +18,8 @@ namespace Payrolls {
 		removeEmployee(void)
 		{
 			InitializeComponent();
+			
+
 			//
 			//TODO: Add the constructor code here
 			//
@@ -40,7 +42,11 @@ namespace Payrolls {
 		/// Required designer variable.
 		/// </summary>
 		System::ComponentModel::Container ^components;
+		/*
+		this->button1 = (gcnew System::Windows::Forms::Button());
 
+		this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+		*/
 #pragma region Windows Form Designer generated code
 		/// <summary>
 		/// Required method for Designer support - do not modify
@@ -56,13 +62,43 @@ namespace Payrolls {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(284, 261);
 			this->Name = L"removeEmployee";
-			this->Text = L"removeEmployee";
+			this->Text = L"Remove Employee";
 			this->Load += gcnew System::EventHandler(this, &removeEmployee::removeEmployee_Load);
 			this->ResumeLayout(false);
-
+			this->SuspendLayout();
 		}
+		// 
+		// label1
+		//
+		/*
+		this->label1->AutoSize = true;
+		this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+			System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+		this->label1->Location = System::Drawing::Point(462, 53);
+		this->label1->Margin = System::Windows::Forms::Padding(6, 0, 6, 0);
+		this->label1->Name = L"label1";
+		this->label1->Size = System::Drawing::Size(552, 44);
+		this->label1->TabIndex = 0;
+		this->label1->Text = L"Type reason for employee removal";
+		*/
+		// 
+		// button1
+		//
+		/*
+		this->button1->Location = System::Drawing::Point(646, 452);
+		this->button1->Name = L"button1";
+		this->button1->Size = System::Drawing::Size(207, 51);
+		this->button1->TabIndex = 7;
+		this->button1->Text = L"Terminate";
+		this->button1->UseVisualStyleBackColor = true;
+		this->button1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
+		*/
 #pragma endregion
 	private: System::Void removeEmployee_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox1(System::Object^ sender, System::EventArgs^ e) {
 	}
 	};
 }
