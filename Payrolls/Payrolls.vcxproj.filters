@@ -48,7 +48,7 @@
     <ClInclude Include="HrView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HrMenu2.h">
+    <ClInclude Include="removeEmployee.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -83,7 +83,7 @@
     <ClCompile Include="HrView.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="HrMenu2.cpp">
+    <ClCompile Include="removeEmployee.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>

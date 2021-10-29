@@ -132,14 +132,14 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="GrossIncome.h" />
-    <ClInclude Include="HrMenu2.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="HrView.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Login.h" />
     <ClInclude Include="MyForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="removeEmployee.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="timeSheetAdmin.h">
@@ -154,9 +154,9 @@
     <ClCompile Include="EmployeeMainMenu.cpp" />
     <ClCompile Include="Form1.cpp" />
     <ClCompile Include="GrossIncome.cpp" />
-    <ClCompile Include="HrMenu2.cpp" />
     <ClCompile Include="HrView.cpp" />
     <ClCompile Include="Login.cpp" />
+    <ClCompile Include="removeEmployee.cpp" />
     <ClCompile Include="timeSheetAdmin.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -183,14 +183,14 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HrMenu2.resx">
-      <DependentUpon>HrMenu2.h</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="HrView.resx">
       <DependentUpon>HrView.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="removeEmployee.resx">
+      <DependentUpon>removeEmployee.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="timeSheetAdmin.resx">
       <DependentUpon>timeSheetAdmin.h</DependentUpon>
