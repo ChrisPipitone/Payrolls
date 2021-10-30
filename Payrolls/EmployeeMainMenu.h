@@ -296,6 +296,7 @@ namespace Payrolls {
 			this->splitContainer1->Panel1->Controls->Add(this->Emp);
 			this->splitContainer1->Panel1->Controls->Add(this->label10);
 			this->splitContainer1->Panel1->Controls->Add(this->label9);
+			this->splitContainer1->Panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &EmployeeMainMenu::splitContainer1_Panel1_Paint);
 			// 
 			// splitContainer1.Panel2
 			// 
@@ -917,6 +918,8 @@ private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e)
 private: System::Void EmployeeMainMenu_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void toolStrip1_ItemClicked(System::Object^ sender, System::Windows::Forms::ToolStripItemClickedEventArgs^ e) {
+}
+private: System::Void splitContainer1_Panel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 }
 };
 }

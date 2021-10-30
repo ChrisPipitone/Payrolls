@@ -1,7 +1,6 @@
 #pragma once
-#include "MyForm.h"
+#include "Admin.h"
 #include "EmployeeMainMenu.h"
-#include "Admin2.h"
 #include "HrView.h"
 
 namespace Payrolls {
@@ -220,7 +219,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			OleDbDataAdapter^ dataAdapter = gcnew OleDbDataAdapter(command);
 			dataAdapter->Fill(datatable);
 			int status = int(comboBox1->SelectedIndex);
-			String^ Name;
+			String^ Name="H";
 			Name = textBox1->Text;
 			textBox1->Clear();
 			textBox2->Clear();
@@ -236,7 +235,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			{
 				
 				MessageBox::Show("Login Succeed!");
-				MyForm^ admin = gcnew MyForm(this, Name);
+				MyForm1^ admin = gcnew MyForm1 (this, Name);
 				this->Hide();
 				admin->ShowDialog();
 
