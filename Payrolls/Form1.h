@@ -1,7 +1,6 @@
 #pragma once
-#include "MyForm.h"
+#include "Admin.h"
 #include "EmployeeMainMenu.h"
-#include "Admin2.h"
 #include "HrView.h"
 
 namespace Payrolls {
@@ -49,7 +48,6 @@ namespace Payrolls {
 	private: System::Windows::Forms::TextBox^ textBox2;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private: System::Windows::Forms::Button^ button1;
-
 
 
 
@@ -144,6 +142,7 @@ namespace Payrolls {
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(281, 30);
 			this->comboBox1->TabIndex = 6;
+			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &Form1::comboBox1_SelectedIndexChanged);
 			// 
 			// button1
 			// 
@@ -191,6 +190,7 @@ private: System::Void textBox2_TextChanged(System::Object^ sender, System::Event
 }
 private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
+//<<<<<<< HEAD
 private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -198,7 +198,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		MessageBox::Show("Please enter data in all field!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 	}
 	else {
-		OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Chris/Desktop/Payroll_Info.accdb");
+		OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Ivan/Desktop/Payroll_Info.accdb");
 		conn->Open();
 		OleDbCommand^ cmd = conn->CreateCommand();
 		cmd->CommandType = CommandType::Text;
@@ -219,6 +219,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			OleDbDataAdapter^ dataAdapter = gcnew OleDbDataAdapter(command);
 			dataAdapter->Fill(datatable);
 			int status = int(comboBox1->SelectedIndex);
+			String^ Name="H";
+			Name = textBox1->Text;
 			textBox1->Clear();
 			textBox2->Clear();
 			if (status == 0 && datatable->Rows->Count == 1)
@@ -231,8 +233,9 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 			else if (status == 1 && datatable->Rows->Count == 0)
 			{
+				
 				MessageBox::Show("Login Succeed!");
-				MyForm^ admin = gcnew MyForm(this, textBox1->Text);
+				MyForm1^ admin = gcnew MyForm1 (this, Name);
 				this->Hide();
 				admin->ShowDialog();
 
@@ -241,14 +244,10 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			else if (status == 2 && datatable->Rows->Count == 0)
 			{
 				MessageBox::Show("Login Succeed!");
-
-				//use employee id to pull employee data from data base to fill menu details
-				System::String^ empID = textBox1->Text;
-				EmployeeMainMenu^ empMenu = gcnew EmployeeMainMenu(empID);
+				EmployeeMainMenu^ empMenu = gcnew EmployeeMainMenu();
 				this->Hide();
 				empMenu->ShowDialog();
 			}
-
 			else
 			{
 				MessageBox::Show("Please choose the right position", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -260,5 +259,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		}
 	}
 	}
+
+private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
