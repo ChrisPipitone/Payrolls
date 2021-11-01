@@ -1,4 +1,5 @@
 #include<ctime>
+#include<String>
 #include "Login.h"
 
 enum class HireType { PartTime, FullTime };
@@ -6,31 +7,23 @@ enum class WageType { Salary, Hourly };
 
 
 using namespace System;
-using namespace System::ComponentModel;
-using namespace System::Collections;
-using namespace System::Windows::Forms;
-using namespace System::Data;
-using namespace System::Drawing;
-using namespace System::Data::OleDb;
 
-
+//
 class Employee : public Login
 {
 public:
 	Employee(std::string lastName, std::string firstName);
 	Employee();
 
-	static Employee* CreateEmp(std::string lastName, std::string firstName, WageType type);
+	//static Employee* CreateEmp(std::string lastName, std::string firstName, WageType type);
 
 
-
-
-
+	//String help;
 	std::string lastName;
 	std::string firstName;
 
 	//Company details
-	int id;
+	std::string id;
 	std::string department;
 	std::string jobTitle;
 	std::string location;
@@ -83,7 +76,7 @@ public:
 
 };
 */
-
+System::String^ getFromDB(System::String^ id);
 
 class Hourly_Emp : public Employee
 {

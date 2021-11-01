@@ -1,6 +1,8 @@
 #pragma once
 #include "Employee.h"
 #include<string>
+
+
 namespace Payrolls {
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -8,6 +10,19 @@ namespace Payrolls {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Data::OleDb;
+
+	//used to convert  System::String^ to std::string 
+	using System::Runtime::InteropServices::Marshal;
+	static std::string toStandardString(System::String^ string)
+	{
+		System::IntPtr pointer = Marshal::StringToHGlobalAnsi(string);
+		char* charPointer = reinterpret_cast<char*>(pointer.ToPointer());
+		std::string returnString(charPointer, string->Length);
+		Marshal::FreeHGlobal(pointer);
+
+		return returnString;
+	}
 
 	/// <summary>
 	/// Summary for EmployeeMainMenu
@@ -15,20 +30,15 @@ namespace Payrolls {
 	public ref class EmployeeMainMenu : public System::Windows::Forms::Form
 	{
 	public:
-		void init()
-		{
-			//this->empName->Text = "should display this text on start up";
-			this->editPersonal_panel->Hide();
-			this->viewBenefits_panel->Hide();
-			
-		}
-		EmployeeMainMenu(void)
+		void fillData(System::String^ connectionString, System::String^ empID);
+		void init(System::String^ empID);
+
+		EmployeeMainMenu(System::String^ empID)
 		{
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
 			//
-			init();
 		}
 
 	protected:
@@ -56,7 +66,7 @@ namespace Payrolls {
 	private: System::Windows::Forms::Panel^ ViewPaystubs_panel;
 	private: System::Windows::Forms::Panel^ ViewTimesheet_panel;
 	private: System::Windows::Forms::SplitContainer^ splitContainer1;
-	private: System::Windows::Forms::Label^ label12;
+	private: System::Windows::Forms::Label^ sex_label;
 	private: System::Windows::Forms::Label^ label11;
 	private: System::Windows::Forms::Label^ label10;
 	private: System::Windows::Forms::Label^ label9;
@@ -64,22 +74,31 @@ namespace Payrolls {
 	private: System::Windows::Forms::TextBox^ textBox4;
 	private: System::Windows::Forms::TextBox^ textBox3;
 	private: System::Windows::Forms::TextBox^ textBox2;
-	private: System::Windows::Forms::Label^ label7;
-	private: System::Windows::Forms::Label^ label6;
-	private: System::Windows::Forms::Label^ label5;
-	private: System::Windows::Forms::Label^ label13;
+	private: System::Windows::Forms::Label^ preferedPhoneNumber_label;
+
+	private: System::Windows::Forms::Label^ preferedEmail_label;
+	private: System::Windows::Forms::Label^ username_label;
+
+
+	private: System::Windows::Forms::Label^ department_label;
 	private: System::Windows::Forms::Label^ Emp_ID;
-	private: System::Windows::Forms::Label^ label14;
-	private: System::Windows::Forms::Label^ label22;
-	private: System::Windows::Forms::Label^ label15;
-	private: System::Windows::Forms::Label^ label21;
-	private: System::Windows::Forms::Label^ label20;
-	private: System::Windows::Forms::Label^ label19;
-	private: System::Windows::Forms::Label^ label18;
-	private: System::Windows::Forms::Label^ Emp;
-	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Label^ id_label;
+	private: System::Windows::Forms::Label^ Emp_jobtitle;
+
+	private: System::Windows::Forms::Label^ jobTitle_label;
+	private: System::Windows::Forms::Label^ Emp_department;
+	private: System::Windows::Forms::Label^ Emp_sex;
+	private: System::Windows::Forms::Label^ Emp_dob;
+	private: System::Windows::Forms::Label^ Emp_lastName;
+
+
+	private: System::Windows::Forms::Label^ Emp_firstName;
+	private: System::Windows::Forms::Button^ persInfoSubmit_button;
+
+
 	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::Label^ label16;
+	private: System::Windows::Forms::Label^ homeAddress_label;
+
 	private: System::Windows::Forms::ToolStripButton^ editPersonalInfo_button;
 	private: System::Windows::Forms::ToolStripSeparator^ toolStripSeparator1;
 	private: System::Windows::Forms::ToolStripButton^ viewBenefits_button;
@@ -106,15 +125,22 @@ namespace Payrolls {
 	private: System::Windows::Forms::Label^ label23;
 	private: System::Windows::Forms::Label^ label17;
 	private: System::Windows::Forms::Label^ label35;
-	private: System::Windows::Forms::Label^ label38;
-	private: System::Windows::Forms::Label^ label36;
-	private: System::Windows::Forms::Label^ label37;
-	private: System::Windows::Forms::Label^ label39;
-private: System::Windows::Forms::Label^ label40;
+	private: System::Windows::Forms::Label^ Emp_grossIncome;
+	private: System::Windows::Forms::Label^ grossIncome_label;
+
+
+	private: System::Windows::Forms::Label^ Emp_payRate;
+
+	private: System::Windows::Forms::Label^ Emp_incomeType;
+
+
 
 
 
 	private: System::Windows::Forms::Label^ label8;
+private: System::Windows::Forms::Button^ button2;
+
+
 
 	private:
 		/// <summary>
@@ -127,7 +153,7 @@ private: System::Windows::Forms::Label^ label40;
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
-		void InitializeComponent(void)
+		void InitializeComponent()
 		{
 			this->mainMenuLeft_title = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
@@ -136,36 +162,36 @@ private: System::Windows::Forms::Label^ label40;
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->editPersonal_panel = (gcnew System::Windows::Forms::Panel());
 			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
-			this->label40 = (gcnew System::Windows::Forms::Label());
+			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->Emp_ID = (gcnew System::Windows::Forms::Label());
-			this->label14 = (gcnew System::Windows::Forms::Label());
-			this->label22 = (gcnew System::Windows::Forms::Label());
-			this->label38 = (gcnew System::Windows::Forms::Label());
-			this->label36 = (gcnew System::Windows::Forms::Label());
-			this->label37 = (gcnew System::Windows::Forms::Label());
-			this->label39 = (gcnew System::Windows::Forms::Label());
+			this->id_label = (gcnew System::Windows::Forms::Label());
+			this->Emp_jobtitle = (gcnew System::Windows::Forms::Label());
+			this->Emp_grossIncome = (gcnew System::Windows::Forms::Label());
+			this->grossIncome_label = (gcnew System::Windows::Forms::Label());
+			this->Emp_payRate = (gcnew System::Windows::Forms::Label());
+			this->Emp_incomeType = (gcnew System::Windows::Forms::Label());
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->label35 = (gcnew System::Windows::Forms::Label());
-			this->label15 = (gcnew System::Windows::Forms::Label());
-			this->label21 = (gcnew System::Windows::Forms::Label());
-			this->label13 = (gcnew System::Windows::Forms::Label());
-			this->label20 = (gcnew System::Windows::Forms::Label());
-			this->label12 = (gcnew System::Windows::Forms::Label());
-			this->label19 = (gcnew System::Windows::Forms::Label());
+			this->jobTitle_label = (gcnew System::Windows::Forms::Label());
+			this->Emp_department = (gcnew System::Windows::Forms::Label());
+			this->department_label = (gcnew System::Windows::Forms::Label());
+			this->Emp_sex = (gcnew System::Windows::Forms::Label());
+			this->sex_label = (gcnew System::Windows::Forms::Label());
+			this->Emp_dob = (gcnew System::Windows::Forms::Label());
 			this->label11 = (gcnew System::Windows::Forms::Label());
-			this->label18 = (gcnew System::Windows::Forms::Label());
-			this->Emp = (gcnew System::Windows::Forms::Label());
+			this->Emp_lastName = (gcnew System::Windows::Forms::Label());
+			this->Emp_firstName = (gcnew System::Windows::Forms::Label());
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->label9 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->persInfoSubmit_button = (gcnew System::Windows::Forms::Button());
 			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->label16 = (gcnew System::Windows::Forms::Label());
-			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->preferedPhoneNumber_label = (gcnew System::Windows::Forms::Label());
+			this->preferedEmail_label = (gcnew System::Windows::Forms::Label());
+			this->homeAddress_label = (gcnew System::Windows::Forms::Label());
+			this->username_label = (gcnew System::Windows::Forms::Label());
 			this->viewBenefits_panel = (gcnew System::Windows::Forms::Panel());
 			this->label34 = (gcnew System::Windows::Forms::Label());
 			this->label28 = (gcnew System::Windows::Forms::Label());
@@ -272,53 +298,52 @@ private: System::Windows::Forms::Label^ label40;
 			// 
 			// splitContainer1.Panel1
 			// 
-			this->splitContainer1->Panel1->Controls->Add(this->label40);
+			this->splitContainer1->Panel1->Controls->Add(this->button2);
 			this->splitContainer1->Panel1->Controls->Add(this->Emp_ID);
-			this->splitContainer1->Panel1->Controls->Add(this->label14);
-			this->splitContainer1->Panel1->Controls->Add(this->label22);
-			this->splitContainer1->Panel1->Controls->Add(this->label38);
-			this->splitContainer1->Panel1->Controls->Add(this->label36);
-			this->splitContainer1->Panel1->Controls->Add(this->label37);
-			this->splitContainer1->Panel1->Controls->Add(this->label39);
+			this->splitContainer1->Panel1->Controls->Add(this->id_label);
+			this->splitContainer1->Panel1->Controls->Add(this->Emp_jobtitle);
+			this->splitContainer1->Panel1->Controls->Add(this->Emp_grossIncome);
+			this->splitContainer1->Panel1->Controls->Add(this->grossIncome_label);
+			this->splitContainer1->Panel1->Controls->Add(this->Emp_payRate);
+			this->splitContainer1->Panel1->Controls->Add(this->Emp_incomeType);
 			this->splitContainer1->Panel1->Controls->Add(this->label8);
 			this->splitContainer1->Panel1->Controls->Add(this->label35);
-			this->splitContainer1->Panel1->Controls->Add(this->label15);
-			this->splitContainer1->Panel1->Controls->Add(this->label21);
-			this->splitContainer1->Panel1->Controls->Add(this->label13);
-			this->splitContainer1->Panel1->Controls->Add(this->label20);
-			this->splitContainer1->Panel1->Controls->Add(this->label12);
-			this->splitContainer1->Panel1->Controls->Add(this->label19);
+			this->splitContainer1->Panel1->Controls->Add(this->jobTitle_label);
+			this->splitContainer1->Panel1->Controls->Add(this->Emp_department);
+			this->splitContainer1->Panel1->Controls->Add(this->department_label);
+			this->splitContainer1->Panel1->Controls->Add(this->Emp_sex);
+			this->splitContainer1->Panel1->Controls->Add(this->sex_label);
+			this->splitContainer1->Panel1->Controls->Add(this->Emp_dob);
 			this->splitContainer1->Panel1->Controls->Add(this->label11);
-			this->splitContainer1->Panel1->Controls->Add(this->label18);
-			this->splitContainer1->Panel1->Controls->Add(this->Emp);
+			this->splitContainer1->Panel1->Controls->Add(this->Emp_lastName);
+			this->splitContainer1->Panel1->Controls->Add(this->Emp_firstName);
 			this->splitContainer1->Panel1->Controls->Add(this->label10);
 			this->splitContainer1->Panel1->Controls->Add(this->label9);
 			// 
 			// splitContainer1.Panel2
 			// 
-			this->splitContainer1->Panel2->Controls->Add(this->button1);
+			this->splitContainer1->Panel2->Controls->Add(this->persInfoSubmit_button);
 			this->splitContainer1->Panel2->Controls->Add(this->textBox4);
 			this->splitContainer1->Panel2->Controls->Add(this->textBox3);
 			this->splitContainer1->Panel2->Controls->Add(this->textBox1);
 			this->splitContainer1->Panel2->Controls->Add(this->textBox2);
-			this->splitContainer1->Panel2->Controls->Add(this->label7);
-			this->splitContainer1->Panel2->Controls->Add(this->label6);
-			this->splitContainer1->Panel2->Controls->Add(this->label16);
-			this->splitContainer1->Panel2->Controls->Add(this->label5);
+			this->splitContainer1->Panel2->Controls->Add(this->preferedPhoneNumber_label);
+			this->splitContainer1->Panel2->Controls->Add(this->preferedEmail_label);
+			this->splitContainer1->Panel2->Controls->Add(this->homeAddress_label);
+			this->splitContainer1->Panel2->Controls->Add(this->username_label);
 			this->splitContainer1->Size = System::Drawing::Size(1072, 661);
 			this->splitContainer1->SplitterDistance = 541;
 			this->splitContainer1->TabIndex = 0;
 			// 
-			// label40
+			// button2
 			// 
-			this->label40->AutoSize = true;
-			this->label40->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label40->Location = System::Drawing::Point(356, 247);
-			this->label40->Name = L"label40";
-			this->label40->Size = System::Drawing::Size(27, 13);
-			this->label40->TabIndex = 4;
-			this->label40->Text = L"help";
+			this->button2->Location = System::Drawing::Point(377, 52);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(45, 31);
+			this->button2->TabIndex = 4;
+			this->button2->Text = L"button2";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::button2_Click_1);
 			// 
 			// Emp_ID
 			// 
@@ -326,69 +351,64 @@ private: System::Windows::Forms::Label^ label40;
 			this->Emp_ID->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
 			this->Emp_ID->Location = System::Drawing::Point(224, 45);
 			this->Emp_ID->Name = L"Emp_ID";
-			this->Emp_ID->Size = System::Drawing::Size(32, 24);
+			this->Emp_ID->Size = System::Drawing::Size(0, 24);
 			this->Emp_ID->TabIndex = 3;
-			this->Emp_ID->Text = L"ID:";
 			// 
-			// label14
+			// id_label
 			// 
-			this->label14->AutoSize = true;
-			this->label14->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-			this->label14->Location = System::Drawing::Point(56, 45);
-			this->label14->Name = L"label14";
-			this->label14->Size = System::Drawing::Size(32, 24);
-			this->label14->TabIndex = 3;
-			this->label14->Text = L"ID:";
+			this->id_label->AutoSize = true;
+			this->id_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->id_label->Location = System::Drawing::Point(56, 45);
+			this->id_label->Name = L"id_label";
+			this->id_label->Size = System::Drawing::Size(32, 24);
+			this->id_label->TabIndex = 3;
+			this->id_label->Text = L"ID:";
 			// 
-			// label22
+			// Emp_jobtitle
 			// 
-			this->label22->AutoSize = true;
-			this->label22->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-			this->label22->Location = System::Drawing::Point(224, 368);
-			this->label22->Name = L"label22";
-			this->label22->Size = System::Drawing::Size(86, 24);
-			this->label22->TabIndex = 3;
-			this->label22->Text = L"Job Title:";
+			this->Emp_jobtitle->AutoSize = true;
+			this->Emp_jobtitle->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->Emp_jobtitle->Location = System::Drawing::Point(224, 368);
+			this->Emp_jobtitle->Name = L"Emp_jobtitle";
+			this->Emp_jobtitle->Size = System::Drawing::Size(0, 24);
+			this->Emp_jobtitle->TabIndex = 3;
 			// 
-			// label38
+			// Emp_grossIncome
 			// 
-			this->label38->AutoSize = true;
-			this->label38->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-			this->label38->Location = System::Drawing::Point(224, 556);
-			this->label38->Name = L"label38";
-			this->label38->Size = System::Drawing::Size(132, 24);
-			this->label38->TabIndex = 3;
-			this->label38->Text = L"Gross Income:";
+			this->Emp_grossIncome->AutoSize = true;
+			this->Emp_grossIncome->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->Emp_grossIncome->Location = System::Drawing::Point(224, 556);
+			this->Emp_grossIncome->Name = L"Emp_grossIncome";
+			this->Emp_grossIncome->Size = System::Drawing::Size(0, 24);
+			this->Emp_grossIncome->TabIndex = 3;
 			// 
-			// label36
+			// grossIncome_label
 			// 
-			this->label36->AutoSize = true;
-			this->label36->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-			this->label36->Location = System::Drawing::Point(55, 557);
-			this->label36->Name = L"label36";
-			this->label36->Size = System::Drawing::Size(132, 24);
-			this->label36->TabIndex = 3;
-			this->label36->Text = L"Gross Income:";
+			this->grossIncome_label->AutoSize = true;
+			this->grossIncome_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->grossIncome_label->Location = System::Drawing::Point(55, 557);
+			this->grossIncome_label->Name = L"grossIncome_label";
+			this->grossIncome_label->Size = System::Drawing::Size(132, 24);
+			this->grossIncome_label->TabIndex = 3;
+			this->grossIncome_label->Text = L"Gross Income:";
 			// 
-			// label37
+			// Emp_payRate
 			// 
-			this->label37->AutoSize = true;
-			this->label37->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-			this->label37->Location = System::Drawing::Point(224, 510);
-			this->label37->Name = L"label37";
-			this->label37->Size = System::Drawing::Size(89, 24);
-			this->label37->TabIndex = 3;
-			this->label37->Text = L"Pay Rate:";
+			this->Emp_payRate->AutoSize = true;
+			this->Emp_payRate->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->Emp_payRate->Location = System::Drawing::Point(224, 510);
+			this->Emp_payRate->Name = L"Emp_payRate";
+			this->Emp_payRate->Size = System::Drawing::Size(0, 24);
+			this->Emp_payRate->TabIndex = 3;
 			// 
-			// label39
+			// Emp_incomeType
 			// 
-			this->label39->AutoSize = true;
-			this->label39->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-			this->label39->Location = System::Drawing::Point(222, 459);
-			this->label39->Name = L"label39";
-			this->label39->Size = System::Drawing::Size(126, 24);
-			this->label39->TabIndex = 3;
-			this->label39->Text = L"Income Type:";
+			this->Emp_incomeType->AutoSize = true;
+			this->Emp_incomeType->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->Emp_incomeType->Location = System::Drawing::Point(222, 459);
+			this->Emp_incomeType->Name = L"Emp_incomeType";
+			this->Emp_incomeType->Size = System::Drawing::Size(0, 24);
+			this->Emp_incomeType->TabIndex = 3;
 			// 
 			// label8
 			// 
@@ -410,65 +430,62 @@ private: System::Windows::Forms::Label^ label40;
 			this->label35->TabIndex = 3;
 			this->label35->Text = L"Pay Rate:";
 			// 
-			// label15
+			// jobTitle_label
 			// 
-			this->label15->AutoSize = true;
-			this->label15->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-			this->label15->Location = System::Drawing::Point(56, 368);
-			this->label15->Name = L"label15";
-			this->label15->Size = System::Drawing::Size(86, 24);
-			this->label15->TabIndex = 3;
-			this->label15->Text = L"Job Title:";
+			this->jobTitle_label->AutoSize = true;
+			this->jobTitle_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->jobTitle_label->Location = System::Drawing::Point(56, 368);
+			this->jobTitle_label->Name = L"jobTitle_label";
+			this->jobTitle_label->Size = System::Drawing::Size(86, 24);
+			this->jobTitle_label->TabIndex = 3;
+			this->jobTitle_label->Text = L"Job Title:";
 			// 
-			// label21
+			// Emp_department
 			// 
-			this->label21->AutoSize = true;
-			this->label21->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-			this->label21->Location = System::Drawing::Point(224, 320);
-			this->label21->Name = L"label21";
-			this->label21->Size = System::Drawing::Size(112, 24);
-			this->label21->TabIndex = 3;
-			this->label21->Text = L"Department:";
+			this->Emp_department->AutoSize = true;
+			this->Emp_department->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->Emp_department->Location = System::Drawing::Point(224, 320);
+			this->Emp_department->Name = L"Emp_department";
+			this->Emp_department->Size = System::Drawing::Size(0, 24);
+			this->Emp_department->TabIndex = 3;
 			// 
-			// label13
+			// department_label
 			// 
-			this->label13->AutoSize = true;
-			this->label13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-			this->label13->Location = System::Drawing::Point(56, 320);
-			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(112, 24);
-			this->label13->TabIndex = 3;
-			this->label13->Text = L"Department:";
+			this->department_label->AutoSize = true;
+			this->department_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->department_label->Location = System::Drawing::Point(56, 320);
+			this->department_label->Name = L"department_label";
+			this->department_label->Size = System::Drawing::Size(112, 24);
+			this->department_label->TabIndex = 3;
+			this->department_label->Text = L"Department:";
 			// 
-			// label20
+			// Emp_sex
 			// 
-			this->label20->AutoSize = true;
-			this->label20->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-			this->label20->Location = System::Drawing::Point(223, 228);
-			this->label20->Name = L"label20";
-			this->label20->Size = System::Drawing::Size(48, 24);
-			this->label20->TabIndex = 3;
-			this->label20->Text = L"Sex:";
+			this->Emp_sex->AutoSize = true;
+			this->Emp_sex->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->Emp_sex->Location = System::Drawing::Point(223, 228);
+			this->Emp_sex->Name = L"Emp_sex";
+			this->Emp_sex->Size = System::Drawing::Size(0, 24);
+			this->Emp_sex->TabIndex = 3;
 			// 
-			// label12
+			// sex_label
 			// 
-			this->label12->AutoSize = true;
-			this->label12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-			this->label12->Location = System::Drawing::Point(55, 228);
-			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(48, 24);
-			this->label12->TabIndex = 3;
-			this->label12->Text = L"Sex:";
+			this->sex_label->AutoSize = true;
+			this->sex_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->sex_label->Location = System::Drawing::Point(55, 228);
+			this->sex_label->Name = L"sex_label";
+			this->sex_label->Size = System::Drawing::Size(48, 24);
+			this->sex_label->TabIndex = 3;
+			this->sex_label->Text = L"Sex:";
 			// 
-			// label19
+			// Emp_dob
 			// 
-			this->label19->AutoSize = true;
-			this->label19->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-			this->label19->Location = System::Drawing::Point(223, 184);
-			this->label19->Name = L"label19";
-			this->label19->Size = System::Drawing::Size(119, 24);
-			this->label19->TabIndex = 3;
-			this->label19->Text = L"Date Of Birth:";
+			this->Emp_dob->AutoSize = true;
+			this->Emp_dob->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->Emp_dob->Location = System::Drawing::Point(223, 184);
+			this->Emp_dob->Name = L"Emp_dob";
+			this->Emp_dob->Size = System::Drawing::Size(0, 24);
+			this->Emp_dob->TabIndex = 3;
 			// 
 			// label11
 			// 
@@ -480,25 +497,23 @@ private: System::Windows::Forms::Label^ label40;
 			this->label11->TabIndex = 3;
 			this->label11->Text = L"Date Of Birth:";
 			// 
-			// label18
+			// Emp_lastName
 			// 
-			this->label18->AutoSize = true;
-			this->label18->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-			this->label18->Location = System::Drawing::Point(223, 134);
-			this->label18->Name = L"label18";
-			this->label18->Size = System::Drawing::Size(104, 24);
-			this->label18->TabIndex = 3;
-			this->label18->Text = L"Last Name:";
+			this->Emp_lastName->AutoSize = true;
+			this->Emp_lastName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->Emp_lastName->Location = System::Drawing::Point(223, 134);
+			this->Emp_lastName->Name = L"Emp_lastName";
+			this->Emp_lastName->Size = System::Drawing::Size(0, 24);
+			this->Emp_lastName->TabIndex = 3;
 			// 
-			// Emp
+			// Emp_firstName
 			// 
-			this->Emp->AutoSize = true;
-			this->Emp->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-			this->Emp->Location = System::Drawing::Point(223, 85);
-			this->Emp->Name = L"Emp";
-			this->Emp->Size = System::Drawing::Size(106, 24);
-			this->Emp->TabIndex = 3;
-			this->Emp->Text = L"First Name:";
+			this->Emp_firstName->AutoSize = true;
+			this->Emp_firstName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->Emp_firstName->Location = System::Drawing::Point(223, 85);
+			this->Emp_firstName->Name = L"Emp_firstName";
+			this->Emp_firstName->Size = System::Drawing::Size(0, 24);
+			this->Emp_firstName->TabIndex = 3;
 			// 
 			// label10
 			// 
@@ -520,15 +535,15 @@ private: System::Windows::Forms::Label^ label40;
 			this->label9->TabIndex = 3;
 			this->label9->Text = L"First Name:";
 			// 
-			// button1
+			// persInfoSubmit_button
 			// 
-			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10));
-			this->button1->Location = System::Drawing::Point(176, 478);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(174, 51);
-			this->button1->TabIndex = 9;
-			this->button1->Text = L"Submit Changes";
-			this->button1->UseVisualStyleBackColor = true;
+			this->persInfoSubmit_button->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10));
+			this->persInfoSubmit_button->Location = System::Drawing::Point(176, 478);
+			this->persInfoSubmit_button->Name = L"persInfoSubmit_button";
+			this->persInfoSubmit_button->Size = System::Drawing::Size(174, 51);
+			this->persInfoSubmit_button->TabIndex = 9;
+			this->persInfoSubmit_button->Text = L"Submit Changes";
+			this->persInfoSubmit_button->UseVisualStyleBackColor = true;
 			// 
 			// textBox4
 			// 
@@ -558,49 +573,49 @@ private: System::Windows::Forms::Label^ label40;
 			this->textBox2->Size = System::Drawing::Size(319, 20);
 			this->textBox2->TabIndex = 8;
 			// 
-			// label7
+			// preferedPhoneNumber_label
 			// 
-			this->label7->AutoSize = true;
-			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->preferedPhoneNumber_label->AutoSize = true;
+			this->preferedPhoneNumber_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->preferedPhoneNumber_label->Location = System::Drawing::Point(41, 260);
+			this->preferedPhoneNumber_label->Name = L"preferedPhoneNumber_label";
+			this->preferedPhoneNumber_label->Size = System::Drawing::Size(222, 24);
+			this->preferedPhoneNumber_label->TabIndex = 3;
+			this->preferedPhoneNumber_label->Text = L"Prefered Phone Number:";
+			// 
+			// preferedEmail_label
+			// 
+			this->preferedEmail_label->AutoSize = true;
+			this->preferedEmail_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->preferedEmail_label->Location = System::Drawing::Point(41, 197);
+			this->preferedEmail_label->Name = L"preferedEmail_label";
+			this->preferedEmail_label->Size = System::Drawing::Size(139, 24);
+			this->preferedEmail_label->TabIndex = 4;
+			this->preferedEmail_label->Text = L"Prefered Email:";
+			// 
+			// homeAddress_label
+			// 
+			this->homeAddress_label->AutoSize = true;
+			this->homeAddress_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->homeAddress_label->Location = System::Drawing::Point(38, 132);
+			this->homeAddress_label->Name = L"homeAddress_label";
+			this->homeAddress_label->Size = System::Drawing::Size(142, 24);
+			this->homeAddress_label->TabIndex = 5;
+			this->homeAddress_label->Text = L"Home Address:";
+			// 
+			// username_label
+			// 
+			this->username_label->AutoSize = true;
+			this->username_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label7->Location = System::Drawing::Point(41, 260);
-			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(222, 24);
-			this->label7->TabIndex = 3;
-			this->label7->Text = L"Prefered Phone Number:";
-			// 
-			// label6
-			// 
-			this->label6->AutoSize = true;
-			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(41, 197);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(139, 24);
-			this->label6->TabIndex = 4;
-			this->label6->Text = L"Prefered Email:";
-			// 
-			// label16
-			// 
-			this->label16->AutoSize = true;
-			this->label16->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label16->Location = System::Drawing::Point(38, 132);
-			this->label16->Name = L"label16";
-			this->label16->Size = System::Drawing::Size(142, 24);
-			this->label16->TabIndex = 5;
-			this->label16->Text = L"Home Address:";
-			// 
-			// label5
-			// 
-			this->label5->AutoSize = true;
-			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(44, 315);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(102, 24);
-			this->label5->TabIndex = 5;
-			this->label5->Text = L"Username:";
+			this->username_label->Location = System::Drawing::Point(44, 315);
+			this->username_label->Name = L"username_label";
+			this->username_label->Size = System::Drawing::Size(102, 24);
+			this->username_label->TabIndex = 5;
+			this->username_label->Text = L"Username:";
 			// 
 			// viewBenefits_panel
 			// 
@@ -917,5 +932,9 @@ private: System::Windows::Forms::Label^ label40;
 	}
 
 
+	private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
+		System::String^ connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Chris/Desktop/Payroll_Info.accdb";
+		fillData(connectionString, "1");
+	}
 };
 }

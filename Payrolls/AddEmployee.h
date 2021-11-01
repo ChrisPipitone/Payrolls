@@ -401,7 +401,7 @@ namespace Payrolls {
 			this->button3->TabIndex = 38;
 			this->button3->Text = L"Enter";
 			this->button3->UseVisualStyleBackColor = true;
-			this->button3->Click += gcnew System::EventHandler(this, &AddEmployee::button3_Click);
+			this->button3->Click += gcnew System::EventHandler(this, &AddEmployee::addNewEmployee);
 			// 
 			// button4
 			// 
@@ -566,7 +566,7 @@ namespace Payrolls {
 	}
 	private: System::Void AddEmployee_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
-private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void addNewEmployee(System::Object^ sender, System::EventArgs^ e) {
 	GrossIncome gross;
 	int overtimeHour = gross.calculateOvertimeHour(Int32::Parse(textBox15->Text));
 	double overtimePay = gross.CalculateOvertimePay(overtimeHour, Convert::ToDouble(textBox14->Text));

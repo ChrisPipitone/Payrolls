@@ -49,7 +49,7 @@ namespace Payrolls {
 	private: System::Windows::Forms::TextBox^ textBox2;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::TextBox^ textBox3;
+
 
 
 
@@ -77,7 +77,6 @@ namespace Payrolls {
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -156,14 +155,6 @@ namespace Payrolls {
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
 			// 
-			// textBox3
-			// 
-			this->textBox3->Location = System::Drawing::Point(241, 671);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(294, 28);
-			this->textBox3->TabIndex = 8;
-			this->textBox3->TextChanged += gcnew System::EventHandler(this, &Form1::textBox3_TextChanged);
-			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(11, 22);
@@ -171,7 +162,6 @@ namespace Payrolls {
 			this->BackColor = System::Drawing::Color::BlanchedAlmond;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->ClientSize = System::Drawing::Size(1246, 839);
-			this->Controls->Add(this->textBox3);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->textBox2);
@@ -251,7 +241,10 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			else if (status == 2 && datatable->Rows->Count == 0)
 			{
 				MessageBox::Show("Login Succeed!");
-				EmployeeMainMenu^ empMenu = gcnew EmployeeMainMenu();
+
+				//use employee id to pull employee data from data base to fill menu details
+				System::String^ empID = textBox1->Text;
+				EmployeeMainMenu^ empMenu = gcnew EmployeeMainMenu(empID);
 				this->Hide();
 				empMenu->ShowDialog();
 			}
@@ -266,51 +259,6 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			MessageBox::Show("Uncorrect username or password", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
-	}
-	   void AddEmp(System::String^ str) {
-
-		   OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Chris/Desktop/Payroll_Info.accdb");
-		   conn->Open();
-		   OleDbCommand^ cmd = conn->CreateCommand();
-		   cmd->CommandType = CommandType::Text;
-		  // str = "bob";
-		   //System::String^ str = gcnew System::String(newName.c_str());
-		   //System::String^ query = "insert into EmployeeInfo (Firstname) VALUES ('" + str + "')";
-		   System::String^ query = "INSERT INTO EmployeeInfo (Password, SSN) VALUES ('7777', '777-77-7777')";
-		   /*
-		   
-INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
-VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway');
-		   */
-		//   System::String^ query = "UPDATE EmployeeInfo SET Firstname = '" + str + "'WHERE ID = 1";
-		  // cmd->Parameters->AddWithValue("@str", 'str');
-
-		   cmd->CommandText = query;
-		   int row = cmd->ExecuteNonQuery();
-		   /*
-		   DataTable^ dt = gcnew DataTable();
-		   OleDbDataAdapter^ da = gcnew OleDbDataAdapter(cmd);
-		   da->Fill(dt);
-		   */
-
-		  if (row == 1)
-		  {
-			  MessageBox::Show("good", "error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-		  }
-
-
-
-
-		   //System::String^ str = gcnew System::String(emp.c_str());
-
-		   //System::String^ pls = "adfsd";
-		  
-		  
-	   }
-
-	private: System::Void textBox3_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-		AddEmp(this->textBox3->Text);
-
 	}
 };
 }
