@@ -46,6 +46,8 @@ namespace Payrolls {
 		private: System::Windows::Forms::Button^ button1;
 		private: System::Windows::Forms::Button^ button2;
 		private: System::Windows::Forms::Button^ button3;
+		private: System::Windows::Forms::Button^ button4;
+		private: System::Windows::Forms::Button^ button5;
 		private: System::Windows::Forms::TextBox^ textBox1;
 
 
@@ -60,6 +62,8 @@ namespace Payrolls {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -86,7 +90,7 @@ namespace Payrolls {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(25, 129);
+			this->button2->Location = System::Drawing::Point(25, 127);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(146, 24);
 			this->button2->TabIndex = 1;
@@ -96,13 +100,33 @@ namespace Payrolls {
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(25, 207);
+			this->button3->Location = System::Drawing::Point(25, 211);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(146, 25);
 			this->button3->TabIndex = 2;
 			this->button3->Text = L"Quit";
 			this->button3->UseVisualStyleBackColor = true;
 			this->button3->Click += gcnew System::EventHandler(this, &removeEmployee::button3_Click);
+			// 
+			// button4
+			// 
+			this->button4->Location = System::Drawing::Point(25, 252);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(146, 25);
+			this->button4->TabIndex = 2;
+			this->button4->Text = L"Removed Employees";
+			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &removeEmployee::button4_Click);
+			// 
+			// button5
+			// 
+			this->button5->Location = System::Drawing::Point(25, 292);
+			this->button5->Name = L"button5";
+			this->button5->Size = System::Drawing::Size(146, 25);
+			this->button5->TabIndex = 2;
+			this->button5->Text = L"Log out";
+			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &removeEmployee::button5_Click);
 			// 
 			// removeEmployee
 			// 
@@ -112,6 +136,8 @@ namespace Payrolls {
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button3);
+			this->Controls->Add(this->button4);
+			this->Controls->Add(this->button5);
 			this->Controls->Add(this->label1);
 			this->Name = L"removeEmployee";
 			this->Text = L"Remove Employee";
@@ -127,9 +153,13 @@ namespace Payrolls {
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		   }
+	}
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-				  }
+	}
+	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
 	private: System::Void textBox1(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
