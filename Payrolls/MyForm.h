@@ -460,7 +460,7 @@ private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) 
 	label12->Hide();
 	button3->Hide();
 
-	OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Ivan/Desktop/Payroll_Info.accdb");
+	OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Chris/Desktop/Payroll_Info.accdb");
 	conn->Open();
 
 	OleDbCommand^ command = conn->CreateCommand();
@@ -504,9 +504,6 @@ private: System::Void toolStripLabel2_Click(System::Object^ sender, System::Even
 private: System::Void toolStripLabel1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void panel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-
-
-
 
 
 }

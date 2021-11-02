@@ -31,12 +31,21 @@ void Payrolls::EmployeeMainMenu::fillData(System::String^ connectionString, Syst
 	while (reader->Read())
 	{
 		this->Emp_ID->Text = reader["ID"]->ToString();
+		this->Emp_id_glance->Text = this->Emp_ID->Text;
+
 		this->Emp_firstName->Text = reader["Firstname"]->ToString();
+		this->Emp_firstName_glance->Text = this->Emp_firstName->Text;
+
 		this->Emp_lastName->Text = reader["Lastname"]->ToString();
+		this->Emp_lastName_glance->Text = this->Emp_lastName->Text;
+
 		this->Emp_dob->Text = reader["DateofBirth"]->ToString();
 
+
 		this->Emp_sex->Text = reader["Gender"]->ToString();
+
 		this->Emp_department->Text = reader["Position"]->ToString();
+		this->Emp_dept_glance->Text = this->Emp_department->Text;
 
 		/*
 		emp.id = toStandardString(reader["ID"]->ToString());

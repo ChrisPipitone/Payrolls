@@ -1,7 +1,5 @@
 #pragma once
 #include "Employee.h"
-#include<string>
-
 
 namespace Payrolls {
 	using namespace System;
@@ -33,74 +31,26 @@ namespace Payrolls {
 		void fillData(System::String^ connectionString, System::String^ empID);
 		void init(System::String^ empID);
 
-		EmployeeMainMenu(System::String^ empID)
-		{
-			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
-		}
+		EmployeeMainMenu(System::String^ empID) { InitializeComponent(); init(empID);  }
 
 	protected:
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		~EmployeeMainMenu()
-		{
+		~EmployeeMainMenu(){
 			if (components)
 			{
 				delete components;
 			}
 		}
 
-	protected:
-
-
 	private: System::Windows::Forms::Label^ mainMenuLeft_title;
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::Label^ label4;
-	private: System::Windows::Forms::Panel^ editPersonal_panel;
+	private: System::Windows::Forms::Label^ id_glance_label;
+	private: System::Windows::Forms::Label^ firstName_glance_label;
+	private: System::Windows::Forms::Label^ dept_glance_label;
+	private: System::Windows::Forms::Label^ currBenefit_label;
+
 	private: System::Windows::Forms::Panel^ viewBenefits_panel;
 	private: System::Windows::Forms::Panel^ ViewPaystubs_panel;
 	private: System::Windows::Forms::Panel^ ViewTimesheet_panel;
-	private: System::Windows::Forms::SplitContainer^ splitContainer1;
-	private: System::Windows::Forms::Label^ sex_label;
-	private: System::Windows::Forms::Label^ dateOfBirth_label;
-	private: System::Windows::Forms::Label^ lastName_label;
-	private: System::Windows::Forms::Label^ firstName_label;
 
-
-
-
-	private: System::Windows::Forms::TextBox^ textBox4;
-	private: System::Windows::Forms::TextBox^ textBox3;
-	private: System::Windows::Forms::TextBox^ textBox2;
-	private: System::Windows::Forms::Label^ preferedPhoneNumber_label;
-
-	private: System::Windows::Forms::Label^ preferedEmail_label;
-	private: System::Windows::Forms::Label^ username_label;
-
-
-	private: System::Windows::Forms::Label^ department_label;
-	private: System::Windows::Forms::Label^ Emp_ID;
-	private: System::Windows::Forms::Label^ id_label;
-	private: System::Windows::Forms::Label^ Emp_jobtitle;
-
-	private: System::Windows::Forms::Label^ jobTitle_label;
-	private: System::Windows::Forms::Label^ Emp_department;
-	private: System::Windows::Forms::Label^ Emp_sex;
-	private: System::Windows::Forms::Label^ Emp_dob;
-	private: System::Windows::Forms::Label^ Emp_lastName;
-
-
-	private: System::Windows::Forms::Label^ Emp_firstName;
-	private: System::Windows::Forms::Button^ persInfoSubmit_button;
-
-
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::Label^ homeAddress_label;
 
 	private: System::Windows::Forms::ToolStripButton^ editPersonalInfo_button;
 	private: System::Windows::Forms::ToolStripSeparator^ toolStripSeparator1;
@@ -114,45 +64,66 @@ namespace Payrolls {
 	private: System::Windows::Forms::ToolStripSeparator^ toolStripSeparator5;
 	private: System::Windows::Forms::ToolStripButton^ logout_button;
 	private: System::Windows::Forms::ToolStrip^ toolStrip1;
-	private: System::Windows::Forms::Label^ label34;
-	private: System::Windows::Forms::Label^ label28;
-	private: System::Windows::Forms::Label^ label33;
-	private: System::Windows::Forms::Label^ label27;
-	private: System::Windows::Forms::Label^ label32;
-	private: System::Windows::Forms::Label^ label25;
-	private: System::Windows::Forms::Label^ label31;
-	private: System::Windows::Forms::Label^ label26;
-	private: System::Windows::Forms::Label^ label30;
-	private: System::Windows::Forms::Label^ label24;
-	private: System::Windows::Forms::Label^ label29;
-	private: System::Windows::Forms::Label^ label23;
+	private: System::Windows::Forms::Label^ Emp_benefitCoverage;
+	private: System::Windows::Forms::Label^ Emp_benefitCost;
+
+
+	private: System::Windows::Forms::Label^ benefitCoverage_label;
+	private: System::Windows::Forms::Label^ Emp_benefitName;
+
+	private: System::Windows::Forms::Label^ benefitCost_label;
+
+
+	private: System::Windows::Forms::Label^ benefitName_label;
+
 	private: System::Windows::Forms::Label^ label17;
-	private: System::Windows::Forms::Label^ label35;
-	private: System::Windows::Forms::Label^ Emp_grossIncome;
-	private: System::Windows::Forms::Label^ grossIncome_label;
-
-
-	private: System::Windows::Forms::Label^ Emp_payRate;
-
-	private: System::Windows::Forms::Label^ Emp_incomeType;
+private: System::Windows::Forms::SplitContainer^ splitContainer1;
+private: System::Windows::Forms::Label^ Emp_ID;
+private: System::Windows::Forms::Label^ id_label;
+private: System::Windows::Forms::Label^ Emp_jobtitle;
+private: System::Windows::Forms::Label^ Emp_grossIncome;
+private: System::Windows::Forms::Label^ grossIncome_label;
+private: System::Windows::Forms::Label^ Emp_payRate;
+private: System::Windows::Forms::Label^ Emp_incomeType;
 private: System::Windows::Forms::Label^ incomeType_label;
+private: System::Windows::Forms::Label^ label35;
+private: System::Windows::Forms::Label^ jobTitle_label;
+private: System::Windows::Forms::Label^ Emp_department;
+private: System::Windows::Forms::Label^ department_label;
+private: System::Windows::Forms::Label^ Emp_sex;
+private: System::Windows::Forms::Label^ sex_label;
+private: System::Windows::Forms::Label^ Emp_dob;
+private: System::Windows::Forms::Label^ dateOfBirth_label;
+private: System::Windows::Forms::Label^ Emp_lastName;
+private: System::Windows::Forms::Label^ Emp_firstName;
+private: System::Windows::Forms::Label^ lastName_label;
+private: System::Windows::Forms::Label^ firstName_label;
+private: System::Windows::Forms::Button^ persInfoSubmit_button;
+private: System::Windows::Forms::TextBox^ textBox4;
+private: System::Windows::Forms::TextBox^ textBox3;
+private: System::Windows::Forms::TextBox^ textBox1;
+private: System::Windows::Forms::TextBox^ textBox2;
+private: System::Windows::Forms::Label^ preferedPhoneNumber_label;
+private: System::Windows::Forms::Label^ preferedEmail_label;
+private: System::Windows::Forms::Label^ homeAddress_label;
+private: System::Windows::Forms::Label^ username_label;
+private: System::Windows::Forms::Panel^ editPersonal_panel;
+private: System::Windows::Forms::Label^ Emp_currBenefit_glance;
 
+private: System::Windows::Forms::Label^ Emp_dept_glance;
 
-
-
-
-
-	private: System::Windows::Forms::Button^ button2;
-
+private: System::Windows::Forms::Label^ Emp_firstName_glance;
+private: System::Windows::Forms::Label^ Emp_id_glance;
+private: System::Windows::Forms::Label^ Emp_lastName_glance;
+private: System::Windows::Forms::Label^ lastName_glance_label;
 
 
 	private:
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
 		System::ComponentModel::Container^ components;
+		//this code it auto generated by visual studio
+		
 
-#pragma region Windows Form Designer generated code
+		//#pragma region Windows Form Designer generated code
 		/// <summary>
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
@@ -160,13 +131,31 @@ private: System::Windows::Forms::Label^ incomeType_label;
 		void InitializeComponent()
 		{
 			this->mainMenuLeft_title = (gcnew System::Windows::Forms::Label());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->editPersonal_panel = (gcnew System::Windows::Forms::Panel());
+			this->id_glance_label = (gcnew System::Windows::Forms::Label());
+			this->firstName_glance_label = (gcnew System::Windows::Forms::Label());
+			this->dept_glance_label = (gcnew System::Windows::Forms::Label());
+			this->currBenefit_label = (gcnew System::Windows::Forms::Label());
+			this->viewBenefits_panel = (gcnew System::Windows::Forms::Panel());
+			this->Emp_benefitCoverage = (gcnew System::Windows::Forms::Label());
+			this->Emp_benefitCost = (gcnew System::Windows::Forms::Label());
+			this->benefitCoverage_label = (gcnew System::Windows::Forms::Label());
+			this->Emp_benefitName = (gcnew System::Windows::Forms::Label());
+			this->benefitCost_label = (gcnew System::Windows::Forms::Label());
+			this->benefitName_label = (gcnew System::Windows::Forms::Label());
+			this->label17 = (gcnew System::Windows::Forms::Label());
+			this->editPersonalInfo_button = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolStripSeparator1 = (gcnew System::Windows::Forms::ToolStripSeparator());
+			this->viewBenefits_button = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolStripSeparator2 = (gcnew System::Windows::Forms::ToolStripSeparator());
+			this->viewPaystub_botton = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolStripSeparator3 = (gcnew System::Windows::Forms::ToolStripSeparator());
+			this->viewTimesheet_button = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolStripSeparator4 = (gcnew System::Windows::Forms::ToolStripSeparator());
+			this->InfoAtGlance_button = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolStripSeparator5 = (gcnew System::Windows::Forms::ToolStripSeparator());
+			this->logout_button = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolStrip1 = (gcnew System::Windows::Forms::ToolStrip());
 			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
-			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->Emp_ID = (gcnew System::Windows::Forms::Label());
 			this->id_label = (gcnew System::Windows::Forms::Label());
 			this->Emp_jobtitle = (gcnew System::Windows::Forms::Label());
@@ -196,39 +185,20 @@ private: System::Windows::Forms::Label^ incomeType_label;
 			this->preferedEmail_label = (gcnew System::Windows::Forms::Label());
 			this->homeAddress_label = (gcnew System::Windows::Forms::Label());
 			this->username_label = (gcnew System::Windows::Forms::Label());
-			this->viewBenefits_panel = (gcnew System::Windows::Forms::Panel());
-			this->label34 = (gcnew System::Windows::Forms::Label());
-			this->label28 = (gcnew System::Windows::Forms::Label());
-			this->label33 = (gcnew System::Windows::Forms::Label());
-			this->label27 = (gcnew System::Windows::Forms::Label());
-			this->label32 = (gcnew System::Windows::Forms::Label());
-			this->label25 = (gcnew System::Windows::Forms::Label());
-			this->label31 = (gcnew System::Windows::Forms::Label());
-			this->label26 = (gcnew System::Windows::Forms::Label());
-			this->label30 = (gcnew System::Windows::Forms::Label());
-			this->label24 = (gcnew System::Windows::Forms::Label());
-			this->label29 = (gcnew System::Windows::Forms::Label());
-			this->label23 = (gcnew System::Windows::Forms::Label());
-			this->label17 = (gcnew System::Windows::Forms::Label());
-			this->editPersonalInfo_button = (gcnew System::Windows::Forms::ToolStripButton());
-			this->toolStripSeparator1 = (gcnew System::Windows::Forms::ToolStripSeparator());
-			this->viewBenefits_button = (gcnew System::Windows::Forms::ToolStripButton());
-			this->toolStripSeparator2 = (gcnew System::Windows::Forms::ToolStripSeparator());
-			this->viewPaystub_botton = (gcnew System::Windows::Forms::ToolStripButton());
-			this->toolStripSeparator3 = (gcnew System::Windows::Forms::ToolStripSeparator());
-			this->viewTimesheet_button = (gcnew System::Windows::Forms::ToolStripButton());
-			this->toolStripSeparator4 = (gcnew System::Windows::Forms::ToolStripSeparator());
-			this->InfoAtGlance_button = (gcnew System::Windows::Forms::ToolStripButton());
-			this->toolStripSeparator5 = (gcnew System::Windows::Forms::ToolStripSeparator());
-			this->logout_button = (gcnew System::Windows::Forms::ToolStripButton());
-			this->toolStrip1 = (gcnew System::Windows::Forms::ToolStrip());
-			this->editPersonal_panel->SuspendLayout();
+			this->editPersonal_panel = (gcnew System::Windows::Forms::Panel());
+			this->Emp_currBenefit_glance = (gcnew System::Windows::Forms::Label());
+			this->Emp_dept_glance = (gcnew System::Windows::Forms::Label());
+			this->Emp_firstName_glance = (gcnew System::Windows::Forms::Label());
+			this->Emp_id_glance = (gcnew System::Windows::Forms::Label());
+			this->Emp_lastName_glance = (gcnew System::Windows::Forms::Label());
+			this->lastName_glance_label = (gcnew System::Windows::Forms::Label());
+			this->viewBenefits_panel->SuspendLayout();
+			this->toolStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->BeginInit();
 			this->splitContainer1->Panel1->SuspendLayout();
 			this->splitContainer1->Panel2->SuspendLayout();
 			this->splitContainer1->SuspendLayout();
-			this->viewBenefits_panel->SuspendLayout();
-			this->toolStrip1->SuspendLayout();
+			this->editPersonal_panel->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// mainMenuLeft_title
@@ -242,57 +212,229 @@ private: System::Windows::Forms::Label^ incomeType_label;
 			this->mainMenuLeft_title->TabIndex = 0;
 			this->mainMenuLeft_title->Text = L"Your Information At A Glance";
 			// 
-			// label1
+			// id_glance_label
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->id_glance_label->AutoSize = true;
+			this->id_glance_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->id_glance_label->Location = System::Drawing::Point(185, 211);
+			this->id_glance_label->Name = L"id_glance_label";
+			this->id_glance_label->Size = System::Drawing::Size(38, 25);
+			this->id_glance_label->TabIndex = 1;
+			this->id_glance_label->Text = L"ID:";
+			// 
+			// firstName_glance_label
+			// 
+			this->firstName_glance_label->AutoSize = true;
+			this->firstName_glance_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->firstName_glance_label->Location = System::Drawing::Point(185, 280);
+			this->firstName_glance_label->Name = L"firstName_glance_label";
+			this->firstName_glance_label->Size = System::Drawing::Size(122, 25);
+			this->firstName_glance_label->TabIndex = 1;
+			this->firstName_glance_label->Text = L"First Name:";
+			// 
+			// dept_glance_label
+			// 
+			this->dept_glance_label->AutoSize = true;
+			this->dept_glance_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->dept_glance_label->Location = System::Drawing::Point(185, 425);
+			this->dept_glance_label->Name = L"dept_glance_label";
+			this->dept_glance_label->Size = System::Drawing::Size(129, 25);
+			this->dept_glance_label->TabIndex = 1;
+			this->dept_glance_label->Text = L"Department:";
+			// 
+			// currBenefit_label
+			// 
+			this->currBenefit_label->AutoSize = true;
+			this->currBenefit_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->currBenefit_label->Location = System::Drawing::Point(185, 499);
+			this->currBenefit_label->Name = L"currBenefit_label";
+			this->currBenefit_label->Size = System::Drawing::Size(242, 25);
+			this->currBenefit_label->TabIndex = 1;
+			this->currBenefit_label->Text = L"Current Benefit Chosen:";
+			// 
+			// viewBenefits_panel
+			// 
+			this->viewBenefits_panel->Controls->Add(this->Emp_benefitCoverage);
+			this->viewBenefits_panel->Controls->Add(this->Emp_benefitCost);
+			this->viewBenefits_panel->Controls->Add(this->benefitCoverage_label);
+			this->viewBenefits_panel->Controls->Add(this->Emp_benefitName);
+			this->viewBenefits_panel->Controls->Add(this->benefitCost_label);
+			this->viewBenefits_panel->Controls->Add(this->benefitName_label);
+			this->viewBenefits_panel->Controls->Add(this->label17);
+			this->viewBenefits_panel->Location = System::Drawing::Point(0, 28);
+			this->viewBenefits_panel->Name = L"viewBenefits_panel";
+			this->viewBenefits_panel->Size = System::Drawing::Size(1072, 677);
+			this->viewBenefits_panel->TabIndex = 3;
+			// 
+			// Emp_benefitCoverage
+			// 
+			this->Emp_benefitCoverage->AutoSize = true;
+			this->Emp_benefitCoverage->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->Emp_benefitCoverage->Location = System::Drawing::Point(518, 281);
+			this->Emp_benefitCoverage->Name = L"Emp_benefitCoverage";
+			this->Emp_benefitCoverage->Size = System::Drawing::Size(0, 25);
+			this->Emp_benefitCoverage->TabIndex = 0;
+			// 
+			// Emp_benefitCost
+			// 
+			this->Emp_benefitCost->AutoSize = true;
+			this->Emp_benefitCost->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->Emp_benefitCost->Location = System::Drawing::Point(518, 361);
+			this->Emp_benefitCost->Name = L"Emp_benefitCost";
+			this->Emp_benefitCost->Size = System::Drawing::Size(0, 25);
+			this->Emp_benefitCost->TabIndex = 0;
+			// 
+			// benefitCoverage_label
+			// 
+			this->benefitCoverage_label->AutoSize = true;
+			this->benefitCoverage_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->benefitCoverage_label->Location = System::Drawing::Point(328, 281);
+			this->benefitCoverage_label->Name = L"benefitCoverage_label";
+			this->benefitCoverage_label->Size = System::Drawing::Size(184, 25);
+			this->benefitCoverage_label->TabIndex = 0;
+			this->benefitCoverage_label->Text = L"Benefit Coverage:";
+			// 
+			// Emp_benefitName
+			// 
+			this->Emp_benefitName->AutoSize = true;
+			this->Emp_benefitName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->Emp_benefitName->Location = System::Drawing::Point(518, 197);
+			this->Emp_benefitName->Name = L"Emp_benefitName";
+			this->Emp_benefitName->Size = System::Drawing::Size(0, 25);
+			this->Emp_benefitName->TabIndex = 0;
+			// 
+			// benefitCost_label
+			// 
+			this->benefitCost_label->AutoSize = true;
+			this->benefitCost_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->benefitCost_label->Location = System::Drawing::Point(328, 361);
+			this->benefitCost_label->Name = L"benefitCost_label";
+			this->benefitCost_label->Size = System::Drawing::Size(135, 25);
+			this->benefitCost_label->TabIndex = 0;
+			this->benefitCost_label->Text = L"Benefit Cost:";
+			// 
+			// benefitName_label
+			// 
+			this->benefitName_label->AutoSize = true;
+			this->benefitName_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->benefitName_label->Location = System::Drawing::Point(328, 197);
+			this->benefitName_label->Name = L"benefitName_label";
+			this->benefitName_label->Size = System::Drawing::Size(147, 25);
+			this->benefitName_label->TabIndex = 0;
+			this->benefitName_label->Text = L"Benefit Name:";
+			// 
+			// label17
+			// 
+			this->label17->AutoSize = true;
+			this->label17->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(84, 208);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(38, 25);
-			this->label1->TabIndex = 1;
-			this->label1->Text = L"ID:";
+			this->label17->Location = System::Drawing::Point(425, 51);
+			this->label17->Name = L"label17";
+			this->label17->Size = System::Drawing::Size(140, 33);
+			this->label17->TabIndex = 0;
+			this->label17->Text = L"Benefit(s)";
 			// 
-			// label2
+			// editPersonalInfo_button
 			// 
-			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(84, 295);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(74, 25);
-			this->label2->TabIndex = 1;
-			this->label2->Text = L"Name:";
+			this->editPersonalInfo_button->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
+			this->editPersonalInfo_button->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->editPersonalInfo_button->Name = L"editPersonalInfo_button";
+			this->editPersonalInfo_button->Size = System::Drawing::Size(145, 22);
+			this->editPersonalInfo_button->Text = L"Edit Personal Information";
+			this->editPersonalInfo_button->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::editPersonalInfo_button_Click);
 			// 
-			// label3
+			// toolStripSeparator1
 			// 
-			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(84, 388);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(129, 25);
-			this->label3->TabIndex = 1;
-			this->label3->Text = L"Department:";
+			this->toolStripSeparator1->Name = L"toolStripSeparator1";
+			this->toolStripSeparator1->Size = System::Drawing::Size(6, 25);
 			// 
-			// label4
+			// viewBenefits_button
 			// 
-			this->label4->AutoSize = true;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(84, 472);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(242, 25);
-			this->label4->TabIndex = 1;
-			this->label4->Text = L"Current Benefit Chosen:";
+			this->viewBenefits_button->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
+			this->viewBenefits_button->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->viewBenefits_button->Name = L"viewBenefits_button";
+			this->viewBenefits_button->Size = System::Drawing::Size(81, 22);
+			this->viewBenefits_button->Text = L"View Benefits";
+			this->viewBenefits_button->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::viewBenefits_button_Click);
 			// 
-			// editPersonal_panel
+			// toolStripSeparator2
 			// 
-			this->editPersonal_panel->Controls->Add(this->splitContainer1);
-			this->editPersonal_panel->Location = System::Drawing::Point(0, 28);
-			this->editPersonal_panel->Name = L"editPersonal_panel";
-			this->editPersonal_panel->Size = System::Drawing::Size(1072, 661);
-			this->editPersonal_panel->TabIndex = 2;
+			this->toolStripSeparator2->Name = L"toolStripSeparator2";
+			this->toolStripSeparator2->Size = System::Drawing::Size(6, 25);
+			// 
+			// viewPaystub_botton
+			// 
+			this->viewPaystub_botton->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
+			this->viewPaystub_botton->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->viewPaystub_botton->Name = L"viewPaystub_botton";
+			this->viewPaystub_botton->Size = System::Drawing::Size(86, 22);
+			this->viewPaystub_botton->Text = L"View Paystubs";
+			this->viewPaystub_botton->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::viewPaystub_botton_Click);
+			// 
+			// toolStripSeparator3
+			// 
+			this->toolStripSeparator3->Name = L"toolStripSeparator3";
+			this->toolStripSeparator3->Size = System::Drawing::Size(6, 25);
+			// 
+			// viewTimesheet_button
+			// 
+			this->viewTimesheet_button->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
+			this->viewTimesheet_button->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->viewTimesheet_button->Name = L"viewTimesheet_button";
+			this->viewTimesheet_button->Size = System::Drawing::Size(93, 22);
+			this->viewTimesheet_button->Text = L"View Timesheet";
+			this->viewTimesheet_button->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::viewTimesheet_button_Click);
+			// 
+			// toolStripSeparator4
+			// 
+			this->toolStripSeparator4->Name = L"toolStripSeparator4";
+			this->toolStripSeparator4->Size = System::Drawing::Size(6, 25);
+			// 
+			// InfoAtGlance_button
+			// 
+			this->InfoAtGlance_button->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
+			this->InfoAtGlance_button->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->InfoAtGlance_button->Name = L"InfoAtGlance_button";
+			this->InfoAtGlance_button->Size = System::Drawing::Size(139, 22);
+			this->InfoAtGlance_button->Text = L"Information At A Glance";
+			this->InfoAtGlance_button->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::InfoAtGlance_button_Click);
+			// 
+			// toolStripSeparator5
+			// 
+			this->toolStripSeparator5->Name = L"toolStripSeparator5";
+			this->toolStripSeparator5->Size = System::Drawing::Size(6, 25);
+			// 
+			// logout_button
+			// 
+			this->logout_button->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
+			this->logout_button->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->logout_button->Name = L"logout_button";
+			this->logout_button->Size = System::Drawing::Size(49, 22);
+			this->logout_button->Text = L"Logout";
+			this->logout_button->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::logout_button_Click);
+			// 
+			// toolStrip1
+			// 
+			this->toolStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(11) {
+				this->editPersonalInfo_button,
+					this->toolStripSeparator1, this->viewBenefits_button, this->toolStripSeparator2, this->viewPaystub_botton, this->toolStripSeparator3,
+					this->viewTimesheet_button, this->toolStripSeparator4, this->InfoAtGlance_button, this->toolStripSeparator5, this->logout_button
+			});
+			this->toolStrip1->Location = System::Drawing::Point(0, 0);
+			this->toolStrip1->Name = L"toolStrip1";
+			this->toolStrip1->Size = System::Drawing::Size(1072, 25);
+			this->toolStrip1->TabIndex = 0;
+			this->toolStrip1->Text = L"toolStrip1";
 			// 
 			// splitContainer1
 			// 
@@ -302,7 +444,6 @@ private: System::Windows::Forms::Label^ incomeType_label;
 			// 
 			// splitContainer1.Panel1
 			// 
-			this->splitContainer1->Panel1->Controls->Add(this->button2);
 			this->splitContainer1->Panel1->Controls->Add(this->Emp_ID);
 			this->splitContainer1->Panel1->Controls->Add(this->id_label);
 			this->splitContainer1->Panel1->Controls->Add(this->Emp_jobtitle);
@@ -338,16 +479,6 @@ private: System::Windows::Forms::Label^ incomeType_label;
 			this->splitContainer1->Size = System::Drawing::Size(1072, 661);
 			this->splitContainer1->SplitterDistance = 541;
 			this->splitContainer1->TabIndex = 0;
-			// 
-			// button2
-			// 
-			this->button2->Location = System::Drawing::Point(377, 52);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(45, 31);
-			this->button2->TabIndex = 4;
-			this->button2->Text = L"button2";
-			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::button2_Click_1);
 			// 
 			// Emp_ID
 			// 
@@ -621,260 +752,74 @@ private: System::Windows::Forms::Label^ incomeType_label;
 			this->username_label->TabIndex = 5;
 			this->username_label->Text = L"Username:";
 			// 
-			// viewBenefits_panel
+			// editPersonal_panel
 			// 
-			this->viewBenefits_panel->Controls->Add(this->label34);
-			this->viewBenefits_panel->Controls->Add(this->label28);
-			this->viewBenefits_panel->Controls->Add(this->label33);
-			this->viewBenefits_panel->Controls->Add(this->label27);
-			this->viewBenefits_panel->Controls->Add(this->label32);
-			this->viewBenefits_panel->Controls->Add(this->label25);
-			this->viewBenefits_panel->Controls->Add(this->label31);
-			this->viewBenefits_panel->Controls->Add(this->label26);
-			this->viewBenefits_panel->Controls->Add(this->label30);
-			this->viewBenefits_panel->Controls->Add(this->label24);
-			this->viewBenefits_panel->Controls->Add(this->label29);
-			this->viewBenefits_panel->Controls->Add(this->label23);
-			this->viewBenefits_panel->Controls->Add(this->label17);
-			this->viewBenefits_panel->Location = System::Drawing::Point(0, 28);
-			this->viewBenefits_panel->Name = L"viewBenefits_panel";
-			this->viewBenefits_panel->Size = System::Drawing::Size(1072, 677);
-			this->viewBenefits_panel->TabIndex = 3;
+			this->editPersonal_panel->Controls->Add(this->splitContainer1);
+			this->editPersonal_panel->Location = System::Drawing::Point(0, 28);
+			this->editPersonal_panel->Name = L"editPersonal_panel";
+			this->editPersonal_panel->Size = System::Drawing::Size(1072, 661);
+			this->editPersonal_panel->TabIndex = 2;
 			// 
-			// label34
+			// Emp_currBenefit_glance
 			// 
-			this->label34->AutoSize = true;
-			this->label34->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->Emp_currBenefit_glance->AutoSize = true;
+			this->Emp_currBenefit_glance->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->Emp_currBenefit_glance->Location = System::Drawing::Point(452, 499);
+			this->Emp_currBenefit_glance->Name = L"Emp_currBenefit_glance";
+			this->Emp_currBenefit_glance->Size = System::Drawing::Size(0, 25);
+			this->Emp_currBenefit_glance->TabIndex = 4;
+			// 
+			// Emp_dept_glance
+			// 
+			this->Emp_dept_glance->AutoSize = true;
+			this->Emp_dept_glance->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->Emp_dept_glance->Location = System::Drawing::Point(396, 425);
+			this->Emp_dept_glance->Name = L"Emp_dept_glance";
+			this->Emp_dept_glance->Size = System::Drawing::Size(0, 25);
+			this->Emp_dept_glance->TabIndex = 5;
+			// 
+			// Emp_firstName_glance
+			// 
+			this->Emp_firstName_glance->AutoSize = true;
+			this->Emp_firstName_glance->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->Emp_firstName_glance->Location = System::Drawing::Point(344, 280);
+			this->Emp_firstName_glance->Name = L"Emp_firstName_glance";
+			this->Emp_firstName_glance->Size = System::Drawing::Size(0, 25);
+			this->Emp_firstName_glance->TabIndex = 6;
+			// 
+			// Emp_id_glance
+			// 
+			this->Emp_id_glance->AutoSize = true;
+			this->Emp_id_glance->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label34->Location = System::Drawing::Point(790, 274);
-			this->label34->Name = L"label34";
-			this->label34->Size = System::Drawing::Size(184, 25);
-			this->label34->TabIndex = 0;
-			this->label34->Text = L"Benefit Coverage:";
+			this->Emp_id_glance->Location = System::Drawing::Point(269, 211);
+			this->Emp_id_glance->Name = L"Emp_id_glance";
+			this->Emp_id_glance->Size = System::Drawing::Size(0, 25);
+			this->Emp_id_glance->TabIndex = 7;
 			// 
-			// label28
+			// Emp_lastName_glance
 			// 
-			this->label28->AutoSize = true;
-			this->label28->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label28->Location = System::Drawing::Point(261, 274);
-			this->label28->Name = L"label28";
-			this->label28->Size = System::Drawing::Size(184, 25);
-			this->label28->TabIndex = 0;
-			this->label28->Text = L"Benefit Coverage:";
+			this->Emp_lastName_glance->AutoSize = true;
+			this->Emp_lastName_glance->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->Emp_lastName_glance->Location = System::Drawing::Point(344, 348);
+			this->Emp_lastName_glance->Name = L"Emp_lastName_glance";
+			this->Emp_lastName_glance->Size = System::Drawing::Size(0, 25);
+			this->Emp_lastName_glance->TabIndex = 9;
 			// 
-			// label33
+			// lastName_glance_label
 			// 
-			this->label33->AutoSize = true;
-			this->label33->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label33->Location = System::Drawing::Point(790, 354);
-			this->label33->Name = L"label33";
-			this->label33->Size = System::Drawing::Size(135, 25);
-			this->label33->TabIndex = 0;
-			this->label33->Text = L"Benefit Cost:";
-			// 
-			// label27
-			// 
-			this->label27->AutoSize = true;
-			this->label27->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label27->Location = System::Drawing::Point(261, 354);
-			this->label27->Name = L"label27";
-			this->label27->Size = System::Drawing::Size(135, 25);
-			this->label27->TabIndex = 0;
-			this->label27->Text = L"Benefit Cost:";
-			// 
-			// label32
-			// 
-			this->label32->AutoSize = true;
-			this->label32->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label32->Location = System::Drawing::Point(600, 274);
-			this->label32->Name = L"label32";
-			this->label32->Size = System::Drawing::Size(184, 25);
-			this->label32->TabIndex = 0;
-			this->label32->Text = L"Benefit Coverage:";
-			// 
-			// label25
-			// 
-			this->label25->AutoSize = true;
-			this->label25->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label25->Location = System::Drawing::Point(71, 274);
-			this->label25->Name = L"label25";
-			this->label25->Size = System::Drawing::Size(184, 25);
-			this->label25->TabIndex = 0;
-			this->label25->Text = L"Benefit Coverage:";
-			// 
-			// label31
-			// 
-			this->label31->AutoSize = true;
-			this->label31->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label31->Location = System::Drawing::Point(790, 190);
-			this->label31->Name = L"label31";
-			this->label31->Size = System::Drawing::Size(147, 25);
-			this->label31->TabIndex = 0;
-			this->label31->Text = L"Benefit Name:";
-			// 
-			// label26
-			// 
-			this->label26->AutoSize = true;
-			this->label26->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label26->Location = System::Drawing::Point(261, 190);
-			this->label26->Name = L"label26";
-			this->label26->Size = System::Drawing::Size(147, 25);
-			this->label26->TabIndex = 0;
-			this->label26->Text = L"Benefit Name:";
-			// 
-			// label30
-			// 
-			this->label30->AutoSize = true;
-			this->label30->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label30->Location = System::Drawing::Point(600, 354);
-			this->label30->Name = L"label30";
-			this->label30->Size = System::Drawing::Size(135, 25);
-			this->label30->TabIndex = 0;
-			this->label30->Text = L"Benefit Cost:";
-			// 
-			// label24
-			// 
-			this->label24->AutoSize = true;
-			this->label24->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label24->Location = System::Drawing::Point(71, 354);
-			this->label24->Name = L"label24";
-			this->label24->Size = System::Drawing::Size(135, 25);
-			this->label24->TabIndex = 0;
-			this->label24->Text = L"Benefit Cost:";
-			// 
-			// label29
-			// 
-			this->label29->AutoSize = true;
-			this->label29->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label29->Location = System::Drawing::Point(600, 190);
-			this->label29->Name = L"label29";
-			this->label29->Size = System::Drawing::Size(147, 25);
-			this->label29->TabIndex = 0;
-			this->label29->Text = L"Benefit Name:";
-			// 
-			// label23
-			// 
-			this->label23->AutoSize = true;
-			this->label23->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label23->Location = System::Drawing::Point(71, 190);
-			this->label23->Name = L"label23";
-			this->label23->Size = System::Drawing::Size(147, 25);
-			this->label23->TabIndex = 0;
-			this->label23->Text = L"Benefit Name:";
-			// 
-			// label17
-			// 
-			this->label17->AutoSize = true;
-			this->label17->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label17->Location = System::Drawing::Point(425, 51);
-			this->label17->Name = L"label17";
-			this->label17->Size = System::Drawing::Size(140, 33);
-			this->label17->TabIndex = 0;
-			this->label17->Text = L"Benefit(s)";
-			// 
-			// editPersonalInfo_button
-			// 
-			this->editPersonalInfo_button->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
-			this->editPersonalInfo_button->ImageTransparentColor = System::Drawing::Color::Magenta;
-			this->editPersonalInfo_button->Name = L"editPersonalInfo_button";
-			this->editPersonalInfo_button->Size = System::Drawing::Size(145, 22);
-			this->editPersonalInfo_button->Text = L"Edit Personal Information";
-			this->editPersonalInfo_button->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::editPersonalInfo_button_Click);
-			// 
-			// toolStripSeparator1
-			// 
-			this->toolStripSeparator1->Name = L"toolStripSeparator1";
-			this->toolStripSeparator1->Size = System::Drawing::Size(6, 25);
-			// 
-			// viewBenefits_button
-			// 
-			this->viewBenefits_button->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
-			this->viewBenefits_button->ImageTransparentColor = System::Drawing::Color::Magenta;
-			this->viewBenefits_button->Name = L"viewBenefits_button";
-			this->viewBenefits_button->Size = System::Drawing::Size(81, 22);
-			this->viewBenefits_button->Text = L"View Benefits";
-			this->viewBenefits_button->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::viewBenefits_button_Click);
-			// 
-			// toolStripSeparator2
-			// 
-			this->toolStripSeparator2->Name = L"toolStripSeparator2";
-			this->toolStripSeparator2->Size = System::Drawing::Size(6, 25);
-			// 
-			// viewPaystub_botton
-			// 
-			this->viewPaystub_botton->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
-			this->viewPaystub_botton->ImageTransparentColor = System::Drawing::Color::Magenta;
-			this->viewPaystub_botton->Name = L"viewPaystub_botton";
-			this->viewPaystub_botton->Size = System::Drawing::Size(86, 22);
-			this->viewPaystub_botton->Text = L"View Paystubs";
-			this->viewPaystub_botton->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::viewPaystub_botton_Click);
-			// 
-			// toolStripSeparator3
-			// 
-			this->toolStripSeparator3->Name = L"toolStripSeparator3";
-			this->toolStripSeparator3->Size = System::Drawing::Size(6, 25);
-			// 
-			// viewTimesheet_button
-			// 
-			this->viewTimesheet_button->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
-			this->viewTimesheet_button->ImageTransparentColor = System::Drawing::Color::Magenta;
-			this->viewTimesheet_button->Name = L"viewTimesheet_button";
-			this->viewTimesheet_button->Size = System::Drawing::Size(93, 22);
-			this->viewTimesheet_button->Text = L"View Timesheet";
-			this->viewTimesheet_button->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::viewTimesheet_button_Click);
-			// 
-			// toolStripSeparator4
-			// 
-			this->toolStripSeparator4->Name = L"toolStripSeparator4";
-			this->toolStripSeparator4->Size = System::Drawing::Size(6, 25);
-			// 
-			// InfoAtGlance_button
-			// 
-			this->InfoAtGlance_button->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
-			this->InfoAtGlance_button->ImageTransparentColor = System::Drawing::Color::Magenta;
-			this->InfoAtGlance_button->Name = L"InfoAtGlance_button";
-			this->InfoAtGlance_button->Size = System::Drawing::Size(139, 22);
-			this->InfoAtGlance_button->Text = L"Information At A Glance";
-			this->InfoAtGlance_button->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::InfoAtGlance_button_Click);
-			// 
-			// toolStripSeparator5
-			// 
-			this->toolStripSeparator5->Name = L"toolStripSeparator5";
-			this->toolStripSeparator5->Size = System::Drawing::Size(6, 25);
-			// 
-			// logout_button
-			// 
-			this->logout_button->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
-			this->logout_button->ImageTransparentColor = System::Drawing::Color::Magenta;
-			this->logout_button->Name = L"logout_button";
-			this->logout_button->Size = System::Drawing::Size(49, 22);
-			this->logout_button->Text = L"Logout";
-			this->logout_button->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::logout_button_Click);
-			// 
-			// toolStrip1
-			// 
-			this->toolStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(11) {
-				this->editPersonalInfo_button,
-					this->toolStripSeparator1, this->viewBenefits_button, this->toolStripSeparator2, this->viewPaystub_botton, this->toolStripSeparator3,
-					this->viewTimesheet_button, this->toolStripSeparator4, this->InfoAtGlance_button, this->toolStripSeparator5, this->logout_button
-			});
-			this->toolStrip1->Location = System::Drawing::Point(0, 0);
-			this->toolStrip1->Name = L"toolStrip1";
-			this->toolStrip1->Size = System::Drawing::Size(1072, 25);
-			this->toolStrip1->TabIndex = 0;
-			this->toolStrip1->Text = L"toolStrip1";
+			this->lastName_glance_label->AutoSize = true;
+			this->lastName_glance_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->lastName_glance_label->Location = System::Drawing::Point(185, 348);
+			this->lastName_glance_label->Name = L"lastName_glance_label";
+			this->lastName_glance_label->Size = System::Drawing::Size(121, 25);
+			this->lastName_glance_label->TabIndex = 8;
+			this->lastName_glance_label->Text = L"Last Name:";
 			// 
 			// EmployeeMainMenu
 			// 
@@ -883,28 +828,36 @@ private: System::Windows::Forms::Label^ incomeType_label;
 			this->ClientSize = System::Drawing::Size(1072, 704);
 			this->Controls->Add(this->editPersonal_panel);
 			this->Controls->Add(this->viewBenefits_panel);
-			this->Controls->Add(this->label4);
-			this->Controls->Add(this->label3);
 			this->Controls->Add(this->toolStrip1);
-			this->Controls->Add(this->label2);
+			this->Controls->Add(this->Emp_lastName_glance);
+			this->Controls->Add(this->Emp_currBenefit_glance);
+			this->Controls->Add(this->Emp_dept_glance);
+			this->Controls->Add(this->Emp_firstName_glance);
+			this->Controls->Add(this->Emp_id_glance);
+			this->Controls->Add(this->currBenefit_label);
+			this->Controls->Add(this->dept_glance_label);
+			this->Controls->Add(this->firstName_glance_label);
+			this->Controls->Add(this->id_glance_label);
+			this->Controls->Add(this->lastName_glance_label);
 			this->Controls->Add(this->mainMenuLeft_title);
-			this->Controls->Add(this->label1);
 			this->Name = L"EmployeeMainMenu";
 			this->Text = L"EmployeeMainMenu";
-			this->editPersonal_panel->ResumeLayout(false);
+			this->viewBenefits_panel->ResumeLayout(false);
+			this->viewBenefits_panel->PerformLayout();
+			this->toolStrip1->ResumeLayout(false);
+			this->toolStrip1->PerformLayout();
 			this->splitContainer1->Panel1->ResumeLayout(false);
 			this->splitContainer1->Panel1->PerformLayout();
 			this->splitContainer1->Panel2->ResumeLayout(false);
 			this->splitContainer1->Panel2->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->EndInit();
 			this->splitContainer1->ResumeLayout(false);
-			this->viewBenefits_panel->ResumeLayout(false);
-			this->viewBenefits_panel->PerformLayout();
-			this->toolStrip1->ResumeLayout(false);
-			this->toolStrip1->PerformLayout();
+			this->editPersonal_panel->ResumeLayout(false);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
+			this->viewBenefits_panel->Hide();
+			this->editPersonal_panel->Hide();
 		}
 #pragma endregion
 
@@ -923,7 +876,10 @@ private: System::Windows::Forms::Label^ incomeType_label;
 	}
 
 	private: System::Void logout_button_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Hide();
 
+		//properly exit to login menu
+		//reformat code
 	}
 
 	private: System::Void editPersonalInfo_button_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -935,10 +891,5 @@ private: System::Windows::Forms::Label^ incomeType_label;
 		this->editPersonal_panel->Hide();
 	}
 
-
-	private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
-		System::String^ connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Chris/Desktop/Payroll_Info.accdb";
-		fillData(connectionString, "1");
-	}
 	};
 }

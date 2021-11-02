@@ -49,6 +49,7 @@ namespace Payrolls {
 	private: System::Windows::Forms::TextBox^ textBox2;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ tempEmpButton;
 
 
 
@@ -77,6 +78,7 @@ namespace Payrolls {
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->tempEmpButton = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -155,6 +157,16 @@ namespace Payrolls {
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
 			// 
+			// tempEmpButton
+			// 
+			this->tempEmpButton->Location = System::Drawing::Point(407, 662);
+			this->tempEmpButton->Name = L"tempEmpButton";
+			this->tempEmpButton->Size = System::Drawing::Size(305, 43);
+			this->tempEmpButton->TabIndex = 8;
+			this->tempEmpButton->Text = L"temp to emp menu";
+			this->tempEmpButton->UseVisualStyleBackColor = true;
+			this->tempEmpButton->Click += gcnew System::EventHandler(this, &Form1::tempEmpButton_Click);
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(11, 22);
@@ -162,6 +174,7 @@ namespace Payrolls {
 			this->BackColor = System::Drawing::Color::BlanchedAlmond;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->ClientSize = System::Drawing::Size(1246, 839);
+			this->Controls->Add(this->tempEmpButton);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->textBox2);
@@ -259,6 +272,11 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			MessageBox::Show("Uncorrect username or password", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
+	}
+	private: System::Void tempEmpButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		EmployeeMainMenu^ empMenu = gcnew EmployeeMainMenu("1");
+		this->Hide();
+		empMenu->ShowDialog();
 	}
 };
 }
