@@ -128,6 +128,7 @@
     <ClInclude Include="EmployeeMainMenu.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="FedTax.h" />
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -139,10 +140,14 @@
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="NYTax.h" />
     <ClInclude Include="removeEmployee.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="timeSheetAdmin.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="UpdateEmployee.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
@@ -152,12 +157,15 @@
     <ClCompile Include="Employee.cpp" />
     <ClCompile Include="EmployeeDetailAdmin.cpp" />
     <ClCompile Include="EmployeeMainMenu.cpp" />
+    <ClCompile Include="FedTax.cpp" />
     <ClCompile Include="Form1.cpp" />
     <ClCompile Include="GrossIncome.cpp" />
     <ClCompile Include="HrView.cpp" />
     <ClCompile Include="Login.cpp" />
+    <ClCompile Include="NYTax.cpp" />
     <ClCompile Include="removeEmployee.cpp" />
     <ClCompile Include="timeSheetAdmin.cpp" />
+    <ClCompile Include="UpdateEmployee.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

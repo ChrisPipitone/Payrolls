@@ -51,6 +51,15 @@
     <ClInclude Include="removeEmployee.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FedTax.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NYTax.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UpdateEmployee.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GrossIncome.cpp">
@@ -84,6 +93,15 @@
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="removeEmployee.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FedTax.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NYTax.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UpdateEmployee.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
