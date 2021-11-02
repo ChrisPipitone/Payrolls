@@ -3,7 +3,7 @@
 void Payrolls::EmployeeMainMenu::init(System::String^ empID)
 {
 	//to be replaced hopfully
-	System::String^ connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Chris/Desktop/Payroll_Info.accdb";
+	System::String^ connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source= C:/Users/Zhuowei Hu/Documents/Payroll Info.accdb";
 
 	//hide all panels
 	this->editPersonal_panel->Hide();
