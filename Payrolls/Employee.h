@@ -1,22 +1,29 @@
 #include<ctime>
+#include<String>
 #include "Login.h"
 
 enum class HireType { PartTime, FullTime };
 enum class WageType { Salary, Hourly };
 
+
+using namespace System;
+
+//
 class Employee : public Login
 {
 public:
 	Employee(std::string lastName, std::string firstName);
 	Employee();
-	static Employee* CreateEmp(std::string lastName, std::string firstName, WageType type);
+
+	//static Employee* CreateEmp(std::string lastName, std::string firstName, WageType type);
 
 
+	//String help;
 	std::string lastName;
 	std::string firstName;
 
 	//Company details
-	int id;
+	std::string id;
 	std::string department;
 	std::string jobTitle;
 	std::string location;
@@ -69,7 +76,7 @@ public:
 
 };
 */
-
+System::String^ getFromDB(System::String^ id);
 
 class Hourly_Emp : public Employee
 {
