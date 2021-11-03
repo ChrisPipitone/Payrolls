@@ -156,7 +156,6 @@
     <ClCompile Include="GrossIncome.cpp" />
     <ClCompile Include="HrView.cpp" />
     <ClCompile Include="Login.cpp" />
-    <ClCompile Include="RemovedEmployee.cpp" />
     <ClCompile Include="removeEmployee.cpp" />
     <ClCompile Include="timeSheetAdmin.cpp" />
   </ItemGroup>

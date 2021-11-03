@@ -48,6 +48,8 @@ namespace Payrolls {
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::Button^ button4;
 	private: System::Windows::Forms::Button^ button5;
+	private: System::Windows::Forms::TextBox^ textBox1;
+
 
 #pragma region Windows Form Designer generated code
 		   /// <summary>
@@ -157,6 +159,10 @@ namespace Payrolls {
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox1(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
 	}
 	};
 }
