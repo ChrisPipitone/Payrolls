@@ -174,7 +174,5 @@ namespace Payrolls {
         this->Hide();
         removeEmp->ShowDialog();
     }
-private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-}
 };
 }

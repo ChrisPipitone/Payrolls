@@ -33,9 +33,6 @@
     <ClInclude Include="EmployeeMainMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Employee.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Login.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -77,9 +74,6 @@
     <ClCompile Include="EmployeeMainMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Employee.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Login.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -103,9 +97,6 @@
     </ClCompile>
     <ClCompile Include="UpdateEmployee.cpp">
       <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RemovedEmployee.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

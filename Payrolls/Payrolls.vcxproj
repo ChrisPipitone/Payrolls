@@ -121,7 +121,6 @@
     <ClInclude Include="Admin2.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Employee.h" />
     <ClInclude Include="EmployeeDetailAdmin.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -154,7 +153,6 @@
   <ItemGroup>
     <ClCompile Include="AddEmployee.cpp" />
     <ClCompile Include="Admin2.cpp" />
-    <ClCompile Include="Employee.cpp" />
     <ClCompile Include="EmployeeDetailAdmin.cpp" />
     <ClCompile Include="EmployeeMainMenu.cpp" />
     <ClCompile Include="FedTax.cpp" />
@@ -163,7 +161,6 @@
     <ClCompile Include="HrView.cpp" />
     <ClCompile Include="Login.cpp" />
     <ClCompile Include="NYTax.cpp" />
-    <ClCompile Include="RemovedEmployee.cpp" />
     <ClCompile Include="removeEmployee.cpp" />
     <ClCompile Include="timeSheetAdmin.cpp" />
     <ClCompile Include="UpdateEmployee.cpp" />

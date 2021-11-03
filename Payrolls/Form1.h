@@ -211,7 +211,7 @@ namespace Payrolls {
 			MessageBox::Show("Please enter data in all field!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 		else {
-			OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source= C:/Users/Zhuowei Hu/Documents/Payroll Info.accdb");
+			OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source= C:/Users/Chris/Desktop/Payroll_Info.accdb");
 			conn->Open();
 			OleDbCommand^ cmd = conn->CreateCommand();
 			cmd->CommandType = CommandType::Text;
