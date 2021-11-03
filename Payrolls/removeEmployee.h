@@ -41,7 +41,7 @@ namespace Payrolls {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container^ components;
+	System::ComponentModel::Container^ components;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
@@ -160,9 +160,9 @@ namespace Payrolls {
 	}
 	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	private: System::Void textBox1(System::Object^ sender, System::EventArgs^ e) {
-	}
 	private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
 	}
 	};
 }
+
+

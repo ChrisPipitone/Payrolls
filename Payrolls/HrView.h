@@ -1,6 +1,8 @@
 #pragma once
 #include "MyForm.h"
 #include "AddEmployee.h"
+#include "UpdateEmployee.h"
+#include "removeEmployee.h"
 
 namespace Payrolls {
 
@@ -63,18 +65,33 @@ namespace Payrolls {
             // 
             // button1
             // 
-            this->button1->Location = System::Drawing::Point(78, 71);
+
+            this->button1->Location = System::Drawing::Point(52, 45);
+            this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->button1->Name = L"button1";
-            this->button1->Size = System::Drawing::Size(338, 139);
+            this->button1->Size = System::Drawing::Size(225, 89);
+
+            this->button1->Location = System::Drawing::Point(39, 37);
+            this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+            this->button1->Name = L"button1";
+            this->button1->Size = System::Drawing::Size(169, 72);
+
             this->button1->TabIndex = 0;
             this->button1->Text = L"My Info";
             this->button1->UseVisualStyleBackColor = true;
             // 
             // button2
-            // 
-            this->button2->Location = System::Drawing::Point(705, 409);
+
+            this->button2->Location = System::Drawing::Point(470, 262);
+            this->button2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->button2->Name = L"button2";
-            this->button2->Size = System::Drawing::Size(267, 66);
+            this->button2->Size = System::Drawing::Size(178, 42);
+
+            this->button2->Location = System::Drawing::Point(352, 213);
+            this->button2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+            this->button2->Name = L"button2";
+            this->button2->Size = System::Drawing::Size(134, 34);
+
             this->button2->TabIndex = 1;
             this->button2->Text = L"Add Employee";
             this->button2->UseVisualStyleBackColor = true;
@@ -82,31 +99,56 @@ namespace Payrolls {
             // 
             // button3
             // 
-            this->button3->Location = System::Drawing::Point(705, 505);
+
+            this->button3->Location = System::Drawing::Point(470, 323);
+            this->button3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->button3->Name = L"button3";
-            this->button3->Size = System::Drawing::Size(267, 66);
+            this->button3->Size = System::Drawing::Size(178, 42);
+
+            this->button3->Location = System::Drawing::Point(352, 263);
+            this->button3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+            this->button3->Name = L"button3";
+            this->button3->Size = System::Drawing::Size(134, 34);
+
             this->button3->TabIndex = 2;
             this->button3->Text = L"Update Employee";
             this->button3->UseVisualStyleBackColor = true;
+            this->button3->Click += gcnew System::EventHandler(this, &HrView::button3_Click);
             // 
             // button4
             // 
-            this->button4->Location = System::Drawing::Point(705, 597);
+
+            this->button4->Location = System::Drawing::Point(470, 382);
+            this->button4->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->button4->Name = L"button4";
-            this->button4->Size = System::Drawing::Size(267, 66);
+            this->button4->Size = System::Drawing::Size(178, 42);
+
+            this->button4->Location = System::Drawing::Point(352, 310);
+            this->button4->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+            this->button4->Name = L"button4";
+            this->button4->Size = System::Drawing::Size(134, 34);
+
             this->button4->TabIndex = 3;
             this->button4->Text = L"Delete Employee";
             this->button4->UseVisualStyleBackColor = true;
+            this->button4->Click += gcnew System::EventHandler(this, &HrView::button4_Click);
             // 
             // HrView
             // 
-            this->AutoScaleDimensions = System::Drawing::SizeF(12, 25);
+
+            this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-            this->ClientSize = System::Drawing::Size(1088, 770);
+            this->ClientSize = System::Drawing::Size(725, 493);
+
+            this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+            this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+            this->ClientSize = System::Drawing::Size(544, 400);
+
             this->Controls->Add(this->button4);
             this->Controls->Add(this->button3);
             this->Controls->Add(this->button2);
             this->Controls->Add(this->button1);
+            this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->Name = L"HrView";
             this->Text = L"HrView";
             this->ResumeLayout(false);
@@ -119,5 +161,18 @@ namespace Payrolls {
         this->Hide();
         addEmp->ShowDialog();
     }
-    };
+
+    private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+        UpdateEmployee^ updateEmp = gcnew UpdateEmployee();
+        updateEmp->otherPage = this;
+        this->Hide();
+        updateEmp->ShowDialog();
+    }
+
+    private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+        removeEmployee^ removeEmp = gcnew removeEmployee();
+        this->Hide();
+        removeEmp->ShowDialog();
+    }
+};
 }

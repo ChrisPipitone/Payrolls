@@ -49,6 +49,7 @@ namespace Payrolls {
 	private: System::Windows::Forms::TextBox^ textBox2;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ tempEmpButton;
 
 
 
@@ -59,7 +60,7 @@ namespace Payrolls {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -77,6 +78,7 @@ namespace Payrolls {
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->tempEmpButton = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -155,6 +157,16 @@ namespace Payrolls {
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
 			// 
+			// tempEmpButton
+			// 
+			this->tempEmpButton->Location = System::Drawing::Point(407, 662);
+			this->tempEmpButton->Name = L"tempEmpButton";
+			this->tempEmpButton->Size = System::Drawing::Size(305, 43);
+			this->tempEmpButton->TabIndex = 8;
+			this->tempEmpButton->Text = L"temp to emp menu";
+			this->tempEmpButton->UseVisualStyleBackColor = true;
+			this->tempEmpButton->Click += gcnew System::EventHandler(this, &Form1::tempEmpButton_Click);
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(11, 22);
@@ -162,6 +174,7 @@ namespace Payrolls {
 			this->BackColor = System::Drawing::Color::BlanchedAlmond;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->ClientSize = System::Drawing::Size(1246, 839);
+			this->Controls->Add(this->tempEmpButton);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->textBox2);
@@ -183,82 +196,88 @@ namespace Payrolls {
 #pragma endregion
 	private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
-private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-
-private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	this->textBox2->PasswordChar = '*';
-}
-private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	if ((textBox1->Text == "") || (textBox2->Text == "") || (comboBox1->Text == "")) {
-		MessageBox::Show("Please enter data in all field!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	else {
-		OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Chris/Desktop/Payroll_Info.accdb");
-		conn->Open();
-		OleDbCommand^ cmd = conn->CreateCommand();
-		cmd->CommandType = CommandType::Text;
-		cmd->CommandText = "select * from EmployeeInfo where ([ID] = @ID) and ([Password] = @Password)";
-		cmd->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
-		cmd->Parameters->AddWithValue("@Password", textBox2->Text);
-		cmd->ExecuteNonQuery();
-		DataTable^ dt = gcnew DataTable();
-		OleDbDataAdapter^ da = gcnew OleDbDataAdapter(cmd);
-		da->Fill(dt);
-		if (dt->Rows->Count == 1) {
-			OleDbCommand^ command = conn->CreateCommand();
-			command->CommandType = CommandType::Text;
-			command->CommandText = "select * from EmployeeInfo where [ID] = @ID and ([Position] = 'Human Resource' or [Position] = 'human resource' or [Position] = 'Human resource' or [Position] = 'HR' or [Position] = 'hr' or [Position] = 'Hr')";
-			command->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
-			command->ExecuteNonQuery();
-			DataTable^ datatable = gcnew DataTable();
-			OleDbDataAdapter^ dataAdapter = gcnew OleDbDataAdapter(command);
-			dataAdapter->Fill(datatable);
-			int status = int(comboBox1->SelectedIndex);
-			textBox1->Clear();
-			textBox2->Clear();
-			if (status == 0 && datatable->Rows->Count == 1)
-			{
-				MessageBox::Show("Login Succeed!");
-				HrView^ hr = gcnew HrView();
-				this->Hide();
-				hr->ShowDialog();
+
+	private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		this->textBox2->PasswordChar = '*';
+	}
+	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		if ((textBox1->Text == "") || (textBox2->Text == "") || (comboBox1->Text == "")) {
+			MessageBox::Show("Please enter data in all field!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		else {
+			OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source= C:/Users/Zhuowei Hu/Documents/Payroll Info.accdb");
+			conn->Open();
+			OleDbCommand^ cmd = conn->CreateCommand();
+			cmd->CommandType = CommandType::Text;
+			cmd->CommandText = "select * from EmployeeInfo where ([ID] = @ID) and ([Password] = @Password)";
+			cmd->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
+			cmd->Parameters->AddWithValue("@Password", textBox2->Text);
+			cmd->ExecuteNonQuery();
+			DataTable^ dt = gcnew DataTable();
+			OleDbDataAdapter^ da = gcnew OleDbDataAdapter(cmd);
+			da->Fill(dt);
+			if (dt->Rows->Count == 1) {
+				OleDbCommand^ command = conn->CreateCommand();
+				command->CommandType = CommandType::Text;
+				command->CommandText = "select * from EmployeeInfo where [ID] = @ID and ([Position] = 'Human Resource' or [Position] = 'human resource' or [Position] = 'Human resource' or [Position] = 'HR' or [Position] = 'hr' or [Position] = 'Hr')";
+				command->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
+				command->ExecuteNonQuery();
+				DataTable^ datatable = gcnew DataTable();
+				OleDbDataAdapter^ dataAdapter = gcnew OleDbDataAdapter(command);
+				dataAdapter->Fill(datatable);
+				int status = int(comboBox1->SelectedIndex);
+				textBox1->Clear();
+				textBox2->Clear();
+				if (status == 0 && datatable->Rows->Count == 1)
+				{
+					MessageBox::Show("Login Succeed!");
+					HrView^ hr = gcnew HrView();
+					this->Hide();
+					hr->ShowDialog();
+				}
+
+				else if (status == 1 && datatable->Rows->Count == 0)
+				{
+					MessageBox::Show("Login Succeed!");
+					MyForm^ admin = gcnew MyForm(this, textBox1->Text);
+					this->Hide();
+					admin->ShowDialog();
+
+				}
+
+				else if (status == 2 && datatable->Rows->Count == 0)
+				{
+					MessageBox::Show("Login Succeed!");
+
+					//use employee id to pull employee data from data base to fill menu details
+					System::String^ empID = textBox1->Text;
+					EmployeeMainMenu^ empMenu = gcnew EmployeeMainMenu(empID);
+					this->Hide();
+					empMenu->ShowDialog();
+				}
+
+				else
+				{
+					MessageBox::Show("Please choose the right position", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				}
 			}
-
-			else if (status == 1 && datatable->Rows->Count == 0)
-			{
-				MessageBox::Show("Login Succeed!");
-				MyForm^ admin = gcnew MyForm(this, textBox1->Text);
-				this->Hide();
-				admin->ShowDialog();
-
-			}
-
-			else if (status == 2 && datatable->Rows->Count == 0)
-			{
-				MessageBox::Show("Login Succeed!");
-
-				//use employee id to pull employee data from data base to fill menu details
-				System::String^ empID = textBox1->Text;
-				EmployeeMainMenu^ empMenu = gcnew EmployeeMainMenu(empID);
-				this->Hide();
-				empMenu->ShowDialog();
-			}
-
 			else
 			{
-				MessageBox::Show("Please choose the right position", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				MessageBox::Show("Uncorrect username or password", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			}
 		}
-		else
-		{
-			MessageBox::Show("Uncorrect username or password", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-		}
 	}
+
+	private: System::Void tempEmpButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		EmployeeMainMenu^ empMenu = gcnew EmployeeMainMenu("1");
+		this->Hide();
+		empMenu->ShowDialog();
 	}
-};
+	};
 }
