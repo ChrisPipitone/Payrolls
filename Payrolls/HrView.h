@@ -91,6 +91,7 @@ namespace Payrolls {
             this->button3->TabIndex = 2;
             this->button3->Text = L"Update Employee";
             this->button3->UseVisualStyleBackColor = true;
+            this->button3->Click += gcnew System::EventHandler(this, &HrView::button3_Click);
             // 
             // button4
             // 
@@ -127,5 +128,7 @@ namespace Payrolls {
     }
     private: System::Void HrView_Load(System::Object^ sender, System::EventArgs^ e) {
     }
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
