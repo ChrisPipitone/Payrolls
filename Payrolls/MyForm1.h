@@ -1,5 +1,6 @@
 #pragma once
 
+
 namespace Payrolls {
 
 	using namespace System;
@@ -1061,6 +1062,7 @@ namespace Payrolls {
 		label11->Hide();
 		lbl6->Hide();
 		lbl7->Hide();
+		lbl8->Hide();
 		lbl9->Hide();
 		lbl10->Hide();
 		lbl11->Hide();

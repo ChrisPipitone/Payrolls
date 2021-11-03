@@ -1,7 +1,6 @@
 #pragma once
-#include "MyForm.h"
+#include "MyForm1.h"
 #include "EmployeeMainMenu.h"
-#include "Admin2.h"
 #include "HrView.h"
 
 namespace Payrolls {
@@ -146,6 +145,7 @@ namespace Payrolls {
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(281, 30);
 			this->comboBox1->TabIndex = 6;
+			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &Form1::comboBox1_SelectedIndexChanged);
 			// 
 			// button1
 			// 
@@ -211,7 +211,7 @@ namespace Payrolls {
 			MessageBox::Show("Please enter data in all field!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 		else {
-			OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source= C:/Users/Zhuowei Hu/Documents/Payroll Info.accdb");
+			OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Ivan/Desktop/Payroll_Info.accdb");
 			conn->Open();
 			OleDbCommand^ cmd = conn->CreateCommand();
 			cmd->CommandType = CommandType::Text;
@@ -232,6 +232,8 @@ namespace Payrolls {
 				OleDbDataAdapter^ dataAdapter = gcnew OleDbDataAdapter(command);
 				dataAdapter->Fill(datatable);
 				int status = int(comboBox1->SelectedIndex);
+				String^ Name;
+				Name = textBox1->Text;
 				textBox1->Clear();
 				textBox2->Clear();
 				if (status == 0 && datatable->Rows->Count == 1)
@@ -245,7 +247,7 @@ namespace Payrolls {
 				else if (status == 1 && datatable->Rows->Count == 0)
 				{
 					MessageBox::Show("Login Succeed!");
-					MyForm^ admin = gcnew MyForm(this, textBox1->Text);
+					MyForm1^ admin = gcnew MyForm1(this, Name);
 					this->Hide();
 					admin->ShowDialog();
 
@@ -279,5 +281,7 @@ namespace Payrolls {
 		this->Hide();
 		empMenu->ShowDialog();
 	}
-	};
+	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }
