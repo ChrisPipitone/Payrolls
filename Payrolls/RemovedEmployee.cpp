@@ -1,10 +1,10 @@
 #include <iostream>
 #include "Employee.h"
 
-Employee::Employee()
+/*Employee::Employee()
 {
 	//default input values tbd
-}
+}*/
 
 /*void Employee::deleteEmployee() {
 	delete firstName;

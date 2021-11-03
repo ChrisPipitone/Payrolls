@@ -1,5 +1,5 @@
 #pragma once
-#include "MyForm.h"
+#include "MyForm1.h"
 #include "AddEmployee.h"
 #include "UpdateEmployee.h"
 #include "removeEmployee.h"

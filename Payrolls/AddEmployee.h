@@ -571,7 +571,7 @@ private: System::Void addNewEmployee(System::Object^ sender, System::EventArgs^ 
 	int overtimeHour = gross.calculateOvertimeHour(Int32::Parse(textBox15->Text));
 	double overtimePay = gross.CalculateOvertimePay(overtimeHour, Convert::ToDouble(textBox14->Text));
 	double grossIncome = gross.CalculateGrossIncome(Int32::Parse(textBox15->Text), overtimePay, Convert::ToDouble(textBox14->Text));
-	OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Zhuowei Hu/Documents/Payroll Info.accdb");
+	OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Ivan/Desktop/Payroll_Info.accdb");
 	conn->Open();
 	OleDbCommand^ cmd = conn->CreateCommand();
 	cmd->CommandType = CommandType::Text;
