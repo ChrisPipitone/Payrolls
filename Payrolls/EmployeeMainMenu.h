@@ -22,16 +22,18 @@ namespace Payrolls {
 		return returnString;
 	}
 
-	/// <summary>
-	/// Summary for EmployeeMainMenu
-	/// </summary>
 	public ref class EmployeeMainMenu : public System::Windows::Forms::Form
 	{
-	public:
+	private:
 		void fillData(System::String^ connectionString, System::String^ empID);
 		void init(System::String^ empID);
 
-		EmployeeMainMenu(System::String^ empID) { InitializeComponent(); init(empID);  }
+	public: EmployeeMainMenu(System::Windows::Forms::Form^ loginMenu, System::String^ empID) 
+		{ 
+			InitializeComponent(); 
+			orignalMenu = loginMenu;
+			init(empID);  
+		}
 
 	protected:
 		~EmployeeMainMenu(){
@@ -40,6 +42,8 @@ namespace Payrolls {
 				delete components;
 			}
 		}
+	//used on logout to bring user back to login menu
+	private: System::Windows::Forms::Form^ orignalMenu;
 
 	private: System::Windows::Forms::Label^ mainMenuLeft_title;
 	private: System::Windows::Forms::Label^ id_glance_label;
@@ -775,7 +779,7 @@ private: System::Windows::Forms::Label^ lastName_glance_label;
 			this->Emp_dept_glance->AutoSize = true;
 			this->Emp_dept_glance->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->Emp_dept_glance->Location = System::Drawing::Point(396, 425);
+			this->Emp_dept_glance->Location = System::Drawing::Point(344, 425);
 			this->Emp_dept_glance->Name = L"Emp_dept_glance";
 			this->Emp_dept_glance->Size = System::Drawing::Size(0, 25);
 			this->Emp_dept_glance->TabIndex = 5;
@@ -795,7 +799,7 @@ private: System::Windows::Forms::Label^ lastName_glance_label;
 			this->Emp_id_glance->AutoSize = true;
 			this->Emp_id_glance->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->Emp_id_glance->Location = System::Drawing::Point(269, 211);
+			this->Emp_id_glance->Location = System::Drawing::Point(344, 211);
 			this->Emp_id_glance->Name = L"Emp_id_glance";
 			this->Emp_id_glance->Size = System::Drawing::Size(0, 25);
 			this->Emp_id_glance->TabIndex = 7;
@@ -856,8 +860,6 @@ private: System::Windows::Forms::Label^ lastName_glance_label;
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
-			this->viewBenefits_panel->Hide();
-			this->editPersonal_panel->Hide();
 		}
 #pragma endregion
 
@@ -876,10 +878,9 @@ private: System::Windows::Forms::Label^ lastName_glance_label;
 	}
 
 	private: System::Void logout_button_Click(System::Object^ sender, System::EventArgs^ e) {
-		this->Hide();
 
-		//properly exit to login menu
-		//reformat code
+		this->Hide();
+		orignalMenu->Show();
 	}
 
 	private: System::Void editPersonalInfo_button_Click(System::Object^ sender, System::EventArgs^ e) {
