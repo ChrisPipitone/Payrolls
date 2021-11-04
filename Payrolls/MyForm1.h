@@ -1092,7 +1092,7 @@ namespace Payrolls {
 		textBox3->Hide();
 		richTextBox1->Hide();
 
-		OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Ivan/Desktop/Payroll_Info.accdb");
+		OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Chris/Desktop/Payroll_Info.accdb");
 		conn->Open();
 
 		OleDbCommand^ cmd = conn->CreateCommand();

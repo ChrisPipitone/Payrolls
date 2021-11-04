@@ -3,7 +3,7 @@
 void Payrolls::EmployeeMainMenu::init(System::String^ empID)
 {
 	//to be replaced hopfully
-	System::String^ connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Ivan/Desktop/Payroll_Info.accdb";
+	System::String^ connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Chris/Desktop/Payroll_Info.accdb";
 
 	//hide all panels
 	this->editPersonal_panel->Hide();
@@ -27,7 +27,6 @@ void Payrolls::EmployeeMainMenu::fillData(System::String^ connectionString, Syst
 
 	//reader reads data from DB, Read() readers the next record returns true if there are more records to read
 	OleDbDataReader^ reader = cmd->ExecuteReader();
-	Employee emp;
 	while (reader->Read())
 	{
 		this->Emp_ID->Text = reader["ID"]->ToString();

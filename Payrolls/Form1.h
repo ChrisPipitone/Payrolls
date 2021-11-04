@@ -211,7 +211,11 @@ namespace Payrolls {
 			MessageBox::Show("Please enter data in all field!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 		else {
-			OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Ivan/Desktop/Payroll_Info.accdb");
+			//use employee id to pull employee data from data base to fill menu details
+			System::String^ empID = textBox1->Text;
+
+
+			OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Chris/Desktop/Payroll_Info.accdb");
 			conn->Open();
 			OleDbCommand^ cmd = conn->CreateCommand();
 			cmd->CommandType = CommandType::Text;
@@ -256,10 +260,7 @@ namespace Payrolls {
 				else if (status == 2 && datatable->Rows->Count == 0)
 				{
 					MessageBox::Show("Login Succeed!");
-
-					//use employee id to pull employee data from data base to fill menu details
-					System::String^ empID = textBox1->Text;
-					EmployeeMainMenu^ empMenu = gcnew EmployeeMainMenu(empID);
+					EmployeeMainMenu^ empMenu = gcnew EmployeeMainMenu(this, empID);
 					this->Hide();
 					empMenu->ShowDialog();
 				}
@@ -277,7 +278,7 @@ namespace Payrolls {
 	}
 
 	private: System::Void tempEmpButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		EmployeeMainMenu^ empMenu = gcnew EmployeeMainMenu("1");
+		EmployeeMainMenu^ empMenu = gcnew EmployeeMainMenu(this, "1");
 		this->Hide();
 		empMenu->ShowDialog();
 	}
