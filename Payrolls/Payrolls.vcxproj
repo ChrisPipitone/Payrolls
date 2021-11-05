@@ -118,6 +118,7 @@
     <ClInclude Include="AddEmployee.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="ConnectionPath.h" />
     <ClInclude Include="Employee.h" />
     <ClInclude Include="EmployeeMainMenu.h">
       <FileType>CppForm</FileType>

@@ -1,5 +1,6 @@
 #pragma once
 
+#include"ConnectionPath.h"
 
 namespace Payrolls {
 
@@ -16,8 +17,7 @@ namespace Payrolls {
 	/// </summary>
 	public ref class MyForm1 : public System::Windows::Forms::Form
 	{
-	public:
-		MyForm1(void)
+	public:		MyForm1(void)
 		{
 			InitializeComponent();
 			//
@@ -1092,7 +1092,7 @@ namespace Payrolls {
 		textBox3->Hide();
 		richTextBox1->Hide();
 
-		OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Chris/Desktop/Payroll_Info.accdb");
+		OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
 		conn->Open();
 
 		OleDbCommand^ cmd = conn->CreateCommand();
@@ -1139,7 +1139,7 @@ namespace Payrolls {
 		}
 		else {
 
-			OleDbConnection^ conn2 = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Ivan/Desktop/Payroll_Info.accdb");
+			OleDbConnection^ conn2 = gcnew OleDbConnection(ConnectionPath::connectionString);
 			conn2->Open();
 			OleDbCommand^ cmd2 = conn2->CreateCommand();
 			cmd2->CommandType = CommandType::Text;
@@ -1275,7 +1275,7 @@ namespace Payrolls {
 	private: System::Void label20_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Ivan/Desktop/Payroll_Info.accdb");
+		OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
 		conn->Open();
 		OleDbCommand^ cmd3 = conn->CreateCommand();
 		cmd3->CommandType = CommandType::Text;
@@ -1287,7 +1287,7 @@ namespace Payrolls {
 	}
 	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
 
-		OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Ivan/Desktop/Payroll_Info.accdb");
+		OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
 		conn->Open();
 		OleDbCommand^ cmd3 = conn->CreateCommand();
 		cmd3->CommandType = CommandType::Text;
