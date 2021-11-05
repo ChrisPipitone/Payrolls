@@ -48,8 +48,7 @@ void Payrolls::EmployeeMainMenu::fillData(System::String^ empID)
 		//text box's in personal info user can edit and sumbit changes in that panel to these values 
 		this->prefEmail_textbox->Text = reader["Email"]->ToString();
 		this->phoneNumber_textBox->Text = reader["PhoneNumber"]->ToString();
-		this->homeAddress_textBox->Text = reader["Address1"]->ToString();
-
+	
 
 		/*
 		emp.id = toStandardString(reader["ID"]->ToString());

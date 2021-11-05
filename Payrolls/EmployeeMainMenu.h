@@ -108,12 +108,12 @@ private: System::Windows::Forms::Button^ persInfoSubmit_button;
 
 	private: System::Windows::Forms::TextBox^ prefEmail_textbox;
 
-	private: System::Windows::Forms::TextBox^ homeAddress_textBox;
+
 
 
 private: System::Windows::Forms::Label^ preferedPhoneNumber_label;
 private: System::Windows::Forms::Label^ preferedEmail_label;
-private: System::Windows::Forms::Label^ homeAddress_label;
+
 
 private: System::Windows::Forms::Panel^ editPersonal_panel;
 private: System::Windows::Forms::Label^ Emp_currBenefit_glance;
@@ -187,10 +187,8 @@ private: System::Windows::Forms::Label^ lastName_glance_label;
 			this->persInfoSubmit_button = (gcnew System::Windows::Forms::Button());
 			this->phoneNumber_textBox = (gcnew System::Windows::Forms::TextBox());
 			this->prefEmail_textbox = (gcnew System::Windows::Forms::TextBox());
-			this->homeAddress_textBox = (gcnew System::Windows::Forms::TextBox());
 			this->preferedPhoneNumber_label = (gcnew System::Windows::Forms::Label());
 			this->preferedEmail_label = (gcnew System::Windows::Forms::Label());
-			this->homeAddress_label = (gcnew System::Windows::Forms::Label());
 			this->editPersonal_panel = (gcnew System::Windows::Forms::Panel());
 			this->Emp_currBenefit_glance = (gcnew System::Windows::Forms::Label());
 			this->Emp_dept_glance = (gcnew System::Windows::Forms::Label());
@@ -476,10 +474,8 @@ private: System::Windows::Forms::Label^ lastName_glance_label;
 			this->splitContainer1->Panel2->Controls->Add(this->persInfoSubmit_button);
 			this->splitContainer1->Panel2->Controls->Add(this->phoneNumber_textBox);
 			this->splitContainer1->Panel2->Controls->Add(this->prefEmail_textbox);
-			this->splitContainer1->Panel2->Controls->Add(this->homeAddress_textBox);
 			this->splitContainer1->Panel2->Controls->Add(this->preferedPhoneNumber_label);
 			this->splitContainer1->Panel2->Controls->Add(this->preferedEmail_label);
-			this->splitContainer1->Panel2->Controls->Add(this->homeAddress_label);
 			this->splitContainer1->Size = System::Drawing::Size(1072, 661);
 			this->splitContainer1->SplitterDistance = 541;
 			this->splitContainer1->TabIndex = 0;
@@ -699,13 +695,6 @@ private: System::Windows::Forms::Label^ lastName_glance_label;
 			this->prefEmail_textbox->Size = System::Drawing::Size(282, 20);
 			this->prefEmail_textbox->TabIndex = 7;
 			// 
-			// homeAddress_textBox
-			// 
-			this->homeAddress_textBox->Location = System::Drawing::Point(176, 191);
-			this->homeAddress_textBox->Name = L"homeAddress_textBox";
-			this->homeAddress_textBox->Size = System::Drawing::Size(285, 20);
-			this->homeAddress_textBox->TabIndex = 8;
-			// 
 			// preferedPhoneNumber_label
 			// 
 			this->preferedPhoneNumber_label->AutoSize = true;
@@ -727,17 +716,6 @@ private: System::Windows::Forms::Label^ lastName_glance_label;
 			this->preferedEmail_label->Size = System::Drawing::Size(139, 24);
 			this->preferedEmail_label->TabIndex = 4;
 			this->preferedEmail_label->Text = L"Prefered Email:";
-			// 
-			// homeAddress_label
-			// 
-			this->homeAddress_label->AutoSize = true;
-			this->homeAddress_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->homeAddress_label->Location = System::Drawing::Point(28, 187);
-			this->homeAddress_label->Name = L"homeAddress_label";
-			this->homeAddress_label->Size = System::Drawing::Size(142, 24);
-			this->homeAddress_label->TabIndex = 5;
-			this->homeAddress_label->Text = L"Home Address:";
 			// 
 			// editPersonal_panel
 			// 
@@ -878,31 +856,18 @@ private: System::Windows::Forms::Label^ lastName_glance_label;
 	private: System::Void persInfoSubmit_button_Click(System::Object^ sender, System::EventArgs^ e) {
 		//update database with changes
 
-		/*
 		OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
 		conn->Open();
 		OleDbCommand^ cmd = conn->CreateCommand();
 		cmd->CommandType = CommandType::Text;
-		cmd->CommandText = "UPDATE EmployeeInfo SET [Email] = @Email, [PhoneNumber] = @PhoneNumber, [Address1] = @Address, [Zipcode] = @Zipcode, [Position] = @Position, " +
-			"[Hours] = @Hours, [HourlyPay] = @HourlyPay, [Password] = @Password, [OvertimeHours] = @OvertimeHours, [OvertimePay] = @OvertimePay, " +
-			"[Weeklygrosspay] = @Weeklygrosspay, [Age] = @Age WHERE ID = @ID";
-		cmd->Parameters->AddWithValue("@Email", textBox2->Text);
-		cmd->Parameters->AddWithValue("@PhoneNumber", textBox3->Text);
-		cmd->Parameters->AddWithValue("@Address", textBox4->Text);
-		cmd->Parameters->AddWithValue("@Zipcode", textBox5->Text);
-		cmd->Parameters->AddWithValue("@Position", textBox6->Text);
-		cmd->Parameters->AddWithValue("@Hours", Int32::Parse(textBox7->Text) - overtimeHours);
-		cmd->Parameters->AddWithValue("@HourlyPay", Convert::ToDouble(textBox8->Text));
-		cmd->Parameters->AddWithValue("@Password", textBox9->Text);
-		cmd->Parameters->AddWithValue("@OvertimeHours", overtimeHours);
-		cmd->Parameters->AddWithValue("@OvertimePay", overtimePay);
-		cmd->Parameters->AddWithValue("@Weeklygrosspay", grossIncome);
-		cmd->Parameters->AddWithValue("@Age", Int32::Parse(textBox10->Text));
-		cmd->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
+		cmd->CommandText = "UPDATE EmployeeInfo SET [Email] = @Email, [PhoneNumber] = @PhoneNumber";
+		cmd->Parameters->AddWithValue("@Email", prefEmail_textbox->Text);
+		cmd->Parameters->AddWithValue("@PhoneNumber", phoneNumber_textBox->Text);
+		
 		cmd->ExecuteNonQuery();
 		conn->Close();
-		MessageBox::Show("Update Employee Succeed");
-		*/
+		MessageBox::Show("Update Succeed");
+		
 	}
 };
 }
