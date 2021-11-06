@@ -104,8 +104,5 @@
     <ClCompile Include="UpdateEmployee.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="RemovedEmployee.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

@@ -163,7 +163,6 @@
     <ClCompile Include="HrView.cpp" />
     <ClCompile Include="Login.cpp" />
     <ClCompile Include="NYTax.cpp" />
-    <ClCompile Include="RemovedEmployee.cpp" />
     <ClCompile Include="removeEmployee.cpp" />
     <ClCompile Include="timeSheetAdmin.cpp" />
     <ClCompile Include="UpdateEmployee.cpp" />
