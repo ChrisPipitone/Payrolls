@@ -2,21 +2,19 @@
 
 void Payrolls::EmployeeMainMenu::init(System::String^ empID)
 {
-	//to be replaced hopfully
-	System::String^ connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source= C:/Users/Zhuowei Hu/Documents/Payroll Info.accdb";
 
 	//hide all panels
 	this->editPersonal_panel->Hide();
 	this->viewBenefits_panel->Hide();
 
-	fillData(connectionString, empID);
+	fillData(empID);
 
 }
 
-void Payrolls::EmployeeMainMenu::fillData(System::String^ connectionString, System::String^ empID)
+void Payrolls::EmployeeMainMenu::fillData(System::String^ empID)
 {
 	//connect to database using string containing the path to the database file on the local disk
-	OleDbConnection^ conn = gcnew OleDbConnection(connectionString);
+	OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
 	conn->Open();
 
 	//create command using sql syntax to interact with the DB
@@ -27,7 +25,6 @@ void Payrolls::EmployeeMainMenu::fillData(System::String^ connectionString, Syst
 
 	//reader reads data from DB, Read() readers the next record returns true if there are more records to read
 	OleDbDataReader^ reader = cmd->ExecuteReader();
-	Employee emp;
 	while (reader->Read())
 	{
 		this->Emp_ID->Text = reader["ID"]->ToString();
@@ -47,6 +44,12 @@ void Payrolls::EmployeeMainMenu::fillData(System::String^ connectionString, Syst
 		this->Emp_department->Text = reader["Position"]->ToString();
 		this->Emp_dept_glance->Text = this->Emp_department->Text;
 
+
+		//text box's in personal info user can edit and sumbit changes in that panel to these values 
+		this->prefEmail_textbox->Text = reader["Email"]->ToString();
+		this->phoneNumber_textBox->Text = reader["PhoneNumber"]->ToString();
+	
+
 		/*
 		emp.id = toStandardString(reader["ID"]->ToString());
 		emp.firstName = toStandardString(reader["Firstname"]->ToString());
@@ -58,9 +61,7 @@ void Payrolls::EmployeeMainMenu::fillData(System::String^ connectionString, Syst
 
 		[Age]
 		[Gender]
-		[Email]
-		[PhoneNumber]
-		[Address1]
+
 		[Zipcode]
 
 		[Position]

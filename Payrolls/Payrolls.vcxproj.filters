@@ -21,28 +21,13 @@
     <ClInclude Include="Form1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MyForm.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Admin2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="AddEmployee.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EmployeeMainMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Employee.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Login.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EmployeeDetailAdmin.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="timeSheetAdmin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HrView.h">
@@ -60,6 +45,12 @@
     <ClInclude Include="UpdateEmployee.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MyForm1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ConnectionPath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GrossIncome.cpp">
@@ -68,25 +59,13 @@
     <ClCompile Include="Form1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Admin2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="AddEmployee.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EmployeeMainMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Employee.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Login.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EmployeeDetailAdmin.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="timeSheetAdmin.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="HrView.cpp">
@@ -105,6 +84,9 @@
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="RemovedEmployees.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyForm1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,5 +1,6 @@
 #pragma once
-#include "Employee.h"
+#include<iostream>
+#include"ConnectionPath.h"
 
 namespace Payrolls {
 	using namespace System;
@@ -22,16 +23,18 @@ namespace Payrolls {
 		return returnString;
 	}
 
-	/// <summary>
-	/// Summary for EmployeeMainMenu
-	/// </summary>
 	public ref class EmployeeMainMenu : public System::Windows::Forms::Form
 	{
-	public:
-		void fillData(System::String^ connectionString, System::String^ empID);
+	private:
+		void fillData(System::String^ empID);
 		void init(System::String^ empID);
 
-		EmployeeMainMenu(System::String^ empID) { InitializeComponent(); init(empID);  }
+	public: EmployeeMainMenu(System::Windows::Forms::Form^ loginMenu, System::String^ empID) 
+		{ 
+			InitializeComponent(); 
+			orignalMenu = loginMenu;
+			init(empID);  
+		}
 
 	protected:
 		~EmployeeMainMenu(){
@@ -40,6 +43,8 @@ namespace Payrolls {
 				delete components;
 			}
 		}
+	//used on logout to bring user back to login menu
+	private: System::Windows::Forms::Form^ orignalMenu;
 
 	private: System::Windows::Forms::Label^ mainMenuLeft_title;
 	private: System::Windows::Forms::Label^ id_glance_label;
@@ -99,14 +104,17 @@ private: System::Windows::Forms::Label^ Emp_firstName;
 private: System::Windows::Forms::Label^ lastName_label;
 private: System::Windows::Forms::Label^ firstName_label;
 private: System::Windows::Forms::Button^ persInfoSubmit_button;
-private: System::Windows::Forms::TextBox^ textBox4;
-private: System::Windows::Forms::TextBox^ textBox3;
-private: System::Windows::Forms::TextBox^ textBox1;
-private: System::Windows::Forms::TextBox^ textBox2;
+	private: System::Windows::Forms::TextBox^ phoneNumber_textBox;
+
+	private: System::Windows::Forms::TextBox^ prefEmail_textbox;
+
+
+
+
 private: System::Windows::Forms::Label^ preferedPhoneNumber_label;
 private: System::Windows::Forms::Label^ preferedEmail_label;
-private: System::Windows::Forms::Label^ homeAddress_label;
-private: System::Windows::Forms::Label^ username_label;
+
+
 private: System::Windows::Forms::Panel^ editPersonal_panel;
 private: System::Windows::Forms::Label^ Emp_currBenefit_glance;
 
@@ -177,14 +185,10 @@ private: System::Windows::Forms::Label^ lastName_glance_label;
 			this->lastName_label = (gcnew System::Windows::Forms::Label());
 			this->firstName_label = (gcnew System::Windows::Forms::Label());
 			this->persInfoSubmit_button = (gcnew System::Windows::Forms::Button());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->phoneNumber_textBox = (gcnew System::Windows::Forms::TextBox());
+			this->prefEmail_textbox = (gcnew System::Windows::Forms::TextBox());
 			this->preferedPhoneNumber_label = (gcnew System::Windows::Forms::Label());
 			this->preferedEmail_label = (gcnew System::Windows::Forms::Label());
-			this->homeAddress_label = (gcnew System::Windows::Forms::Label());
-			this->username_label = (gcnew System::Windows::Forms::Label());
 			this->editPersonal_panel = (gcnew System::Windows::Forms::Panel());
 			this->Emp_currBenefit_glance = (gcnew System::Windows::Forms::Label());
 			this->Emp_dept_glance = (gcnew System::Windows::Forms::Label());
@@ -468,14 +472,10 @@ private: System::Windows::Forms::Label^ lastName_glance_label;
 			// splitContainer1.Panel2
 			// 
 			this->splitContainer1->Panel2->Controls->Add(this->persInfoSubmit_button);
-			this->splitContainer1->Panel2->Controls->Add(this->textBox4);
-			this->splitContainer1->Panel2->Controls->Add(this->textBox3);
-			this->splitContainer1->Panel2->Controls->Add(this->textBox1);
-			this->splitContainer1->Panel2->Controls->Add(this->textBox2);
+			this->splitContainer1->Panel2->Controls->Add(this->phoneNumber_textBox);
+			this->splitContainer1->Panel2->Controls->Add(this->prefEmail_textbox);
 			this->splitContainer1->Panel2->Controls->Add(this->preferedPhoneNumber_label);
 			this->splitContainer1->Panel2->Controls->Add(this->preferedEmail_label);
-			this->splitContainer1->Panel2->Controls->Add(this->homeAddress_label);
-			this->splitContainer1->Panel2->Controls->Add(this->username_label);
 			this->splitContainer1->Size = System::Drawing::Size(1072, 661);
 			this->splitContainer1->SplitterDistance = 541;
 			this->splitContainer1->TabIndex = 0;
@@ -679,41 +679,28 @@ private: System::Windows::Forms::Label^ lastName_glance_label;
 			this->persInfoSubmit_button->TabIndex = 9;
 			this->persInfoSubmit_button->Text = L"Submit Changes";
 			this->persInfoSubmit_button->UseVisualStyleBackColor = true;
+			this->persInfoSubmit_button->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::persInfoSubmit_button_Click);
 			// 
-			// textBox4
+			// phoneNumber_textBox
 			// 
-			this->textBox4->Location = System::Drawing::Point(269, 264);
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(202, 20);
-			this->textBox4->TabIndex = 6;
+			this->phoneNumber_textBox->Location = System::Drawing::Point(259, 319);
+			this->phoneNumber_textBox->Name = L"phoneNumber_textBox";
+			this->phoneNumber_textBox->Size = System::Drawing::Size(202, 20);
+			this->phoneNumber_textBox->TabIndex = 6;
 			// 
-			// textBox3
+			// prefEmail_textbox
 			// 
-			this->textBox3->Location = System::Drawing::Point(189, 197);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(282, 20);
-			this->textBox3->TabIndex = 7;
-			// 
-			// textBox1
-			// 
-			this->textBox1->Location = System::Drawing::Point(186, 136);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(285, 20);
-			this->textBox1->TabIndex = 8;
-			// 
-			// textBox2
-			// 
-			this->textBox2->Location = System::Drawing::Point(152, 320);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(319, 20);
-			this->textBox2->TabIndex = 8;
+			this->prefEmail_textbox->Location = System::Drawing::Point(179, 252);
+			this->prefEmail_textbox->Name = L"prefEmail_textbox";
+			this->prefEmail_textbox->Size = System::Drawing::Size(282, 20);
+			this->prefEmail_textbox->TabIndex = 7;
 			// 
 			// preferedPhoneNumber_label
 			// 
 			this->preferedPhoneNumber_label->AutoSize = true;
 			this->preferedPhoneNumber_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->preferedPhoneNumber_label->Location = System::Drawing::Point(41, 260);
+			this->preferedPhoneNumber_label->Location = System::Drawing::Point(31, 315);
 			this->preferedPhoneNumber_label->Name = L"preferedPhoneNumber_label";
 			this->preferedPhoneNumber_label->Size = System::Drawing::Size(222, 24);
 			this->preferedPhoneNumber_label->TabIndex = 3;
@@ -724,33 +711,11 @@ private: System::Windows::Forms::Label^ lastName_glance_label;
 			this->preferedEmail_label->AutoSize = true;
 			this->preferedEmail_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->preferedEmail_label->Location = System::Drawing::Point(41, 197);
+			this->preferedEmail_label->Location = System::Drawing::Point(31, 252);
 			this->preferedEmail_label->Name = L"preferedEmail_label";
 			this->preferedEmail_label->Size = System::Drawing::Size(139, 24);
 			this->preferedEmail_label->TabIndex = 4;
 			this->preferedEmail_label->Text = L"Prefered Email:";
-			// 
-			// homeAddress_label
-			// 
-			this->homeAddress_label->AutoSize = true;
-			this->homeAddress_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->homeAddress_label->Location = System::Drawing::Point(38, 132);
-			this->homeAddress_label->Name = L"homeAddress_label";
-			this->homeAddress_label->Size = System::Drawing::Size(142, 24);
-			this->homeAddress_label->TabIndex = 5;
-			this->homeAddress_label->Text = L"Home Address:";
-			// 
-			// username_label
-			// 
-			this->username_label->AutoSize = true;
-			this->username_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->username_label->Location = System::Drawing::Point(44, 315);
-			this->username_label->Name = L"username_label";
-			this->username_label->Size = System::Drawing::Size(102, 24);
-			this->username_label->TabIndex = 5;
-			this->username_label->Text = L"Username:";
 			// 
 			// editPersonal_panel
 			// 
@@ -775,7 +740,7 @@ private: System::Windows::Forms::Label^ lastName_glance_label;
 			this->Emp_dept_glance->AutoSize = true;
 			this->Emp_dept_glance->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->Emp_dept_glance->Location = System::Drawing::Point(396, 425);
+			this->Emp_dept_glance->Location = System::Drawing::Point(344, 425);
 			this->Emp_dept_glance->Name = L"Emp_dept_glance";
 			this->Emp_dept_glance->Size = System::Drawing::Size(0, 25);
 			this->Emp_dept_glance->TabIndex = 5;
@@ -795,7 +760,7 @@ private: System::Windows::Forms::Label^ lastName_glance_label;
 			this->Emp_id_glance->AutoSize = true;
 			this->Emp_id_glance->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->Emp_id_glance->Location = System::Drawing::Point(269, 211);
+			this->Emp_id_glance->Location = System::Drawing::Point(344, 211);
 			this->Emp_id_glance->Name = L"Emp_id_glance";
 			this->Emp_id_glance->Size = System::Drawing::Size(0, 25);
 			this->Emp_id_glance->TabIndex = 7;
@@ -856,8 +821,6 @@ private: System::Windows::Forms::Label^ lastName_glance_label;
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
-			this->viewBenefits_panel->Hide();
-			this->editPersonal_panel->Hide();
 		}
 #pragma endregion
 
@@ -876,10 +839,9 @@ private: System::Windows::Forms::Label^ lastName_glance_label;
 	}
 
 	private: System::Void logout_button_Click(System::Object^ sender, System::EventArgs^ e) {
-		this->Hide();
 
-		//properly exit to login menu
-		//reformat code
+		this->Hide();
+		orignalMenu->Show();
 	}
 
 	private: System::Void editPersonalInfo_button_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -891,5 +853,21 @@ private: System::Windows::Forms::Label^ lastName_glance_label;
 		this->editPersonal_panel->Hide();
 	}
 
-	};
+	private: System::Void persInfoSubmit_button_Click(System::Object^ sender, System::EventArgs^ e) {
+		//update database with changes
+
+		OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
+		conn->Open();
+		OleDbCommand^ cmd = conn->CreateCommand();
+		cmd->CommandType = CommandType::Text;
+		cmd->CommandText = "UPDATE EmployeeInfo SET [Email] = @Email, [PhoneNumber] = @PhoneNumber";
+		cmd->Parameters->AddWithValue("@Email", prefEmail_textbox->Text);
+		cmd->Parameters->AddWithValue("@PhoneNumber", phoneNumber_textBox->Text);
+		
+		cmd->ExecuteNonQuery();
+		conn->Close();
+		MessageBox::Show("Update Succeed");
+		
+	}
+};
 }

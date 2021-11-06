@@ -1,7 +1,10 @@
 #pragma once
+
 #include "GrossIncome.h"
 #include "FedTax.h"
 #include "NYTax.h"
+
+#include "ConnectionPath.h"
 
 namespace Payrolls {
 
@@ -473,7 +476,7 @@ namespace Payrolls {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source= C:/Users/Zhuowei Hu/Documents/Payroll Info.accdb");
+		OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
 		conn->Open();
 		OleDbCommand^ cmd = conn->CreateCommand();
 		cmd->CommandType = CommandType::Text;
@@ -512,7 +515,7 @@ namespace Payrolls {
 		double grossIncome = gross.CalculateGrossIncome(Int32::Parse(textBox7->Text), overtimePay, Convert::ToDouble(textBox8->Text));
 		double fedTax = fTax.FedTaxRate(grossIncome);
 		double nyTax = nTax.NYTaxRate(grossIncome);
-		OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source= C:/Users/Zhuowei Hu/Documents/Payroll Info.accdb");
+		OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
 		conn->Open();
 		OleDbCommand^ cmd = conn->CreateCommand();
 		cmd->CommandType = CommandType::Text;
