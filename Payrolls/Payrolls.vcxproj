@@ -182,6 +182,9 @@
     <EmbeddedResource Include="removeEmployee.resx">
       <DependentUpon>removeEmployee.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UpdateEmployee.resx">
+      <DependentUpon>UpdateEmployee.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

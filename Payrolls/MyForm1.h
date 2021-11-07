@@ -32,6 +32,7 @@ namespace Payrolls {
 			InitializeComponent();
 			otherform = Admin;
 			word = text;
+			ID = Int32::Parse(text);
 		}
 
 	protected:
@@ -60,21 +61,36 @@ namespace Payrolls {
 	private:
 		String^ Name;
 	private:
+		String^ LastName;
+	private:
 		String^ email;
 	private:
 		String^ phone;
 	private:
-		Double^ pay;
+		String^ pay;
+	private:
+		String^ Department;
 	private:
 		String^ NameE;
 	private:
+		String^ LastNameE;
+	private:
 		String^ emailE;
+	private:
+		String^ DepartmentE;
 	private:
 		String^ phoneE;
 	private:
-		float payE;
+		String^ payE;
 	public:
-		int word1;
+		String^ word1;
+	private:
+		String^ DOB;
+	private:
+		Int32^ ID;
+	private:
+		String^ CurrHours;
+
 	private: System::Windows::Forms::Button^ buttonNoShow;
 	public:
 	private: System::Windows::Forms::Button^ ButtonShow;
@@ -292,6 +308,7 @@ namespace Payrolls {
 			this->tabPage1->Size = System::Drawing::Size(818, 593);
 			this->tabPage1->TabIndex = 0;
 			this->tabPage1->Text = L"Admin Home Page";
+			this->tabPage1->Click += gcnew System::EventHandler(this, &MyForm1::tabPage1_Click);
 			// 
 			// button2
 			// 
@@ -299,7 +316,7 @@ namespace Payrolls {
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(75, 23);
 			this->button2->TabIndex = 34;
-			this->button2->Text = L"button2";
+			this->button2->Text = L"Update";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &MyForm1::button2_Click);
 			// 
@@ -309,7 +326,7 @@ namespace Payrolls {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 33;
-			this->button1->Text = L"button1";
+			this->button1->Text = L"Update";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm1::button1_Click_1);
 			// 
@@ -326,6 +343,7 @@ namespace Payrolls {
 			this->textBox4->Name = L"textBox4";
 			this->textBox4->Size = System::Drawing::Size(183, 20);
 			this->textBox4->TabIndex = 31;
+			this->textBox4->TextChanged += gcnew System::EventHandler(this, &MyForm1::textBox4_TextChanged);
 			// 
 			// linkedit2
 			// 
@@ -385,7 +403,7 @@ namespace Payrolls {
 			this->lbl6->AutoSize = true;
 			this->lbl6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lbl6->Location = System::Drawing::Point(233, 387);
+			this->lbl6->Location = System::Drawing::Point(234, 387);
 			this->lbl6->Name = L"lbl6";
 			this->lbl6->Size = System::Drawing::Size(35, 20);
 			this->lbl6->TabIndex = 25;
@@ -423,6 +441,7 @@ namespace Payrolls {
 			this->lbl3->Size = System::Drawing::Size(26, 20);
 			this->lbl3->TabIndex = 22;
 			this->lbl3->Text = L"ID";
+			this->lbl3->Click += gcnew System::EventHandler(this, &MyForm1::lbl3_Click);
 			// 
 			// label6
 			// 
@@ -431,9 +450,9 @@ namespace Payrolls {
 				static_cast<System::Byte>(0)));
 			this->label6->Location = System::Drawing::Point(141, 387);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(39, 20);
+			this->label6->Size = System::Drawing::Size(92, 20);
 			this->label6->TabIndex = 21;
-			this->label6->Text = L"Pay:";
+			this->label6->Text = L"Pay:           $";
 			// 
 			// label5
 			// 
@@ -478,6 +497,7 @@ namespace Payrolls {
 			this->lbl2->Size = System::Drawing::Size(94, 20);
 			this->lbl2->TabIndex = 17;
 			this->lbl2->Text = L"Department";
+			this->lbl2->Click += gcnew System::EventHandler(this, &MyForm1::lbl2_Click);
 			// 
 			// label2
 			// 
@@ -500,6 +520,7 @@ namespace Payrolls {
 			this->lbl1->Size = System::Drawing::Size(188, 29);
 			this->lbl1->TabIndex = 15;
 			this->lbl1->Text = L"Employee name";
+			this->lbl1->Click += gcnew System::EventHandler(this, &MyForm1::lbl1_Click);
 			// 
 			// label1
 			// 
@@ -756,6 +777,7 @@ namespace Payrolls {
 			this->lbl7->Size = System::Drawing::Size(152, 24);
 			this->lbl7->TabIndex = 1;
 			this->lbl7->Text = L"Employee Name";
+			this->lbl7->Click += gcnew System::EventHandler(this, &MyForm1::lbl7_Click);
 			// 
 			// buttonReset
 			// 
@@ -775,6 +797,7 @@ namespace Payrolls {
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(250, 26);
 			this->textBox1->TabIndex = 1;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &MyForm1::textBox1_TextChanged);
 			// 
 			// buttonSearch
 			// 
@@ -1097,27 +1120,27 @@ namespace Payrolls {
 
 		OleDbCommand^ cmd = conn->CreateCommand();
 		cmd->CommandType = CommandType::Text;
-		cmd->CommandText = "select Firstname,Lastname, Email, PhoneNumber,HourlyPay from EmployeeInfo where ([ID] = @ID)  ";
-		cmd->Parameters->AddWithValue("@ID", Int32::Parse(word));
-
-		//cmd->Parameters->AddWithValue("@HourlyPay", Convert::ToDouble(textBox14->Text));
+		cmd->CommandText = "select Firstname,Lastname, Email, PhoneNumber, HourlyPay, Department from EmployeeInfo where ([ID] = @ID)  ";
+		cmd->Parameters->AddWithValue("@ID", ID);
 
 		OleDbDataReader^ myReader = cmd->ExecuteReader();
 
 		while (myReader->Read()) {
 
-			Name = myReader->GetString(1) + ", " + myReader->GetString(0);
-			email = myReader->GetString(2);
-			phone = myReader->GetString(3);
-			//	pay = myReader->GetDouble(4);
+			Name = myReader["FirstName"]->ToString();
+			LastName = myReader["LastName"]->ToString();
+			email = myReader["Email"]->ToString();
+			phone = myReader["PhoneNumber"]->ToString();
+			pay = myReader["HourlyPay"]->ToString();
+			Department = myReader["Department"]->ToString();
 		}
 
-		lbl1->Text = Name;
-		//lbl2->Text = Department;
+		lbl1->Text = Name + ", " + LastName;
+		lbl2->Text = Department;
 		lbl3->Text = word;
 		lbl4->Text = email;
 		lbl5->Text = phone;
-		lbl6->Text = /*Convert::ToString(pay)*/ "DOLLAR!!";
+		lbl6->Text = pay;
 	}
 	private: System::Void ButtonShow_Click(System::Object^ sender, System::EventArgs^ e) {
 		lbl6->Show();
@@ -1134,36 +1157,50 @@ namespace Payrolls {
 		otherform->Show();
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+
 		if ((textBox1->Text == "")) {
 			MessageBox::Show("Please enter data", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
+		
+		else if ((System::Text::RegularExpressions::Regex::IsMatch(textBox1->Text,"^[a-zA-z]"))){
+			MessageBox::Show("Please enter ID number", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+
 		else {
 
 			OleDbConnection^ conn2 = gcnew OleDbConnection(ConnectionPath::connectionString);
 			conn2->Open();
 			OleDbCommand^ cmd2 = conn2->CreateCommand();
 			cmd2->CommandType = CommandType::Text;
-			cmd2->CommandText = "select ID,Firstname,Lastname, Email, PhoneNumber,HourlyPay from EmployeeInfo where  ([ID] = @ID) and ([Position] = 'Employee' or [Position] = 'employee' or [Position] = 'EMPLOYEE')  ";
+			cmd2->CommandText = "select ID,Firstname,Lastname, Department, Email, DateofBirth, PhoneNumber,HourlyPay , Hours from EmployeeInfo where  ([ID] = @ID) and ([Position] = 'Employee' or [Position] = 'employee' or [Position] = 'EMPLOYEE')  ";
 			cmd2->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
 			OleDbDataReader^ myReader = cmd2->ExecuteReader();
 
 			if (myReader->HasRows) {
 
 				while (myReader->Read()) {
-					word1 = myReader->GetInt32(0);
-					NameE = myReader->GetString(2) + ", " + myReader->GetString(1);
-					emailE = myReader->GetString(3);
-					phoneE = myReader->GetString(4);
-					//	payE = myReader->GetFloat(5);
+
+					word1 = myReader["ID"]->ToString();
+					NameE = myReader["FirstName"]->ToString();
+					LastNameE = myReader["LastName"]->ToString();
+					emailE = myReader["Email"]->ToString();
+					phoneE = myReader["PhoneNumber"]->ToString();
+					payE = myReader["HourlyPay"]->ToString();
+					DepartmentE = myReader["Department"]->ToString();
+					DOB = myReader["DateofBirth"]->ToString();
+					CurrHours = myReader["Hours"]->ToString();
+
 				}
 
-				//lbl7->Text = PositionE;
-				lbl8->Text = NameE;
+				lbl8->Text = DepartmentE;
+				lbl7->Text = NameE + "," + LastNameE;
 				lbl9->Text = emailE;
 				lbl10->Text = phoneE;
-				lbl11->Text = /*Convert::ToString(payE)*/ "DOLLAR!!";
-				lbl12->Text = /*Convert::ToString(pay)*/ "DATE";
-				lbl14->Text = NameE;
+				lbl11->Text = payE;
+				lbl12->Text = DOB;
+				lbl14->Text = NameE + "," + LastNameE;
+				lbl15->Text = CurrHours;
+				lbl16->Text = word;
 
 				lbl8->Show();
 				lbl9->Show();
@@ -1268,8 +1305,6 @@ namespace Payrolls {
 	private: System::Void label14_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 
-
-
 	private: System::Void label15_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void label20_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1277,28 +1312,33 @@ namespace Payrolls {
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
 		conn->Open();
-		OleDbCommand^ cmd3 = conn->CreateCommand();
-		cmd3->CommandType = CommandType::Text;
-		cmd3->CommandText = "Insert into EmployeeInfo([PhoneNumber]) VALUES(@PhoneNumber)";
-		cmd3->Parameters->AddWithValue("@PhoneNumber", Int32::Parse(textBox5->Text));
+		OleDbCommand^ cmd = conn->CreateCommand();
+		cmd->CommandType = CommandType::Text;
+		cmd->CommandText = "UPDATE EmployeeInfo SET [PhoneNumber] = @PhoneNumber WHERE [ID] = @ID";
+		cmd->Parameters->AddWithValue("@ID", 6);  //ID);
+		cmd->Parameters->AddWithValue("@PhoneNumber", textBox5->Text);
 
 		textBox5->Hide();
 		button2->Hide();
+
+		cmd->ExecuteNonQuery();
+		conn->Close();
+		MessageBox::Show("Change Succeed!");
 	}
 	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
 
 		OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
 		conn->Open();
-		OleDbCommand^ cmd3 = conn->CreateCommand();
-		cmd3->CommandType = CommandType::Text;
-		cmd3->CommandText = "UPDATE EmployeeInfo SET ([Email]=@Email) WHERE ([ID] = @ID)  ";
-		cmd3->Parameters->AddWithValue("@ID", Int32::Parse(word));
-		cmd3->Parameters->AddWithValue("@Email", textBox4->Text);
+		OleDbCommand^ cmd = conn->CreateCommand();
+		cmd->CommandType = CommandType::Text;
+		cmd->CommandText = "UPDATE EmployeeInfo SET [Email] = @Email WHERE [ID] = @ID";
+		cmd->Parameters->AddWithValue("@ID", 6); // Int32::Parse(lbl3->Text));
+		cmd->Parameters->AddWithValue("@Email", textBox4->Text);
 
 		textBox4->Hide();
 		button1->Hide();
 
-		cmd3->ExecuteNonQuery();
+		cmd->ExecuteNonQuery();
 		conn->Close();
 		MessageBox::Show("Change Succeed!");
 
@@ -1311,5 +1351,19 @@ namespace Payrolls {
 		textBox5->Show();
 		button2->Show();
 	}
-	};
+	private: System::Void lbl1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void lbl2_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void tabPage1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void lbl7_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void lbl3_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void textBox4_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+};
 }
