@@ -155,7 +155,6 @@
     <ClCompile Include="Login.cpp" />
     <ClCompile Include="MyForm1.cpp" />
     <ClCompile Include="NYTax.cpp" />
-    <ClCompile Include="RemovedEmployees.cpp" />
     <ClCompile Include="removeEmployee.cpp" />
     <ClCompile Include="Timesheet.cpp" />
     <ClCompile Include="UpdateEmployee.cpp" />
@@ -186,13 +185,11 @@
     <EmbeddedResource Include="removeEmployee.resx">
       <DependentUpon>removeEmployee.h</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
     <EmbeddedResource Include="Timesheet.resx">
       <DependentUpon>Timesheet.h</DependentUpon>
-=======
+    </EmbeddedResource>
     <EmbeddedResource Include="UpdateEmployee.resx">
       <DependentUpon>UpdateEmployee.h</DependentUpon>
->>>>>>> 98a73bb21cdb2e0d7777ae52656362f906fd5cec
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
