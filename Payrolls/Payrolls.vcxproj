@@ -155,10 +155,7 @@
     <ClCompile Include="Login.cpp" />
     <ClCompile Include="MyForm1.cpp" />
     <ClCompile Include="NYTax.cpp" />
-<<<<<<< Updated upstream
     <ClCompile Include="RemovedEmployees.cpp" />
-=======
->>>>>>> Stashed changes
     <ClCompile Include="removeEmployee.cpp" />
     <ClCompile Include="Timesheet.cpp" />
     <ClCompile Include="UpdateEmployee.cpp" />
