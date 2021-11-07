@@ -6,6 +6,10 @@ void Payrolls::EmployeeMainMenu::init(System::String^ empID)
 	//hide all panels
 	this->editPersonal_panel->Hide();
 	this->viewBenefits_panel->Hide();
+	this->viewPaystub_panel->Hide();
+
+
+	this->infoGlance_panel->Show();
 
 	fillData(empID);
 
