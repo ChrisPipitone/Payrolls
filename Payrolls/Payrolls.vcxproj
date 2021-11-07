@@ -138,6 +138,9 @@
     <ClInclude Include="removeEmployee.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Timesheet.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="UpdateEmployee.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -154,6 +157,7 @@
     <ClCompile Include="NYTax.cpp" />
     <ClCompile Include="RemovedEmployees.cpp" />
     <ClCompile Include="removeEmployee.cpp" />
+    <ClCompile Include="Timesheet.cpp" />
     <ClCompile Include="UpdateEmployee.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="removeEmployee.resx">
       <DependentUpon>removeEmployee.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Timesheet.resx">
+      <DependentUpon>Timesheet.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
