@@ -86,9 +86,12 @@
     <ClCompile Include="UpdateEmployee.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
+<<<<<<< Updated upstream
     <ClCompile Include="RemovedEmployees.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+=======
+>>>>>>> Stashed changes
     <ClCompile Include="MyForm1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
