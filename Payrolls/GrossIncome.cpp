@@ -13,6 +13,8 @@ int GrossIncome::calculateOvertimeHour(int hour) {
     }
 }
 
+
+
 double GrossIncome::CalculateOvertimePay(int overtimeHour, double hourlyWage) {
     return round((hourlyWage * 1.5 * overtimeHour) * 100.0) / 100.0;
 }
