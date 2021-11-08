@@ -40,6 +40,7 @@ namespace Payrolls {
 		/// Required designer variable.
 		/// </summary>
 		System::ComponentModel::Container ^components;
+		private: System::Windows::Forms::Label^ label1;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -48,6 +49,7 @@ namespace Payrolls {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// Timesheet
@@ -56,9 +58,19 @@ namespace Payrolls {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(700, 500);
 			this->Name = L"Timesheet";
-			this->Text = L"Timesheet";
+			this->Text = L"Employee Timesheet";
 			this->Load += gcnew System::EventHandler(this, &Timesheet::Timesheet_Load);
 			this->ResumeLayout(false);
+
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label1->Location = System::Drawing::Point(124, 25);
+			this->label1->Margin = System::Windows::Forms::Padding(6, 0, 6, 0);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(286, 100);
+			this->label1->TabIndex = 3;
+			this->label1->Text = L"Employee Timesheet";
 
 		}
 #pragma endregion
