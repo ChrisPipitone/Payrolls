@@ -118,13 +118,7 @@
     <ClInclude Include="AddEmployee.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Admin2.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="Employee.h" />
-    <ClInclude Include="EmployeeDetailAdmin.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
+    <ClInclude Include="ConnectionPath.h" />
     <ClInclude Include="EmployeeMainMenu.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -137,14 +131,14 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Login.h" />
-    <ClInclude Include="MyForm.h">
+    <ClInclude Include="MyForm1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="NYTax.h" />
     <ClInclude Include="removeEmployee.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="timeSheetAdmin.h">
+    <ClInclude Include="Timesheet.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="UpdateEmployee.h">
@@ -156,18 +150,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddEmployee.cpp" />
-    <ClCompile Include="Admin2.cpp" />
-    <ClCompile Include="Employee.cpp" />
-    <ClCompile Include="EmployeeDetailAdmin.cpp" />
     <ClCompile Include="EmployeeMainMenu.cpp" />
     <ClCompile Include="FedTax.cpp" />
     <ClCompile Include="Form1.cpp" />
     <ClCompile Include="GrossIncome.cpp" />
     <ClCompile Include="HrView.cpp" />
     <ClCompile Include="Login.cpp" />
+    <ClCompile Include="MyForm1.cpp" />
     <ClCompile Include="NYTax.cpp" />
     <ClCompile Include="removeEmployee.cpp" />
-    <ClCompile Include="timeSheetAdmin.cpp" />
+    <ClCompile Include="Timesheet.cpp" />
     <ClCompile Include="UpdateEmployee.cpp" />
     <ClCompile Include="ViewPaystub.cpp" />
   </ItemGroup>
@@ -182,13 +174,6 @@
     <EmbeddedResource Include="AddEmployee.resx">
       <DependentUpon>AddEmployee.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin2.resx">
-      <DependentUpon>Admin2.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EmployeeDetailAdmin.resx">
-      <DependentUpon>EmployeeDetailAdmin.h</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="EmployeeMainMenu.resx">
       <DependentUpon>EmployeeMainMenu.h</DependentUpon>
     </EmbeddedResource>
@@ -198,14 +183,17 @@
     <EmbeddedResource Include="HrView.resx">
       <DependentUpon>HrView.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyForm.resx">
-      <DependentUpon>MyForm.h</DependentUpon>
+    <EmbeddedResource Include="MyForm1.resx">
+      <DependentUpon>MyForm1.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="removeEmployee.resx">
       <DependentUpon>removeEmployee.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="timeSheetAdmin.resx">
-      <DependentUpon>timeSheetAdmin.h</DependentUpon>
+    <EmbeddedResource Include="Timesheet.resx">
+      <DependentUpon>Timesheet.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateEmployee.resx">
+      <DependentUpon>UpdateEmployee.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewPaystub.resx">
       <DependentUpon>ViewPaystub.h</DependentUpon>
