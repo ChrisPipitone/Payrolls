@@ -118,6 +118,7 @@
     <ClInclude Include="AddEmployee.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Benfits.h" />
     <ClInclude Include="ConnectionPath.h" />
     <ClInclude Include="EmployeeMainMenu.h">
       <FileType>CppForm</FileType>
@@ -147,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddEmployee.cpp" />
+    <ClCompile Include="Benfits.cpp" />
     <ClCompile Include="EmployeeMainMenu.cpp" />
     <ClCompile Include="FedTax.cpp" />
     <ClCompile Include="Form1.cpp" />
