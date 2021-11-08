@@ -60,6 +60,9 @@
     <ClInclude Include="UpdateEmployee.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ViewPaystub.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GrossIncome.cpp">
@@ -102,6 +105,9 @@
       <Filter>Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="UpdateEmployee.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewPaystub.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>

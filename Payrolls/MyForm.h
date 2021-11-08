@@ -460,7 +460,7 @@ private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) 
 	label12->Hide();
 	button3->Hide();
 
-	OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Chris/Desktop/Payroll_Info.accdb");
+	OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source= C:/Users/Zhuowei Hu/Documents/Payroll Info.accdb");
 	conn->Open();
 
 	OleDbCommand^ command = conn->CreateCommand();
@@ -469,7 +469,7 @@ private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) 
 
 	OleDbCommand^ cmd = conn->CreateCommand();
 	cmd->CommandType = CommandType::Text;
-	cmd->CommandText = "select Firstname,Lastname, Email, PhoneNumber,HourlyPay from EmployeeInfo where ([ID] = @ID)  ";
+	cmd->CommandText = "select Firstname,Lastname, Email, PhoneNumber,HourlyPay from EmployeeInfo where ([ID] = @ID)";
 	cmd->Parameters->AddWithValue("@ID", Int32::Parse(word));
 
 	OleDbDataReader^ myReader = cmd->ExecuteReader();

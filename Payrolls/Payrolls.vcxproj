@@ -150,6 +150,9 @@
     <ClInclude Include="UpdateEmployee.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="ViewPaystub.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddEmployee.cpp" />
@@ -166,6 +169,7 @@
     <ClCompile Include="removeEmployee.cpp" />
     <ClCompile Include="timeSheetAdmin.cpp" />
     <ClCompile Include="UpdateEmployee.cpp" />
+    <ClCompile Include="ViewPaystub.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -202,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="timeSheetAdmin.resx">
       <DependentUpon>timeSheetAdmin.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPaystub.resx">
+      <DependentUpon>ViewPaystub.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
