@@ -126,6 +126,8 @@ namespace Payrolls {
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->ClientSize = System::Drawing::Size(544, 400);
 
+            this->Controls->Add(this->button5);
+
             this->Controls->Add(this->button4);
             this->Controls->Add(this->button3);
             this->Controls->Add(this->button2);
@@ -156,5 +158,16 @@ namespace Payrolls {
         this->Hide();
         removeEmp->ShowDialog();
     }
+    private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+    }
+    private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+        ViewPaystub^ viewPay = gcnew ViewPaystub();
+        this->Hide();
+        viewPay->ShowDialog();
+    }
+    };
+
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
