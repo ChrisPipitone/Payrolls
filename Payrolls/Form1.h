@@ -216,7 +216,7 @@ namespace Payrolls {
 
 
 
-			OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source= C:/Users/Zhuowei Hu/Documents/Payroll Info.accdb");
+			OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
 
 			conn->Open();
 			OleDbCommand^ cmd = conn->CreateCommand();
