@@ -215,7 +215,7 @@ namespace Payrolls {
 			System::String^ empID = textBox1->Text;
 
 
-			OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Ivan/Desktop/Payroll_Info.accdb");
+			OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source= C:/Users/Zhuowei Hu/Documents/Payroll Info.accdb");
 			conn->Open();
 			OleDbCommand^ cmd = conn->CreateCommand();
 			cmd->CommandType = CommandType::Text;

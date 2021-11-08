@@ -1120,19 +1120,19 @@ namespace Payrolls {
 
 		OleDbCommand^ cmd = conn->CreateCommand();
 		cmd->CommandType = CommandType::Text;
-		cmd->CommandText = "select Firstname,Lastname, Email, PhoneNumber, HourlyPay, Department from EmployeeInfo where ([ID] = @ID)  ";
+		cmd->CommandText = "select [Firstname],[Lastname], [Email], [PhoneNumber], [HourlyPay], [Position] from EmployeeInfo where ([ID] = @ID)  ";
 		cmd->Parameters->AddWithValue("@ID", ID);
 
 		OleDbDataReader^ myReader = cmd->ExecuteReader();
 
 		while (myReader->Read()) {
 
-			Name = myReader["FirstName"]->ToString();
-			LastName = myReader["LastName"]->ToString();
+			Name = myReader["Firstname"]->ToString();
+			LastName = myReader["Lastname"]->ToString();
 			email = myReader["Email"]->ToString();
 			phone = myReader["PhoneNumber"]->ToString();
 			pay = myReader["HourlyPay"]->ToString();
-			Department = myReader["Department"]->ToString();
+			Department = myReader["Position"]->ToString();
 		}
 
 		lbl1->Text = Name + ", " + LastName;
@@ -1172,7 +1172,7 @@ namespace Payrolls {
 			conn2->Open();
 			OleDbCommand^ cmd2 = conn2->CreateCommand();
 			cmd2->CommandType = CommandType::Text;
-			cmd2->CommandText = "select ID,Firstname,Lastname, Department, Email, DateofBirth, PhoneNumber,HourlyPay , Hours from EmployeeInfo where  ([ID] = @ID) and ([Position] = 'Employee' or [Position] = 'employee' or [Position] = 'EMPLOYEE')  ";
+			cmd2->CommandText = "select [ID],[Firstname],[Lastname], [Position], [Email], [DateofBirth], [PhoneNumber],[HourlyPay] , [Hours] from EmployeeInfo where  ([ID] = @ID) and ([Position] = 'Employee' or [Position] = 'employee' or [Position] = 'EMPLOYEE')  ";
 			cmd2->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
 			OleDbDataReader^ myReader = cmd2->ExecuteReader();
 
@@ -1181,12 +1181,12 @@ namespace Payrolls {
 				while (myReader->Read()) {
 
 					word1 = myReader["ID"]->ToString();
-					NameE = myReader["FirstName"]->ToString();
-					LastNameE = myReader["LastName"]->ToString();
+					NameE = myReader["Firstname"]->ToString();
+					LastNameE = myReader["Lastname"]->ToString();
 					emailE = myReader["Email"]->ToString();
 					phoneE = myReader["PhoneNumber"]->ToString();
 					payE = myReader["HourlyPay"]->ToString();
-					DepartmentE = myReader["Department"]->ToString();
+					DepartmentE = myReader["Position"]->ToString();
 					DOB = myReader["DateofBirth"]->ToString();
 					CurrHours = myReader["Hours"]->ToString();
 
