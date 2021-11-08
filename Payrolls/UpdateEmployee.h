@@ -550,13 +550,13 @@ namespace Payrolls {
 		double grossIncome = gross.CalculateGrossIncome(Int32::Parse(textBox7->Text), overtimePay, Convert::ToDouble(textBox8->Text));
 		double fedTax = fTax.FedTaxRate(grossIncome);
 		double nyTax = nTax.NYTaxRate(grossIncome);
-		OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
+		OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source= C:/Users/Zhuowei Hu/Documents/Payroll Info.accdb");
 		conn->Open();
 		OleDbCommand^ cmd = conn->CreateCommand();
 		cmd->CommandType = CommandType::Text;
 		cmd->CommandText = "UPDATE EmployeeInfo SET [Email] = @Email, [PhoneNumber] = @PhoneNumber, [Address1] = @Address, [Zipcode] = @Zipcode, [Position] = @Position, " +
 			"[Hours] = @Hours, [HourlyPay] = @HourlyPay, [Password] = @Password, [OvertimeHours] = @OvertimeHours, [OvertimePay] = @OvertimePay, " +
-			"[Weeklygrosspay] = @Weeklygrosspay, [Age] = @Age WHERE ID = @ID";
+			"[Weeklygrosspay] = @Weeklygrosspay, [Age] = @Age, [FederalTax] = @FederalTax, [NYTax] = @NYTax  WHERE ID = @ID";
 		cmd->Parameters->AddWithValue("@Email", textBox2->Text);
 		cmd->Parameters->AddWithValue("@PhoneNumber", textBox3->Text);
 		cmd->Parameters->AddWithValue("@Address", textBox4->Text);
@@ -569,6 +569,8 @@ namespace Payrolls {
 		cmd->Parameters->AddWithValue("@OvertimePay", overtimePay);
 		cmd->Parameters->AddWithValue("@Weeklygrosspay", grossIncome);
 		cmd->Parameters->AddWithValue("@Age", Int32::Parse(textBox10->Text));
+		cmd->Parameters->AddWithValue("@FederalTax", fedTax);
+		cmd->Parameters->AddWithValue("@NYTax", nyTax);
 		cmd->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
 		cmd->ExecuteNonQuery();
 		conn->Close();

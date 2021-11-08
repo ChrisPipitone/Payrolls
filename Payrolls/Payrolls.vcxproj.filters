@@ -54,9 +54,6 @@
     <ClInclude Include="Timesheet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ViewPaystub.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GrossIncome.cpp">
@@ -87,6 +84,12 @@
       <Filter>Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="UpdateEmployee.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyForm1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Timesheet.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
