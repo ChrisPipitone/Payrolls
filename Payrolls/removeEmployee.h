@@ -8,12 +8,16 @@ namespace Payrolls {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Data::OleDb;
 
 	/// <summary>
 	/// Summary for removeEmployee
 	/// </summary>
 	public ref class removeEmployee : public System::Windows::Forms::Form
 	{
+	private:
+		void init(System::String^ empID);
+		void deleteEmployee(System::String^ empID);
 	public:
 		removeEmployee(void)
 		{
