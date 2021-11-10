@@ -162,7 +162,7 @@ namespace Payrolls {
     }
     private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
         ViewPaystub^ viewPay = gcnew ViewPaystub();
-        this->Hide();
+       // this->Hide();
         viewPay->ShowDialog();
     }
 };

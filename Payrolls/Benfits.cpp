@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-double Benfits::CalculateHealthCoverage(int salary,int netpay, double employee_price, double employer_price)
+double Benfits::CalculateHealthCoverage(double salary, double netpay, double employee_price, double employer_price)
 {
     if (salary > 100000) // Platinum_pack
     {
@@ -30,7 +30,7 @@ double Benfits::CalculateHealthCoverage(int salary,int netpay, double employee_p
         return 0.0;
 }
 
-double Benfits::CalculateDentalCoverage(int salary, int netpay, double employee_price, double employer_price)
+double Benfits::CalculateDentalCoverage(double salary, double netpay, double employee_price, double employer_price)
 {
     if (salary > 100000) // Platinum_pack
     {
@@ -57,7 +57,7 @@ double Benfits::CalculateDentalCoverage(int salary, int netpay, double employee_
         return 0.0;
 }
 
-double Benfits::CalculateVisionCoverage(int salary, int netpay, double employee_price, double employer_price)
+double Benfits::CalculateVisionCoverage(double salary, double netpay, double employee_price, double employer_price)
 {
     if (salary > 100000) // Platinum_pack
     {
@@ -84,7 +84,7 @@ else
 return 0.0;
 }
 
-double Benfits::CalculateHealthBenfits(int salary, int netpay, double employee_price, double employer_price)
+double Benfits::CalculateHealthBenfits(double salary, double netpay, double employee_price, double employer_price)
 {
 
     return 0.0;

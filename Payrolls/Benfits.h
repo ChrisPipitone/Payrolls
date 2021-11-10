@@ -4,10 +4,10 @@
 
 class Benfits{
 public:
-    double CalculateHealthCoverage(int salary, int netpay, double employee_price, double employer_price);
-    double CalculateDentalCoverage(int salary, int netpay, double employee_price, double employer_price);
-    double CalculateVisionCoverage(int salary, int netpay, double employee_price, double employer_price);
-    double CalculateHealthBenfits(int salary, int netpay, double employee_price, double employer_price); 
+    double CalculateHealthCoverage(double salary, double netpay, double employee_price, double employer_price);
+    double CalculateDentalCoverage(double salary, double netpay, double employee_price, double employer_price);
+    double CalculateVisionCoverage(double salary, double netpay, double employee_price, double employer_price);
+    double CalculateHealthBenfits(double salary, double netpay, double employee_price, double employer_price);
 
 
 };
