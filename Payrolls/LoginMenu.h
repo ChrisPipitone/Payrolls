@@ -16,10 +16,10 @@ namespace Payrolls {
 	/// <summary>
 	/// Summary for Form1
 	/// </summary>
-	public ref class Form1 : public System::Windows::Forms::Form
+	public ref class LoginMenu : public System::Windows::Forms::Form
 	{
 	public:
-		Form1(void)
+		LoginMenu(void)
 		{
 			InitializeComponent();
 			//
@@ -31,7 +31,7 @@ namespace Payrolls {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~Form1()
+		~LoginMenu()
 		{
 			if (components)
 			{
@@ -48,7 +48,9 @@ namespace Payrolls {
 	private: System::Windows::Forms::TextBox^ textBox2;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::Button^ tempEmpButton;
+
+
+	private: System::ComponentModel::IContainer^ components;
 
 
 
@@ -59,7 +61,7 @@ namespace Payrolls {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container^ components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -68,7 +70,7 @@ namespace Payrolls {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Form1::typeid));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(LoginMenu::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -77,7 +79,6 @@ namespace Payrolls {
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->tempEmpButton = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -100,7 +101,7 @@ namespace Payrolls {
 			this->label2->Size = System::Drawing::Size(129, 24);
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"Employee ID";
-			this->label2->Click += gcnew System::EventHandler(this, &Form1::label2_Click);
+			this->label2->Click += gcnew System::EventHandler(this, &LoginMenu::label2_Click);
 			// 
 			// label3
 			// 
@@ -110,7 +111,7 @@ namespace Payrolls {
 			this->label3->Size = System::Drawing::Size(100, 24);
 			this->label3->TabIndex = 2;
 			this->label3->Text = L"Password";
-			this->label3->Click += gcnew System::EventHandler(this, &Form1::label3_Click);
+			this->label3->Click += gcnew System::EventHandler(this, &LoginMenu::label3_Click);
 			// 
 			// label4
 			// 
@@ -127,7 +128,7 @@ namespace Payrolls {
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(275, 28);
 			this->textBox1->TabIndex = 4;
-			this->textBox1->TextChanged += gcnew System::EventHandler(this, &Form1::textBox1_TextChanged);
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &LoginMenu::textBox1_TextChanged);
 			// 
 			// textBox2
 			// 
@@ -135,7 +136,7 @@ namespace Payrolls {
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(275, 28);
 			this->textBox2->TabIndex = 5;
-			this->textBox2->TextChanged += gcnew System::EventHandler(this, &Form1::textBox2_TextChanged);
+			this->textBox2->TextChanged += gcnew System::EventHandler(this, &LoginMenu::textBox2_TextChanged);
 			// 
 			// comboBox1
 			// 
@@ -145,7 +146,7 @@ namespace Payrolls {
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(281, 30);
 			this->comboBox1->TabIndex = 6;
-			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &Form1::comboBox1_SelectedIndexChanged);
+			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &LoginMenu::comboBox1_SelectedIndexChanged);
 			// 
 			// button1
 			// 
@@ -155,26 +156,15 @@ namespace Payrolls {
 			this->button1->TabIndex = 7;
 			this->button1->Text = L"Login";
 			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
+			this->button1->Click += gcnew System::EventHandler(this, &LoginMenu::button1_Click);
 			// 
-			// tempEmpButton
-			// 
-			this->tempEmpButton->Location = System::Drawing::Point(407, 662);
-			this->tempEmpButton->Name = L"tempEmpButton";
-			this->tempEmpButton->Size = System::Drawing::Size(305, 43);
-			this->tempEmpButton->TabIndex = 8;
-			this->tempEmpButton->Text = L"temp to emp menu";
-			this->tempEmpButton->UseVisualStyleBackColor = true;
-			this->tempEmpButton->Click += gcnew System::EventHandler(this, &Form1::tempEmpButton_Click);
-			// 
-			// Form1
+			// LoginMenu
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(11, 22);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::BlanchedAlmond;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->ClientSize = System::Drawing::Size(1246, 839);
-			this->Controls->Add(this->tempEmpButton);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->textBox2);
@@ -185,10 +175,10 @@ namespace Payrolls {
 			this->Controls->Add(this->label1);
 			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Margin = System::Windows::Forms::Padding(6, 5, 6, 5);
-			this->Name = L"Form1";
-			this->Text = L"Form1";
-			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
+			this->Name = L"LoginMenu";
+			this->Load += gcnew System::EventHandler(this, &LoginMenu::Form1_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

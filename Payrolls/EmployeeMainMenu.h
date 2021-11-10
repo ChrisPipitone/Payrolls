@@ -101,12 +101,12 @@ private: System::Windows::Forms::Label^ lastName_glance_label;
 	private: System::Windows::Forms::Label^ Emp_ID;
 	private: System::Windows::Forms::Label^ id_label;
 	private: System::Windows::Forms::Label^ Emp_jobtitle;
-	private: System::Windows::Forms::Label^ Emp_grossIncome;
-	private: System::Windows::Forms::Label^ grossIncome_label;
-	private: System::Windows::Forms::Label^ Emp_payRate;
-	private: System::Windows::Forms::Label^ Emp_incomeType;
-	private: System::Windows::Forms::Label^ incomeType_label;
-	private: System::Windows::Forms::Label^ label35;
+
+
+
+
+
+
 	private: System::Windows::Forms::Label^ jobTitle_label;
 	private: System::Windows::Forms::Label^ Emp_department;
 	private: System::Windows::Forms::Label^ department_label;
@@ -139,6 +139,7 @@ private: System::Windows::Forms::Panel^ viewBenefits_panel;
 		/// </summary>
 		void InitializeComponent()
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(EmployeeMainMenu::typeid));
 			this->mainMenuLeft_title = (gcnew System::Windows::Forms::Label());
 			this->id_glance_label = (gcnew System::Windows::Forms::Label());
 			this->firstName_glance_label = (gcnew System::Windows::Forms::Label());
@@ -152,12 +153,6 @@ private: System::Windows::Forms::Panel^ viewBenefits_panel;
 			this->Emp_ID = (gcnew System::Windows::Forms::Label());
 			this->id_label = (gcnew System::Windows::Forms::Label());
 			this->Emp_jobtitle = (gcnew System::Windows::Forms::Label());
-			this->Emp_grossIncome = (gcnew System::Windows::Forms::Label());
-			this->grossIncome_label = (gcnew System::Windows::Forms::Label());
-			this->Emp_payRate = (gcnew System::Windows::Forms::Label());
-			this->Emp_incomeType = (gcnew System::Windows::Forms::Label());
-			this->incomeType_label = (gcnew System::Windows::Forms::Label());
-			this->label35 = (gcnew System::Windows::Forms::Label());
 			this->jobTitle_label = (gcnew System::Windows::Forms::Label());
 			this->Emp_department = (gcnew System::Windows::Forms::Label());
 			this->department_label = (gcnew System::Windows::Forms::Label());
@@ -336,63 +331,6 @@ private: System::Windows::Forms::Panel^ viewBenefits_panel;
 			this->Emp_jobtitle->Name = L"Emp_jobtitle";
 			this->Emp_jobtitle->Size = System::Drawing::Size(0, 24);
 			this->Emp_jobtitle->TabIndex = 20;
-			// 
-			// Emp_grossIncome
-			// 
-			this->Emp_grossIncome->AutoSize = true;
-			this->Emp_grossIncome->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-			this->Emp_grossIncome->Location = System::Drawing::Point(290, 568);
-			this->Emp_grossIncome->Name = L"Emp_grossIncome";
-			this->Emp_grossIncome->Size = System::Drawing::Size(0, 24);
-			this->Emp_grossIncome->TabIndex = 19;
-			// 
-			// grossIncome_label
-			// 
-			this->grossIncome_label->AutoSize = true;
-			this->grossIncome_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-			this->grossIncome_label->Location = System::Drawing::Point(121, 569);
-			this->grossIncome_label->Name = L"grossIncome_label";
-			this->grossIncome_label->Size = System::Drawing::Size(132, 24);
-			this->grossIncome_label->TabIndex = 18;
-			this->grossIncome_label->Text = L"Gross Income:";
-			// 
-			// Emp_payRate
-			// 
-			this->Emp_payRate->AutoSize = true;
-			this->Emp_payRate->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-			this->Emp_payRate->Location = System::Drawing::Point(290, 522);
-			this->Emp_payRate->Name = L"Emp_payRate";
-			this->Emp_payRate->Size = System::Drawing::Size(0, 24);
-			this->Emp_payRate->TabIndex = 17;
-			// 
-			// Emp_incomeType
-			// 
-			this->Emp_incomeType->AutoSize = true;
-			this->Emp_incomeType->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-			this->Emp_incomeType->Location = System::Drawing::Point(288, 471);
-			this->Emp_incomeType->Name = L"Emp_incomeType";
-			this->Emp_incomeType->Size = System::Drawing::Size(0, 24);
-			this->Emp_incomeType->TabIndex = 16;
-			// 
-			// incomeType_label
-			// 
-			this->incomeType_label->AutoSize = true;
-			this->incomeType_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-			this->incomeType_label->Location = System::Drawing::Point(121, 471);
-			this->incomeType_label->Name = L"incomeType_label";
-			this->incomeType_label->Size = System::Drawing::Size(126, 24);
-			this->incomeType_label->TabIndex = 15;
-			this->incomeType_label->Text = L"Income Type:";
-			// 
-			// label35
-			// 
-			this->label35->AutoSize = true;
-			this->label35->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-			this->label35->Location = System::Drawing::Point(121, 523);
-			this->label35->Name = L"label35";
-			this->label35->Size = System::Drawing::Size(89, 24);
-			this->label35->TabIndex = 14;
-			this->label35->Text = L"Pay Rate:";
 			// 
 			// jobTitle_label
 			// 
@@ -606,8 +544,8 @@ private: System::Windows::Forms::Panel^ viewBenefits_panel;
 			this->viewPaystub_botton->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
 			this->viewPaystub_botton->ImageTransparentColor = System::Drawing::Color::Magenta;
 			this->viewPaystub_botton->Name = L"viewPaystub_botton";
-			this->viewPaystub_botton->Size = System::Drawing::Size(86, 22);
-			this->viewPaystub_botton->Text = L"View Paystubs";
+			this->viewPaystub_botton->Size = System::Drawing::Size(160, 22);
+			this->viewPaystub_botton->Text = L"View Paystub Coming Soon!";
 			this->viewPaystub_botton->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::viewPaystub_botton_Click);
 			// 
 			// toolStripSeparator3
@@ -620,8 +558,8 @@ private: System::Windows::Forms::Panel^ viewBenefits_panel;
 			this->viewTimesheet_button->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
 			this->viewTimesheet_button->ImageTransparentColor = System::Drawing::Color::Magenta;
 			this->viewTimesheet_button->Name = L"viewTimesheet_button";
-			this->viewTimesheet_button->Size = System::Drawing::Size(93, 22);
-			this->viewTimesheet_button->Text = L"View Timesheet";
+			this->viewTimesheet_button->Size = System::Drawing::Size(172, 22);
+			this->viewTimesheet_button->Text = L"View Timesheet Coming Soon!";
 			this->viewTimesheet_button->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::viewTimesheet_button_Click);
 			// 
 			// toolStripSeparator4
@@ -656,8 +594,8 @@ private: System::Windows::Forms::Panel^ viewBenefits_panel;
 			// 
 			this->toolStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(11) {
 				this->editPersonalInfo_button,
-					this->toolStripSeparator1, this->viewBenefits_button, this->toolStripSeparator2, this->viewPaystub_botton, this->toolStripSeparator3,
-					this->viewTimesheet_button, this->toolStripSeparator4, this->InfoAtGlance_button, this->toolStripSeparator5, this->logout_button
+					this->toolStripSeparator1, this->viewBenefits_button, this->toolStripSeparator2, this->InfoAtGlance_button, this->toolStripSeparator4,
+					this->viewPaystub_botton, this->toolStripSeparator3, this->viewTimesheet_button, this->toolStripSeparator5, this->logout_button
 			});
 			this->toolStrip1->Location = System::Drawing::Point(0, 0);
 			this->toolStrip1->Name = L"toolStrip1";
@@ -672,12 +610,6 @@ private: System::Windows::Forms::Panel^ viewBenefits_panel;
 			this->editPersonal_panel->Controls->Add(this->Emp_ID);
 			this->editPersonal_panel->Controls->Add(this->id_label);
 			this->editPersonal_panel->Controls->Add(this->Emp_jobtitle);
-			this->editPersonal_panel->Controls->Add(this->Emp_grossIncome);
-			this->editPersonal_panel->Controls->Add(this->grossIncome_label);
-			this->editPersonal_panel->Controls->Add(this->Emp_payRate);
-			this->editPersonal_panel->Controls->Add(this->Emp_incomeType);
-			this->editPersonal_panel->Controls->Add(this->incomeType_label);
-			this->editPersonal_panel->Controls->Add(this->label35);
 			this->editPersonal_panel->Controls->Add(this->jobTitle_label);
 			this->editPersonal_panel->Controls->Add(this->Emp_department);
 			this->editPersonal_panel->Controls->Add(this->department_label);
@@ -799,10 +731,11 @@ private: System::Windows::Forms::Panel^ viewBenefits_panel;
 			// 
 			// viewPaystub_panel
 			// 
+			this->viewPaystub_panel->BackColor = System::Drawing::Color::White;
 			this->viewPaystub_panel->Controls->Add(this->payStub_title_label);
-			this->viewPaystub_panel->Location = System::Drawing::Point(15, 28);
+			this->viewPaystub_panel->Location = System::Drawing::Point(0, 28);
 			this->viewPaystub_panel->Name = L"viewPaystub_panel";
-			this->viewPaystub_panel->Size = System::Drawing::Size(1097, 650);
+			this->viewPaystub_panel->Size = System::Drawing::Size(1112, 650);
 			this->viewPaystub_panel->TabIndex = 11;
 			// 
 			// payStub_title_label
@@ -820,6 +753,7 @@ private: System::Windows::Forms::Panel^ viewBenefits_panel;
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::White;
 			this->ClientSize = System::Drawing::Size(1115, 679);
 			this->Controls->Add(this->viewPaystub_panel);
 			this->Controls->Add(this->viewBenefits_panel);
@@ -827,8 +761,9 @@ private: System::Windows::Forms::Panel^ viewBenefits_panel;
 			this->Controls->Add(this->Emp_currBenefit_glance);
 			this->Controls->Add(this->editPersonal_panel);
 			this->Controls->Add(this->infoGlance_panel);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->ImeMode = System::Windows::Forms::ImeMode::On;
 			this->Name = L"EmployeeMainMenu";
-			this->Text = L"EmployeeMainMenu";
 			this->toolStrip1->ResumeLayout(false);
 			this->toolStrip1->PerformLayout();
 			this->editPersonal_panel->ResumeLayout(false);
@@ -855,19 +790,23 @@ private: System::Windows::Forms::Panel^ viewBenefits_panel;
 	}
 
 	private: System::Void viewPaystub_botton_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		/*
 		this->infoGlance_panel->Hide();
 		this->viewBenefits_panel->Hide();
 		this->editPersonal_panel->Hide();
 
 		this->viewPaystub_panel->Show();
+		*/
 	}
 
 	private: System::Void viewTimesheet_button_Click(System::Object^ sender, System::EventArgs^ e) {
+		/*
 		this->infoGlance_panel->Hide();
 		this->viewBenefits_panel->Hide();
 		this->editPersonal_panel->Hide();
 		this->viewPaystub_panel->Hide();
-
+		*/
 	}
 
 	private: System::Void logout_button_Click(System::Object^ sender, System::EventArgs^ e) {
