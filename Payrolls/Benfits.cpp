@@ -1,90 +1,64 @@
 #include "Benfits.h"
 #include <cmath>
 #include <string>
-using namespace std;
+using namespace System;
 
-double Benfits::CalculateHealthCoverage(int salary,int netpay, double employee_price, double employer_price)
+double Benfits::CalculateHealthCoverage(double salary, String^ package)
 {
-    if (salary > 100000) // Platinum_pack
+    String^ premium = gcnew String("Premium Package");
+    String^ gold = gcnew String("Gold Package");
+    if (package == premium) // Platinum_pack
     {
-        employee_price = salary * 0.80;
-        employer_price = salary * 0.20;
-        netpay = salary - employee_price;
-        return netpay;
+        return round((salary * 0.80) * 100.0) / 100.0;
     }
-    else if (salary > 70000 || salary < 100000) //Gold_pack
+    else if (package == gold) //Gold_pack
     {
-        employee_price = salary * 0.80;
-        employer_price = salary * 0.20;
-        netpay = salary - employee_price;
-        return netpay;
+        return round((salary * 0.80) * 100.0) / 100.0;
     }
-    else if (salary > 70000) //Silver_pack
+    else //Silver_pack
     {
-        employee_price = salary * 0.80;
-        employer_price = salary * 0.20;
-        netpay = salary - employee_price;
-        return netpay;
+        return round((salary * 0.80) * 100.0) / 100.0;
     }
-    else
-        return 0.0;
 }
 
-double Benfits::CalculateDentalCoverage(int salary, int netpay, double employee_price, double employer_price)
+double Benfits::CalculateDentalCoverage(double salary, String^ package)
 {
-    if (salary > 100000) // Platinum_pack
+    String^ premium = gcnew String("Premium Package");
+    String^ gold = gcnew String("Gold Package");
+    if (package == premium) // Platinum_pack
     {
-        employee_price = salary * 0.80;
-        employer_price = salary * 0.20;
-        netpay = salary - employee_price;
-        return netpay;
+         return round((salary * 0.80) * 100.0) / 100.0;
     }
-    else if (salary > 70000 || salary < 100000) //Gold_pack
+    else if (package == gold) //Gold_pack
     {
-        employee_price = salary * 0.80;
-        employer_price = salary * 0.20;
-        netpay = salary - employee_price;
-        return netpay;
+        return round((salary * 0.80) * 100.0) / 100.0;
     }
-    else if (salary > 70000) //Silver_pack
+    else //Silver_pack
     {
-        employee_price = salary * 0.80;
-        employer_price = salary * 0.20;
-        netpay = salary - employee_price;
-        return netpay;
+        return round((salary * 0.80) * 100.0) / 100.0;
     }
-    else
-        return 0.0;
 }
 
-double Benfits::CalculateVisionCoverage(int salary, int netpay, double employee_price, double employer_price)
+double Benfits::CalculateVisionCoverage(double salary, String^ package)
 {
-    if (salary > 100000) // Platinum_pack
+    String^ premium = gcnew String("Premium Package");
+    String^ gold = gcnew String("Gold Package");
+    if (package == premium) // Platinum_pack
     {
-        employee_price = salary * 0.80;
-        employer_price = salary * 0.20;
-        netpay = salary - employee_price;
-        return netpay;
+        return round((salary * 0.80) * 100.0) / 100.0;
     }
-    else if (salary > 70000 || salary < 100000) //Gold_pack
+    else if (package == gold) //Gold_pack
     {
-        employee_price = salary * 0.80;
-        employer_price = salary * 0.20;
-        netpay = salary - employee_price;
-        return netpay;
+        return round((salary * 0.80) * 100.0) / 100.0;
     }
-    else if (salary > 70000) //Silver_pack
+    else //Silver_pack
     {
-        employee_price = salary * 0.80;
-        employer_price = salary * 0.20;
-        netpay = salary - employee_price;
-        return netpay;
+        return round((salary * 0.80) * 100.0) / 100.0;
     }
-else 
-return 0.0;
+
 }
 
-double Benfits::CalculateHealthBenfits(int salary, int netpay, double employee_price, double employer_price)
+double Benfits::CalculateHealthBenfits(double salary)
 {
 
     return 0.0;

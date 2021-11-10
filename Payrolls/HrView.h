@@ -59,6 +59,7 @@ namespace Payrolls {
         /// </summary>
         void InitializeComponent(void)
         {
+            System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(HrView::typeid));
             this->button1 = (gcnew System::Windows::Forms::Button());
             this->button2 = (gcnew System::Windows::Forms::Button());
             this->button3 = (gcnew System::Windows::Forms::Button());
@@ -125,13 +126,12 @@ namespace Payrolls {
             this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->ClientSize = System::Drawing::Size(544, 400);
-
             this->Controls->Add(this->button5);
-
             this->Controls->Add(this->button4);
             this->Controls->Add(this->button3);
             this->Controls->Add(this->button2);
             this->Controls->Add(this->button1);
+            this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
             this->Margin = System::Windows::Forms::Padding(2);
             this->Name = L"HrView";
             this->Text = L"HrView";

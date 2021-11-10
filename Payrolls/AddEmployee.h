@@ -3,6 +3,7 @@
 #include "ConnectionPath.h"
 #include "FedTax.h"
 #include "NYTax.h"
+#include "Benfits.h"
 
 namespace Payrolls {
 
@@ -615,18 +616,26 @@ namespace Payrolls {
 		GrossIncome gross;
 		FedTax fTax;
 		NYTax nTax;
+		Benfits benfit;
 		int overtimeHour = gross.calculateOvertimeHour(Int32::Parse(textBox15->Text));
 		double overtimePay = gross.CalculateOvertimePay(overtimeHour, Convert::ToDouble(textBox14->Text));
 		double grossIncome = gross.CalculateGrossIncome(Int32::Parse(textBox15->Text), overtimePay, Convert::ToDouble(textBox14->Text));
 		double fedTax = fTax.FedTaxRate(grossIncome);
 		double nyTax = nTax.NYTaxRate(grossIncome);
+		if (comboBox1->Text == "" || comboBox2->Text == "" || comboBox3->Text == "") {
+			MessageBox::Show("Error! Please select a field!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		double health = benfit.CalculateHealthCoverage(grossIncome, comboBox1->Text);
+		double dental = benfit.CalculateDentalCoverage(grossIncome, comboBox2->Text);
+		double vision = benfit.CalculateVisionCoverage(grossIncome, comboBox3->Text);
+		double netPay = grossIncome - (fedTax + nyTax + health + dental + vision);
 		OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
 		conn->Open();
 		OleDbCommand^ cmd = conn->CreateCommand();
 		cmd->CommandType = CommandType::Text;
 		cmd->CommandText = "Insert into EmployeeInfo([ID], [Password], [SSN], [Firstname], [Lastname], [DateofBirth], [Age], [Gender], [Email], [PhoneNumber], [Address1], [Zipcode], [Position], [Hours], [OvertimeHours], " +
-			"[OvertimePay], [HourlyPay], [Weeklygrosspay], [HealthCoverage], [DentalCoverage], [VisionCoverage],[DisablityCoverage], [RetirementCoverage],[FederalTax],[NYTax]) VALUES(@ID,@Password,@SSN,@Firstname,@Lastname,@DateofBirth,@Age,@Gender,@Email,@PhoneNumber,@Address1,@Zipcode,@Position,@Hours," +
-			"@OvertimeHours, @OvertimePay, @HourlyPay, @Weeklygrosspay, @HealthCoverage, @DentalCoverage, @VisionCoverage, @DisablityCoverage, @RetirementCoverage, @FederalTax, @NYTax)";
+			"[OvertimePay], [HourlyPay], [Weeklygrosspay], [HealthCoverage], [DentalCoverage], [VisionCoverage],[DisablityCoverage], [RetirementCoverage],[FederalTax],[NYTax], [HealthCost],[DentalCost],[VisionCost]) VALUES(@ID,@Password,@SSN,@Firstname,@Lastname,@DateofBirth,@Age,@Gender,@Email,@PhoneNumber,@Address1,@Zipcode,@Position,@Hours," +
+			"@OvertimeHours, @OvertimePay, @HourlyPay, @Weeklygrosspay, @HealthCoverage, @DentalCoverage, @VisionCoverage, @DisablityCoverage, @RetirementCoverage, @FederalTax, @NYTax, @HealthCost, @DentalCost, @VisionCost)";
 		cmd->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
 		cmd->Parameters->AddWithValue("@Password", textBox2->Text);
 		cmd->Parameters->AddWithValue("@SSN", textBox3->Text);
