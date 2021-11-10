@@ -9,8 +9,6 @@ public:
     double CalculateDentalCoverage(double salary, String^ package);
     double CalculateVisionCoverage(double salary, String^ package);
     double CalculateHealthBenfits(double salary); 
-
-
 };
 
 #endif

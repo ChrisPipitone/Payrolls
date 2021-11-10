@@ -1,3 +1,4 @@
+#pragma once
 #include "ConnectionPath.h"
 
 namespace Payrolls {
@@ -117,6 +118,7 @@ namespace Payrolls {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Label^ label78;
 	private: System::Windows::Forms::Label^ label79;
+private: System::Windows::Forms::Button^ paystubBack_button;
 
 	private:
 		/// <summary>
@@ -213,6 +215,7 @@ namespace Payrolls {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label78 = (gcnew System::Windows::Forms::Label());
 			this->label79 = (gcnew System::Windows::Forms::Label());
+			this->paystubBack_button = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -1038,6 +1041,16 @@ namespace Payrolls {
 			this->label79->TabIndex = 80;
 			this->label79->Text = L"Date";
 			// 
+			// paystubBack_button
+			// 
+			this->paystubBack_button->Location = System::Drawing::Point(303, 913);
+			this->paystubBack_button->Name = L"paystubBack_button";
+			this->paystubBack_button->Size = System::Drawing::Size(87, 23);
+			this->paystubBack_button->TabIndex = 81;
+			this->paystubBack_button->Text = L"Back";
+			this->paystubBack_button->UseVisualStyleBackColor = true;
+			this->paystubBack_button->Click += gcnew System::EventHandler(this, &ViewPaystub::paystubBack_button_Click);
+			// 
 			// ViewPaystub
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -1045,6 +1058,7 @@ namespace Payrolls {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->ClientSize = System::Drawing::Size(738, 947);
+			this->Controls->Add(this->paystubBack_button);
 			this->Controls->Add(this->label79);
 			this->Controls->Add(this->label78);
 			this->Controls->Add(this->button1);
@@ -1127,7 +1141,7 @@ namespace Payrolls {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"ViewPaystub";
 			this->Text = L"ViewPaystub";
 			this->Load += gcnew System::EventHandler(this, &ViewPaystub::ViewPaystub_Load);
@@ -1152,6 +1166,9 @@ namespace Payrolls {
 		OleDbCommand^ cmd = conn->CreateCommand();
 		cmd->CommandType = CommandType::Text;
 		cmd->CommandText = "select * from EmployeeInfo where ID = @ID";
+
+		//catch error where user doesn't enter a emp id
+
 		cmd->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
 		OleDbDataReader^ reader = cmd->ExecuteReader();
 		while (reader->Read()) {
@@ -1190,5 +1207,10 @@ namespace Payrolls {
 	}
 	private: System::Void label6_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void paystubBack_button_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Hide();
+		//HrView^ hr = gcnew HrView();
+		//hr->ShowDialog();
+	}
+};
 }
