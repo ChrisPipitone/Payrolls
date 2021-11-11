@@ -1,5 +1,5 @@
 #pragma once
-#include<iostream>
+
 #include"ConnectionPath.h"
 
 namespace Payrolls {
@@ -10,18 +10,6 @@ namespace Payrolls {
 	using namespace System::Data;
 	using namespace System::Drawing;
 	using namespace System::Data::OleDb;
-
-	//used to convert  System::String^ to std::string 
-	using System::Runtime::InteropServices::Marshal;
-	static std::string toStandardString(System::String^ string)
-	{
-		System::IntPtr pointer = Marshal::StringToHGlobalAnsi(string);
-		char* charPointer = reinterpret_cast<char*>(pointer.ToPointer());
-		std::string returnString(charPointer, string->Length);
-		Marshal::FreeHGlobal(pointer);
-
-		return returnString;
-	}
 
 	public ref class EmployeeMainMenu : public System::Windows::Forms::Form
 	{

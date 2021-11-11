@@ -1,5 +1,5 @@
 #pragma once
-#include "MyForm1.h"
+#include "AdminMenu.h"
 #include "EmployeeMainMenu.h"
 #include "HrView.h"
 
@@ -201,10 +201,21 @@ namespace Payrolls {
 			MessageBox::Show("Please enter data in all field!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 		else {
+			//error checking
+			if (textBox1->Text == "")
+			{
+				MessageBox::Show("Enter An Employee Id.");
+				return;
+			}
+			if (!checkID(textBox1->Text))
+			{
+				MessageBox::Show("This ID does not exist within the Database");
+				return;
+			}
+
+
 			//use employee id to pull employee data from data base to fill menu details
 			System::String^ empID = textBox1->Text;
-
-
 
 			OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
 
@@ -243,7 +254,7 @@ namespace Payrolls {
 				else if (status == 1 && datatable->Rows->Count == 0)
 				{
 					MessageBox::Show("Login Succeed!");
-					MyForm1^ admin = gcnew MyForm1(this, Name);
+					AdminMenu^ admin = gcnew AdminMenu(this, Name);
 					this->Hide();
 					admin->ShowDialog();
 

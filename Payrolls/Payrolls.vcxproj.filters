@@ -45,7 +45,7 @@
     <ClInclude Include="UpdateEmployee.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MyForm1.h">
+    <ClInclude Include="AdminMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ConnectionPath.h">
@@ -58,6 +58,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ViewPaystub.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckID.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
