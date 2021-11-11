@@ -69,6 +69,7 @@ namespace Payrolls {
 		   /// </summary>
 		   void InitializeComponent(void)
 		   {
+			   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(removeEmployee::typeid));
 			   this->label1 = (gcnew System::Windows::Forms::Label());
 			   this->label2 = (gcnew System::Windows::Forms::Label());
 			   this->button1 = (gcnew System::Windows::Forms::Button());
@@ -182,7 +183,12 @@ namespace Payrolls {
 			   this->Controls->Add(this->button3);
 			   this->Controls->Add(this->button4);
 			   this->Controls->Add(this->button5);
+<<<<<<< HEAD
 			   this->Controls->Add(this->button6);
+=======
+			   this->Controls->Add(this->label1);
+			   this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+>>>>>>> 308eaa3e5daa60a9a7362a76ac240e86cbf8d9a6
 			   this->Name = L"removeEmployee";
 			   this->Text = L"Remove Employee";
 			   this->Load += gcnew System::EventHandler(this, &removeEmployee::removeEmployee_Load);

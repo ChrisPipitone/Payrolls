@@ -3,6 +3,7 @@
 #include "ConnectionPath.h"
 #include "FedTax.h"
 #include "NYTax.h"
+#include "Benfits.h"
 
 namespace Payrolls {
 
@@ -60,7 +61,7 @@ namespace Payrolls {
 	private: System::Windows::Forms::Label^ label9;
 
 
-	private: System::Windows::Forms::PictureBox^ pictureBox1;
+
 	private: System::Windows::Forms::TextBox^ textBox11;
 
 
@@ -93,10 +94,10 @@ namespace Payrolls {
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private: System::Windows::Forms::ComboBox^ comboBox2;
 	private: System::Windows::Forms::ComboBox^ comboBox3;
-	private: System::Windows::Forms::Label^ label19;
-	private: System::Windows::Forms::ComboBox^ comboBox4;
-	private: System::Windows::Forms::ComboBox^ comboBox5;
-	private: System::Windows::Forms::Label^ label20;
+
+
+
+
 
 	protected:
 
@@ -113,7 +114,6 @@ namespace Payrolls {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(AddEmployee::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
@@ -131,7 +131,6 @@ namespace Payrolls {
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->textBox9 = (gcnew System::Windows::Forms::TextBox());
 			this->label9 = (gcnew System::Windows::Forms::Label());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->textBox11 = (gcnew System::Windows::Forms::TextBox());
 			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->textBox13 = (gcnew System::Windows::Forms::TextBox());
@@ -153,11 +152,6 @@ namespace Payrolls {
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
 			this->comboBox3 = (gcnew System::Windows::Forms::ComboBox());
-			this->label19 = (gcnew System::Windows::Forms::Label());
-			this->comboBox4 = (gcnew System::Windows::Forms::ComboBox());
-			this->comboBox5 = (gcnew System::Windows::Forms::ComboBox());
-			this->label20 = (gcnew System::Windows::Forms::Label());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
@@ -261,7 +255,7 @@ namespace Payrolls {
 			// 
 			// textBox7
 			// 
-			this->textBox7->Location = System::Drawing::Point(630, 148);
+			this->textBox7->Location = System::Drawing::Point(630, 45);
 			this->textBox7->Name = L"textBox7";
 			this->textBox7->Size = System::Drawing::Size(246, 26);
 			this->textBox7->TabIndex = 13;
@@ -269,7 +263,7 @@ namespace Payrolls {
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(524, 152);
+			this->label7->Location = System::Drawing::Point(524, 49);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(68, 20);
 			this->label7->TabIndex = 12;
@@ -277,7 +271,7 @@ namespace Payrolls {
 			// 
 			// textBox8
 			// 
-			this->textBox8->Location = System::Drawing::Point(630, 194);
+			this->textBox8->Location = System::Drawing::Point(630, 91);
 			this->textBox8->Name = L"textBox8";
 			this->textBox8->Size = System::Drawing::Size(246, 26);
 			this->textBox8->TabIndex = 15;
@@ -285,7 +279,7 @@ namespace Payrolls {
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(524, 192);
+			this->label8->Location = System::Drawing::Point(524, 89);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(55, 20);
 			this->label8->TabIndex = 14;
@@ -293,7 +287,7 @@ namespace Payrolls {
 			// 
 			// textBox9
 			// 
-			this->textBox9->Location = System::Drawing::Point(630, 231);
+			this->textBox9->Location = System::Drawing::Point(630, 128);
 			this->textBox9->Name = L"textBox9";
 			this->textBox9->Size = System::Drawing::Size(246, 26);
 			this->textBox9->TabIndex = 17;
@@ -301,22 +295,12 @@ namespace Payrolls {
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(530, 231);
+			this->label9->Location = System::Drawing::Point(524, 128);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(48, 20);
 			this->label9->TabIndex = 16;
 			this->label9->Text = L"Email";
 			this->label9->Click += gcnew System::EventHandler(this, &AddEmployee::label9_Click);
-			// 
-			// pictureBox1
-			// 
-			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(756, 37);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(100, 85);
-			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
-			this->pictureBox1->TabIndex = 20;
-			this->pictureBox1->TabStop = false;
 			// 
 			// textBox11
 			// 
@@ -392,7 +376,7 @@ namespace Payrolls {
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(254, 757);
+			this->button3->Location = System::Drawing::Point(285, 601);
 			this->button3->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(201, 49);
@@ -403,7 +387,7 @@ namespace Payrolls {
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(528, 757);
+			this->button4->Location = System::Drawing::Point(551, 601);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(189, 49);
 			this->button4->TabIndex = 39;
@@ -422,7 +406,7 @@ namespace Payrolls {
 			// label10
 			// 
 			this->label10->AutoSize = true;
-			this->label10->Location = System::Drawing::Point(530, 277);
+			this->label10->Location = System::Drawing::Point(524, 177);
 			this->label10->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label10->Name = L"label10";
 			this->label10->Size = System::Drawing::Size(66, 20);
@@ -432,7 +416,7 @@ namespace Payrolls {
 			// 
 			// textBox6
 			// 
-			this->textBox6->Location = System::Drawing::Point(630, 277);
+			this->textBox6->Location = System::Drawing::Point(630, 174);
 			this->textBox6->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->textBox6->Name = L"textBox6";
 			this->textBox6->Size = System::Drawing::Size(148, 26);
@@ -459,7 +443,7 @@ namespace Payrolls {
 			// label11
 			// 
 			this->label11->AutoSize = true;
-			this->label11->Location = System::Drawing::Point(511, 339);
+			this->label11->Location = System::Drawing::Point(524, 290);
 			this->label11->Name = L"label11";
 			this->label11->Size = System::Drawing::Size(128, 20);
 			this->label11->TabIndex = 46;
@@ -468,7 +452,7 @@ namespace Payrolls {
 			// label13
 			// 
 			this->label13->AutoSize = true;
-			this->label13->Location = System::Drawing::Point(511, 391);
+			this->label13->Location = System::Drawing::Point(524, 342);
 			this->label13->Name = L"label13";
 			this->label13->Size = System::Drawing::Size(128, 20);
 			this->label13->TabIndex = 47;
@@ -478,7 +462,7 @@ namespace Payrolls {
 			// label17
 			// 
 			this->label17->AutoSize = true;
-			this->label17->Location = System::Drawing::Point(511, 436);
+			this->label17->Location = System::Drawing::Point(524, 387);
 			this->label17->Name = L"label17";
 			this->label17->Size = System::Drawing::Size(124, 20);
 			this->label17->TabIndex = 48;
@@ -488,7 +472,7 @@ namespace Payrolls {
 			// 
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Premium Package", L"Gold Package", L"Silver Package" });
-			this->comboBox1->Location = System::Drawing::Point(669, 331);
+			this->comboBox1->Location = System::Drawing::Point(682, 282);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(238, 28);
 			this->comboBox1->TabIndex = 49;
@@ -498,7 +482,7 @@ namespace Payrolls {
 			// 
 			this->comboBox2->FormattingEnabled = true;
 			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Premium Package", L"Gold Package", L"Silver Package" });
-			this->comboBox2->Location = System::Drawing::Point(669, 383);
+			this->comboBox2->Location = System::Drawing::Point(682, 334);
 			this->comboBox2->Name = L"comboBox2";
 			this->comboBox2->Size = System::Drawing::Size(238, 28);
 			this->comboBox2->TabIndex = 50;
@@ -507,60 +491,16 @@ namespace Payrolls {
 			// 
 			this->comboBox3->FormattingEnabled = true;
 			this->comboBox3->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Premium Package", L"Gold Package", L"Silver Package" });
-			this->comboBox3->Location = System::Drawing::Point(669, 433);
+			this->comboBox3->Location = System::Drawing::Point(682, 384);
 			this->comboBox3->Name = L"comboBox3";
 			this->comboBox3->Size = System::Drawing::Size(238, 28);
 			this->comboBox3->TabIndex = 51;
-			// 
-			// label19
-			// 
-			this->label19->AutoSize = true;
-			this->label19->Location = System::Drawing::Point(511, 485);
-			this->label19->Name = L"label19";
-			this->label19->Size = System::Drawing::Size(144, 20);
-			this->label19->TabIndex = 52;
-			this->label19->Text = L"Disability insurance";
-			// 
-			// comboBox4
-			// 
-			this->comboBox4->FormattingEnabled = true;
-			this->comboBox4->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Longterm", L"Shorterm" });
-			this->comboBox4->Location = System::Drawing::Point(669, 477);
-			this->comboBox4->Name = L"comboBox4";
-			this->comboBox4->Size = System::Drawing::Size(238, 28);
-			this->comboBox4->TabIndex = 53;
-			// 
-			// comboBox5
-			// 
-			this->comboBox5->FormattingEnabled = true;
-			this->comboBox5->Items->AddRange(gcnew cli::array< System::Object^  >(8) {
-				L"401(k).", L"Solo 401(k).", L"403(b).", L"457(b).",
-					L"IRA.", L"Roth IRA.", L"Self-directed IRA.", L"SIMPLE IRA."
-			});
-			this->comboBox5->Location = System::Drawing::Point(669, 527);
-			this->comboBox5->Name = L"comboBox5";
-			this->comboBox5->Size = System::Drawing::Size(238, 28);
-			this->comboBox5->TabIndex = 55;
-			// 
-			// label20
-			// 
-			this->label20->AutoSize = true;
-			this->label20->Location = System::Drawing::Point(511, 535);
-			this->label20->Name = L"label20";
-			this->label20->Size = System::Drawing::Size(131, 20);
-			this->label20->TabIndex = 54;
-			this->label20->Text = L"Retirement Plans";
-			this->label20->Click += gcnew System::EventHandler(this, &AddEmployee::label20_Click);
 			// 
 			// AddEmployee
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(932, 926);
-			this->Controls->Add(this->comboBox5);
-			this->Controls->Add(this->label20);
-			this->Controls->Add(this->comboBox4);
-			this->Controls->Add(this->label19);
+			this->ClientSize = System::Drawing::Size(960, 673);
 			this->Controls->Add(this->comboBox3);
 			this->Controls->Add(this->comboBox2);
 			this->Controls->Add(this->comboBox1);
@@ -582,7 +522,6 @@ namespace Payrolls {
 			this->Controls->Add(this->textBox13);
 			this->Controls->Add(this->label12);
 			this->Controls->Add(this->textBox11);
-			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->textBox9);
 			this->Controls->Add(this->label9);
 			this->Controls->Add(this->textBox8);
@@ -600,10 +539,10 @@ namespace Payrolls {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label1);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Name = L"AddEmployee";
 			this->Text = L"AddEmployee";
 			this->Load += gcnew System::EventHandler(this, &AddEmployee::AddEmployee_Load);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -677,18 +616,26 @@ namespace Payrolls {
 		GrossIncome gross;
 		FedTax fTax;
 		NYTax nTax;
+		Benfits benfit;
 		int overtimeHour = gross.calculateOvertimeHour(Int32::Parse(textBox15->Text));
 		double overtimePay = gross.CalculateOvertimePay(overtimeHour, Convert::ToDouble(textBox14->Text));
 		double grossIncome = gross.CalculateGrossIncome(Int32::Parse(textBox15->Text), overtimePay, Convert::ToDouble(textBox14->Text));
 		double fedTax = fTax.FedTaxRate(grossIncome);
 		double nyTax = nTax.NYTaxRate(grossIncome);
+		if (comboBox1->Text == "" || comboBox2->Text == "" || comboBox3->Text == "") {
+			MessageBox::Show("Error! Please select a field!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		double health = benfit.CalculateHealthCoverage(grossIncome, comboBox1->Text);
+		double dental = benfit.CalculateDentalCoverage(grossIncome, comboBox2->Text);
+		double vision = benfit.CalculateVisionCoverage(grossIncome, comboBox3->Text);
+		double netPay = grossIncome - (fedTax + nyTax + health + dental + vision);
 		OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
 		conn->Open();
 		OleDbCommand^ cmd = conn->CreateCommand();
 		cmd->CommandType = CommandType::Text;
 		cmd->CommandText = "Insert into EmployeeInfo([ID], [Password], [SSN], [Firstname], [Lastname], [DateofBirth], [Age], [Gender], [Email], [PhoneNumber], [Address1], [Zipcode], [Position], [Hours], [OvertimeHours], " +
-			"[OvertimePay], [HourlyPay], [Weeklygrosspay], [HealthCoverage], [DentalCoverage], [VisionCoverage],[DisablityCoverage], [RetirementCoverage],[FederalTax],[NYTax]) VALUES(@ID,@Password,@SSN,@Firstname,@Lastname,@DateofBirth,@Age,@Gender,@Email,@PhoneNumber,@Address1,@Zipcode,@Position,@Hours," +
-			"@OvertimeHours, @OvertimePay, @HourlyPay, @Weeklygrosspay, @HealthCoverage, @DentalCoverage, @VisionCoverage, @DisablityCoverage, @RetirementCoverage, @FederalTax, @NYTax)";
+			"[OvertimePay], [HourlyPay], [Weeklygrosspay], [HealthCoverage], [DentalCoverage], [VisionCoverage],[DisablityCoverage], [RetirementCoverage],[FederalTax],[NYTax], [HealthCost],[DentalCost],[VisionCost]) VALUES(@ID,@Password,@SSN,@Firstname,@Lastname,@DateofBirth,@Age,@Gender,@Email,@PhoneNumber,@Address1,@Zipcode,@Position,@Hours," +
+			"@OvertimeHours, @OvertimePay, @HourlyPay, @Weeklygrosspay, @HealthCoverage, @DentalCoverage, @VisionCoverage, @DisablityCoverage, @RetirementCoverage, @FederalTax, @NYTax, @HealthCost, @DentalCost, @VisionCost)";
 		cmd->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
 		cmd->Parameters->AddWithValue("@Password", textBox2->Text);
 		cmd->Parameters->AddWithValue("@SSN", textBox3->Text);
@@ -710,8 +657,6 @@ namespace Payrolls {
 		cmd->Parameters->AddWithValue("@HealthCoverage", comboBox1->Text);
 		cmd->Parameters->AddWithValue("@DentalCoverage", comboBox2->Text);
 		cmd->Parameters->AddWithValue("@VisionCoverage", comboBox3->Text);
-		cmd->Parameters->AddWithValue("@DisablityCoverage", comboBox4->Text);
-		cmd->Parameters->AddWithValue("@RetirementCoverage", comboBox5->Text);
 		cmd->Parameters->AddWithValue("@FederalTax", fedTax);
 		cmd->Parameters->AddWithValue("@NYTax", nyTax);
 

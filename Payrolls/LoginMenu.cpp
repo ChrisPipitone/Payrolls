@@ -1,4 +1,4 @@
-#include "Form1.h"
+#include "LoginMenu.h"
 
 using namespace System;
 using namespace System::Windows::Forms;
@@ -8,6 +8,6 @@ void main(array<String^>^ args)
 {
     Application::EnableVisualStyles();
     Application::SetCompatibleTextRenderingDefault(false);
-    Payrolls::Form1 form;
+    Payrolls::LoginMenu form;
     Application::Run(% form);
 }

@@ -18,7 +18,7 @@
     <ClInclude Include="GrossIncome.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Form1.h">
+    <ClInclude Include="LoginMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AddEmployee.h">
@@ -54,21 +54,24 @@
     <ClInclude Include="Timesheet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Benfits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewPaystub.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GrossIncome.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="Form1.cpp">
+    <ClCompile Include="LoginMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AddEmployee.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EmployeeMainMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Login.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="HrView.cpp">
@@ -91,6 +94,12 @@
     </ClCompile>
     <ClCompile Include="Timesheet.cpp">
       <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Benfits.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewPaystub.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
