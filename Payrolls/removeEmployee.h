@@ -70,7 +70,6 @@ namespace Payrolls {
 		   /// </summary>
 		   void InitializeComponent(void)
 		   {
-			   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(removeEmployee::typeid));
 			   this->label1 = (gcnew System::Windows::Forms::Label());
 			   this->label2 = (gcnew System::Windows::Forms::Label());
 			   this->button1 = (gcnew System::Windows::Forms::Button());
@@ -99,17 +98,10 @@ namespace Payrolls {
 			   this->label2->AutoSize = true;
 			   this->label2->Location = System::Drawing::Point(352, 186);
 			   this->label2->Name = L"label2";
-			   this->label2->Size = System::Drawing::Size(150, 20);
+			   this->label2->Size = System::Drawing::Size(94, 13);
 			   this->label2->TabIndex = 7;
 			   this->label2->Text = L"Input Employee ID";
 			   this->label2->Click += gcnew System::EventHandler(this, &removeEmployee::label2_Click_1);
-				// 
-				// textBox1
-				//
-			  /*this->textBox1->Location = System::Drawing::Point(150, 49);
-			   this->textBox1->Name = L"textBox1";
-			   this->textBox1->Size = System::Drawing::Size(120, 26);
-			   this->textBox1->TabIndex = 8;*/
 			   // 
 			   // button1
 			   // 
@@ -163,13 +155,20 @@ namespace Payrolls {
 			   // 
 			   // button6
 			   // 
-			   this->button6->Location = System::Drawing::Point(319, 306);
+			   this->button6->Location = System::Drawing::Point(338, 259);
 			   this->button6->Name = L"button6";
 			   this->button6->Size = System::Drawing::Size(176, 25);
 			   this->button6->TabIndex = 5;
 			   this->button6->Text = L"Remove Employee";
 			   this->button6->UseVisualStyleBackColor = true;
 			   this->button6->Click += gcnew System::EventHandler(this, &removeEmployee::button6_Click);
+			   // 
+			   // textBox1
+			   // 
+			   this->textBox1->Location = System::Drawing::Point(355, 216);
+			   this->textBox1->Name = L"textBox1";
+			   this->textBox1->Size = System::Drawing::Size(128, 20);
+			   this->textBox1->TabIndex = 8;
 			   // 
 			   // removeEmployee
 			   // 
@@ -184,21 +183,7 @@ namespace Payrolls {
 			   this->Controls->Add(this->button3);
 			   this->Controls->Add(this->button4);
 			   this->Controls->Add(this->button5);
-<<<<<<< HEAD
-
 			   this->Controls->Add(this->button6);
-
-			   this->Controls->Add(this->label1);
-			   this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-
-=======
-//<<<<<<< HEAD
-			   this->Controls->Add(this->button6);
-//=======
-			   this->Controls->Add(this->label1);
-			   this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-//>>>>>>> 308eaa3e5daa60a9a7362a76ac240e86cbf8d9a6
->>>>>>> ed3db5363dfaca741043a2027c28c5a28c315640
 			   this->Name = L"removeEmployee";
 			   this->Text = L"Remove Employee";
 			   this->Load += gcnew System::EventHandler(this, &removeEmployee::removeEmployee_Load);
@@ -214,8 +199,9 @@ namespace Payrolls {
 	}
 	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	//private: System::Void textBox1(System::Object^ sender, System::EventArgs^ e) {
-	//}
+	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		employeeID = Int32::Parse(textBox1->Text);
+	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
