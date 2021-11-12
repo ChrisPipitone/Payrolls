@@ -119,6 +119,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Benfits.h" />
+    <ClInclude Include="CheckID.h" />
     <ClInclude Include="ConnectionPath.h" />
     <ClInclude Include="EmployeeMainMenu.h">
       <FileType>CppForm</FileType>
@@ -132,7 +133,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Login.h" />
-    <ClInclude Include="MyForm1.h">
+    <ClInclude Include="AdminMenu.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="NYTax.h" />
@@ -184,8 +185,8 @@
     <EmbeddedResource Include="HrView.resx">
       <DependentUpon>HrView.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyForm1.resx">
-      <DependentUpon>MyForm1.h</DependentUpon>
+    <EmbeddedResource Include="AdminMenu.resx">
+      <DependentUpon>AdminMenu.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="removeEmployee.resx">
       <DependentUpon>removeEmployee.h</DependentUpon>

@@ -2,6 +2,7 @@
 using namespace System;
 
 ref struct ConnectionPath {
+<<<<<<< HEAD
 	static System::String^ connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Patrick/Desktop/Payroll_Info.accdb";
 };
 
@@ -49,3 +50,8 @@ return false;
 */
 
 //>>>>>>> 308eaa3e5daa60a9a7362a76ac240e86cbf8d9a6
+=======
+	static System::String^ connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Chris/Desktop/Payroll_Info.accdb";
+
+};
+>>>>>>> 8e7987c9677bd025c3d36ab9b8c6afc9c8119933
