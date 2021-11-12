@@ -158,7 +158,6 @@
     <ClCompile Include="LoginMenu.cpp" />
     <ClCompile Include="GrossIncome.cpp" />
     <ClCompile Include="HrView.cpp" />
-    <ClCompile Include="MyForm1.cpp" />
     <ClCompile Include="NYTax.cpp" />
     <ClCompile Include="removeEmployee.cpp" />
     <ClCompile Include="Timesheet.cpp" />

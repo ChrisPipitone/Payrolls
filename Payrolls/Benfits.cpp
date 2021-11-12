@@ -3,6 +3,8 @@
 #include <string>
 using namespace System;
 
+//benefits not much variety all hard coded in rememeber for presentation 'only working with these companies'
+
 double Benfits::CalculateHealthCoverage(double salary, String^ package)
 {
     if (package == premium) // Platinum_pack
