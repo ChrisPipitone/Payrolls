@@ -50,6 +50,7 @@ namespace Payrolls {
 	private: System::Windows::Forms::Button^ button1;
 
 
+
 	private: System::ComponentModel::IContainer^ components;
 
 
@@ -146,7 +147,6 @@ namespace Payrolls {
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(281, 30);
 			this->comboBox1->TabIndex = 6;
-			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &LoginMenu::comboBox1_SelectedIndexChanged);
 			// 
 			// button1
 			// 
@@ -278,14 +278,6 @@ namespace Payrolls {
 				MessageBox::Show("Uncorrect username or password", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			}
 		}
-	}
-
-	private: System::Void tempEmpButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		EmployeeMainMenu^ empMenu = gcnew EmployeeMainMenu(this, "1");
-		this->Hide();
-		empMenu->ShowDialog();
-	}
-	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 };
 }

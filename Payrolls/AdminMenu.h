@@ -1122,97 +1122,80 @@ namespace Payrolls {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		if ((textBox1->Text == "")) {
-			MessageBox::Show("Please enter data", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		OleDbConnection^ conn2 = gcnew OleDbConnection(ConnectionPath::connectionString);
+		conn2->Open();
+		OleDbCommand^ cmd2 = conn2->CreateCommand();
+		cmd2->CommandType = CommandType::Text;
+		cmd2->CommandText = "select [ID],[Firstname],[Lastname], [Position], [Email], [DateofBirth], [PhoneNumber],[HourlyPay] , [Hours] from EmployeeInfo where  ([ID] = @ID) and ([Position] = 'Employee' or [Position] = 'employee' or [Position] = 'EMPLOYEE')  ";
+
+		//error checking
+		if (textBox1->Text == "")
+		{
+			MessageBox::Show("Enter An Employee Id.");
+			return;
 		}
-		
-		else if ((System::Text::RegularExpressions::Regex::IsMatch(textBox1->Text,"^[a-zA-z]"))){
-			MessageBox::Show("Please enter ID number", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		if (!checkID(textBox1->Text))
+		{
+			MessageBox::Show("This ID does not exist within the Database");
+			return;
 		}
 
-		else {
 
-			OleDbConnection^ conn2 = gcnew OleDbConnection(ConnectionPath::connectionString);
-			conn2->Open();
-			OleDbCommand^ cmd2 = conn2->CreateCommand();
-			cmd2->CommandType = CommandType::Text;
-			cmd2->CommandText = "select [ID],[Firstname],[Lastname], [Position], [Email], [DateofBirth], [PhoneNumber],[HourlyPay] , [Hours] from EmployeeInfo where  ([ID] = @ID) and ([Position] = 'Employee' or [Position] = 'employee' or [Position] = 'EMPLOYEE')  ";
+		cmd2->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
+		OleDbDataReader^ myReader = cmd2->ExecuteReader();
 
-			//error checking
-			if (textBox1->Text == "")
-			{
-				MessageBox::Show("Enter An Employee Id.");
-				return;
+		if (myReader->HasRows) {
+
+			while (myReader->Read()) {
+
+				word1 = myReader["ID"]->ToString();
+				NameE = myReader["Firstname"]->ToString();
+				LastNameE = myReader["Lastname"]->ToString();
+				emailE = myReader["Email"]->ToString();
+				phoneE = myReader["PhoneNumber"]->ToString();
+				payE = myReader["HourlyPay"]->ToString();
+				DepartmentE = myReader["Position"]->ToString();
+				DOB = myReader["DateofBirth"]->ToString();
+				CurrHours = myReader["Hours"]->ToString();
 			}
-			if (!checkID(textBox1->Text))
-			{
-				MessageBox::Show("This ID does not exist within the Database");
-				return;
-			}
 
+			lbl8->Text = DepartmentE;
+			lbl7->Text = NameE + "," + LastNameE;
+			lbl9->Text = emailE;
+			lbl10->Text = phoneE;
+			lbl11->Text = payE;
+			lbl12->Text = DOB;
+			lbl14->Text = NameE + "," + LastNameE;
+			lbl15->Text = CurrHours;
+			lbl16->Text = word;
 
-			cmd2->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
-			OleDbDataReader^ myReader = cmd2->ExecuteReader();
+			lbl8->Show();
+			lbl9->Show();
+			lbl10->Show();
+			lbl11->Show();
+			lbl12->Show();
 
-			if (myReader->HasRows) {
+			label7->Show();
+			label8->Show();
+			label9->Show();
+			label10->Show();
+			label11->Show();
+			//linkResign->Show();
 
-				while (myReader->Read()) {
-
-					word1 = myReader["ID"]->ToString();
-					NameE = myReader["Firstname"]->ToString();
-					LastNameE = myReader["Lastname"]->ToString();
-					emailE = myReader["Email"]->ToString();
-					phoneE = myReader["PhoneNumber"]->ToString();
-					payE = myReader["HourlyPay"]->ToString();
-					DepartmentE = myReader["Position"]->ToString();
-					DOB = myReader["DateofBirth"]->ToString();
-					CurrHours = myReader["Hours"]->ToString();
-
-				}
-
-				lbl8->Text = DepartmentE;
-				lbl7->Text = NameE + "," + LastNameE;
-				lbl9->Text = emailE;
-				lbl10->Text = phoneE;
-				lbl11->Text = payE;
-				lbl12->Text = DOB;
-				lbl14->Text = NameE + "," + LastNameE;
-				lbl15->Text = CurrHours;
-				lbl16->Text = word;
-
-				lbl8->Show();
-				lbl9->Show();
-				lbl10->Show();
-				lbl11->Show();
-				lbl12->Show();
-
-				label7->Show();
-				label8->Show();
-				label9->Show();
-				label10->Show();
-				label11->Show();
-				//linkResign->Show();
-
-				label14->Show();
-				label15->Show();
-				//label16->Show();
-				label17->Show();
-				label18->Show();
-				label19->Show();
-				lbl14->Show();
-				lbl15->Show();
-				//lbl16->Show();
-				//lbl17->Show();
-				//lbl18->Show();
-
-
-			}
-			else
-			{
-				MessageBox::Show("Incorrect username", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-			}
-		};
+			label14->Show();
+			label15->Show();
+			//label16->Show();
+			label17->Show();
+			label18->Show();
+			label19->Show();
+			lbl14->Show();
+			lbl15->Show();
+			//lbl16->Show();
+			//lbl17->Show();
+			//lbl18->Show();
+		}
 	}
+
 	private: System::Void label11_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void label10_Click(System::Object^ sender, System::EventArgs^ e) {

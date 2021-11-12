@@ -17,10 +17,13 @@ namespace Payrolls {
 	/// </summary>
 	public ref class removeEmployee : public System::Windows::Forms::Form
 	{
+	public: 
+		Form^ otherPage;
 	private:
 		void init(System::String^ empID);
 		void deleteEmployee(System::String^ empID);
 	private: System::Windows::Forms::Button^ test;
+	private: System::Windows::Forms::Button^ back_Button;
 		   int employeeID;
 	public:
 		removeEmployee(void)
@@ -60,7 +63,7 @@ namespace Payrolls {
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::Button^ button4;
-	private: System::Windows::Forms::Button^ button5;
+
 	private: System::Windows::Forms::Button^ removeEmp_removeButton;
 
 	private: System::Windows::Forms::TextBox^ removeEmp_ID_textBox;
@@ -81,10 +84,10 @@ namespace Payrolls {
 			   this->button2 = (gcnew System::Windows::Forms::Button());
 			   this->button3 = (gcnew System::Windows::Forms::Button());
 			   this->button4 = (gcnew System::Windows::Forms::Button());
-			   this->button5 = (gcnew System::Windows::Forms::Button());
 			   this->removeEmp_removeButton = (gcnew System::Windows::Forms::Button());
 			   this->removeEmp_ID_textBox = (gcnew System::Windows::Forms::TextBox());
 			   this->test = (gcnew System::Windows::Forms::Button());
+			   this->back_Button = (gcnew System::Windows::Forms::Button());
 			   this->SuspendLayout();
 			   // 
 			   // label1
@@ -102,7 +105,7 @@ namespace Payrolls {
 			   // label2
 			   // 
 			   this->label2->AutoSize = true;
-			   this->label2->Location = System::Drawing::Point(327, 186);
+			   this->label2->Location = System::Drawing::Point(327, 153);
 			   this->label2->Name = L"label2";
 			   this->label2->Size = System::Drawing::Size(94, 13);
 			   this->label2->TabIndex = 7;
@@ -110,7 +113,7 @@ namespace Payrolls {
 			   // 
 			   // button1
 			   // 
-			   this->button1->Location = System::Drawing::Point(25, 216);
+			   this->button1->Location = System::Drawing::Point(39, 143);
 			   this->button1->Name = L"button1";
 			   this->button1->Size = System::Drawing::Size(146, 23);
 			   this->button1->TabIndex = 0;
@@ -120,7 +123,7 @@ namespace Payrolls {
 			   // 
 			   // button2
 			   // 
-			   this->button2->Location = System::Drawing::Point(25, 175);
+			   this->button2->Location = System::Drawing::Point(39, 102);
 			   this->button2->Name = L"button2";
 			   this->button2->Size = System::Drawing::Size(146, 24);
 			   this->button2->TabIndex = 1;
@@ -130,7 +133,7 @@ namespace Payrolls {
 			   // 
 			   // button3
 			   // 
-			   this->button3->Location = System::Drawing::Point(25, 259);
+			   this->button3->Location = System::Drawing::Point(39, 186);
 			   this->button3->Name = L"button3";
 			   this->button3->Size = System::Drawing::Size(146, 25);
 			   this->button3->TabIndex = 2;
@@ -140,7 +143,7 @@ namespace Payrolls {
 			   // 
 			   // button4
 			   // 
-			   this->button4->Location = System::Drawing::Point(25, 306);
+			   this->button4->Location = System::Drawing::Point(39, 233);
 			   this->button4->Name = L"button4";
 			   this->button4->Size = System::Drawing::Size(146, 25);
 			   this->button4->TabIndex = 3;
@@ -148,19 +151,9 @@ namespace Payrolls {
 			   this->button4->UseVisualStyleBackColor = true;
 			   this->button4->Click += gcnew System::EventHandler(this, &removeEmployee::button4_Click);
 			   // 
-			   // button5
-			   // 
-			   this->button5->Location = System::Drawing::Point(25, 350);
-			   this->button5->Name = L"button5";
-			   this->button5->Size = System::Drawing::Size(146, 25);
-			   this->button5->TabIndex = 4;
-			   this->button5->Text = L"Log out";
-			   this->button5->UseVisualStyleBackColor = true;
-			   this->button5->Click += gcnew System::EventHandler(this, &removeEmployee::button5_Click);
-			   // 
 			   // removeEmp_removeButton
 			   // 
-			   this->removeEmp_removeButton->Location = System::Drawing::Point(330, 306);
+			   this->removeEmp_removeButton->Location = System::Drawing::Point(330, 273);
 			   this->removeEmp_removeButton->Name = L"removeEmp_removeButton";
 			   this->removeEmp_removeButton->Size = System::Drawing::Size(197, 25);
 			   this->removeEmp_removeButton->TabIndex = 5;
@@ -170,7 +163,7 @@ namespace Payrolls {
 			   // 
 			   // removeEmp_ID_textBox
 			   // 
-			   this->removeEmp_ID_textBox->Location = System::Drawing::Point(427, 183);
+			   this->removeEmp_ID_textBox->Location = System::Drawing::Point(427, 150);
 			   this->removeEmp_ID_textBox->Name = L"removeEmp_ID_textBox";
 			   this->removeEmp_ID_textBox->Size = System::Drawing::Size(100, 20);
 			   this->removeEmp_ID_textBox->TabIndex = 8;
@@ -178,7 +171,7 @@ namespace Payrolls {
 			   // test
 			   // 
 			   this->test->ForeColor = System::Drawing::Color::Red;
-			   this->test->Location = System::Drawing::Point(356, 232);
+			   this->test->Location = System::Drawing::Point(360, 201);
 			   this->test->Name = L"test";
 			   this->test->Size = System::Drawing::Size(124, 41);
 			   this->test->TabIndex = 9;
@@ -187,11 +180,22 @@ namespace Payrolls {
 			   this->test->Click += gcnew System::EventHandler(this, &removeEmployee::test_Click);
 			   this->test->Hide();
 			   // 
+			   // back_Button
+			   // 
+			   this->back_Button->Location = System::Drawing::Point(39, 277);
+			   this->back_Button->Name = L"back_Button";
+			   this->back_Button->Size = System::Drawing::Size(146, 25);
+			   this->back_Button->TabIndex = 10;
+			   this->back_Button->Text = L"Back";
+			   this->back_Button->UseVisualStyleBackColor = true;
+			   this->back_Button->Click += gcnew System::EventHandler(this, &removeEmployee::back_Button_Click);
+			   // 
 			   // removeEmployee
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->ClientSize = System::Drawing::Size(600, 400);
+			   this->Controls->Add(this->back_Button);
 			   this->Controls->Add(this->test);
 			   this->Controls->Add(this->label2);
 			   this->Controls->Add(this->removeEmp_ID_textBox);
@@ -199,7 +203,6 @@ namespace Payrolls {
 			   this->Controls->Add(this->button2);
 			   this->Controls->Add(this->button3);
 			   this->Controls->Add(this->button4);
-			   this->Controls->Add(this->button5);
 			   this->Controls->Add(this->removeEmp_removeButton);
 			   this->Controls->Add(this->label1);
 			   this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
@@ -230,7 +233,14 @@ namespace Payrolls {
 	}
 	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Hide();
-		orignalMenu->Show();
+		try 
+		{
+			orignalMenu->Show();
+		}
+		catch (System::NullReferenceException^ e)
+		{
+			return;
+		}
 	}
 	private: System::Void removeEmp_removeButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		
@@ -287,6 +297,10 @@ namespace Payrolls {
 
 		removeEmp_ID_textBox->Text = "";
 		this->test->Hide();
+	}
+	private: System::Void back_Button_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Hide();
+		otherPage->Show();
 	}
 };
 }

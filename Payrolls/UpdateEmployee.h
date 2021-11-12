@@ -1,10 +1,9 @@
 #pragma once
-
 #include "GrossIncome.h"
 #include "FedTax.h"
 #include "NYTax.h"
-
 #include "ConnectionPath.h"
+#include "CheckID.h"
 
 namespace Payrolls {
 
@@ -511,6 +510,18 @@ namespace Payrolls {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
+		//error checking
+		if (textBox1->Text == "")
+		{
+			MessageBox::Show("Enter An Employee Id.");
+			return;
+		}
+		if (!checkID(textBox1->Text))
+		{
+			MessageBox::Show("This ID does not exist within the Database");
+			return;
+		}
+
 		OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
 		conn->Open();
 		OleDbCommand^ cmd = conn->CreateCommand();
@@ -545,12 +556,24 @@ namespace Payrolls {
 		GrossIncome gross;
 		FedTax fTax;
 		NYTax nTax;
-		int overtimeHours = gross.calculateOvertimeHour(Int32::Parse(textBox7->Text));
-		double overtimePay = gross.CalculateOvertimePay(overtimeHours, Convert::ToDouble(textBox8->Text));
-		double grossIncome = gross.CalculateGrossIncome(Int32::Parse(textBox7->Text), overtimePay, Convert::ToDouble(textBox8->Text));
+		int overtimeHours;
+		double overtimePay;
+		double grossIncome;
+
+		try
+		{
+			overtimeHours = gross.calculateOvertimeHour(Int32::Parse(textBox7->Text));
+			overtimePay = gross.CalculateOvertimePay(overtimeHours, Convert::ToDouble(textBox8->Text));
+			grossIncome = gross.CalculateGrossIncome(Int32::Parse(textBox7->Text), overtimePay, Convert::ToDouble(textBox8->Text));
+		}
+		catch (System::FormatException^ e)
+		{
+			return;
+		}
+
 		double fedTax = fTax.FedTaxRate(grossIncome);
 		double nyTax = nTax.NYTaxRate(grossIncome);
-		OleDbConnection^ conn = gcnew OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source= C:/Users/Zhuowei Hu/Documents/Payroll Info.accdb");
+		OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
 		conn->Open();
 		OleDbCommand^ cmd = conn->CreateCommand();
 		cmd->CommandType = CommandType::Text;
