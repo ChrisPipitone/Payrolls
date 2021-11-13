@@ -5,55 +5,55 @@ using namespace System;
 
 double Benfits::CalculateHealthCoverage(double salary, String^ package)
 {
-    String^ premium = gcnew String("Premium Package");
-    String^ gold = gcnew String("Gold Package");
+    String^ premium = "Premium Package";
+    String^ gold = "Gold Package";
     if (package == premium) // Platinum_pack
     {
-        return round((salary * 0.80) * 100.0) / 100.0;
+        return round((salary * 0.05) * 100.0) / 100.0;
     }
     else if (package == gold) //Gold_pack
     {
-        return round((salary * 0.80) * 100.0) / 100.0;
+        return round((salary * 0.05) * 100.0) / 100.0;
     }
     else //Silver_pack
     {
-        return round((salary * 0.80) * 100.0) / 100.0;
+        return round((salary * 0.05) * 100.0) / 100.0;
     }
 }
 
 double Benfits::CalculateDentalCoverage(double salary, String^ package)
 {
-    String^ premium = gcnew String("Premium Package");
-    String^ gold = gcnew String("Gold Package");
+    String^ premium = "Premium Package";
+    String^ gold = "Gold Package";
     if (package == premium) // Platinum_pack
     {
-         return round((salary * 0.80) * 100.0) / 100.0;
+        return round((salary * 0.05) * 100.0) / 100.0;
     }
     else if (package == gold) //Gold_pack
     {
-        return round((salary * 0.80) * 100.0) / 100.0;
+        return round((salary * 0.05) * 100.0) / 100.0;
     }
     else //Silver_pack
     {
-        return round((salary * 0.80) * 100.0) / 100.0;
+        return round((salary * 0.045) * 100.0) / 100.0;
     }
 }
 
 double Benfits::CalculateVisionCoverage(double salary, String^ package)
 {
-    String^ premium = gcnew String("Premium Package");
-    String^ gold = gcnew String("Gold Package");
+    String^ premium = "Premium Package";
+    String^ gold = "Gold Package";
     if (package == premium) // Platinum_pack
     {
-        return round((salary * 0.80) * 100.0) / 100.0;
+        return round((salary * 0.05) * 100.0) / 100.0;
     }
     else if (package == gold) //Gold_pack
     {
-        return round((salary * 0.80) * 100.0) / 100.0;
+        return round((salary * 0.05) * 100.0) / 100.0;
     }
     else //Silver_pack
     {
-        return round((salary * 0.80) * 100.0) / 100.0;
+        return round((salary * 0.042) * 100.0) / 100.0;
     }
 
 }

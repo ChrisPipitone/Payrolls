@@ -1,5 +1,5 @@
 #pragma once
-#include "MyForm1.h"
+#include "AdminMenu.h"
 #include "EmployeeMainMenu.h"
 #include "HrView.h"
 
@@ -243,7 +243,7 @@ namespace Payrolls {
 				else if (status == 1 && datatable->Rows->Count == 0)
 				{
 					MessageBox::Show("Login Succeed!");
-					MyForm1^ admin = gcnew MyForm1(this, Name);
+					AdminMenu^ admin = gcnew AdminMenu(this, Name);
 					this->Hide();
 					admin->ShowDialog();
 
@@ -276,5 +276,5 @@ namespace Payrolls {
 	}
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
-};
+	};
 }

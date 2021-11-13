@@ -118,7 +118,19 @@ namespace Payrolls {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Label^ label78;
 	private: System::Windows::Forms::Label^ label79;
-private: System::Windows::Forms::Button^ paystubBack_button;
+	private: System::Windows::Forms::Button^ paystubBack_button;
+	private: System::Windows::Forms::Label^ label80;
+	private: System::Windows::Forms::Label^ label81;
+	private: System::Windows::Forms::Label^ label82;
+	private: System::Windows::Forms::Label^ label83;
+	private: System::Windows::Forms::Label^ label84;
+	private: System::Windows::Forms::Label^ label85;
+	private: System::Windows::Forms::Label^ label86;
+	private: System::Windows::Forms::Label^ label87;
+	private: System::Windows::Forms::Label^ label88;
+	private: System::Windows::Forms::Label^ label89;
+	private: System::Windows::Forms::Label^ label90;
+	private: System::Windows::Forms::Label^ label91;
 
 	private:
 		/// <summary>
@@ -216,6 +228,18 @@ private: System::Windows::Forms::Button^ paystubBack_button;
 			this->label78 = (gcnew System::Windows::Forms::Label());
 			this->label79 = (gcnew System::Windows::Forms::Label());
 			this->paystubBack_button = (gcnew System::Windows::Forms::Button());
+			this->label80 = (gcnew System::Windows::Forms::Label());
+			this->label81 = (gcnew System::Windows::Forms::Label());
+			this->label82 = (gcnew System::Windows::Forms::Label());
+			this->label83 = (gcnew System::Windows::Forms::Label());
+			this->label84 = (gcnew System::Windows::Forms::Label());
+			this->label85 = (gcnew System::Windows::Forms::Label());
+			this->label86 = (gcnew System::Windows::Forms::Label());
+			this->label87 = (gcnew System::Windows::Forms::Label());
+			this->label88 = (gcnew System::Windows::Forms::Label());
+			this->label89 = (gcnew System::Windows::Forms::Label());
+			this->label90 = (gcnew System::Windows::Forms::Label());
+			this->label91 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -1051,6 +1075,127 @@ private: System::Windows::Forms::Button^ paystubBack_button;
 			this->paystubBack_button->UseVisualStyleBackColor = true;
 			this->paystubBack_button->Click += gcnew System::EventHandler(this, &ViewPaystub::paystubBack_button_Click);
 			// 
+			// label80
+			// 
+			this->label80->AutoSize = true;
+			this->label80->BackColor = System::Drawing::SystemColors::ControlLightLight;
+			this->label80->Location = System::Drawing::Point(419, 181);
+			this->label80->Name = L"label80";
+			this->label80->Size = System::Drawing::Size(87, 13);
+			this->label80->TabIndex = 82;
+			this->label80->Text = L"Health Coverage";
+			this->label80->Click += gcnew System::EventHandler(this, &ViewPaystub::label80_Click);
+			// 
+			// label81
+			// 
+			this->label81->AutoSize = true;
+			this->label81->BackColor = System::Drawing::SystemColors::ControlLightLight;
+			this->label81->Location = System::Drawing::Point(419, 194);
+			this->label81->Name = L"label81";
+			this->label81->Size = System::Drawing::Size(87, 13);
+			this->label81->TabIndex = 83;
+			this->label81->Text = L"Dental Coverage";
+			// 
+			// label82
+			// 
+			this->label82->AutoSize = true;
+			this->label82->BackColor = System::Drawing::SystemColors::ControlLightLight;
+			this->label82->Location = System::Drawing::Point(419, 207);
+			this->label82->Name = L"label82";
+			this->label82->Size = System::Drawing::Size(84, 13);
+			this->label82->TabIndex = 84;
+			this->label82->Text = L"Vision Coverage";
+			// 
+			// label83
+			// 
+			this->label83->AutoSize = true;
+			this->label83->BackColor = System::Drawing::SystemColors::ControlLightLight;
+			this->label83->Location = System::Drawing::Point(527, 181);
+			this->label83->Name = L"label83";
+			this->label83->Size = System::Drawing::Size(113, 13);
+			this->label83->TabIndex = 85;
+			this->label83->Text = L"Health Coverage Here";
+			// 
+			// label84
+			// 
+			this->label84->AutoSize = true;
+			this->label84->BackColor = System::Drawing::SystemColors::ControlLightLight;
+			this->label84->Location = System::Drawing::Point(527, 194);
+			this->label84->Name = L"label84";
+			this->label84->Size = System::Drawing::Size(113, 13);
+			this->label84->TabIndex = 86;
+			this->label84->Text = L"Dental Coverage Here";
+			// 
+			// label85
+			// 
+			this->label85->AutoSize = true;
+			this->label85->BackColor = System::Drawing::SystemColors::ControlLightLight;
+			this->label85->Location = System::Drawing::Point(527, 207);
+			this->label85->Name = L"label85";
+			this->label85->Size = System::Drawing::Size(110, 13);
+			this->label85->TabIndex = 87;
+			this->label85->Text = L"Vision Coverage Here";
+			// 
+			// label86
+			// 
+			this->label86->AutoSize = true;
+			this->label86->BackColor = System::Drawing::SystemColors::ControlLightLight;
+			this->label86->Location = System::Drawing::Point(419, 467);
+			this->label86->Name = L"label86";
+			this->label86->Size = System::Drawing::Size(87, 13);
+			this->label86->TabIndex = 88;
+			this->label86->Text = L"Health Coverage";
+			// 
+			// label87
+			// 
+			this->label87->AutoSize = true;
+			this->label87->BackColor = System::Drawing::SystemColors::ControlLightLight;
+			this->label87->Location = System::Drawing::Point(527, 467);
+			this->label87->Name = L"label87";
+			this->label87->Size = System::Drawing::Size(113, 13);
+			this->label87->TabIndex = 89;
+			this->label87->Text = L"Health Coverage Here";
+			// 
+			// label88
+			// 
+			this->label88->AutoSize = true;
+			this->label88->BackColor = System::Drawing::SystemColors::ControlLightLight;
+			this->label88->Location = System::Drawing::Point(419, 480);
+			this->label88->Name = L"label88";
+			this->label88->Size = System::Drawing::Size(87, 13);
+			this->label88->TabIndex = 90;
+			this->label88->Text = L"Dental Coverage";
+			// 
+			// label89
+			// 
+			this->label89->AutoSize = true;
+			this->label89->BackColor = System::Drawing::SystemColors::ControlLightLight;
+			this->label89->Location = System::Drawing::Point(527, 480);
+			this->label89->Name = L"label89";
+			this->label89->Size = System::Drawing::Size(113, 13);
+			this->label89->TabIndex = 91;
+			this->label89->Text = L"Dental Coverage Here";
+			// 
+			// label90
+			// 
+			this->label90->AutoSize = true;
+			this->label90->BackColor = System::Drawing::SystemColors::ControlLightLight;
+			this->label90->Location = System::Drawing::Point(419, 493);
+			this->label90->Name = L"label90";
+			this->label90->Size = System::Drawing::Size(84, 13);
+			this->label90->TabIndex = 92;
+			this->label90->Text = L"Vision Coverage";
+			// 
+			// label91
+			// 
+			this->label91->AutoSize = true;
+			this->label91->BackColor = System::Drawing::SystemColors::ControlLightLight;
+			this->label91->Location = System::Drawing::Point(527, 493);
+			this->label91->Name = L"label91";
+			this->label91->Size = System::Drawing::Size(110, 13);
+			this->label91->TabIndex = 93;
+			this->label91->Text = L"Vision Coverage Here";
+			// 
 			// ViewPaystub
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -1058,6 +1203,18 @@ private: System::Windows::Forms::Button^ paystubBack_button;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->ClientSize = System::Drawing::Size(738, 947);
+			this->Controls->Add(this->label91);
+			this->Controls->Add(this->label90);
+			this->Controls->Add(this->label89);
+			this->Controls->Add(this->label88);
+			this->Controls->Add(this->label87);
+			this->Controls->Add(this->label86);
+			this->Controls->Add(this->label85);
+			this->Controls->Add(this->label84);
+			this->Controls->Add(this->label83);
+			this->Controls->Add(this->label82);
+			this->Controls->Add(this->label81);
+			this->Controls->Add(this->label80);
 			this->Controls->Add(this->paystubBack_button);
 			this->Controls->Add(this->label79);
 			this->Controls->Add(this->label78);
@@ -1200,6 +1357,17 @@ private: System::Windows::Forms::Button^ paystubBack_button;
 			label68->Text = reader["FederalTax"]->ToString();
 			label65->Text = reader["NYTax"]->ToString();
 			label66->Text = reader["NYTax"]->ToString();
+			label83->Text = reader["HealthCost"]->ToString();
+			label87->Text = reader["HealthCost"]->ToString();
+			label84->Text = reader["DentalCost"]->ToString();
+			label89->Text = reader["DentalCost"]->ToString();
+			label85->Text = reader["VisionCost"]->ToString();
+			label91->Text = reader["VisionCost"]->ToString();
+			label14->Text = reader["Netpay"]->ToString();
+			label71->Text = reader["Netpay"]->ToString();
+			label72->Text = reader["Netpay"]->ToString();
+			label38->Text = reader["Netpay"]->ToString();
+			label75->Text = reader["Netpay"]->ToString();
 		}
 		conn->Close();
 	}
@@ -1212,5 +1380,7 @@ private: System::Windows::Forms::Button^ paystubBack_button;
 		//HrView^ hr = gcnew HrView();
 		//hr->ShowDialog();
 	}
-};
+	private: System::Void label80_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	};
 }

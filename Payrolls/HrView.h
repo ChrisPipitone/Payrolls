@@ -1,8 +1,7 @@
 #pragma once
-#include "MyForm1.h"
+#include "AdminMenu.h"
 #include "AddEmployee.h"
 #include "UpdateEmployee.h"
-#include "removeEmployee.h"
 #include "ViewPaystub.h"
 
 namespace Payrolls {
@@ -154,16 +153,17 @@ namespace Payrolls {
     }
 
     private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-        removeEmployee^ removeEmp = gcnew removeEmployee();
+        UpdateEmployee^ updateEmp = gcnew UpdateEmployee();
+        updateEmp->otherPage = this;
         this->Hide();
-        removeEmp->ShowDialog();
+        updateEmp->ShowDialog();
     }
     private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
     }
     private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
         ViewPaystub^ viewPay = gcnew ViewPaystub();
-       // this->Hide();
+        // this->Hide();
         viewPay->ShowDialog();
     }
-};
+    };
 }

@@ -13,20 +13,20 @@ namespace Payrolls {
 	using namespace System::Data::OleDb;
 
 	/// <summary>
-	/// Summary for MyForm1
+	/// Summary for AdminMenu
 	/// </summary>
-	public ref class MyForm1 : public System::Windows::Forms::Form
+	public ref class AdminMenu : public System::Windows::Forms::Form
 	{
-	public:		MyForm1(void)
-		{
-			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
-		}
+	public:		AdminMenu(void)
+	{
+		InitializeComponent();
+		//
+		//TODO: Add the constructor code here
+		//
+	}
 
 	public:
-		MyForm1(System::Windows::Forms::Form^ Admin, String^ text)
+		AdminMenu(System::Windows::Forms::Form^ Admin, String^ text)
 		{
 
 			InitializeComponent();
@@ -39,7 +39,7 @@ namespace Payrolls {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~MyForm1()
+		~AdminMenu()
 		{
 			if (components)
 			{
@@ -192,7 +192,7 @@ namespace Payrolls {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm1::typeid));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(AdminMenu::typeid));
 			this->tab1 = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
 			this->button2 = (gcnew System::Windows::Forms::Button());
@@ -309,7 +309,7 @@ namespace Payrolls {
 			this->tabPage1->Size = System::Drawing::Size(818, 593);
 			this->tabPage1->TabIndex = 0;
 			this->tabPage1->Text = L"Admin Home Page";
-			this->tabPage1->Click += gcnew System::EventHandler(this, &MyForm1::tabPage1_Click);
+			this->tabPage1->Click += gcnew System::EventHandler(this, &AdminMenu::tabPage1_Click);
 			// 
 			// button2
 			// 
@@ -319,7 +319,7 @@ namespace Payrolls {
 			this->button2->TabIndex = 34;
 			this->button2->Text = L"Update";
 			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &MyForm1::button2_Click);
+			this->button2->Click += gcnew System::EventHandler(this, &AdminMenu::button2_Click);
 			// 
 			// button1
 			// 
@@ -329,7 +329,7 @@ namespace Payrolls {
 			this->button1->TabIndex = 33;
 			this->button1->Text = L"Update";
 			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &MyForm1::button1_Click_1);
+			this->button1->Click += gcnew System::EventHandler(this, &AdminMenu::button1_Click_1);
 			// 
 			// textBox5
 			// 
@@ -344,7 +344,7 @@ namespace Payrolls {
 			this->textBox4->Name = L"textBox4";
 			this->textBox4->Size = System::Drawing::Size(183, 20);
 			this->textBox4->TabIndex = 31;
-			this->textBox4->TextChanged += gcnew System::EventHandler(this, &MyForm1::textBox4_TextChanged);
+			this->textBox4->TextChanged += gcnew System::EventHandler(this, &AdminMenu::textBox4_TextChanged);
 			// 
 			// linkedit2
 			// 
@@ -355,7 +355,7 @@ namespace Payrolls {
 			this->linkedit2->TabIndex = 30;
 			this->linkedit2->TabStop = true;
 			this->linkedit2->Text = L"edit";
-			this->linkedit2->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &MyForm1::linkedit2_LinkClicked);
+			this->linkedit2->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &AdminMenu::linkedit2_LinkClicked);
 			// 
 			// linkedit1
 			// 
@@ -366,7 +366,7 @@ namespace Payrolls {
 			this->linkedit1->TabIndex = 29;
 			this->linkedit1->TabStop = true;
 			this->linkedit1->Text = L"edit";
-			this->linkedit1->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &MyForm1::linkedit1_LinkClicked);
+			this->linkedit1->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &AdminMenu::linkedit1_LinkClicked);
 			// 
 			// logout
 			// 
@@ -377,7 +377,7 @@ namespace Payrolls {
 			this->logout->TabIndex = 28;
 			this->logout->TabStop = true;
 			this->logout->Text = L"LogOut";
-			this->logout->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &MyForm1::logout_LinkClicked);
+			this->logout->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &AdminMenu::logout_LinkClicked);
 			// 
 			// buttonNoShow
 			// 
@@ -387,7 +387,7 @@ namespace Payrolls {
 			this->buttonNoShow->TabIndex = 27;
 			this->buttonNoShow->Text = L"No Show";
 			this->buttonNoShow->UseVisualStyleBackColor = true;
-			this->buttonNoShow->Click += gcnew System::EventHandler(this, &MyForm1::buttonNoShow_Click);
+			this->buttonNoShow->Click += gcnew System::EventHandler(this, &AdminMenu::buttonNoShow_Click);
 			// 
 			// ButtonShow
 			// 
@@ -397,7 +397,7 @@ namespace Payrolls {
 			this->ButtonShow->TabIndex = 26;
 			this->ButtonShow->Text = L"Show";
 			this->ButtonShow->UseVisualStyleBackColor = true;
-			this->ButtonShow->Click += gcnew System::EventHandler(this, &MyForm1::ButtonShow_Click);
+			this->ButtonShow->Click += gcnew System::EventHandler(this, &AdminMenu::ButtonShow_Click);
 			// 
 			// lbl6
 			// 
@@ -442,7 +442,7 @@ namespace Payrolls {
 			this->lbl3->Size = System::Drawing::Size(26, 20);
 			this->lbl3->TabIndex = 22;
 			this->lbl3->Text = L"ID";
-			this->lbl3->Click += gcnew System::EventHandler(this, &MyForm1::lbl3_Click);
+			this->lbl3->Click += gcnew System::EventHandler(this, &AdminMenu::lbl3_Click);
 			// 
 			// label6
 			// 
@@ -498,7 +498,7 @@ namespace Payrolls {
 			this->lbl2->Size = System::Drawing::Size(94, 20);
 			this->lbl2->TabIndex = 17;
 			this->lbl2->Text = L"Department";
-			this->lbl2->Click += gcnew System::EventHandler(this, &MyForm1::lbl2_Click);
+			this->lbl2->Click += gcnew System::EventHandler(this, &AdminMenu::lbl2_Click);
 			// 
 			// label2
 			// 
@@ -521,7 +521,7 @@ namespace Payrolls {
 			this->lbl1->Size = System::Drawing::Size(188, 29);
 			this->lbl1->TabIndex = 15;
 			this->lbl1->Text = L"Employee name";
-			this->lbl1->Click += gcnew System::EventHandler(this, &MyForm1::lbl1_Click);
+			this->lbl1->Click += gcnew System::EventHandler(this, &AdminMenu::lbl1_Click);
 			// 
 			// label1
 			// 
@@ -544,7 +544,7 @@ namespace Payrolls {
 			this->tab2->Size = System::Drawing::Size(818, 593);
 			this->tab2->TabIndex = 1;
 			this->tab2->Text = L"Search Employees";
-			this->tab2->Click += gcnew System::EventHandler(this, &MyForm1::tab2_Click);
+			this->tab2->Click += gcnew System::EventHandler(this, &AdminMenu::tab2_Click);
 			// 
 			// tabControl1
 			// 
@@ -597,7 +597,7 @@ namespace Payrolls {
 			this->label13->Size = System::Drawing::Size(201, 24);
 			this->label13->TabIndex = 17;
 			this->label13->Text = L"Resignation sent to HR";
-			this->label13->Click += gcnew System::EventHandler(this, &MyForm1::label13_Click);
+			this->label13->Click += gcnew System::EventHandler(this, &AdminMenu::label13_Click);
 			// 
 			// LogOut2
 			// 
@@ -608,7 +608,7 @@ namespace Payrolls {
 			this->LogOut2->TabIndex = 1;
 			this->LogOut2->TabStop = true;
 			this->LogOut2->Text = L"LogOut";
-			this->LogOut2->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &MyForm1::LogOut2_LinkClicked);
+			this->LogOut2->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &AdminMenu::LogOut2_LinkClicked);
 			// 
 			// buttonNo
 			// 
@@ -618,7 +618,7 @@ namespace Payrolls {
 			this->buttonNo->TabIndex = 16;
 			this->buttonNo->Text = L"No";
 			this->buttonNo->UseVisualStyleBackColor = true;
-			this->buttonNo->Click += gcnew System::EventHandler(this, &MyForm1::buttonNo_Click);
+			this->buttonNo->Click += gcnew System::EventHandler(this, &AdminMenu::buttonNo_Click);
 			// 
 			// buttonYes
 			// 
@@ -628,7 +628,7 @@ namespace Payrolls {
 			this->buttonYes->TabIndex = 15;
 			this->buttonYes->Text = L"Yes";
 			this->buttonYes->UseVisualStyleBackColor = true;
-			this->buttonYes->Click += gcnew System::EventHandler(this, &MyForm1::buttonYes_Click);
+			this->buttonYes->Click += gcnew System::EventHandler(this, &AdminMenu::buttonYes_Click);
 			// 
 			// label12
 			// 
@@ -654,7 +654,7 @@ namespace Payrolls {
 			this->linkResign->TabIndex = 13;
 			this->linkResign->TabStop = true;
 			this->linkResign->Text = L"Notify resignation to HR";
-			this->linkResign->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &MyForm1::linkResign_LinkClicked);
+			this->linkResign->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &AdminMenu::linkResign_LinkClicked);
 			// 
 			// lbl12
 			// 
@@ -721,7 +721,7 @@ namespace Payrolls {
 			this->label11->Size = System::Drawing::Size(87, 20);
 			this->label11->TabIndex = 7;
 			this->label11->Text = L"Hired date:";
-			this->label11->Click += gcnew System::EventHandler(this, &MyForm1::label11_Click);
+			this->label11->Click += gcnew System::EventHandler(this, &AdminMenu::label11_Click);
 			// 
 			// label10
 			// 
@@ -733,7 +733,7 @@ namespace Payrolls {
 			this->label10->Size = System::Drawing::Size(88, 20);
 			this->label10->TabIndex = 6;
 			this->label10->Text = L"Hourly Pay:";
-			this->label10->Click += gcnew System::EventHandler(this, &MyForm1::label10_Click);
+			this->label10->Click += gcnew System::EventHandler(this, &AdminMenu::label10_Click);
 			// 
 			// label9
 			// 
@@ -778,7 +778,7 @@ namespace Payrolls {
 			this->lbl7->Size = System::Drawing::Size(152, 24);
 			this->lbl7->TabIndex = 1;
 			this->lbl7->Text = L"Employee Name";
-			this->lbl7->Click += gcnew System::EventHandler(this, &MyForm1::lbl7_Click);
+			this->lbl7->Click += gcnew System::EventHandler(this, &AdminMenu::lbl7_Click);
 			// 
 			// buttonReset
 			// 
@@ -788,7 +788,7 @@ namespace Payrolls {
 			this->buttonReset->TabIndex = 2;
 			this->buttonReset->Text = L"Reset";
 			this->buttonReset->UseVisualStyleBackColor = true;
-			this->buttonReset->Click += gcnew System::EventHandler(this, &MyForm1::buttonReset_Click);
+			this->buttonReset->Click += gcnew System::EventHandler(this, &AdminMenu::buttonReset_Click);
 			// 
 			// textBox1
 			// 
@@ -798,7 +798,7 @@ namespace Payrolls {
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(250, 26);
 			this->textBox1->TabIndex = 1;
-			this->textBox1->TextChanged += gcnew System::EventHandler(this, &MyForm1::textBox1_TextChanged);
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &AdminMenu::textBox1_TextChanged);
 			// 
 			// buttonSearch
 			// 
@@ -810,7 +810,7 @@ namespace Payrolls {
 			this->buttonSearch->TabIndex = 0;
 			this->buttonSearch->Text = L"Search Employee";
 			this->buttonSearch->UseVisualStyleBackColor = true;
-			this->buttonSearch->Click += gcnew System::EventHandler(this, &MyForm1::button1_Click);
+			this->buttonSearch->Click += gcnew System::EventHandler(this, &AdminMenu::button1_Click);
 			// 
 			// tab2Page2
 			// 
@@ -838,7 +838,7 @@ namespace Payrolls {
 			this->tab2Page2->Size = System::Drawing::Size(810, 567);
 			this->tab2Page2->TabIndex = 1;
 			this->tab2Page2->Text = L"Time Sheet";
-			this->tab2Page2->Click += gcnew System::EventHandler(this, &MyForm1::tab2Page2_Click);
+			this->tab2Page2->Click += gcnew System::EventHandler(this, &AdminMenu::tab2Page2_Click);
 			// 
 			// lbl14
 			// 
@@ -909,7 +909,7 @@ namespace Payrolls {
 			this->label20->Size = System::Drawing::Size(130, 22);
 			this->label20->TabIndex = 10;
 			this->label20->Text = L"Aprove Hours\?";
-			this->label20->Click += gcnew System::EventHandler(this, &MyForm1::label20_Click);
+			this->label20->Click += gcnew System::EventHandler(this, &AdminMenu::label20_Click);
 			// 
 			// label19
 			// 
@@ -976,7 +976,7 @@ namespace Payrolls {
 			this->label16->Size = System::Drawing::Size(92, 22);
 			this->label16->TabIndex = 4;
 			this->label16->Text = L"Hours left:";
-			this->label16->Click += gcnew System::EventHandler(this, &MyForm1::label14_Click);
+			this->label16->Click += gcnew System::EventHandler(this, &AdminMenu::label14_Click);
 			// 
 			// lbl16
 			// 
@@ -999,7 +999,7 @@ namespace Payrolls {
 			this->label15->Size = System::Drawing::Size(63, 22);
 			this->label15->TabIndex = 2;
 			this->label15->Text = L"Hours:";
-			this->label15->Click += gcnew System::EventHandler(this, &MyForm1::label15_Click);
+			this->label15->Click += gcnew System::EventHandler(this, &AdminMenu::label15_Click);
 			// 
 			// lbl15
 			// 
@@ -1043,16 +1043,16 @@ namespace Payrolls {
 			this->tabPage3->TabIndex = 3;
 			this->tabPage3->Text = L"Alert";
 			// 
-			// MyForm1
+			// AdminMenu
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(822, 615);
 			this->Controls->Add(this->tab1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			this->Name = L"MyForm1";
+			this->Name = L"AdminMenu";
 			this->Text = L"Admin Main Menu";
-			this->Load += gcnew System::EventHandler(this, &MyForm1::MyForm1_Load);
+			this->Load += gcnew System::EventHandler(this, &AdminMenu::AdminMenu_Load);
 			this->tab1->ResumeLayout(false);
 			this->tabPage1->ResumeLayout(false);
 			this->tabPage1->PerformLayout();
@@ -1072,7 +1072,7 @@ namespace Payrolls {
 	}
 	private: System::Void tab2_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	private: System::Void MyForm1_Load(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void AdminMenu_Load(System::Object^ sender, System::EventArgs^ e) {
 
 		textBox4->Hide();
 		textBox5->Hide();
@@ -1163,8 +1163,8 @@ namespace Payrolls {
 		if ((textBox1->Text == "")) {
 			MessageBox::Show("Please enter data", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
-		
-		else if ((System::Text::RegularExpressions::Regex::IsMatch(textBox1->Text,"^[a-zA-z]"))){
+
+		else if ((System::Text::RegularExpressions::Regex::IsMatch(textBox1->Text, "^[a-zA-z]"))) {
 			MessageBox::Show("Please enter ID number", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 
@@ -1355,17 +1355,17 @@ namespace Payrolls {
 	}
 	private: System::Void lbl1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void lbl2_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void tabPage1_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void lbl7_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void lbl3_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void textBox4_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-};
+	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void lbl2_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void tabPage1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void lbl7_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void lbl3_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox4_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	};
 }
