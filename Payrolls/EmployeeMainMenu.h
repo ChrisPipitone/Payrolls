@@ -1,5 +1,5 @@
 #pragma once
-#include<iostream>
+
 #include"ConnectionPath.h"
 
 namespace Payrolls {
@@ -10,18 +10,6 @@ namespace Payrolls {
 	using namespace System::Data;
 	using namespace System::Drawing;
 	using namespace System::Data::OleDb;
-
-	//used to convert  System::String^ to std::string 
-	using System::Runtime::InteropServices::Marshal;
-	static std::string toStandardString(System::String^ string)
-	{
-		System::IntPtr pointer = Marshal::StringToHGlobalAnsi(string);
-		char* charPointer = reinterpret_cast<char*>(pointer.ToPointer());
-		std::string returnString(charPointer, string->Length);
-		Marshal::FreeHGlobal(pointer);
-
-		return returnString;
-	}
 
 	public ref class EmployeeMainMenu : public System::Windows::Forms::Form
 	{
@@ -190,6 +178,12 @@ private: System::Windows::Forms::Panel^ viewBenefits_panel;
 			this->logout_button = (gcnew System::Windows::Forms::ToolStripButton());
 			this->toolStrip1 = (gcnew System::Windows::Forms::ToolStrip());
 			this->editPersonal_panel = (gcnew System::Windows::Forms::Panel());
+			this->Emp_grossIncome = (gcnew System::Windows::Forms::Label());
+			this->grossIncome_label = (gcnew System::Windows::Forms::Label());
+			this->Emp_payRate = (gcnew System::Windows::Forms::Label());
+			this->Emp_incomeType = (gcnew System::Windows::Forms::Label());
+			this->incomeType_label = (gcnew System::Windows::Forms::Label());
+			this->label35 = (gcnew System::Windows::Forms::Label());
 			this->viewBenefits_panel = (gcnew System::Windows::Forms::Panel());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->Emp_currBenefit_glance = (gcnew System::Windows::Forms::Label());
@@ -201,12 +195,6 @@ private: System::Windows::Forms::Panel^ viewBenefits_panel;
 			this->infoGlance_panel = (gcnew System::Windows::Forms::Panel());
 			this->viewPaystub_panel = (gcnew System::Windows::Forms::Panel());
 			this->payStub_title_label = (gcnew System::Windows::Forms::Label());
-			this->label35 = (gcnew System::Windows::Forms::Label());
-			this->incomeType_label = (gcnew System::Windows::Forms::Label());
-			this->Emp_incomeType = (gcnew System::Windows::Forms::Label());
-			this->Emp_payRate = (gcnew System::Windows::Forms::Label());
-			this->grossIncome_label = (gcnew System::Windows::Forms::Label());
-			this->Emp_grossIncome = (gcnew System::Windows::Forms::Label());
 			this->toolStrip1->SuspendLayout();
 			this->editPersonal_panel->SuspendLayout();
 			this->viewBenefits_panel->SuspendLayout();
@@ -647,6 +635,63 @@ private: System::Windows::Forms::Panel^ viewBenefits_panel;
 			this->editPersonal_panel->Size = System::Drawing::Size(1121, 652);
 			this->editPersonal_panel->TabIndex = 3;
 			// 
+			// Emp_grossIncome
+			// 
+			this->Emp_grossIncome->AutoSize = true;
+			this->Emp_grossIncome->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->Emp_grossIncome->Location = System::Drawing::Point(290, 568);
+			this->Emp_grossIncome->Name = L"Emp_grossIncome";
+			this->Emp_grossIncome->Size = System::Drawing::Size(0, 24);
+			this->Emp_grossIncome->TabIndex = 19;
+			// 
+			// grossIncome_label
+			// 
+			this->grossIncome_label->AutoSize = true;
+			this->grossIncome_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->grossIncome_label->Location = System::Drawing::Point(121, 569);
+			this->grossIncome_label->Name = L"grossIncome_label";
+			this->grossIncome_label->Size = System::Drawing::Size(132, 24);
+			this->grossIncome_label->TabIndex = 18;
+			this->grossIncome_label->Text = L"Gross Income:";
+			// 
+			// Emp_payRate
+			// 
+			this->Emp_payRate->AutoSize = true;
+			this->Emp_payRate->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->Emp_payRate->Location = System::Drawing::Point(290, 522);
+			this->Emp_payRate->Name = L"Emp_payRate";
+			this->Emp_payRate->Size = System::Drawing::Size(0, 24);
+			this->Emp_payRate->TabIndex = 17;
+			// 
+			// Emp_incomeType
+			// 
+			this->Emp_incomeType->AutoSize = true;
+			this->Emp_incomeType->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->Emp_incomeType->Location = System::Drawing::Point(288, 471);
+			this->Emp_incomeType->Name = L"Emp_incomeType";
+			this->Emp_incomeType->Size = System::Drawing::Size(0, 24);
+			this->Emp_incomeType->TabIndex = 16;
+			// 
+			// incomeType_label
+			// 
+			this->incomeType_label->AutoSize = true;
+			this->incomeType_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->incomeType_label->Location = System::Drawing::Point(121, 471);
+			this->incomeType_label->Name = L"incomeType_label";
+			this->incomeType_label->Size = System::Drawing::Size(126, 24);
+			this->incomeType_label->TabIndex = 15;
+			this->incomeType_label->Text = L"Income Type:";
+			// 
+			// label35
+			// 
+			this->label35->AutoSize = true;
+			this->label35->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->label35->Location = System::Drawing::Point(121, 523);
+			this->label35->Name = L"label35";
+			this->label35->Size = System::Drawing::Size(89, 24);
+			this->label35->TabIndex = 14;
+			this->label35->Text = L"Pay Rate:";
+			// 
 			// viewBenefits_panel
 			// 
 			this->viewBenefits_panel->Controls->Add(this->panel1);
@@ -664,9 +709,9 @@ private: System::Windows::Forms::Panel^ viewBenefits_panel;
 			this->panel1->Controls->Add(this->Emp_benefitName);
 			this->panel1->Controls->Add(this->benefitName_label);
 			this->panel1->Controls->Add(this->label17);
-			this->panel1->Location = System::Drawing::Point(5, 4);
+			this->panel1->Location = System::Drawing::Point(-12, 4);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(1095, 648);
+			this->panel1->Size = System::Drawing::Size(1112, 648);
 			this->panel1->TabIndex = 1;
 			// 
 			// Emp_currBenefit_glance
@@ -766,63 +811,6 @@ private: System::Windows::Forms::Panel^ viewBenefits_panel;
 			this->payStub_title_label->Size = System::Drawing::Size(318, 37);
 			this->payStub_title_label->TabIndex = 0;
 			this->payStub_title_label->Text = L"Most Recent Paystub";
-			// 
-			// label35
-			// 
-			this->label35->AutoSize = true;
-			this->label35->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-			this->label35->Location = System::Drawing::Point(121, 523);
-			this->label35->Name = L"label35";
-			this->label35->Size = System::Drawing::Size(89, 24);
-			this->label35->TabIndex = 14;
-			this->label35->Text = L"Pay Rate:";
-			// 
-			// incomeType_label
-			// 
-			this->incomeType_label->AutoSize = true;
-			this->incomeType_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-			this->incomeType_label->Location = System::Drawing::Point(121, 471);
-			this->incomeType_label->Name = L"incomeType_label";
-			this->incomeType_label->Size = System::Drawing::Size(126, 24);
-			this->incomeType_label->TabIndex = 15;
-			this->incomeType_label->Text = L"Income Type:";
-			// 
-			// Emp_incomeType
-			// 
-			this->Emp_incomeType->AutoSize = true;
-			this->Emp_incomeType->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-			this->Emp_incomeType->Location = System::Drawing::Point(288, 471);
-			this->Emp_incomeType->Name = L"Emp_incomeType";
-			this->Emp_incomeType->Size = System::Drawing::Size(0, 24);
-			this->Emp_incomeType->TabIndex = 16;
-			// 
-			// Emp_payRate
-			// 
-			this->Emp_payRate->AutoSize = true;
-			this->Emp_payRate->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-			this->Emp_payRate->Location = System::Drawing::Point(290, 522);
-			this->Emp_payRate->Name = L"Emp_payRate";
-			this->Emp_payRate->Size = System::Drawing::Size(0, 24);
-			this->Emp_payRate->TabIndex = 17;
-			// 
-			// grossIncome_label
-			// 
-			this->grossIncome_label->AutoSize = true;
-			this->grossIncome_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-			this->grossIncome_label->Location = System::Drawing::Point(121, 569);
-			this->grossIncome_label->Name = L"grossIncome_label";
-			this->grossIncome_label->Size = System::Drawing::Size(132, 24);
-			this->grossIncome_label->TabIndex = 18;
-			this->grossIncome_label->Text = L"Gross Income:";
-			// 
-			// Emp_grossIncome
-			// 
-			this->Emp_grossIncome->AutoSize = true;
-			this->Emp_grossIncome->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-			this->Emp_grossIncome->Location = System::Drawing::Point(290, 568);
-			this->Emp_grossIncome->Name = L"Emp_grossIncome";
-			this->Emp_grossIncome->Size = System::Drawing::Size(0, 24);
-			this->Emp_grossIncome->TabIndex = 19;
 			// 
 			// EmployeeMainMenu
 			// 

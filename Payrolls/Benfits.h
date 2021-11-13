@@ -1,14 +1,16 @@
-#ifndef Benfits_H
-#define Benfits_H
+#pragma once
+
 using namespace System;
 
-
-class Benfits{
+ref class Benfits{
 public:
     double CalculateHealthCoverage(double salary, String^ package);
     double CalculateDentalCoverage(double salary, String^ package);
     double CalculateVisionCoverage(double salary, String^ package);
     double CalculateHealthBenfits(double salary); 
-};
 
-#endif
+private:
+    String^ premium = gcnew String("Premium Package");
+    String^ gold = gcnew String("Gold Package");
+    String^ silver = "Silver Package";
+};

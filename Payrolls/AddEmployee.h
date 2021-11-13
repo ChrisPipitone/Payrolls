@@ -162,7 +162,6 @@ namespace Payrolls {
 			this->label1->Size = System::Drawing::Size(100, 20);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Employee ID";
-			this->label1->Click += gcnew System::EventHandler(this, &AddEmployee::label1_Click);
 			// 
 			// textBox1
 			// 
@@ -177,7 +176,6 @@ namespace Payrolls {
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(120, 26);
 			this->textBox2->TabIndex = 3;
-			this->textBox2->TextChanged += gcnew System::EventHandler(this, &AddEmployee::textBox2_TextChanged);
 			// 
 			// label2
 			// 
@@ -187,7 +185,6 @@ namespace Payrolls {
 			this->label2->Size = System::Drawing::Size(42, 20);
 			this->label2->TabIndex = 2;
 			this->label2->Text = L"SSN";
-			this->label2->Click += gcnew System::EventHandler(this, &AddEmployee::label2_Click);
 			// 
 			// textBox3
 			// 
@@ -195,7 +192,6 @@ namespace Payrolls {
 			this->textBox3->Name = L"textBox3";
 			this->textBox3->Size = System::Drawing::Size(120, 26);
 			this->textBox3->TabIndex = 5;
-			this->textBox3->TextChanged += gcnew System::EventHandler(this, &AddEmployee::textBox3_TextChanged);
 			// 
 			// label3
 			// 
@@ -205,7 +201,6 @@ namespace Payrolls {
 			this->label3->Size = System::Drawing::Size(86, 20);
 			this->label3->TabIndex = 4;
 			this->label3->Text = L"First Name";
-			this->label3->Click += gcnew System::EventHandler(this, &AddEmployee::label3_Click);
 			// 
 			// textBox4
 			// 
@@ -213,7 +208,6 @@ namespace Payrolls {
 			this->textBox4->Name = L"textBox4";
 			this->textBox4->Size = System::Drawing::Size(120, 26);
 			this->textBox4->TabIndex = 7;
-			this->textBox4->TextChanged += gcnew System::EventHandler(this, &AddEmployee::textBox4_TextChanged);
 			// 
 			// label4
 			// 
@@ -222,8 +216,7 @@ namespace Payrolls {
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(86, 20);
 			this->label4->TabIndex = 6;
-			this->label4->Text = L"Last Name";
-			this->label4->Click += gcnew System::EventHandler(this, &AddEmployee::label4_Click);
+			this->label4->Text = L"Last Name";	
 			// 
 			// textBox5
 			// 
@@ -231,7 +224,7 @@ namespace Payrolls {
 			this->textBox5->Name = L"textBox5";
 			this->textBox5->Size = System::Drawing::Size(120, 26);
 			this->textBox5->TabIndex = 9;
-			this->textBox5->TextChanged += gcnew System::EventHandler(this, &AddEmployee::textBox5_TextChanged);
+
 			// 
 			// label5
 			// 
@@ -241,8 +234,6 @@ namespace Payrolls {
 			this->label5->Size = System::Drawing::Size(63, 20);
 			this->label5->TabIndex = 8;
 			this->label5->Text = L"Gender";
-			this->label5->Click += gcnew System::EventHandler(this, &AddEmployee::label5_Click);
-			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
@@ -251,7 +242,7 @@ namespace Payrolls {
 			this->label6->Size = System::Drawing::Size(44, 20);
 			this->label6->TabIndex = 10;
 			this->label6->Text = L"DOB";
-			this->label6->Click += gcnew System::EventHandler(this, &AddEmployee::label6_Click);
+
 			// 
 			// textBox7
 			// 
@@ -300,7 +291,7 @@ namespace Payrolls {
 			this->label9->Size = System::Drawing::Size(48, 20);
 			this->label9->TabIndex = 16;
 			this->label9->Text = L"Email";
-			this->label9->Click += gcnew System::EventHandler(this, &AddEmployee::label9_Click);
+
 			// 
 			// textBox11
 			// 
@@ -308,7 +299,7 @@ namespace Payrolls {
 			this->textBox11->Name = L"textBox11";
 			this->textBox11->Size = System::Drawing::Size(120, 26);
 			this->textBox11->TabIndex = 22;
-			this->textBox11->TextChanged += gcnew System::EventHandler(this, &AddEmployee::textBox11_TextChanged);
+
 			// 
 			// label12
 			// 
@@ -318,7 +309,7 @@ namespace Payrolls {
 			this->label12->Size = System::Drawing::Size(65, 20);
 			this->label12->TabIndex = 23;
 			this->label12->Text = L"Position";
-			this->label12->Click += gcnew System::EventHandler(this, &AddEmployee::label12_Click);
+	
 			// 
 			// textBox13
 			// 
@@ -326,8 +317,7 @@ namespace Payrolls {
 			this->textBox13->Name = L"textBox13";
 			this->textBox13->Size = System::Drawing::Size(120, 26);
 			this->textBox13->TabIndex = 26;
-			this->textBox13->TextChanged += gcnew System::EventHandler(this, &AddEmployee::textBox13_TextChanged);
-			// 
+	
 			// label14
 			// 
 			this->label14->AutoSize = true;
@@ -336,7 +326,7 @@ namespace Payrolls {
 			this->label14->Size = System::Drawing::Size(100, 20);
 			this->label14->TabIndex = 27;
 			this->label14->Text = L"Hourly Wage";
-			this->label14->Click += gcnew System::EventHandler(this, &AddEmployee::label14_Click);
+		
 			// 
 			// textBox14
 			// 
@@ -344,7 +334,7 @@ namespace Payrolls {
 			this->textBox14->Name = L"textBox14";
 			this->textBox14->Size = System::Drawing::Size(120, 26);
 			this->textBox14->TabIndex = 31;
-			this->textBox14->TextChanged += gcnew System::EventHandler(this, &AddEmployee::textBox14_TextChanged_1);
+			
 			// 
 			// label15
 			// 
@@ -354,7 +344,7 @@ namespace Payrolls {
 			this->label15->Size = System::Drawing::Size(52, 20);
 			this->label15->TabIndex = 30;
 			this->label15->Text = L"Hours";
-			this->label15->Click += gcnew System::EventHandler(this, &AddEmployee::label15_Click);
+			
 			// 
 			// textBox15
 			// 
@@ -362,7 +352,7 @@ namespace Payrolls {
 			this->textBox15->Name = L"textBox15";
 			this->textBox15->Size = System::Drawing::Size(120, 26);
 			this->textBox15->TabIndex = 35;
-			this->textBox15->TextChanged += gcnew System::EventHandler(this, &AddEmployee::textBox15_TextChanged);
+			
 			// 
 			// label16
 			// 
@@ -372,7 +362,7 @@ namespace Payrolls {
 			this->label16->Size = System::Drawing::Size(78, 20);
 			this->label16->TabIndex = 34;
 			this->label16->Text = L"Password";
-			this->label16->Click += gcnew System::EventHandler(this, &AddEmployee::label16_Click);
+			
 			// 
 			// button3
 			// 
@@ -412,7 +402,7 @@ namespace Payrolls {
 			this->label10->Size = System::Drawing::Size(66, 20);
 			this->label10->TabIndex = 42;
 			this->label10->Text = L"Zipcode";
-			this->label10->Click += gcnew System::EventHandler(this, &AddEmployee::label10_Click_1);
+			
 			// 
 			// textBox6
 			// 
@@ -457,7 +447,7 @@ namespace Payrolls {
 			this->label13->Size = System::Drawing::Size(128, 20);
 			this->label13->TabIndex = 47;
 			this->label13->Text = L"Dental Coverage";
-			this->label13->Click += gcnew System::EventHandler(this, &AddEmployee::label13_Click_1);
+
 			// 
 			// label17
 			// 
@@ -471,17 +461,17 @@ namespace Payrolls {
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Premium Package", L"Gold Package", L"Silver Package" });
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"None/Purchase Later", L"Premium Package", L"Gold Package", L"Silver Package" });
 			this->comboBox1->Location = System::Drawing::Point(682, 282);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(238, 28);
 			this->comboBox1->TabIndex = 49;
-			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &AddEmployee::comboBox1_SelectedIndexChanged);
+		
 			// 
 			// comboBox2
 			// 
 			this->comboBox2->FormattingEnabled = true;
-			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Premium Package", L"Gold Package", L"Silver Package" });
+			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"None/Purchase Later", L"Premium Package", L"Gold Package", L"Silver Package" });
 			this->comboBox2->Location = System::Drawing::Point(682, 334);
 			this->comboBox2->Name = L"comboBox2";
 			this->comboBox2->Size = System::Drawing::Size(238, 28);
@@ -490,7 +480,7 @@ namespace Payrolls {
 			// comboBox3
 			// 
 			this->comboBox3->FormattingEnabled = true;
-			this->comboBox3->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Premium Package", L"Gold Package", L"Silver Package" });
+			this->comboBox3->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"None/Purchase Later", L"Premium Package", L"Gold Package", L"Silver Package" });
 			this->comboBox3->Location = System::Drawing::Point(682, 384);
 			this->comboBox3->Name = L"comboBox3";
 			this->comboBox3->Size = System::Drawing::Size(238, 28);
@@ -548,64 +538,6 @@ namespace Payrolls {
 
 		}
 #pragma endregion
-	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void textBox3_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void textBox4_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void textBox5_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label6_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void textBox6_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label9_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label10_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label11_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void textBox11_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label12_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void textBox12_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label13_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void textBox13_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label14_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void textBox14_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label15_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void textBox14_TextChanged_1(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label17_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label16_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void textBox16_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void textBox15_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void textBox18_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Hide();
 		otherPage->Show();
@@ -617,14 +549,25 @@ namespace Payrolls {
 		FedTax fTax;
 		NYTax nTax;
 		Benfits benfit;
-		int overtimeHour = gross.calculateOvertimeHour(Int32::Parse(textBox15->Text));
-		double overtimePay = gross.CalculateOvertimePay(overtimeHour, Convert::ToDouble(textBox14->Text));
-		double grossIncome = gross.CalculateGrossIncome(Int32::Parse(textBox15->Text), overtimePay, Convert::ToDouble(textBox14->Text));
+		int overtimeHour;
+		double overtimePay;
+		double grossIncome;
+		try 
+		{
+			overtimeHour = gross.calculateOvertimeHour(Int32::Parse(textBox15->Text));
+			overtimePay = gross.CalculateOvertimePay(overtimeHour, Convert::ToDouble(textBox14->Text));
+			grossIncome = gross.CalculateGrossIncome(Int32::Parse(textBox15->Text), overtimePay, Convert::ToDouble(textBox14->Text));
+		}
+		catch (System::FormatException^ e)
+		{
+			return;
+		}
+
+		 
 		double fedTax = fTax.FedTaxRate(grossIncome);
 		double nyTax = nTax.NYTaxRate(grossIncome);
-		if (comboBox1->Text == "" || comboBox2->Text == "" || comboBox3->Text == "") {
-			MessageBox::Show("Error! Please select a field!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-		}
+
+
 		double health = benfit.CalculateHealthCoverage(grossIncome, comboBox1->Text);
 		double dental = benfit.CalculateDentalCoverage(grossIncome, comboBox2->Text);
 		double vision = benfit.CalculateVisionCoverage(grossIncome, comboBox3->Text);
@@ -633,49 +576,59 @@ namespace Payrolls {
 		conn->Open();
 		OleDbCommand^ cmd = conn->CreateCommand();
 		cmd->CommandType = CommandType::Text;
-		cmd->CommandText = "Insert into EmployeeInfo([ID], [Password], [SSN], [Firstname], [Lastname], [DateofBirth], [Age], [Gender], [Email], [PhoneNumber], [Address1], [Zipcode], [Position], [Hours], [OvertimeHours], " +
-			"[OvertimePay], [HourlyPay], [Weeklygrosspay], [HealthCoverage], [DentalCoverage], [VisionCoverage],[DisablityCoverage], [RetirementCoverage],[FederalTax],[NYTax], [HealthCost],[DentalCost],[VisionCost]) VALUES(@ID,@Password,@SSN,@Firstname,@Lastname,@DateofBirth,@Age,@Gender,@Email,@PhoneNumber,@Address1,@Zipcode,@Position,@Hours," +
-			"@OvertimeHours, @OvertimePay, @HourlyPay, @Weeklygrosspay, @HealthCoverage, @DentalCoverage, @VisionCoverage, @DisablityCoverage, @RetirementCoverage, @FederalTax, @NYTax, @HealthCost, @DentalCost, @VisionCost)";
-		cmd->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
-		cmd->Parameters->AddWithValue("@Password", textBox2->Text);
-		cmd->Parameters->AddWithValue("@SSN", textBox3->Text);
-		cmd->Parameters->AddWithValue("@Firstname", textBox4->Text);
-		cmd->Parameters->AddWithValue("@Lastname", textBox5->Text);
-		cmd->Parameters->AddWithValue("@DateofBirth", dateTimePicker1->Value);
-		cmd->Parameters->AddWithValue("@Age", Int32::Parse(textBox11->Text));
-		cmd->Parameters->AddWithValue("@Gender", textBox10->Text);
-		cmd->Parameters->AddWithValue("@Email", textBox9->Text);
-		cmd->Parameters->AddWithValue("@PhoneNumber", textBox8->Text);
-		cmd->Parameters->AddWithValue("@Address1", textBox7->Text);
-		cmd->Parameters->AddWithValue("@Zipcode", textBox6->Text);
-		cmd->Parameters->AddWithValue("@Position", textBox13->Text);
-		cmd->Parameters->AddWithValue("@Hours", Int32::Parse(textBox15->Text) - overtimeHour);
-		cmd->Parameters->AddWithValue("@OvertimeHours", overtimeHour);
-		cmd->Parameters->AddWithValue("@OvertimePay", overtimePay);
-		cmd->Parameters->AddWithValue("@HourlyPay", Convert::ToDouble(textBox14->Text));
-		cmd->Parameters->AddWithValue("@Weeklygrosspay", grossIncome);
-		cmd->Parameters->AddWithValue("@HealthCoverage", comboBox1->Text);
-		cmd->Parameters->AddWithValue("@DentalCoverage", comboBox2->Text);
-		cmd->Parameters->AddWithValue("@VisionCoverage", comboBox3->Text);
-		cmd->Parameters->AddWithValue("@FederalTax", fedTax);
-		cmd->Parameters->AddWithValue("@NYTax", nyTax);
+	
+		cmd->CommandText = "Insert into EmployeeInfo([ID], [Password], [SSN], [Firstname], [Lastname], [DateofBirth],"
+			+ "[Age], [Gender], [Email], [PhoneNumber], [Address1], [Zipcode], [Position], [Hours], [OvertimeHours], " +
+			"[OvertimePay], [HourlyPay], [Weeklygrosspay], [HealthCoverage], [DentalCoverage], [VisionCoverage]," +
+			"[FederalTax],[NYTax])" +
+			"VALUES(@ID,@Password,@SSN,@Firstname,@Lastname,@DateofBirth,@Age,@Gender,@Email,@PhoneNumber,@Address1,@Zipcode," +
+			" @Position,@Hours, @OvertimeHours, @OvertimePay, @HourlyPay, @Weeklygrosspay, @HealthCoverage," +
+				" @DentalCoverage, @VisionCoverage, @FederalTax, @NYTax)";	
 
-		//cmd->ExecuteNonQuery();
+		try
+		{
+			cmd->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
+			cmd->Parameters->AddWithValue("@Password", textBox2->Text);
+			cmd->Parameters->AddWithValue("@SSN", textBox3->Text);
+			cmd->Parameters->AddWithValue("@Firstname", textBox4->Text);
+			cmd->Parameters->AddWithValue("@Lastname", textBox5->Text);
+			cmd->Parameters->AddWithValue("@DateofBirth", dateTimePicker1->Value);
+			cmd->Parameters->AddWithValue("@Age", Int32::Parse(textBox11->Text));
+			cmd->Parameters->AddWithValue("@Gender", textBox10->Text);
+			cmd->Parameters->AddWithValue("@Email", textBox9->Text);
+			cmd->Parameters->AddWithValue("@PhoneNumber", textBox8->Text);
+			cmd->Parameters->AddWithValue("@Address1", textBox7->Text);
+			cmd->Parameters->AddWithValue("@Zipcode", textBox6->Text);
+			cmd->Parameters->AddWithValue("@Position", textBox13->Text);
+			cmd->Parameters->AddWithValue("@Hours", Int32::Parse(textBox15->Text) - overtimeHour);
+			cmd->Parameters->AddWithValue("@OvertimeHours", overtimeHour);
+			cmd->Parameters->AddWithValue("@OvertimePay", overtimePay);
+			cmd->Parameters->AddWithValue("@HourlyPay", Convert::ToDouble(textBox14->Text));
+			cmd->Parameters->AddWithValue("@Weeklygrosspay", grossIncome);
+			cmd->Parameters->AddWithValue("@FederalTax", fedTax);
+			cmd->Parameters->AddWithValue("@NYTax", nyTax);
+			try 
+			{
+				cmd->Parameters->AddWithValue("@HealthCoverage", comboBox1->Text);
+				cmd->Parameters->AddWithValue("@DentalCoverage", comboBox2->Text);
+				cmd->Parameters->AddWithValue("@VisionCoverage", comboBox3->Text);
+			}
+			catch (System::Data::OleDb::OleDbException^ e)
+			{
+				MessageBox::Show("Select An Option For Each Benefit! None Is A Choice.");
+				return;
+			}
+		}
+		catch (System::FormatException^ e)
+		{
+			return;
+		}
+
+		cmd->ExecuteNonQuery();
 		conn->Close();
 		MessageBox::Show("Add New Employee Succeed!");
 		this->Close();
-
-	}
-	private: System::Void label10_Click_1(System::Object^ sender, System::EventArgs^ e) {
-	}
-
-
-	private: System::Void label13_Click_1(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-
-	}
-	private: System::Void label20_Click(System::Object^ sender, System::EventArgs^ e) {
+		otherPage->Show();
 	}
 	};
 }

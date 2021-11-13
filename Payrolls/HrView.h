@@ -38,7 +38,7 @@ namespace Payrolls {
                 delete components;
             }
         }
-    private: System::Windows::Forms::Button^ button1;
+
     protected:
     private: System::Windows::Forms::Button^ button2;
     private: System::Windows::Forms::Button^ button3;
@@ -59,30 +59,18 @@ namespace Payrolls {
         void InitializeComponent(void)
         {
             System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(HrView::typeid));
-            this->button1 = (gcnew System::Windows::Forms::Button());
             this->button2 = (gcnew System::Windows::Forms::Button());
             this->button3 = (gcnew System::Windows::Forms::Button());
             this->button4 = (gcnew System::Windows::Forms::Button());
             this->button5 = (gcnew System::Windows::Forms::Button());
             this->SuspendLayout();
             // 
-            // button1
-            // 
-            this->button1->Location = System::Drawing::Point(39, 37);
-            this->button1->Margin = System::Windows::Forms::Padding(2);
-            this->button1->Name = L"button1";
-            this->button1->Size = System::Drawing::Size(169, 72);
-            this->button1->TabIndex = 0;
-            this->button1->Text = L"My Info";
-            this->button1->UseVisualStyleBackColor = true;
-            this->button1->Click += gcnew System::EventHandler(this, &HrView::button1_Click);
-            // 
             // button2
             // 
-            this->button2->Location = System::Drawing::Point(352, 213);
-            this->button2->Margin = System::Windows::Forms::Padding(2);
+            this->button2->Location = System::Drawing::Point(469, 262);
+            this->button2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->button2->Name = L"button2";
-            this->button2->Size = System::Drawing::Size(134, 34);
+            this->button2->Size = System::Drawing::Size(179, 42);
             this->button2->TabIndex = 1;
             this->button2->Text = L"Add Employee";
             this->button2->UseVisualStyleBackColor = true;
@@ -90,10 +78,10 @@ namespace Payrolls {
             // 
             // button3
             // 
-            this->button3->Location = System::Drawing::Point(352, 263);
-            this->button3->Margin = System::Windows::Forms::Padding(2);
+            this->button3->Location = System::Drawing::Point(469, 324);
+            this->button3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->button3->Name = L"button3";
-            this->button3->Size = System::Drawing::Size(134, 34);
+            this->button3->Size = System::Drawing::Size(179, 42);
             this->button3->TabIndex = 2;
             this->button3->Text = L"Update Employee";
             this->button3->UseVisualStyleBackColor = true;
@@ -101,10 +89,10 @@ namespace Payrolls {
             // 
             // button4
             // 
-            this->button4->Location = System::Drawing::Point(352, 310);
-            this->button4->Margin = System::Windows::Forms::Padding(2);
+            this->button4->Location = System::Drawing::Point(469, 382);
+            this->button4->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->button4->Name = L"button4";
-            this->button4->Size = System::Drawing::Size(134, 34);
+            this->button4->Size = System::Drawing::Size(179, 42);
             this->button4->TabIndex = 3;
             this->button4->Text = L"Delete Employee";
             this->button4->UseVisualStyleBackColor = true;
@@ -112,9 +100,10 @@ namespace Payrolls {
             // 
             // button5
             // 
-            this->button5->Location = System::Drawing::Point(309, 47);
+            this->button5->Location = System::Drawing::Point(85, 78);
+            this->button5->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
             this->button5->Name = L"button5";
-            this->button5->Size = System::Drawing::Size(177, 52);
+            this->button5->Size = System::Drawing::Size(236, 64);
             this->button5->TabIndex = 4;
             this->button5->Text = L"View Pay Stub";
             this->button5->UseVisualStyleBackColor = true;
@@ -122,16 +111,15 @@ namespace Payrolls {
             // 
             // HrView
             // 
-            this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+            this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-            this->ClientSize = System::Drawing::Size(544, 400);
+            this->ClientSize = System::Drawing::Size(725, 492);
             this->Controls->Add(this->button5);
             this->Controls->Add(this->button4);
             this->Controls->Add(this->button3);
             this->Controls->Add(this->button2);
-            this->Controls->Add(this->button1);
             this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-            this->Margin = System::Windows::Forms::Padding(2);
+            this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->Name = L"HrView";
             this->Text = L"HrView";
             this->ResumeLayout(false);

@@ -33,9 +33,6 @@
     <ClInclude Include="HrView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="removeEmployee.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="FedTax.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -60,6 +57,9 @@
     <ClInclude Include="ViewPaystub.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CheckID.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GrossIncome.cpp">
@@ -75,9 +75,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="HrView.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="removeEmployee.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="FedTax.cpp">
