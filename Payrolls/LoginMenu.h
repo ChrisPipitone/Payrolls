@@ -247,6 +247,7 @@ namespace Payrolls {
 				{
 					MessageBox::Show("Login Succeed!");
 					HrView^ hr = gcnew HrView();
+					hr->otherPage = this;
 					this->Hide();
 					hr->ShowDialog();
 				}

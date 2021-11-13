@@ -19,6 +19,7 @@ namespace Payrolls {
     public ref class HrView : public System::Windows::Forms::Form
     {
     public:
+        Form^ otherPage;
         HrView(void)
         {
             InitializeComponent();
@@ -44,6 +45,7 @@ namespace Payrolls {
     private: System::Windows::Forms::Button^ button3;
     private: System::Windows::Forms::Button^ button4;
     private: System::Windows::Forms::Button^ button5;
+    private: System::Windows::Forms::LinkLabel^ linkLabel1;
 
     private:
         /// <summary>
@@ -63,6 +65,7 @@ namespace Payrolls {
             this->button3 = (gcnew System::Windows::Forms::Button());
             this->button4 = (gcnew System::Windows::Forms::Button());
             this->button5 = (gcnew System::Windows::Forms::Button());
+            this->linkLabel1 = (gcnew System::Windows::Forms::LinkLabel());
             this->SuspendLayout();
             // 
             // button2
@@ -101,7 +104,7 @@ namespace Payrolls {
             // button5
             // 
             this->button5->Location = System::Drawing::Point(85, 78);
-            this->button5->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+            this->button5->Margin = System::Windows::Forms::Padding(4);
             this->button5->Name = L"button5";
             this->button5->Size = System::Drawing::Size(236, 64);
             this->button5->TabIndex = 4;
@@ -109,11 +112,23 @@ namespace Payrolls {
             this->button5->UseVisualStyleBackColor = true;
             this->button5->Click += gcnew System::EventHandler(this, &HrView::button5_Click);
             // 
+            // linkLabel1
+            // 
+            this->linkLabel1->AutoSize = true;
+            this->linkLabel1->Location = System::Drawing::Point(622, 26);
+            this->linkLabel1->Name = L"linkLabel1";
+            this->linkLabel1->Size = System::Drawing::Size(52, 17);
+            this->linkLabel1->TabIndex = 5;
+            this->linkLabel1->TabStop = true;
+            this->linkLabel1->Text = L"Logout";
+            this->linkLabel1->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &HrView::linkLabel1_LinkClicked);
+            // 
             // HrView
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->ClientSize = System::Drawing::Size(725, 492);
+            this->Controls->Add(this->linkLabel1);
             this->Controls->Add(this->button5);
             this->Controls->Add(this->button4);
             this->Controls->Add(this->button3);
@@ -123,6 +138,7 @@ namespace Payrolls {
             this->Name = L"HrView";
             this->Text = L"HrView";
             this->ResumeLayout(false);
+            this->PerformLayout();
 
         }
     private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -153,5 +169,9 @@ namespace Payrolls {
         // this->Hide();
         viewPay->ShowDialog();
     }
-    };
+    private: System::Void linkLabel1_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+        this->Hide();
+        otherPage->Show();
+    }
+};
 }
