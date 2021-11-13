@@ -5,6 +5,7 @@
 #include "NYTax.h"
 #include "Benfits.h"
 #include "ConnectionPath.h"
+#include"CheckID.h"
 
 namespace Payrolls {
 
@@ -531,7 +532,7 @@ namespace Payrolls {
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Premium Package", L"Gold Package", L"Silver Package" });
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"None/Purchase Later", L"Premium Package", L"Gold Package", L"Silver Package" });
 			this->comboBox1->Location = System::Drawing::Point(928, 347);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(281, 33);
@@ -540,7 +541,7 @@ namespace Payrolls {
 			// comboBox2
 			// 
 			this->comboBox2->FormattingEnabled = true;
-			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Premium Package", L"Gold Package", L"Silver Package" });
+			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"None/Purchase Later", L"Premium Package", L"Gold Package", L"Silver Package" });
 			this->comboBox2->Location = System::Drawing::Point(928, 291);
 			this->comboBox2->Name = L"comboBox2";
 			this->comboBox2->Size = System::Drawing::Size(281, 33);
@@ -549,7 +550,7 @@ namespace Payrolls {
 			// comboBox3
 			// 
 			this->comboBox3->FormattingEnabled = true;
-			this->comboBox3->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Premium Package", L"Gold Package", L"Silver Package" });
+			this->comboBox3->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"None/Purchase Later", L"Premium Package", L"Gold Package", L"Silver Package" });
 			this->comboBox3->Location = System::Drawing::Point(928, 237);
 			this->comboBox3->Name = L"comboBox3";
 			this->comboBox3->Size = System::Drawing::Size(281, 33);
@@ -616,6 +617,18 @@ namespace Payrolls {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
+		if (textBox1->Text == "")
+		{
+			MessageBox::Show("Enter An Employee Id.");
+			return;
+		}
+		if (!checkID(textBox1->Text))
+		{
+			MessageBox::Show("This ID does not exist within the Database");
+			return;
+		}
+
+
 		OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
 		conn->Open();
 		OleDbCommand^ cmd = conn->CreateCommand();
@@ -654,6 +667,19 @@ namespace Payrolls {
 		FedTax fTax;
 		NYTax nTax;
 		Benfits benfit;
+		
+		if (textBox1->Text == "")
+		{
+			MessageBox::Show("Enter An Employee Id.");
+			return;
+		}
+		if (!checkID(textBox1->Text))
+		{
+			MessageBox::Show("This ID does not exist within the Database");
+			return;
+		}
+
+
 		int overtimeHours = gross.calculateOvertimeHour(Int32::Parse(textBox7->Text));
 		double overtimePay = gross.CalculateOvertimePay(overtimeHours, Convert::ToDouble(textBox8->Text));
 		double grossIncome = gross.CalculateGrossIncome(Int32::Parse(textBox7->Text), overtimePay, Convert::ToDouble(textBox8->Text));
@@ -698,6 +724,7 @@ namespace Payrolls {
 		conn->Close();
 		MessageBox::Show("Update Employee Succeed");
 		this->Close();
+		otherPage->Show();
 	}
 	private: System::Void label6_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -706,6 +733,18 @@ namespace Payrolls {
 	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		if (textBox1->Text == "")
+		{
+			MessageBox::Show("Enter An Employee Id.");
+			return;
+		}
+		if (!checkID(textBox1->Text))
+		{
+			MessageBox::Show("This ID does not exist within the Database");
+			return;
+		}
+
 		String^ message = "Confirm Deleting Employee Record";
 		String^ title = "Delete Record";
 		MessageBoxButtons buttons = MessageBoxButtons::YesNo;
@@ -721,9 +760,11 @@ namespace Payrolls {
 			conn->Close();
 			MessageBox::Show("Delete Employee Succeed");
 			this->Close();
+			otherPage->Show();
 		}
 		else {
 			this->Close();
+			otherPage->Show();
 		}
 	}
 	private: System::Void textBox9_TextChanged(System::Object^ sender, System::EventArgs^ e) {

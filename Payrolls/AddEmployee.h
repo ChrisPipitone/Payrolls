@@ -4,6 +4,7 @@
 #include "FedTax.h"
 #include "NYTax.h"
 #include "Benfits.h"
+#include"CheckID.h"
 
 namespace Payrolls {
 
@@ -94,6 +95,7 @@ namespace Payrolls {
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private: System::Windows::Forms::ComboBox^ comboBox2;
 	private: System::Windows::Forms::ComboBox^ comboBox3;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
 
 
 
@@ -153,6 +155,8 @@ namespace Payrolls {
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
 			this->comboBox3 = (gcnew System::Windows::Forms::ComboBox());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
@@ -510,11 +514,21 @@ namespace Payrolls {
 			this->comboBox3->Size = System::Drawing::Size(160, 21);
 			this->comboBox3->TabIndex = 51;
 			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(596, 391);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(46, 45);
+			this->pictureBox1->TabIndex = 52;
+			this->pictureBox1->TabStop = false;
+			// 
 			// AddEmployee
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(640, 437);
+			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->comboBox3);
 			this->Controls->Add(this->comboBox2);
 			this->Controls->Add(this->comboBox1);
@@ -559,6 +573,7 @@ namespace Payrolls {
 			this->Name = L"AddEmployee";
 			this->Text = L"AddEmployee";
 			this->Load += gcnew System::EventHandler(this, &AddEmployee::AddEmployee_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -578,6 +593,20 @@ namespace Payrolls {
 		int overtimeHour;
 		double overtimePay;
 		double grossIncome;
+
+		//catch error where user doesn't enter a emp id
+		//error checking
+		if (textBox1->Text == "")
+		{
+			MessageBox::Show("Enter An Employee Id.");
+			return;
+		}
+		if (!checkID(textBox1->Text))
+		{
+			MessageBox::Show("This ID already exists within the Database");
+			return;
+		}
+
 		try 
 		{
 			overtimeHour = gross.calculateOvertimeHour(Int32::Parse(textBox15->Text));

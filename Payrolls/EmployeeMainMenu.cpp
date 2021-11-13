@@ -53,6 +53,48 @@ void Payrolls::EmployeeMainMenu::fillData(System::String^ empID)
 		this->prefEmail_textbox->Text = reader["Email"]->ToString();
 		this->phoneNumber_textBox->Text = reader["PhoneNumber"]->ToString();
 	
+		//Benefits
+		empHealthPackage_label->Text = reader["HealthCoverage"]->ToString();
+		empDentalPackage_label->Text = reader["DentalCoverage"]->ToString();
+		empVisionPackage_label->Text = reader["VisionCoverage"]->ToString();
+
+
+		if (empHealthPackage_label->Text == "None")
+			benefitName_label1->Text = "None Chosen";
+		else
+			benefitName_label1->Text = "Health";
+
+		if (empDentalPackage_label->Text == "None")
+			benefitName_label3->Text = "None Chosen";
+		else
+			benefitName_label2->Text = "Dental";
+
+		if (empVisionPackage_label->Text == "None")
+			benefitName_label3->Text = "None Chosen";
+		else
+			benefitName_label3->Text = "Vision";
+
+		System::String^ cost;
+		if (empHealthPackage_label->Text == "None")
+			cost = "0";
+		else
+			cost = "30";
+		healthCost_label->Text = cost + "% of you gross income.";
+
+		if (empDentalPackage_label->Text == "None")
+			cost = "0";
+		else
+			cost = "30";
+		dentalCost_label->Text = cost + "% of you gross income.";
+
+		if (empVisionPackage_label->Text == "None")
+			cost = "0";
+		else
+			cost = "30";
+		visionCost_label->Text = cost + "% of you gross income.";
+
+		//end benefits 
+
 
 		/*
 		emp.id = toStandardString(reader["ID"]->ToString());

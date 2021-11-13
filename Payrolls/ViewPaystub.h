@@ -1,6 +1,6 @@
 #pragma once
 #include "ConnectionPath.h"
-
+#include "CheckID.h"
 namespace Payrolls {
 
 	using namespace System;
@@ -1324,8 +1324,19 @@ namespace Payrolls {
 		cmd->CommandType = CommandType::Text;
 		cmd->CommandText = "select * from EmployeeInfo where ID = @ID";
 
-		//catch error where user doesn't enter a emp id
 
+		//catch error where user doesn't enter a emp id
+				//error checking
+		if (textBox1->Text == "")
+		{
+			MessageBox::Show("Enter An Employee Id.");
+			return;
+		}
+		if (!checkID(textBox1->Text))
+		{
+			MessageBox::Show("This ID does not exist within the Database");
+			return;
+		}
 		cmd->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
 		OleDbDataReader^ reader = cmd->ExecuteReader();
 		while (reader->Read()) {

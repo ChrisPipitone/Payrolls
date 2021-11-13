@@ -46,6 +46,7 @@ namespace Payrolls {
 
     private: System::Windows::Forms::Button^ button5;
     private: System::Windows::Forms::LinkLabel^ linkLabel1;
+    private: System::Windows::Forms::PictureBox^ pictureBox1;
 
     private:
         /// <summary>
@@ -65,6 +66,8 @@ namespace Payrolls {
             this->button3 = (gcnew System::Windows::Forms::Button());
             this->button5 = (gcnew System::Windows::Forms::Button());
             this->linkLabel1 = (gcnew System::Windows::Forms::LinkLabel());
+            this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
             this->SuspendLayout();
             // 
             // button2
@@ -111,11 +114,21 @@ namespace Payrolls {
             this->linkLabel1->Text = L"Logout";
             this->linkLabel1->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &HrView::linkLabel1_LinkClicked);
             // 
+            // pictureBox1
+            // 
+            this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+            this->pictureBox1->Location = System::Drawing::Point(496, 354);
+            this->pictureBox1->Name = L"pictureBox1";
+            this->pictureBox1->Size = System::Drawing::Size(46, 45);
+            this->pictureBox1->TabIndex = 6;
+            this->pictureBox1->TabStop = false;
+            // 
             // HrView
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->ClientSize = System::Drawing::Size(544, 400);
+            this->Controls->Add(this->pictureBox1);
             this->Controls->Add(this->linkLabel1);
             this->Controls->Add(this->button5);
             this->Controls->Add(this->button3);
@@ -123,7 +136,8 @@ namespace Payrolls {
             this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
             this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->Name = L"HrView";
-            this->Text = L"HrView";
+            this->Text = L"HR Main Menu";
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
             this->ResumeLayout(false);
             this->PerformLayout();
 
