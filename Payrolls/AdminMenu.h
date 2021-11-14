@@ -148,6 +148,9 @@ namespace Payrolls {
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::TabControl^ tab1;
 	private: System::Windows::Forms::TabPage^ tabPage3;
+private: System::Windows::Forms::PictureBox^ pictureBox1;
+private: System::Windows::Forms::PictureBox^ pictureBox2;
+private: System::Windows::Forms::PictureBox^ pictureBox3;
 
 	private:
 		/// <summary>
@@ -228,12 +231,18 @@ namespace Payrolls {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->tab1 = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage3 = (gcnew System::Windows::Forms::TabPage());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
 			this->tab2->SuspendLayout();
 			this->tabControl1->SuspendLayout();
 			this->tab1Page2->SuspendLayout();
 			this->tab2Page2->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			this->tab1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// tab2
@@ -261,6 +270,7 @@ namespace Payrolls {
 			// tab1Page2
 			// 
 			this->tab1Page2->BackColor = System::Drawing::SystemColors::Control;
+			this->tab1Page2->Controls->Add(this->pictureBox2);
 			this->tab1Page2->Controls->Add(this->label13);
 			this->tab1Page2->Controls->Add(this->LogOut2);
 			this->tab1Page2->Controls->Add(this->buttonNo);
@@ -517,6 +527,7 @@ namespace Payrolls {
 			// tab2Page2
 			// 
 			this->tab2Page2->BackColor = System::Drawing::SystemColors::Control;
+			this->tab2Page2->Controls->Add(this->pictureBox3);
 			this->tab2Page2->Controls->Add(this->lbl14);
 			this->tab2Page2->Controls->Add(this->richTextBox1);
 			this->tab2Page2->Controls->Add(this->textBox3);
@@ -728,6 +739,7 @@ namespace Payrolls {
 			// tabPage1
 			// 
 			this->tabPage1->BackColor = System::Drawing::SystemColors::Control;
+			this->tabPage1->Controls->Add(this->pictureBox1);
 			this->tabPage1->Controls->Add(this->button2);
 			this->tabPage1->Controls->Add(this->button1);
 			this->tabPage1->Controls->Add(this->textBox5);
@@ -1001,14 +1013,41 @@ namespace Payrolls {
 			this->tabPage3->TabIndex = 3;
 			this->tabPage3->Text = L"Alert (Soon)";
 			// 
-			// MyForm1
+			// pictureBox1
+			// 
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(772, 548);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(46, 45);
+			this->pictureBox1->TabIndex = 35;
+			this->pictureBox1->TabStop = false;
+			// 
+			// pictureBox2
+			// 
+			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
+			this->pictureBox2->Location = System::Drawing::Point(768, 526);
+			this->pictureBox2->Name = L"pictureBox2";
+			this->pictureBox2->Size = System::Drawing::Size(46, 45);
+			this->pictureBox2->TabIndex = 36;
+			this->pictureBox2->TabStop = false;
+			// 
+			// pictureBox3
+			// 
+			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
+			this->pictureBox3->Location = System::Drawing::Point(768, 526);
+			this->pictureBox3->Name = L"pictureBox3";
+			this->pictureBox3->Size = System::Drawing::Size(46, 45);
+			this->pictureBox3->TabIndex = 36;
+			this->pictureBox3->TabStop = false;
+			// 
+			// AdminMenu
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(822, 615);
 			this->Controls->Add(this->tab1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			this->Name = L"MyForm1";
+			this->Name = L"AdminMenu";
 			this->Text = L"Admin Main Menu";
 			this->Load += gcnew System::EventHandler(this, &AdminMenu::AminMenu_Load);
 			this->tab2->ResumeLayout(false);
@@ -1020,6 +1059,9 @@ namespace Payrolls {
 			this->tabPage1->ResumeLayout(false);
 			this->tabPage1->PerformLayout();
 			this->tab1->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			this->ResumeLayout(false);
 
 		}
@@ -1328,3 +1370,4 @@ namespace Payrolls {
 	}
 	};
 }
+

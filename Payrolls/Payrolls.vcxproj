@@ -137,9 +137,6 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="NYTax.h" />
-    <ClInclude Include="Timesheet.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="UpdateEmployee.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -156,7 +153,6 @@
     <ClCompile Include="GrossIncome.cpp" />
     <ClCompile Include="HrView.cpp" />
     <ClCompile Include="NYTax.cpp" />
-    <ClCompile Include="Timesheet.cpp" />
     <ClCompile Include="UpdateEmployee.cpp" />
     <ClCompile Include="ViewPaystub.cpp" />
   </ItemGroup>
@@ -182,9 +178,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminMenu.resx">
       <DependentUpon>AdminMenu.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Timesheet.resx">
-      <DependentUpon>Timesheet.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateEmployee.resx">
       <DependentUpon>UpdateEmployee.h</DependentUpon>
