@@ -48,6 +48,7 @@ namespace Payrolls {
 	private: System::Windows::Forms::TextBox^ textBox2;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
 
 
 
@@ -80,6 +81,8 @@ namespace Payrolls {
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
@@ -158,6 +161,15 @@ namespace Payrolls {
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &LoginMenu::button1_Click);
 			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(1204, 795);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(43, 44);
+			this->pictureBox1->TabIndex = 8;
+			this->pictureBox1->TabStop = false;
+			// 
 			// LoginMenu
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(11, 22);
@@ -165,6 +177,7 @@ namespace Payrolls {
 			this->BackColor = System::Drawing::Color::BlanchedAlmond;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->ClientSize = System::Drawing::Size(1246, 839);
+			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->textBox2);
@@ -179,6 +192,7 @@ namespace Payrolls {
 			this->Margin = System::Windows::Forms::Padding(6, 5, 6, 5);
 			this->Name = L"LoginMenu";
 			this->Load += gcnew System::EventHandler(this, &LoginMenu::Form1_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -230,53 +244,110 @@ namespace Payrolls {
 			OleDbDataAdapter^ da = gcnew OleDbDataAdapter(cmd);
 			da->Fill(dt);
 			if (dt->Rows->Count == 1) {
-				OleDbCommand^ command = conn->CreateCommand();
-				command->CommandType = CommandType::Text;
-				command->CommandText = "select * from EmployeeInfo where [ID] = @ID and ([Position] = 'Human Resource' or [Position] = 'human resource' or [Position] = 'Human resource' or [Position] = 'HR' or [Position] = 'hr' or [Position] = 'Hr')";
-				command->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
-				command->ExecuteNonQuery();
-				DataTable^ datatable = gcnew DataTable();
-				OleDbDataAdapter^ dataAdapter = gcnew OleDbDataAdapter(command);
-				dataAdapter->Fill(datatable);
 				int status = int(comboBox1->SelectedIndex);
-				String^ Name;
-				Name = textBox1->Text;
-				textBox1->Clear();
-				textBox2->Clear();
-				if (status == 0 && datatable->Rows->Count == 1)
+				if (status == 0)
 				{
-					MessageBox::Show("Login Succeed!");
-					HrView^ hr = gcnew HrView();
-					hr->otherPage = this;
-					this->Hide();
-					hr->ShowDialog();
+					OleDbCommand^ command = conn->CreateCommand();
+					command->CommandType = CommandType::Text;
+					command->CommandText = "select * from EmployeeInfo where [ID] = @ID and ([Position] = 'Human Resource' or [Position] = 'human resource' or [Position] = 'Human resource' or [Position] = 'HR' or [Position] = 'hr' or [Position] = 'Hr')";
+					command->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
+					command->ExecuteNonQuery();
+					DataTable^ datatable = gcnew DataTable();
+					OleDbDataAdapter^ dataAdapter = gcnew OleDbDataAdapter(command);
+					dataAdapter->Fill(datatable);
+					textBox1->Clear();
+					textBox2->Clear();
+					if (datatable->Rows->Count == 1)
+					{
+						MessageBox::Show("Login Succeed!");
+						HrView^ hr = gcnew HrView();
+						hr->otherPage = this;
+						this->Hide();
+						hr->ShowDialog();
+						textBox1->Text = "";
+						textBox2->Text = "";
+						comboBox1->Text = "";
+						return;
+					}
+					else
+					{
+						MessageBox::Show("Please choose the right position", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+						textBox1->Text = "";
+						textBox2->Text = "";
+						comboBox1->Text = "";
+						return;
+					}
 				}
 
-				else if (status == 1 && datatable->Rows->Count == 0)
+				else if (status == 1)
 				{
-					MessageBox::Show("Login Succeed!");
-					AdminMenu^ admin = gcnew AdminMenu(this, Name);
-					this->Hide();
-					admin->ShowDialog();
+					OleDbCommand^ cmd1 = conn->CreateCommand();
+					cmd1->CommandType = CommandType::Text;
+					cmd1->CommandText = "select * from EmployeeInfo where [ID] = @ID and [Position] = 'Admin'";
+					cmd1->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
+					cmd1->ExecuteNonQuery();
+					DataTable^ table = gcnew DataTable();
+					OleDbDataAdapter^ adapter = gcnew OleDbDataAdapter(cmd1);
+					adapter->Fill(table);
+					if (status == 1 && table->Rows->Count == 1)
+					{
+						MessageBox::Show("Login Succeed!");
+						AdminMenu^ admin = gcnew AdminMenu(this, empID);
+						this->Hide();
+						admin->ShowDialog();
+						textBox1->Text = "";
+						textBox2->Text = "";
+						comboBox1->Text = "";
+						return;
+					}
 
-				}
-
-				else if (status == 2 && datatable->Rows->Count == 0)
-				{
-					MessageBox::Show("Login Succeed!");
-					EmployeeMainMenu^ empMenu = gcnew EmployeeMainMenu(this, empID);
-					this->Hide();
-					empMenu->ShowDialog();
+					else
+					{
+						MessageBox::Show("Please choose the right position", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+						textBox1->Text = "";
+						textBox2->Text = "";
+						comboBox1->Text = "";
+						return;
+					}
 				}
 
 				else
 				{
-					MessageBox::Show("Please choose the right position", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+					OleDbCommand^ cmd2 = conn->CreateCommand();
+					cmd2->CommandType = CommandType::Text;
+					cmd2->CommandText = "select * from EmployeeInfo where [ID] = @ID and [Position] = 'Employee'";
+					cmd2->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
+					cmd2->ExecuteNonQuery();
+					DataTable^ data = gcnew DataTable();
+					OleDbDataAdapter^ dataAdapter1 = gcnew OleDbDataAdapter(cmd2);
+					dataAdapter1->Fill(data);
+					if (status == 2 && data->Rows->Count == 1)
+					{
+						MessageBox::Show("Login Succeed!");
+						EmployeeMainMenu^ empMenu = gcnew EmployeeMainMenu(this, empID);
+						this->Hide();
+						empMenu->ShowDialog();
+						textBox1->Text = "";
+						textBox2->Text = "";
+						comboBox1->Text = "";
+						return;
+					}
+					else
+					{
+						MessageBox::Show("Please choose the right position", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+						textBox1->Text = "";
+						textBox2->Text = "";
+						comboBox1->Text = "";
+						return;
+					}
 				}
 			}
 			else
 			{
 				MessageBox::Show("Uncorrect username or password", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				textBox1->Text = "";
+				textBox2->Text = "";
+				comboBox1->Text = "";
 			}
 		}
 	}

@@ -26,6 +26,6 @@ double GrossIncome::CalculateGrossIncome(int hour, double overtimePay, double ho
     }
     else
     {
-        return round(((hourlyWage * hour) + overtimePay) * 100.0) / 100.0;
+        return round(((hourlyWage * 40) + overtimePay) * 100.0) / 100.0;
     }
 }

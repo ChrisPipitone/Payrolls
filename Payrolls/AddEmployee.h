@@ -216,7 +216,7 @@ namespace Payrolls {
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(86, 20);
 			this->label4->TabIndex = 6;
-			this->label4->Text = L"Last Name";	
+			this->label4->Text = L"Last Name";
 			// 
 			// textBox5
 			// 
@@ -309,7 +309,7 @@ namespace Payrolls {
 			this->label12->Size = System::Drawing::Size(65, 20);
 			this->label12->TabIndex = 23;
 			this->label12->Text = L"Position";
-	
+
 			// 
 			// textBox13
 			// 
@@ -317,7 +317,7 @@ namespace Payrolls {
 			this->textBox13->Name = L"textBox13";
 			this->textBox13->Size = System::Drawing::Size(120, 26);
 			this->textBox13->TabIndex = 26;
-	
+
 			// label14
 			// 
 			this->label14->AutoSize = true;
@@ -326,7 +326,7 @@ namespace Payrolls {
 			this->label14->Size = System::Drawing::Size(100, 20);
 			this->label14->TabIndex = 27;
 			this->label14->Text = L"Hourly Wage";
-		
+
 			// 
 			// textBox14
 			// 
@@ -334,7 +334,7 @@ namespace Payrolls {
 			this->textBox14->Name = L"textBox14";
 			this->textBox14->Size = System::Drawing::Size(120, 26);
 			this->textBox14->TabIndex = 31;
-			
+
 			// 
 			// label15
 			// 
@@ -344,7 +344,7 @@ namespace Payrolls {
 			this->label15->Size = System::Drawing::Size(52, 20);
 			this->label15->TabIndex = 30;
 			this->label15->Text = L"Hours";
-			
+
 			// 
 			// textBox15
 			// 
@@ -352,7 +352,7 @@ namespace Payrolls {
 			this->textBox15->Name = L"textBox15";
 			this->textBox15->Size = System::Drawing::Size(120, 26);
 			this->textBox15->TabIndex = 35;
-			
+
 			// 
 			// label16
 			// 
@@ -362,7 +362,7 @@ namespace Payrolls {
 			this->label16->Size = System::Drawing::Size(78, 20);
 			this->label16->TabIndex = 34;
 			this->label16->Text = L"Password";
-			
+
 			// 
 			// button3
 			// 
@@ -402,7 +402,7 @@ namespace Payrolls {
 			this->label10->Size = System::Drawing::Size(66, 20);
 			this->label10->TabIndex = 42;
 			this->label10->Text = L"Zipcode";
-			
+
 			// 
 			// textBox6
 			// 
@@ -466,7 +466,7 @@ namespace Payrolls {
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(238, 28);
 			this->comboBox1->TabIndex = 49;
-		
+
 			// 
 			// comboBox2
 			// 
@@ -552,7 +552,7 @@ namespace Payrolls {
 		int overtimeHour;
 		double overtimePay;
 		double grossIncome;
-		try 
+		try
 		{
 			overtimeHour = gross.calculateOvertimeHour(Int32::Parse(textBox15->Text));
 			overtimePay = gross.CalculateOvertimePay(overtimeHour, Convert::ToDouble(textBox14->Text));
@@ -563,72 +563,89 @@ namespace Payrolls {
 			return;
 		}
 
-		 
+
 		double fedTax = fTax.FedTaxRate(grossIncome);
 		double nyTax = nTax.NYTaxRate(grossIncome);
 
-
-		double health = benfit.CalculateHealthCoverage(grossIncome, comboBox1->Text);
-		double dental = benfit.CalculateDentalCoverage(grossIncome, comboBox2->Text);
-		double vision = benfit.CalculateVisionCoverage(grossIncome, comboBox3->Text);
-		double netPay = grossIncome - (fedTax + nyTax + health + dental + vision);
-		OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
-		conn->Open();
-		OleDbCommand^ cmd = conn->CreateCommand();
-		cmd->CommandType = CommandType::Text;
-	
-		cmd->CommandText = "Insert into EmployeeInfo([ID], [Password], [SSN], [Firstname], [Lastname], [DateofBirth],"
-			+ "[Age], [Gender], [Email], [PhoneNumber], [Address1], [Zipcode], [Position], [Hours], [OvertimeHours], " +
-			"[OvertimePay], [HourlyPay], [Weeklygrosspay], [HealthCoverage], [DentalCoverage], [VisionCoverage]," +
-			"[FederalTax],[NYTax])" +
-			"VALUES(@ID,@Password,@SSN,@Firstname,@Lastname,@DateofBirth,@Age,@Gender,@Email,@PhoneNumber,@Address1,@Zipcode," +
-			" @Position,@Hours, @OvertimeHours, @OvertimePay, @HourlyPay, @Weeklygrosspay, @HealthCoverage," +
-				" @DentalCoverage, @VisionCoverage, @FederalTax, @NYTax)";	
-
-		try
+		if ((comboBox1->Text == "") || (comboBox2->Text == "") || (comboBox3->Text == ""))
 		{
-			cmd->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
-			cmd->Parameters->AddWithValue("@Password", textBox2->Text);
-			cmd->Parameters->AddWithValue("@SSN", textBox3->Text);
-			cmd->Parameters->AddWithValue("@Firstname", textBox4->Text);
-			cmd->Parameters->AddWithValue("@Lastname", textBox5->Text);
-			cmd->Parameters->AddWithValue("@DateofBirth", dateTimePicker1->Value);
-			cmd->Parameters->AddWithValue("@Age", Int32::Parse(textBox11->Text));
-			cmd->Parameters->AddWithValue("@Gender", textBox10->Text);
-			cmd->Parameters->AddWithValue("@Email", textBox9->Text);
-			cmd->Parameters->AddWithValue("@PhoneNumber", textBox8->Text);
-			cmd->Parameters->AddWithValue("@Address1", textBox7->Text);
-			cmd->Parameters->AddWithValue("@Zipcode", textBox6->Text);
-			cmd->Parameters->AddWithValue("@Position", textBox13->Text);
-			cmd->Parameters->AddWithValue("@Hours", Int32::Parse(textBox15->Text) - overtimeHour);
-			cmd->Parameters->AddWithValue("@OvertimeHours", overtimeHour);
-			cmd->Parameters->AddWithValue("@OvertimePay", overtimePay);
-			cmd->Parameters->AddWithValue("@HourlyPay", Convert::ToDouble(textBox14->Text));
-			cmd->Parameters->AddWithValue("@Weeklygrosspay", grossIncome);
-			cmd->Parameters->AddWithValue("@FederalTax", fedTax);
-			cmd->Parameters->AddWithValue("@NYTax", nyTax);
-			try 
-			{
-				cmd->Parameters->AddWithValue("@HealthCoverage", comboBox1->Text);
-				cmd->Parameters->AddWithValue("@DentalCoverage", comboBox2->Text);
-				cmd->Parameters->AddWithValue("@VisionCoverage", comboBox3->Text);
-			}
-			catch (System::Data::OleDb::OleDbException^ e)
-			{
-				MessageBox::Show("Select An Option For Each Benefit! None Is A Choice.");
-				return;
-			}
-		}
-		catch (System::FormatException^ e)
-		{
+			MessageBox::Show("Select An Option For Each Benefit! None Is A Choice.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
 		}
 
-		cmd->ExecuteNonQuery();
-		conn->Close();
-		MessageBox::Show("Add New Employee Succeed!");
-		this->Close();
-		otherPage->Show();
+		else
+		{
+			try {
+				double health = benfit.CalculateHealthCoverage(grossIncome, comboBox1->Text);
+				double dental = benfit.CalculateDentalCoverage(grossIncome, comboBox2->Text);
+				double vision = benfit.CalculateVisionCoverage(grossIncome, comboBox3->Text);
+				double netPay = grossIncome - (fedTax + nyTax + health + dental + vision);
+				OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
+				conn->Open();
+				OleDbCommand^ cmd = conn->CreateCommand();
+				cmd->CommandType = CommandType::Text;
+
+				cmd->CommandText = "Insert into EmployeeInfo ([ID], [Password], [SSN], [Firstname], [Lastname], [DateofBirth],"
+					+ "[Age], [Gender], [Email], [PhoneNumber], [Address1], [Zipcode], [Position], [Hours], [OvertimeHours], " +
+					"[OvertimePay], [HourlyPay], [Weeklygrosspay], [HealthCoverage], [DentalCoverage], [VisionCoverage]," +
+					"[FederalTax],[NYTax],[HealthCost],[DentalCost],[VisionCost], [Netpay])" +
+					"VALUES(@ID,@Password,@SSN,@Firstname,@Lastname,@DateofBirth,@Age,@Gender,@Email,@PhoneNumber,@Address1,@Zipcode," +
+					"@Position,@Hours, @OvertimeHours, @OvertimePay, @HourlyPay, @Weeklygrosspay, @HealthCoverage," +
+					"@DentalCoverage, @VisionCoverage, @FederalTax, @NYTax,@HealthCost,@DentalCost,@VisionCost,@Netpay)";
+
+				/*try
+				{*/
+				cmd->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
+				cmd->Parameters->AddWithValue("@Password", textBox2->Text);
+				cmd->Parameters->AddWithValue("@SSN", textBox3->Text);
+				cmd->Parameters->AddWithValue("@Firstname", textBox4->Text);
+				cmd->Parameters->AddWithValue("@Lastname", textBox5->Text);
+				cmd->Parameters->AddWithValue("@DateofBirth", dateTimePicker1->Value);
+				cmd->Parameters->AddWithValue("@Age", Int32::Parse(textBox11->Text));
+				cmd->Parameters->AddWithValue("@Gender", textBox10->Text);
+				cmd->Parameters->AddWithValue("@Email", textBox9->Text);
+				cmd->Parameters->AddWithValue("@PhoneNumber", textBox8->Text);
+				cmd->Parameters->AddWithValue("@Address1", textBox7->Text);
+				cmd->Parameters->AddWithValue("@Zipcode", textBox6->Text);
+				cmd->Parameters->AddWithValue("@Position", textBox13->Text);
+				cmd->Parameters->AddWithValue("@Hours", Int32::Parse(textBox15->Text) - overtimeHour);
+				cmd->Parameters->AddWithValue("@OvertimeHours", overtimeHour);
+				cmd->Parameters->AddWithValue("@OvertimePay", overtimePay);
+				cmd->Parameters->AddWithValue("@HourlyPay", Convert::ToDouble(textBox14->Text));
+				cmd->Parameters->AddWithValue("@Weeklygrosspay", grossIncome);
+				cmd->Parameters->AddWithValue("@HealthCoverage", comboBox1->Text);
+				cmd->Parameters->AddWithValue("@DentalCoverage", comboBox2->Text);
+				cmd->Parameters->AddWithValue("@VisionCoverage", comboBox3->Text);
+				cmd->Parameters->AddWithValue("@FederalTax", fedTax);
+				cmd->Parameters->AddWithValue("@NYTax", nyTax);
+				cmd->Parameters->AddWithValue("@HealthCost", health);
+				cmd->Parameters->AddWithValue("@DentalCost", dental);
+				cmd->Parameters->AddWithValue("@VisionCost", vision);
+				cmd->Parameters->AddWithValue("@Netpay", netPay);
+				/*try
+				{*/
+				/*}*/
+				/*catch (System::Data::OleDb::OleDbException^ e)
+				{
+					MessageBox::Show("Select An Option For Each Benefit! None Is A Choice.");
+					return;
+				}*/
+				/*}
+				catch (System::FormatException^ e)
+				{
+					return;
+				}*/
+				cmd->ExecuteNonQuery();
+				conn->Close();
+				MessageBox::Show("Add New Employee Succeed!");
+				this->Close();
+				otherPage->Show();
+			}
+			catch (System::FormatException^ e)
+			{
+				return;
+			}
+		}
 	}
 	};
 }

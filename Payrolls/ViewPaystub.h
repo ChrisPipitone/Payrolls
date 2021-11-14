@@ -17,6 +17,7 @@ namespace Payrolls {
 	public ref class ViewPaystub : public System::Windows::Forms::Form
 	{
 	public:
+		Form^ otherPage;
 		ViewPaystub(void)
 		{
 			InitializeComponent();
@@ -1377,8 +1378,7 @@ namespace Payrolls {
 	}
 	private: System::Void paystubBack_button_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Hide();
-		//HrView^ hr = gcnew HrView();
-		//hr->ShowDialog();
+		otherPage->Show();
 	}
 	private: System::Void label80_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
