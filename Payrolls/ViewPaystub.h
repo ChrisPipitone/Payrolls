@@ -132,6 +132,7 @@ namespace Payrolls {
 	private: System::Windows::Forms::Label^ label89;
 	private: System::Windows::Forms::Label^ label90;
 	private: System::Windows::Forms::Label^ label91;
+private: System::Windows::Forms::PictureBox^ pictureBox1;
 
 	private:
 		/// <summary>
@@ -241,6 +242,8 @@ namespace Payrolls {
 			this->label89 = (gcnew System::Windows::Forms::Label());
 			this->label90 = (gcnew System::Windows::Forms::Label());
 			this->label91 = (gcnew System::Windows::Forms::Label());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
@@ -1197,6 +1200,15 @@ namespace Payrolls {
 			this->label91->TabIndex = 93;
 			this->label91->Text = L"Vision Coverage Here";
 			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(689, 905);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(50, 45);
+			this->pictureBox1->TabIndex = 94;
+			this->pictureBox1->TabStop = false;
+			// 
 			// ViewPaystub
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -1204,6 +1216,7 @@ namespace Payrolls {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->ClientSize = System::Drawing::Size(738, 947);
+			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->label91);
 			this->Controls->Add(this->label90);
 			this->Controls->Add(this->label89);
@@ -1303,6 +1316,7 @@ namespace Payrolls {
 			this->Name = L"ViewPaystub";
 			this->Text = L"ViewPaystub";
 			this->Load += gcnew System::EventHandler(this, &ViewPaystub::ViewPaystub_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
