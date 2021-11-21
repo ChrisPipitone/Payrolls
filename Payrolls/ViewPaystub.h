@@ -25,6 +25,17 @@ namespace Payrolls {
 			//TODO: Add the constructor code here
 			//
 		}
+	public:
+		ViewPaystub(String^ a)
+		{
+			InitializeComponent();
+			//
+			//TODO: Add the constructor code here
+			//
+			id = a;
+
+		}
+
 
 	protected:
 		/// <summary>
@@ -133,6 +144,8 @@ namespace Payrolls {
 	private: System::Windows::Forms::Label^ label90;
 	private: System::Windows::Forms::Label^ label91;
 private: System::Windows::Forms::PictureBox^ pictureBox1;
+	   private:
+		   String^ id = "";
 
 	private:
 		/// <summary>
@@ -1323,8 +1336,20 @@ private: System::Windows::Forms::PictureBox^ pictureBox1;
 		}
 #pragma endregion
 	private: System::Void ViewPaystub_Load(System::Object^ sender, System::EventArgs^ e) {
+		if (id != "")
+		{
+			label78->Hide();
+			button1->Hide();
+			textBox1->Hide();
+			textBox1->Text = id;
+			button1_Click(sender,e);
+		}
+
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		
+
 		DateTime today = DateTime::Today;
 		DateTime weekStart = today.AddDays(-(int)today.DayOfWeek);
 		DateTime weekEnd = weekStart.AddDays(7).AddSeconds(-1);
@@ -1402,8 +1427,10 @@ private: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: System::Void label6_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void paystubBack_button_Click(System::Object^ sender, System::EventArgs^ e) {
+		id = "";
 		this->Hide();
 		otherPage->Show();
+		
 	}
 	private: System::Void label80_Click(System::Object^ sender, System::EventArgs^ e) {
 	}

@@ -2,6 +2,7 @@
 
 #include"ConnectionPath.h"
 #include"CheckID.h"
+#include "ViewPaystub.h"
 #include <string>
 
 namespace Payrolls {
@@ -174,6 +175,7 @@ private: System::Windows::Forms::Label^ label24;
 private: System::Windows::Forms::LinkLabel^ linkLabel2;
 private: System::Windows::Forms::Button^ button4;
 private: System::Windows::Forms::TextBox^ textBox9;
+private: System::Windows::Forms::Button^ button5;
 
 	private:
 		/// <summary>
@@ -269,6 +271,7 @@ private: System::Windows::Forms::TextBox^ textBox9;
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->tab1 = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage3 = (gcnew System::Windows::Forms::TabPage());
+			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->tab2->SuspendLayout();
 			this->tabControl1->SuspendLayout();
 			this->tab1Page2->SuspendLayout();
@@ -793,6 +796,7 @@ private: System::Windows::Forms::TextBox^ textBox9;
 			// tabPage1
 			// 
 			this->tabPage1->BackColor = System::Drawing::SystemColors::Control;
+			this->tabPage1->Controls->Add(this->button5);
 			this->tabPage1->Controls->Add(this->button4);
 			this->tabPage1->Controls->Add(this->textBox9);
 			this->tabPage1->Controls->Add(this->linkLabel2);
@@ -1202,6 +1206,16 @@ private: System::Windows::Forms::TextBox^ textBox9;
 			this->tabPage3->Size = System::Drawing::Size(818, 593);
 			this->tabPage3->TabIndex = 3;
 			this->tabPage3->Text = L"Alert (Soon)";
+			// 
+			// button5
+			// 
+			this->button5->Location = System::Drawing::Point(591, 66);
+			this->button5->Name = L"button5";
+			this->button5->Size = System::Drawing::Size(116, 29);
+			this->button5->TabIndex = 1;
+			this->button5->Text = L"See Paystub";
+			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &AdminMenu::button5_Click);
 			// 
 			// AdminMenu
 			// 
@@ -1724,6 +1738,13 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void textBox9_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	this->textBox9->PasswordChar = '*';
 
+
+}
+private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+	ViewPaystub^ viewPay = gcnew ViewPaystub(word);
+	viewPay->otherPage = this;
+	this->Hide();
+	viewPay->ShowDialog();
 
 }
 };
