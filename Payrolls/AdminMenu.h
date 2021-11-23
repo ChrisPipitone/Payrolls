@@ -95,6 +95,8 @@ namespace Payrolls {
 		String^ Zip;
 	private:
 		String^ CurrHours;
+	private:
+		String^ Crypt;
 	private: System::Windows::Forms::TabPage^ tab2;
 	private: System::Windows::Forms::TabControl^ tabControl1;
 	private: System::Windows::Forms::TabPage^ tab1Page2;
@@ -235,6 +237,7 @@ private: System::Windows::Forms::Button^ button5;
 			this->lbl15 = (gcnew System::Windows::Forms::Label());
 			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
+			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->textBox9 = (gcnew System::Windows::Forms::TextBox());
 			this->linkLabel2 = (gcnew System::Windows::Forms::LinkLabel());
@@ -271,7 +274,6 @@ private: System::Windows::Forms::Button^ button5;
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->tab1 = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage3 = (gcnew System::Windows::Forms::TabPage());
-			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->tab2->SuspendLayout();
 			this->tabControl1->SuspendLayout();
 			this->tab1Page2->SuspendLayout();
@@ -365,7 +367,7 @@ private: System::Windows::Forms::Button^ button5;
 			this->LogOut2->Location = System::Drawing::Point(747, 3);
 			this->LogOut2->Name = L"LogOut2";
 			this->LogOut2->Size = System::Drawing::Size(42, 13);
-			this->LogOut2->TabIndex = 1;
+			this->LogOut2->TabIndex = 7;
 			this->LogOut2->TabStop = true;
 			this->LogOut2->Text = L"LogOut";
 			this->LogOut2->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &AdminMenu::LogOut2_LinkClicked);
@@ -375,7 +377,7 @@ private: System::Windows::Forms::Button^ button5;
 			this->buttonNo->Location = System::Drawing::Point(294, 453);
 			this->buttonNo->Name = L"buttonNo";
 			this->buttonNo->Size = System::Drawing::Size(75, 23);
-			this->buttonNo->TabIndex = 16;
+			this->buttonNo->TabIndex = 5;
 			this->buttonNo->Text = L"No";
 			this->buttonNo->UseVisualStyleBackColor = true;
 			this->buttonNo->Click += gcnew System::EventHandler(this, &AdminMenu::buttonNo_Click);
@@ -385,7 +387,7 @@ private: System::Windows::Forms::Button^ button5;
 			this->buttonYes->Location = System::Drawing::Point(197, 453);
 			this->buttonYes->Name = L"buttonYes";
 			this->buttonYes->Size = System::Drawing::Size(75, 23);
-			this->buttonYes->TabIndex = 15;
+			this->buttonYes->TabIndex = 4;
 			this->buttonYes->Text = L"Yes";
 			this->buttonYes->UseVisualStyleBackColor = true;
 			this->buttonYes->Click += gcnew System::EventHandler(this, &AdminMenu::buttonYes_Click);
@@ -411,7 +413,7 @@ private: System::Windows::Forms::Button^ button5;
 			this->linkResign->Location = System::Drawing::Point(95, 404);
 			this->linkResign->Name = L"linkResign";
 			this->linkResign->Size = System::Drawing::Size(177, 20);
-			this->linkResign->TabIndex = 13;
+			this->linkResign->TabIndex = 3;
 			this->linkResign->TabStop = true;
 			this->linkResign->Text = L"Notify resignation to HR";
 			this->linkResign->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &AdminMenu::linkResign_LinkClicked);
@@ -545,7 +547,7 @@ private: System::Windows::Forms::Button^ button5;
 			this->buttonReset->Location = System::Drawing::Point(609, 44);
 			this->buttonReset->Name = L"buttonReset";
 			this->buttonReset->Size = System::Drawing::Size(75, 23);
-			this->buttonReset->TabIndex = 2;
+			this->buttonReset->TabIndex = 6;
 			this->buttonReset->Text = L"Reset";
 			this->buttonReset->UseVisualStyleBackColor = true;
 			this->buttonReset->Click += gcnew System::EventHandler(this, &AdminMenu::buttonReset_Click);
@@ -567,7 +569,7 @@ private: System::Windows::Forms::Button^ button5;
 			this->buttonSearch->Location = System::Drawing::Point(52, 34);
 			this->buttonSearch->Name = L"buttonSearch";
 			this->buttonSearch->Size = System::Drawing::Size(187, 33);
-			this->buttonSearch->TabIndex = 0;
+			this->buttonSearch->TabIndex = 2;
 			this->buttonSearch->Text = L"Search Employee";
 			this->buttonSearch->UseVisualStyleBackColor = true;
 			this->buttonSearch->Click += gcnew System::EventHandler(this, &AdminMenu::button1_Click);
@@ -839,12 +841,22 @@ private: System::Windows::Forms::Button^ button5;
 			this->tabPage1->Text = L"Admin Menu";
 			this->tabPage1->Click += gcnew System::EventHandler(this, &AdminMenu::tabPage1_Click);
 			// 
+			// button5
+			// 
+			this->button5->Location = System::Drawing::Point(591, 66);
+			this->button5->Name = L"button5";
+			this->button5->Size = System::Drawing::Size(116, 29);
+			this->button5->TabIndex = 1;
+			this->button5->Text = L"See Paystub";
+			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &AdminMenu::button5_Click);
+			// 
 			// button4
 			// 
 			this->button4->Location = System::Drawing::Point(426, 527);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(75, 23);
-			this->button4->TabIndex = 47;
+			this->button4->TabIndex = 16;
 			this->button4->Text = L"Update";
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &AdminMenu::button4_Click);
@@ -854,7 +866,7 @@ private: System::Windows::Forms::Button^ button5;
 			this->textBox9->Location = System::Drawing::Point(237, 529);
 			this->textBox9->Name = L"textBox9";
 			this->textBox9->Size = System::Drawing::Size(183, 20);
-			this->textBox9->TabIndex = 46;
+			this->textBox9->TabIndex = 15;
 			this->textBox9->TextChanged += gcnew System::EventHandler(this, &AdminMenu::textBox9_TextChanged);
 			// 
 			// linkLabel2
@@ -863,7 +875,7 @@ private: System::Windows::Forms::Button^ button5;
 			this->linkLabel2->Location = System::Drawing::Point(118, 532);
 			this->linkLabel2->Name = L"linkLabel2";
 			this->linkLabel2->Size = System::Drawing::Size(92, 13);
-			this->linkLabel2->TabIndex = 45;
+			this->linkLabel2->TabIndex = 14;
 			this->linkLabel2->TabStop = true;
 			this->linkLabel2->Text = L"Change password";
 			this->linkLabel2->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &AdminMenu::linkLabel2_LinkClicked);
@@ -873,14 +885,14 @@ private: System::Windows::Forms::Button^ button5;
 			this->textBox8->Location = System::Drawing::Point(494, 406);
 			this->textBox8->Name = L"textBox8";
 			this->textBox8->Size = System::Drawing::Size(183, 20);
-			this->textBox8->TabIndex = 44;
+			this->textBox8->TabIndex = 11;
 			// 
 			// textBox7
 			// 
 			this->textBox7->Location = System::Drawing::Point(494, 370);
 			this->textBox7->Name = L"textBox7";
 			this->textBox7->Size = System::Drawing::Size(183, 20);
-			this->textBox7->TabIndex = 43;
+			this->textBox7->TabIndex = 10;
 			// 
 			// label26
 			// 
@@ -909,7 +921,7 @@ private: System::Windows::Forms::Button^ button5;
 			this->button3->Location = System::Drawing::Point(548, 442);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(75, 23);
-			this->button3->TabIndex = 40;
+			this->button3->TabIndex = 12;
 			this->button3->Text = L"Update";
 			this->button3->UseVisualStyleBackColor = true;
 			this->button3->Click += gcnew System::EventHandler(this, &AdminMenu::button3_Click);
@@ -919,7 +931,7 @@ private: System::Windows::Forms::Button^ button5;
 			this->textBox6->Location = System::Drawing::Point(494, 331);
 			this->textBox6->Name = L"textBox6";
 			this->textBox6->Size = System::Drawing::Size(183, 20);
-			this->textBox6->TabIndex = 39;
+			this->textBox6->TabIndex = 9;
 			// 
 			// linkLabel1
 			// 
@@ -927,7 +939,7 @@ private: System::Windows::Forms::Button^ button5;
 			this->linkLabel1->Location = System::Drawing::Point(118, 338);
 			this->linkLabel1->Name = L"linkLabel1";
 			this->linkLabel1->Size = System::Drawing::Size(24, 13);
-			this->linkLabel1->TabIndex = 38;
+			this->linkLabel1->TabIndex = 8;
 			this->linkLabel1->TabStop = true;
 			this->linkLabel1->Text = L"edit";
 			this->linkLabel1->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &AdminMenu::linkLabel1_LinkClicked);
@@ -968,7 +980,7 @@ private: System::Windows::Forms::Button^ button5;
 			this->button2->Location = System::Drawing::Point(683, 285);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(75, 23);
-			this->button2->TabIndex = 34;
+			this->button2->TabIndex = 7;
 			this->button2->Text = L"Update";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &AdminMenu::button2_Click);
@@ -978,7 +990,7 @@ private: System::Windows::Forms::Button^ button5;
 			this->button1->Location = System::Drawing::Point(683, 243);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
-			this->button1->TabIndex = 33;
+			this->button1->TabIndex = 4;
 			this->button1->Text = L"Update";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &AdminMenu::button1_Click_1);
@@ -988,14 +1000,14 @@ private: System::Windows::Forms::Button^ button5;
 			this->textBox5->Location = System::Drawing::Point(494, 287);
 			this->textBox5->Name = L"textBox5";
 			this->textBox5->Size = System::Drawing::Size(183, 20);
-			this->textBox5->TabIndex = 32;
+			this->textBox5->TabIndex = 6;
 			// 
 			// textBox4
 			// 
 			this->textBox4->Location = System::Drawing::Point(494, 243);
 			this->textBox4->Name = L"textBox4";
 			this->textBox4->Size = System::Drawing::Size(183, 20);
-			this->textBox4->TabIndex = 31;
+			this->textBox4->TabIndex = 3;
 			this->textBox4->TextChanged += gcnew System::EventHandler(this, &AdminMenu::textBox4_TextChanged);
 			// 
 			// linkedit2
@@ -1004,7 +1016,7 @@ private: System::Windows::Forms::Button^ button5;
 			this->linkedit2->Location = System::Drawing::Point(118, 294);
 			this->linkedit2->Name = L"linkedit2";
 			this->linkedit2->Size = System::Drawing::Size(24, 13);
-			this->linkedit2->TabIndex = 30;
+			this->linkedit2->TabIndex = 5;
 			this->linkedit2->TabStop = true;
 			this->linkedit2->Text = L"edit";
 			this->linkedit2->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &AdminMenu::linkedit2_LinkClicked);
@@ -1015,7 +1027,7 @@ private: System::Windows::Forms::Button^ button5;
 			this->linkedit1->Location = System::Drawing::Point(118, 250);
 			this->linkedit1->Name = L"linkedit1";
 			this->linkedit1->Size = System::Drawing::Size(24, 13);
-			this->linkedit1->TabIndex = 29;
+			this->linkedit1->TabIndex = 2;
 			this->linkedit1->TabStop = true;
 			this->linkedit1->Text = L"edit";
 			this->linkedit1->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &AdminMenu::linkedit1_LinkClicked);
@@ -1026,7 +1038,7 @@ private: System::Windows::Forms::Button^ button5;
 			this->logout->Location = System::Drawing::Point(751, 3);
 			this->logout->Name = L"logout";
 			this->logout->Size = System::Drawing::Size(42, 13);
-			this->logout->TabIndex = 28;
+			this->logout->TabIndex = 17;
 			this->logout->TabStop = true;
 			this->logout->Text = L"LogOut";
 			this->logout->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &AdminMenu::logout_LinkClicked);
@@ -1036,7 +1048,7 @@ private: System::Windows::Forms::Button^ button5;
 			this->buttonNoShow->Location = System::Drawing::Point(346, 477);
 			this->buttonNoShow->Name = L"buttonNoShow";
 			this->buttonNoShow->Size = System::Drawing::Size(75, 23);
-			this->buttonNoShow->TabIndex = 27;
+			this->buttonNoShow->TabIndex = 13;
 			this->buttonNoShow->Text = L"No Show";
 			this->buttonNoShow->UseVisualStyleBackColor = true;
 			this->buttonNoShow->Click += gcnew System::EventHandler(this, &AdminMenu::buttonNoShow_Click);
@@ -1206,16 +1218,6 @@ private: System::Windows::Forms::Button^ button5;
 			this->tabPage3->Size = System::Drawing::Size(818, 593);
 			this->tabPage3->TabIndex = 3;
 			this->tabPage3->Text = L"Alert (Soon)";
-			// 
-			// button5
-			// 
-			this->button5->Location = System::Drawing::Point(591, 66);
-			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(116, 29);
-			this->button5->TabIndex = 1;
-			this->button5->Text = L"See Paystub";
-			this->button5->UseVisualStyleBackColor = true;
-			this->button5->Click += gcnew System::EventHandler(this, &AdminMenu::button5_Click);
 			// 
 			// AdminMenu
 			// 
@@ -1391,7 +1393,7 @@ private: System::Windows::Forms::Button^ button5;
 				phoneE = myReader["PhoneNumber"]->ToString();
 				payE = myReader["HourlyPay"]->ToString();
 				DepartmentE = myReader["Position"]->ToString();
-				DOB = myReader["DateofBirth"]->ToString();
+			//	DOB = myReader["DateofBirth"]->ToString();
 				CurrHours = myReader["Hours"]->ToString();
 			}
 
@@ -1400,7 +1402,7 @@ private: System::Windows::Forms::Button^ button5;
 			lbl9->Text = emailE;
 			lbl10->Text = phoneE;
 			lbl11->Text = payE;
-			lbl12->Text = DOB;
+			lbl12->Text = "Need Hired Date Column in Access";
 			lbl14->Text = LastNameE + "," + NameE;
 			lbl15->Text = CurrHours;
 			lbl16->Text = word;
@@ -1424,6 +1426,7 @@ private: System::Windows::Forms::Button^ button5;
 			label17->Show();
 			label18->Show();
 			label19->Show();
+			lbl7->Show();
 			lbl14->Show();
 			lbl15->Show();
 			lbl16->Show();
@@ -1705,7 +1708,17 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 		return;
 	}
 
+	Crypt = textBox9->Text;
 
+	String^ en = "";
+	String^ s = Crypt;
+	for (int i = 0; i < s->Length; i++) {    //go through each char
+		char c = s[i];
+		int shifted = (int)c + 10;			//shift 10 places
+		en += (char)shifted;					//turn back into char and add to String
+	}
+
+	Crypt = en;
 
 	try {
 		OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
@@ -1713,7 +1726,7 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 		OleDbCommand^ cmd = conn->CreateCommand();
 		cmd->CommandType = CommandType::Text;
 		cmd->CommandText = "UPDATE EmployeeInfo SET [Password] = @Password WHERE ID = @ID";
-		cmd->Parameters->AddWithValue("@Password", textBox9->Text);
+		cmd->Parameters->AddWithValue("@Password", Crypt);
 		cmd->Parameters->AddWithValue("@ID", ID); // Int32::Parse(lbl3->Text));
 
 		textBox9->Hide();

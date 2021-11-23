@@ -1049,7 +1049,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox1;
 			this->textBox1->Location = System::Drawing::Point(85, 915);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(84, 20);
-			this->textBox1->TabIndex = 77;
+			this->textBox1->TabIndex = 0;
 			this->textBox1->TextChanged += gcnew System::EventHandler(this, &ViewPaystub::textBox1_TextChanged);
 			// 
 			// button1
@@ -1057,7 +1057,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox1;
 			this->button1->Location = System::Drawing::Point(175, 913);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(105, 23);
-			this->button1->TabIndex = 78;
+			this->button1->TabIndex = 1;
 			this->button1->Text = L"Retrieve Info";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &ViewPaystub::button1_Click);
@@ -1087,7 +1087,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox1;
 			this->paystubBack_button->Location = System::Drawing::Point(303, 913);
 			this->paystubBack_button->Name = L"paystubBack_button";
 			this->paystubBack_button->Size = System::Drawing::Size(87, 23);
-			this->paystubBack_button->TabIndex = 81;
+			this->paystubBack_button->TabIndex = 2;
 			this->paystubBack_button->Text = L"Back";
 			this->paystubBack_button->UseVisualStyleBackColor = true;
 			this->paystubBack_button->Click += gcnew System::EventHandler(this, &ViewPaystub::paystubBack_button_Click);
