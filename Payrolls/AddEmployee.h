@@ -466,6 +466,7 @@ namespace Payrolls {
 			// 
 			// comboBox1
 			// 
+			this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(4) {
 				L"None/Purchase Later", L"Premium Package", L"Gold Package",
@@ -476,9 +477,11 @@ namespace Payrolls {
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(160, 21);
 			this->comboBox1->TabIndex = 21;
+			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &AddEmployee::comboBox1_SelectedIndexChanged);
 			// 
 			// comboBox2
 			// 
+			this->comboBox2->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->comboBox2->FormattingEnabled = true;
 			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(4) {
 				L"None/Purchase Later", L"Premium Package", L"Gold Package",
@@ -492,6 +495,7 @@ namespace Payrolls {
 			// 
 			// comboBox3
 			// 
+			this->comboBox3->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->comboBox3->FormattingEnabled = true;
 			this->comboBox3->Items->AddRange(gcnew cli::array< System::Object^  >(4) {
 				L"None/Purchase Later", L"Premium Package", L"Gold Package",
@@ -672,6 +676,13 @@ namespace Payrolls {
 		textBox15->Hide();
 		label14->Hide();
 		textBox14->Hide();
+
+		label11->Hide();
+		label13->Hide();
+		label17->Hide();
+		comboBox1->Hide();
+		comboBox2->Hide();
+		comboBox3->Hide();
 	}
 	private: System::Void addNewEmployee(System::Object^ sender, System::EventArgs^ e) {
 
@@ -835,7 +846,7 @@ namespace Payrolls {
 		double fedTax = fTax.FedTaxRate(grossIncome);
 		double nyTax = nTax.NYTaxRate(grossIncome);
 
-		if ((comboBox1->Text == "") || (comboBox2->Text == "") || (comboBox3->Text == ""))
+		if (((comboBox1->Text == "") || (comboBox2->Text == "") || (comboBox3->Text == "")) && payType != "Part time")
 		{
 			MessageBox::Show("Select An Option For Each Benefit! None Is A Choice.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
@@ -844,10 +855,17 @@ namespace Payrolls {
 		else
 		{
 			try {
-				double health = benfit.CalculateHealthCoverage(grossIncome, comboBox1->Text);
-				double dental = benfit.CalculateDentalCoverage(grossIncome, comboBox2->Text);
-				double vision = benfit.CalculateVisionCoverage(grossIncome, comboBox3->Text);
-				double netPay = grossIncome - (fedTax + nyTax + health + dental + vision);
+				if (payType == "Part time") {
+				//	double health = benfit.CalculateHealthCoverage(grossIncome, comboBox1->Text);
+				//	double netPay = grossIncome - (fedTax + nyTax + health);
+					double netPay = grossIncome - (fedTax + nyTax );
+				}
+				else {
+					double health = benfit.CalculateHealthCoverage(grossIncome, comboBox1->Text);
+					double dental = benfit.CalculateDentalCoverage(grossIncome, comboBox2->Text);
+					double vision = benfit.CalculateVisionCoverage(grossIncome, comboBox3->Text);
+					double netPay = grossIncome - (fedTax + nyTax + health + dental + vision);
+				}
 				OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
 				conn->Open();
 				OleDbCommand^ cmd = conn->CreateCommand();
@@ -858,7 +876,7 @@ namespace Payrolls {
 					//[Hours], [OvertimeHours], [OvertimePay], " +
 					"[HourlyPay], [SalaryPay] ," +
 					//[Weeklygrosspay], 
-					"[PayType], [HealthCoverage], [HireDate], " +
+					"[PayType],  [HireDate], [HealthCoverage], " +
 					"[DentalCoverage], [VisionCoverage]) " +
 					//"[FederalTax],[NYTax],[HealthCost],[DentalCost],[VisionCost], " + 
 					//[Netpay])" +
@@ -866,7 +884,7 @@ namespace Payrolls {
 					//@Hours,@OvertimeHours,@OvertimePay, " +
 					"@HourlyPay, @SalaryPay, " +
 					//@Weeklygrosspay, " +
-					"@PayType, @HealthCoverage, @HireDate, " +
+					"@PayType, @HireDate,  @HealthCoverage, " +
 					"@DentalCoverage, @VisionCoverage) ";// +
 					//@FederalTax,@NYTax,@HealthCost,@DentalCost,@VisionCost, " +
 					
@@ -902,11 +920,18 @@ namespace Payrolls {
 
 
 				cmd->Parameters->AddWithValue("@PayType", payType);
-				cmd->Parameters->AddWithValue("@HealthCoverage", comboBox1->Text);
 				cmd->Parameters->AddWithValue("@HireDate", B->Date);
-				cmd->Parameters->AddWithValue("@DentalCoverage", comboBox2->Text);
-				cmd->Parameters->AddWithValue("@VisionCoverage", comboBox3->Text);
 
+				if (payType == "Part time") {
+					cmd->Parameters->AddWithValue("@HealthCoverage", "Can't Purchase");
+					cmd->Parameters->AddWithValue("@DentalCoverage", "Can't Purchase");
+					cmd->Parameters->AddWithValue("@VisionCoverage", "Can't Purchase");
+				}
+				else {
+					cmd->Parameters->AddWithValue("@HealthCoverage", comboBox1->Text);
+					cmd->Parameters->AddWithValue("@DentalCoverage", comboBox2->Text);
+					cmd->Parameters->AddWithValue("@VisionCoverage", comboBox3->Text);
+				}
 				
 			
 				//cmd->Parameters->AddWithValue("@Hours", Int32::Parse(HO));
@@ -936,7 +961,13 @@ namespace Payrolls {
 				{
 					return;
 				}*/
-				cmd->ExecuteNonQuery();
+				try {
+					cmd->ExecuteNonQuery();
+				}
+				catch(System::Exception^ e)
+				{
+					return;
+				}
 				conn->Close();
 				MessageBox::Show("Add New Employee Succeed!");
 				this->Close();
@@ -958,6 +989,13 @@ private: System::Void radioButton2_CheckedChanged(System::Object^ sender, System
 	Hours = 40;
 	HO = "40";
 	payType = "Full time";
+
+	label11->Show();
+	label13->Show();
+	label17->Show();
+	comboBox1->Show();
+	comboBox2->Show();
+	comboBox3->Show();
 }
 private: System::Void radioButton1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 	label15->Hide();
@@ -967,6 +1005,13 @@ private: System::Void radioButton1_CheckedChanged(System::Object^ sender, System
 	Hours = 20;
 	HO = "20";
 	payType = "Part time";
+
+	label11->Hide();
+	label13->Hide();
+	label17->Hide();
+	comboBox1->Hide();
+	comboBox2->Hide();
+	comboBox3->Hide();
 }
 private: System::Void radioButton3_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 	label14->Hide();
@@ -976,6 +1021,15 @@ private: System::Void radioButton3_CheckedChanged(System::Object^ sender, System
 	Hours = 40;
 	HO = "40";
 	payType = "Salary";
+
+	label11->Show();
+	label13->Show();
+	label17->Show();
+	comboBox1->Show();
+	comboBox2->Show();
+	comboBox3->Show();
+}
+private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

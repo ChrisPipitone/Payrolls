@@ -1431,7 +1431,7 @@ private: System::Windows::Forms::Label^ label97;
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		
+		label53->Text = "Overtime";
 
 		DateTime today = DateTime::Today;
 		DateTime weekStart = today.AddDays(-(int)today.DayOfWeek);

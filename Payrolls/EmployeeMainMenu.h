@@ -990,6 +990,7 @@ private: System::Windows::Forms::Label^ label17;
 			this->viewBenefits_panel->Name = L"viewBenefits_panel";
 			this->viewBenefits_panel->Size = System::Drawing::Size(1112, 657);
 			this->viewBenefits_panel->TabIndex = 103;
+			this->viewBenefits_panel->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &EmployeeMainMenu::viewBenefits_panel_Paint);
 			// 
 			// pictureBox5
 			// 
@@ -1351,6 +1352,8 @@ private: System::Void persInfoSubmit_button_Click_1(System::Object^ sender, Syst
 
 
 
+}
+private: System::Void viewBenefits_panel_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 }
 };
 }

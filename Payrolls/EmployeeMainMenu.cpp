@@ -65,41 +65,55 @@ void Payrolls::EmployeeMainMenu::fillData(System::String^ empID)
 		empDentalPackage_label->Text = reader["DentalCoverage"]->ToString();
 		empVisionPackage_label->Text = reader["VisionCoverage"]->ToString();
 
-
-		if (empHealthPackage_label->Text == "None/Purchase Later")
-			benefitName_label1->Text = "Health benefit Not Chosen";
+		if (empDentalPackage_label->Text == "Can't Purchase") {
+			benefitName_label1->Text = "Part time cannot purchase Benefits";
+			benefitName_label2->Text = " ";
+			benefitName_label3->Text = " ";
+		}
 		else
-			benefitName_label1->Text = "Health";
+		{
+			if (empHealthPackage_label->Text == "None/Purchase Later")
+				benefitName_label1->Text = "Health benefit Not Chosen";
+			else
+				benefitName_label1->Text = "Health";
 
-		if (empDentalPackage_label->Text == "None/Purchase Later")
-			benefitName_label3->Text = "Dental benefit Not Chosen";
-		else
-			benefitName_label2->Text = "Dental";
+			if (empDentalPackage_label->Text == "None/Purchase Later")
+				benefitName_label2->Text = "Dental benefit Not Chosen";
+			else
+				benefitName_label2->Text = "Dental";
 
-		if (empVisionPackage_label->Text == "None/Purchase Later")
-			benefitName_label3->Text = "Vision Benefit not Chosen";
-		else
-			benefitName_label3->Text = "Vision";
-
+			if (empVisionPackage_label->Text == "None/Purchase Later")
+				benefitName_label3->Text = "Vision Benefit not Chosen";
+			else
+				benefitName_label3->Text = "Vision";
+		}
 		System::String^ cost;
-		if (empHealthPackage_label->Text == "None/Purchase Later")
-			cost = "0";
-		else
-			cost = "30";
-		healthCost_label->Text = cost + "% of you gross income.";
 
-		if (empDentalPackage_label->Text == "None/Purchase Later")
+		if (empDentalPackage_label->Text == "Can't Purchase") {
 			cost = "0";
-		else
-			cost = "30";
-		dentalCost_label->Text = cost + "% of you gross income.";
+			healthCost_label->Text = cost + "% of you gross income.";
+			dentalCost_label->Text = cost + "% of you gross income.";
+			visionCost_label->Text = cost + "% of you gross income.";
+		}
+		else {
+			if (empHealthPackage_label->Text == "None/Purchase Later")
+				cost = "0";
+			else
+				cost = "30";
+			healthCost_label->Text = cost + "% of you gross income.";
 
-		if (empVisionPackage_label->Text == "None/Purchase Later")
-			cost = "0";
-		else
-			cost = "30";
-		visionCost_label->Text = cost + "% of you gross income.";
+			if (empDentalPackage_label->Text == "None/Purchase Later")
+				cost = "0";
+			else
+				cost = "30";
+			dentalCost_label->Text = cost + "% of you gross income.";
 
+			if (empVisionPackage_label->Text == "None/Purchase Later")
+				cost = "0";
+			else
+				cost = "30";
+			visionCost_label->Text = cost + "% of you gross income.";
+		}
 		//end benefits 
 
 

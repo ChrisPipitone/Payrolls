@@ -105,6 +105,8 @@ namespace Payrolls {
 	private: System::Windows::Forms::Label^ label23;
 	private: System::Windows::Forms::TextBox^ textBox14;
 	private: System::Windows::Forms::Label^ label24;
+	private: System::Windows::Forms::RadioButton^ radioButton2;
+	private: System::Windows::Forms::RadioButton^ radioButton1;
 
 
 	protected:
@@ -170,6 +172,8 @@ namespace Payrolls {
 			this->label23 = (gcnew System::Windows::Forms::Label());
 			this->textBox14 = (gcnew System::Windows::Forms::TextBox());
 			this->label24 = (gcnew System::Windows::Forms::Label());
+			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -399,7 +403,7 @@ namespace Payrolls {
 			this->textBox7->Margin = System::Windows::Forms::Padding(2);
 			this->textBox7->Name = L"textBox7";
 			this->textBox7->Size = System::Drawing::Size(69, 20);
-			this->textBox7->TabIndex = 15;
+			this->textBox7->TabIndex = 19;
 			// 
 			// label14
 			// 
@@ -428,7 +432,7 @@ namespace Payrolls {
 			this->button2->Margin = System::Windows::Forms::Padding(2);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(150, 36);
-			this->button2->TabIndex = 18;
+			this->button2->TabIndex = 20;
 			this->button2->Text = L"Update Changes";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &UpdateEmployee::button2_Click);
@@ -439,7 +443,7 @@ namespace Payrolls {
 			this->button3->Margin = System::Windows::Forms::Padding(2);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(150, 36);
-			this->button3->TabIndex = 20;
+			this->button3->TabIndex = 22;
 			this->button3->Text = L"Back";
 			this->button3->UseVisualStyleBackColor = true;
 			this->button3->Click += gcnew System::EventHandler(this, &UpdateEmployee::button3_Click);
@@ -462,7 +466,7 @@ namespace Payrolls {
 			this->textBox9->Margin = System::Windows::Forms::Padding(2);
 			this->textBox9->Name = L"textBox9";
 			this->textBox9->Size = System::Drawing::Size(142, 20);
-			this->textBox9->TabIndex = 17;
+			this->textBox9->TabIndex = 18;
 			this->textBox9->TextChanged += gcnew System::EventHandler(this, &UpdateEmployee::textBox9_TextChanged);
 			// 
 			// label16
@@ -539,7 +543,7 @@ namespace Payrolls {
 			this->button4->Margin = System::Windows::Forms::Padding(2);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(150, 36);
-			this->button4->TabIndex = 19;
+			this->button4->TabIndex = 21;
 			this->button4->Text = L"Delete Record";
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &UpdateEmployee::button4_Click);
@@ -558,6 +562,7 @@ namespace Payrolls {
 			// 
 			// comboBox1
 			// 
+			this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(4) {
 				L"None/Purchase Later", L"Premium Package", L"Gold Package",
@@ -571,6 +576,7 @@ namespace Payrolls {
 			// 
 			// comboBox2
 			// 
+			this->comboBox2->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->comboBox2->FormattingEnabled = true;
 			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(4) {
 				L"None/Purchase Later", L"Premium Package", L"Gold Package",
@@ -584,6 +590,7 @@ namespace Payrolls {
 			// 
 			// comboBox3
 			// 
+			this->comboBox3->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->comboBox3->FormattingEnabled = true;
 			this->comboBox3->Items->AddRange(gcnew cli::array< System::Object^  >(4) {
 				L"None/Purchase Later", L"Premium Package", L"Gold Package",
@@ -650,7 +657,7 @@ namespace Payrolls {
 			this->textBox13->Margin = System::Windows::Forms::Padding(2);
 			this->textBox13->Name = L"textBox13";
 			this->textBox13->Size = System::Drawing::Size(142, 20);
-			this->textBox13->TabIndex = 52;
+			this->textBox13->TabIndex = 17;
 			// 
 			// label23
 			// 
@@ -670,7 +677,7 @@ namespace Payrolls {
 			this->textBox14->Margin = System::Windows::Forms::Padding(2);
 			this->textBox14->Name = L"textBox14";
 			this->textBox14->Size = System::Drawing::Size(178, 20);
-			this->textBox14->TabIndex = 54;
+			this->textBox14->TabIndex = 14;
 			// 
 			// label24
 			// 
@@ -684,12 +691,38 @@ namespace Payrolls {
 			this->label24->TabIndex = 55;
 			this->label24->Text = L"Type:";
 			// 
+			// radioButton2
+			// 
+			this->radioButton2->AutoSize = true;
+			this->radioButton2->Location = System::Drawing::Point(514, 275);
+			this->radioButton2->Name = L"radioButton2";
+			this->radioButton2->Size = System::Drawing::Size(63, 17);
+			this->radioButton2->TabIndex = 16;
+			this->radioButton2->TabStop = true;
+			this->radioButton2->Text = L"Full time";
+			this->radioButton2->UseVisualStyleBackColor = true;
+			this->radioButton2->CheckedChanged += gcnew System::EventHandler(this, &UpdateEmployee::radioButton2_CheckedChanged);
+			// 
+			// radioButton1
+			// 
+			this->radioButton1->AutoSize = true;
+			this->radioButton1->Location = System::Drawing::Point(415, 275);
+			this->radioButton1->Name = L"radioButton1";
+			this->radioButton1->Size = System::Drawing::Size(66, 17);
+			this->radioButton1->TabIndex = 15;
+			this->radioButton1->TabStop = true;
+			this->radioButton1->Text = L"Part time";
+			this->radioButton1->UseVisualStyleBackColor = true;
+			this->radioButton1->CheckedChanged += gcnew System::EventHandler(this, &UpdateEmployee::radioButton1_CheckedChanged);
+			// 
 			// UpdateEmployee
 			// 
 			this->AccessibleName = L"";
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(710, 514);
+			this->Controls->Add(this->radioButton2);
+			this->Controls->Add(this->radioButton1);
 			this->Controls->Add(this->textBox14);
 			this->Controls->Add(this->label24);
 			this->Controls->Add(this->textBox13);
@@ -751,6 +784,8 @@ namespace Payrolls {
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void UpdateForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		radioButton1->Hide();
+		radioButton2->Hide();
 	}
 	private: System::Void label9_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -814,6 +849,9 @@ namespace Payrolls {
 			textBox8->Hide();
 			label13->Hide();
 			textBox7->Hide();
+			textBox14->Show();
+			radioButton1->Hide();
+			radioButton2->Hide();
 		}
 		else {
 			label23->Hide();
@@ -822,8 +860,39 @@ namespace Payrolls {
 			textBox8->Show();
 			label13->Show();
 			textBox7->Show();
+			textBox14->Hide();
+			radioButton1->Show();
+			radioButton2->Show();
+
+			if (type == "Part time") {
+				//radioButton1_CheckedChanged(sender, e);
+				radioButton1->Checked = true;
+			}
+			else {
+				//radioButton1_CheckedChanged(sender, e);
+				radioButton2->Checked = true;
+			}
+
+
 		}
 
+		if (type == "Part time") {
+			label19->Hide();
+			label21->Hide();
+			label27->Hide();
+			comboBox1->Hide();
+			comboBox2->Hide();
+			comboBox3->Hide();
+		}
+		else {
+			label19->Show();
+			label21->Show();
+			label27->Show();;
+			comboBox1->Show();
+			comboBox2->Show();
+			comboBox3->Show();
+
+		}
 	}
 	private: System::Void label14_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -832,6 +901,16 @@ namespace Payrolls {
 		otherPage->Show();
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		if (radioButton1->Checked) {
+			textBox14->Text = "Part time";
+			type = "Part time";
+		}
+		else if (radioButton2->Checked){
+			textBox14->Text = "Full time";
+			type = "Full time";
+		}
+
 		GrossIncome gross;
 		FedTax fTax;
 		NYTax nTax;
@@ -1010,7 +1089,7 @@ namespace Payrolls {
 		double fedTax = fTax.FedTaxRate(grossIncome);
 		double nyTax = nTax.NYTaxRate(grossIncome);
 
-		if ((comboBox1->Text == "") || (comboBox2->Text == "") || (comboBox3->Text == ""))
+		if (((comboBox1->Text == "") || (comboBox2->Text == "") || (comboBox3->Text == "")) && type != "Part time")
 		{
 			MessageBox::Show("Select An Option For Each Benefit! None Is A Choice.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
@@ -1021,10 +1100,26 @@ namespace Payrolls {
 		//double grossIncome = gross.CalculateGrossIncome(Int32::Parse(textBox7->Text), overtimePay, Convert::ToDouble(textBox8->Text));
 	//	double fedTax = fTax.FedTaxRate(grossIncome);
 		//double nyTax = nTax.NYTaxRate(grossIncome);
-		double health = benfit.CalculateHealthCoverage(grossIncome, comboBox1->Text);
-		double dental = benfit.CalculateDentalCoverage(grossIncome, comboBox2->Text);
-		double vision = benfit.CalculateVisionCoverage(grossIncome, comboBox3->Text);
-		double deduction = fedTax + nyTax + health + dental + vision;
+
+		double deduction;
+		double health;
+		double dental;
+		double vision;
+
+		if (type == "Part time") {
+			deduction = fedTax + nyTax ;
+			health = 0;
+			dental = 0;
+			vision = 0;
+		}
+
+		else {
+			health = benfit.CalculateHealthCoverage(grossIncome, comboBox1->Text);
+			dental = benfit.CalculateDentalCoverage(grossIncome, comboBox2->Text);
+			vision = benfit.CalculateVisionCoverage(grossIncome, comboBox3->Text);
+			deduction = fedTax + nyTax + health + dental + vision;
+		}
+
 		double netPay = grossIncome - deduction;
 
 		//try
@@ -1062,9 +1157,17 @@ namespace Payrolls {
 			cmd->Parameters->AddWithValue("@DentalCost", dental);
 			cmd->Parameters->AddWithValue("@VisionCost", vision);
 			cmd->Parameters->AddWithValue("@Netpay", netPay);
-			cmd->Parameters->AddWithValue("@HealthCoverage", comboBox1->Text);
-			cmd->Parameters->AddWithValue("@DentalCoverage", comboBox2->Text);
-			cmd->Parameters->AddWithValue("@VisionCoverage", comboBox3->Text);
+
+			if (type == "Part time") {
+				cmd->Parameters->AddWithValue("@HealthCoverage", "Can't Purchase");
+				cmd->Parameters->AddWithValue("@DentalCoverage", "Can't Purchase");
+				cmd->Parameters->AddWithValue("@VisionCoverage", "Can't Purchase");
+			}
+			else {
+				cmd->Parameters->AddWithValue("@HealthCoverage", comboBox1->Text);
+				cmd->Parameters->AddWithValue("@DentalCoverage", comboBox2->Text);
+				cmd->Parameters->AddWithValue("@VisionCoverage", comboBox3->Text);
+			}
 			cmd->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
 			cmd->ExecuteNonQuery();
 			conn->Close();
@@ -1076,6 +1179,14 @@ namespace Payrolls {
 		//{
 			//return;
 		//}
+
+			label19->Hide();
+			label21->Hide();
+			label27->Hide();
+			comboBox1->Hide();
+			comboBox2->Hide();
+			comboBox3->Hide();
+
 	}
 	private: System::Void label6_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -1122,5 +1233,28 @@ namespace Payrolls {
 	}
 	private: System::Void label23_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void radioButton1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+		label19->Hide();
+		label21->Hide();
+		label27->Hide();
+		comboBox1->Hide();
+		comboBox2->Hide();
+		comboBox3->Hide();
+		
+	}
+private: System::Void radioButton2_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+	label19->Show();
+	label21->Show();
+	label27->Show();
+	comboBox1->Show();
+	comboBox2->Show();
+	comboBox3->Show();
+
+	if (type == "Part time") {
+		comboBox1->Text = "None/Purchase Later";
+		comboBox2->Text = "None/Purchase Later";
+		comboBox3->Text = "None/Purchase Later";
+	}
+}
+};
 }
