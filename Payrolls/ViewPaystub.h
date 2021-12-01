@@ -146,6 +146,14 @@ namespace Payrolls {
 private: System::Windows::Forms::PictureBox^ pictureBox1;
 	   private:
 		   String^ id = "";
+private: System::Windows::Forms::Label^ label92;
+private: System::Windows::Forms::Label^ label93;
+private: System::Windows::Forms::Label^ label94;
+private: System::Windows::Forms::Label^ label95;
+private: System::Windows::Forms::Label^ label96;
+private: System::Windows::Forms::Label^ label97;
+
+
 
 	private:
 		/// <summary>
@@ -256,6 +264,12 @@ private: System::Windows::Forms::PictureBox^ pictureBox1;
 			this->label90 = (gcnew System::Windows::Forms::Label());
 			this->label91 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->label92 = (gcnew System::Windows::Forms::Label());
+			this->label93 = (gcnew System::Windows::Forms::Label());
+			this->label94 = (gcnew System::Windows::Forms::Label());
+			this->label95 = (gcnew System::Windows::Forms::Label());
+			this->label96 = (gcnew System::Windows::Forms::Label());
+			this->label97 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -340,7 +354,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox1;
 			// 
 			this->label8->AutoSize = true;
 			this->label8->BackColor = System::Drawing::SystemColors::ControlLightLight;
-			this->label8->Location = System::Drawing::Point(188, 73);
+			this->label8->Location = System::Drawing::Point(190, 86);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(75, 13);
 			this->label8->TabIndex = 7;
@@ -542,7 +556,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox1;
 			// 
 			this->label28->AutoSize = true;
 			this->label28->BackColor = System::Drawing::SystemColors::ControlLightLight;
-			this->label28->Location = System::Drawing::Point(188, 365);
+			this->label28->Location = System::Drawing::Point(188, 378);
 			this->label28->Name = L"label28";
 			this->label28->Size = System::Drawing::Size(75, 13);
 			this->label28->TabIndex = 27;
@@ -1216,11 +1230,71 @@ private: System::Windows::Forms::PictureBox^ pictureBox1;
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(689, 905);
+			this->pictureBox1->Location = System::Drawing::Point(647, 904);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(50, 45);
 			this->pictureBox1->TabIndex = 94;
 			this->pictureBox1->TabStop = false;
+			// 
+			// label92
+			// 
+			this->label92->AutoSize = true;
+			this->label92->BackColor = System::Drawing::SystemColors::ControlLightLight;
+			this->label92->Location = System::Drawing::Point(188, 73);
+			this->label92->Name = L"label92";
+			this->label92->Size = System::Drawing::Size(45, 13);
+			this->label92->TabIndex = 95;
+			this->label92->Text = L"Address";
+			// 
+			// label93
+			// 
+			this->label93->AutoSize = true;
+			this->label93->BackColor = System::Drawing::SystemColors::ControlLightLight;
+			this->label93->Location = System::Drawing::Point(188, 365);
+			this->label93->Name = L"label93";
+			this->label93->Size = System::Drawing::Size(45, 13);
+			this->label93->TabIndex = 96;
+			this->label93->Text = L"Address";
+			// 
+			// label94
+			// 
+			this->label94->AutoSize = true;
+			this->label94->BackColor = System::Drawing::SystemColors::ControlLightLight;
+			this->label94->Location = System::Drawing::Point(387, 378);
+			this->label94->Name = L"label94";
+			this->label94->Size = System::Drawing::Size(57, 13);
+			this->label94->TabIndex = 98;
+			this->label94->Text = L"Type Here";
+			// 
+			// label95
+			// 
+			this->label95->AutoSize = true;
+			this->label95->BackColor = System::Drawing::SystemColors::ControlLightLight;
+			this->label95->Location = System::Drawing::Point(306, 378);
+			this->label95->Name = L"label95";
+			this->label95->Size = System::Drawing::Size(31, 13);
+			this->label95->TabIndex = 97;
+			this->label95->Text = L"Type";
+			// 
+			// label96
+			// 
+			this->label96->AutoSize = true;
+			this->label96->BackColor = System::Drawing::SystemColors::ControlLightLight;
+			this->label96->Location = System::Drawing::Point(387, 86);
+			this->label96->Name = L"label96";
+			this->label96->Size = System::Drawing::Size(57, 13);
+			this->label96->TabIndex = 100;
+			this->label96->Text = L"Type Here";
+			// 
+			// label97
+			// 
+			this->label97->AutoSize = true;
+			this->label97->BackColor = System::Drawing::SystemColors::ControlLightLight;
+			this->label97->Location = System::Drawing::Point(306, 86);
+			this->label97->Name = L"label97";
+			this->label97->Size = System::Drawing::Size(31, 13);
+			this->label97->TabIndex = 99;
+			this->label97->Text = L"Type";
 			// 
 			// ViewPaystub
 			// 
@@ -1228,7 +1302,13 @@ private: System::Windows::Forms::PictureBox^ pictureBox1;
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-			this->ClientSize = System::Drawing::Size(738, 947);
+			this->ClientSize = System::Drawing::Size(697, 947);
+			this->Controls->Add(this->label96);
+			this->Controls->Add(this->label97);
+			this->Controls->Add(this->label94);
+			this->Controls->Add(this->label95);
+			this->Controls->Add(this->label93);
+			this->Controls->Add(this->label92);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->label91);
 			this->Controls->Add(this->label90);
@@ -1336,6 +1416,9 @@ private: System::Windows::Forms::PictureBox^ pictureBox1;
 		}
 #pragma endregion
 	private: System::Void ViewPaystub_Load(System::Object^ sender, System::EventArgs^ e) {
+
+		this->StartPosition = FormStartPosition::CenterScreen;
+
 		if (id != "")
 		{
 			label78->Hide();
@@ -1353,6 +1436,9 @@ private: System::Windows::Forms::PictureBox^ pictureBox1;
 		DateTime today = DateTime::Today;
 		DateTime weekStart = today.AddDays(-(int)today.DayOfWeek);
 		DateTime weekEnd = weekStart.AddDays(7).AddSeconds(-1);
+		
+		DateTime HireDay;
+		
 		label79->Text = DateTime::Now.ToString();
 		label16->Text = weekStart.ToString();
 		label36->Text = weekStart.ToString();
@@ -1387,7 +1473,9 @@ private: System::Windows::Forms::PictureBox^ pictureBox1;
 			label30->Text = reader["Firstname"]->ToString();
 			label73->Text = reader["Firstname"]->ToString();
 			label7->Text = reader["Address1"]->ToString();
+			label92->Text = reader["City"]->ToString() + ", " + reader["State"]->ToString();
 			label29->Text = reader["Address1"]->ToString();
+			label93->Text = reader["City"]->ToString() + ", " + reader["State"]->ToString();
 			label8->Text = reader["PhoneNumber"]->ToString();
 			label28->Text = reader["PhoneNumber"]->ToString();
 			label10->Text = reader["SSN"]->ToString();
@@ -1419,8 +1507,30 @@ private: System::Windows::Forms::PictureBox^ pictureBox1;
 			label72->Text = reader["Netpay"]->ToString();
 			label38->Text = reader["Netpay"]->ToString();
 			label75->Text = reader["Netpay"]->ToString();
+
+			label96->Text = reader["PayType"]->ToString();
+			label94->Text = reader["PayType"]->ToString();
+
+			if (label96->Text == "Salary")
+			{
+				label47->Text = "-";
+				label52->Text = " ";
+				label48->Text = "-";
+				label54->Text = " ";
+				label55->Text = " ";
+				label56->Text = " ";
+				label51->Text = " ";
+				label53->Text = " ";
+				label49->Text = reader["SalaryPay"]->ToString();
+				label50->Text = reader["SalaryPay"]->ToString();
+
+			}
+
 		}
 		conn->Close();
+
+
+		
 	}
 	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -1434,5 +1544,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox1;
 	}
 	private: System::Void label80_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void vScrollBar1_Scroll(System::Object^ sender, System::Windows::Forms::ScrollEventArgs^ e) {
+
+	}
+};
 }

@@ -84,11 +84,13 @@ namespace Payrolls {
 	private:
 		String^ DOB;
 	private:
+		String^ HireDateE;
+	private:
 		Int32^ ID;
 	private:
 		String^ Address;
 	private:
-		String^ Street;
+		String^ State;
 	private:
 		String^ City;
 	private:
@@ -97,6 +99,8 @@ namespace Payrolls {
 		String^ CurrHours;
 	private:
 		String^ Crypt;
+	private:
+		String^ HireE;
 	private: System::Windows::Forms::TabPage^ tab2;
 	private: System::Windows::Forms::TabControl^ tabControl1;
 	private: System::Windows::Forms::TabPage^ tab1Page2;
@@ -168,7 +172,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox3;
 private: System::Windows::Forms::TextBox^ textBox8;
 private: System::Windows::Forms::TextBox^ textBox7;
 private: System::Windows::Forms::Label^ label26;
-private: System::Windows::Forms::Label^ label25;
+
 private: System::Windows::Forms::Button^ button3;
 private: System::Windows::Forms::TextBox^ textBox6;
 private: System::Windows::Forms::LinkLabel^ linkLabel1;
@@ -178,6 +182,15 @@ private: System::Windows::Forms::LinkLabel^ linkLabel2;
 private: System::Windows::Forms::Button^ button4;
 private: System::Windows::Forms::TextBox^ textBox9;
 private: System::Windows::Forms::Button^ button5;
+private: System::Windows::Forms::TextBox^ textBox10;
+private: System::Windows::Forms::Label^ label27;
+private: System::Windows::Forms::Label^ label28;
+private: System::Windows::Forms::Label^ label29;
+	   private:
+		   String^ Hire;
+private: System::Windows::Forms::Label^ label30;
+private: System::Windows::Forms::Label^ label31;
+
 
 	private:
 		/// <summary>
@@ -196,6 +209,8 @@ private: System::Windows::Forms::Button^ button5;
 			this->tab2 = (gcnew System::Windows::Forms::TabPage());
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 			this->tab1Page2 = (gcnew System::Windows::Forms::TabPage());
+			this->label30 = (gcnew System::Windows::Forms::Label());
+			this->label31 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->LogOut2 = (gcnew System::Windows::Forms::LinkLabel());
@@ -237,6 +252,10 @@ private: System::Windows::Forms::Button^ button5;
 			this->lbl15 = (gcnew System::Windows::Forms::Label());
 			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
+			this->label28 = (gcnew System::Windows::Forms::Label());
+			this->label29 = (gcnew System::Windows::Forms::Label());
+			this->textBox10 = (gcnew System::Windows::Forms::TextBox());
+			this->label27 = (gcnew System::Windows::Forms::Label());
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->textBox9 = (gcnew System::Windows::Forms::TextBox());
@@ -244,7 +263,6 @@ private: System::Windows::Forms::Button^ button5;
 			this->textBox8 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox7 = (gcnew System::Windows::Forms::TextBox());
 			this->label26 = (gcnew System::Windows::Forms::Label());
-			this->label25 = (gcnew System::Windows::Forms::Label());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
 			this->linkLabel1 = (gcnew System::Windows::Forms::LinkLabel());
@@ -310,6 +328,8 @@ private: System::Windows::Forms::Button^ button5;
 			// tab1Page2
 			// 
 			this->tab1Page2->BackColor = System::Drawing::SystemColors::Control;
+			this->tab1Page2->Controls->Add(this->label30);
+			this->tab1Page2->Controls->Add(this->label31);
 			this->tab1Page2->Controls->Add(this->pictureBox2);
 			this->tab1Page2->Controls->Add(this->label13);
 			this->tab1Page2->Controls->Add(this->LogOut2);
@@ -338,6 +358,29 @@ private: System::Windows::Forms::Button^ button5;
 			this->tab1Page2->TabIndex = 0;
 			this->tab1Page2->Text = L"Employee Detail";
 			this->tab1Page2->Click += gcnew System::EventHandler(this, &AdminMenu::tab1Page2_Click);
+			// 
+			// label30
+			// 
+			this->label30->AutoSize = true;
+			this->label30->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label30->Location = System::Drawing::Point(250, 169);
+			this->label30->Name = L"label30";
+			this->label30->Size = System::Drawing::Size(43, 20);
+			this->label30->TabIndex = 38;
+			this->label30->Text = L"Type";
+			// 
+			// label31
+			// 
+			this->label31->AutoSize = true;
+			this->label31->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label31->Location = System::Drawing::Point(91, 169);
+			this->label31->Name = L"label31";
+			this->label31->Size = System::Drawing::Size(47, 20);
+			this->label31->TabIndex = 37;
+			this->label31->Text = L"Type:";
+			this->label31->Click += gcnew System::EventHandler(this, &AdminMenu::label31_Click);
 			// 
 			// pictureBox2
 			// 
@@ -467,7 +510,7 @@ private: System::Windows::Forms::Button^ button5;
 			this->lbl8->AutoSize = true;
 			this->lbl8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lbl8->Location = System::Drawing::Point(254, 157);
+			this->lbl8->Location = System::Drawing::Point(250, 129);
 			this->lbl8->Name = L"lbl8";
 			this->lbl8->Size = System::Drawing::Size(94, 20);
 			this->lbl8->TabIndex = 8;
@@ -492,9 +535,9 @@ private: System::Windows::Forms::Button^ button5;
 				static_cast<System::Byte>(0)));
 			this->label10->Location = System::Drawing::Point(95, 291);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(88, 20);
+			this->label10->Size = System::Drawing::Size(87, 20);
 			this->label10->TabIndex = 6;
-			this->label10->Text = L"Hourly Pay:";
+			this->label10->Text = L"Hourly pay:";
 			this->label10->Click += gcnew System::EventHandler(this, &AdminMenu::label10_Click);
 			// 
 			// label9
@@ -524,7 +567,7 @@ private: System::Windows::Forms::Button^ button5;
 			this->label7->AutoSize = true;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label7->Location = System::Drawing::Point(95, 157);
+			this->label7->Location = System::Drawing::Point(91, 129);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(69, 20);
 			this->label7->TabIndex = 3;
@@ -535,7 +578,7 @@ private: System::Windows::Forms::Button^ button5;
 			this->lbl7->AutoSize = true;
 			this->lbl7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lbl7->Location = System::Drawing::Point(49, 103);
+			this->lbl7->Location = System::Drawing::Point(48, 86);
 			this->lbl7->Name = L"lbl7";
 			this->lbl7->Size = System::Drawing::Size(152, 24);
 			this->lbl7->TabIndex = 1;
@@ -798,6 +841,10 @@ private: System::Windows::Forms::Button^ button5;
 			// tabPage1
 			// 
 			this->tabPage1->BackColor = System::Drawing::SystemColors::Control;
+			this->tabPage1->Controls->Add(this->label28);
+			this->tabPage1->Controls->Add(this->label29);
+			this->tabPage1->Controls->Add(this->textBox10);
+			this->tabPage1->Controls->Add(this->label27);
 			this->tabPage1->Controls->Add(this->button5);
 			this->tabPage1->Controls->Add(this->button4);
 			this->tabPage1->Controls->Add(this->textBox9);
@@ -805,7 +852,6 @@ private: System::Windows::Forms::Button^ button5;
 			this->tabPage1->Controls->Add(this->textBox8);
 			this->tabPage1->Controls->Add(this->textBox7);
 			this->tabPage1->Controls->Add(this->label26);
-			this->tabPage1->Controls->Add(this->label25);
 			this->tabPage1->Controls->Add(this->button3);
 			this->tabPage1->Controls->Add(this->textBox6);
 			this->tabPage1->Controls->Add(this->linkLabel1);
@@ -841,6 +887,47 @@ private: System::Windows::Forms::Button^ button5;
 			this->tabPage1->Text = L"Admin Menu";
 			this->tabPage1->Click += gcnew System::EventHandler(this, &AdminMenu::tabPage1_Click);
 			// 
+			// label28
+			// 
+			this->label28->AutoSize = true;
+			this->label28->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label28->Location = System::Drawing::Point(232, 165);
+			this->label28->Name = L"label28";
+			this->label28->Size = System::Drawing::Size(26, 20);
+			this->label28->TabIndex = 46;
+			this->label28->Text = L"ID";
+			// 
+			// label29
+			// 
+			this->label29->AutoSize = true;
+			this->label29->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label29->Location = System::Drawing::Point(139, 165);
+			this->label29->Name = L"label29";
+			this->label29->Size = System::Drawing::Size(30, 20);
+			this->label29->TabIndex = 45;
+			this->label29->Text = L"ID:";
+			// 
+			// textBox10
+			// 
+			this->textBox10->Location = System::Drawing::Point(494, 361);
+			this->textBox10->Name = L"textBox10";
+			this->textBox10->Size = System::Drawing::Size(183, 20);
+			this->textBox10->TabIndex = 10;
+			this->textBox10->Text = L"City";
+			// 
+			// label27
+			// 
+			this->label27->AutoSize = true;
+			this->label27->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label27->Location = System::Drawing::Point(233, 359);
+			this->label27->Name = L"label27";
+			this->label27->Size = System::Drawing::Size(35, 20);
+			this->label27->TabIndex = 44;
+			this->label27->Text = L"City";
+			// 
 			// button5
 			// 
 			this->button5->Location = System::Drawing::Point(591, 66);
@@ -853,90 +940,82 @@ private: System::Windows::Forms::Button^ button5;
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(426, 527);
+			this->button4->Location = System::Drawing::Point(425, 505);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(75, 23);
-			this->button4->TabIndex = 16;
+			this->button4->TabIndex = 17;
 			this->button4->Text = L"Update";
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &AdminMenu::button4_Click);
 			// 
 			// textBox9
 			// 
-			this->textBox9->Location = System::Drawing::Point(237, 529);
+			this->textBox9->Location = System::Drawing::Point(236, 507);
 			this->textBox9->Name = L"textBox9";
 			this->textBox9->Size = System::Drawing::Size(183, 20);
-			this->textBox9->TabIndex = 15;
+			this->textBox9->TabIndex = 16;
 			this->textBox9->TextChanged += gcnew System::EventHandler(this, &AdminMenu::textBox9_TextChanged);
 			// 
 			// linkLabel2
 			// 
 			this->linkLabel2->AutoSize = true;
-			this->linkLabel2->Location = System::Drawing::Point(118, 532);
+			this->linkLabel2->Location = System::Drawing::Point(117, 510);
 			this->linkLabel2->Name = L"linkLabel2";
 			this->linkLabel2->Size = System::Drawing::Size(92, 13);
-			this->linkLabel2->TabIndex = 14;
+			this->linkLabel2->TabIndex = 15;
 			this->linkLabel2->TabStop = true;
 			this->linkLabel2->Text = L"Change password";
 			this->linkLabel2->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &AdminMenu::linkLabel2_LinkClicked);
 			// 
 			// textBox8
 			// 
-			this->textBox8->Location = System::Drawing::Point(494, 406);
+			this->textBox8->Location = System::Drawing::Point(495, 425);
 			this->textBox8->Name = L"textBox8";
 			this->textBox8->Size = System::Drawing::Size(183, 20);
-			this->textBox8->TabIndex = 11;
+			this->textBox8->TabIndex = 12;
+			this->textBox8->Text = L"ZipCode";
 			// 
 			// textBox7
 			// 
-			this->textBox7->Location = System::Drawing::Point(494, 370);
+			this->textBox7->Location = System::Drawing::Point(494, 393);
 			this->textBox7->Name = L"textBox7";
-			this->textBox7->Size = System::Drawing::Size(183, 20);
-			this->textBox7->TabIndex = 10;
+			this->textBox7->Size = System::Drawing::Size(63, 20);
+			this->textBox7->TabIndex = 11;
+			this->textBox7->Text = L"State";
 			// 
 			// label26
 			// 
 			this->label26->AutoSize = true;
 			this->label26->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label26->Location = System::Drawing::Point(234, 406);
+			this->label26->Location = System::Drawing::Point(234, 393);
 			this->label26->Name = L"label26";
 			this->label26->Size = System::Drawing::Size(73, 20);
 			this->label26->TabIndex = 42;
 			this->label26->Text = L"Zip Code";
 			// 
-			// label25
-			// 
-			this->label25->AutoSize = true;
-			this->label25->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label25->Location = System::Drawing::Point(233, 370);
-			this->label25->Name = L"label25";
-			this->label25->Size = System::Drawing::Size(87, 20);
-			this->label25->TabIndex = 41;
-			this->label25->Text = L"City - State";
-			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(548, 442);
+			this->button3->Location = System::Drawing::Point(549, 468);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(75, 23);
-			this->button3->TabIndex = 12;
+			this->button3->TabIndex = 13;
 			this->button3->Text = L"Update";
 			this->button3->UseVisualStyleBackColor = true;
 			this->button3->Click += gcnew System::EventHandler(this, &AdminMenu::button3_Click);
 			// 
 			// textBox6
 			// 
-			this->textBox6->Location = System::Drawing::Point(494, 331);
+			this->textBox6->Location = System::Drawing::Point(494, 324);
 			this->textBox6->Name = L"textBox6";
 			this->textBox6->Size = System::Drawing::Size(183, 20);
 			this->textBox6->TabIndex = 9;
+			this->textBox6->Text = L"Street Address";
 			// 
 			// linkLabel1
 			// 
 			this->linkLabel1->AutoSize = true;
-			this->linkLabel1->Location = System::Drawing::Point(118, 338);
+			this->linkLabel1->Location = System::Drawing::Point(118, 331);
 			this->linkLabel1->Name = L"linkLabel1";
 			this->linkLabel1->Size = System::Drawing::Size(24, 13);
 			this->linkLabel1->TabIndex = 8;
@@ -949,7 +1028,7 @@ private: System::Windows::Forms::Button^ button5;
 			this->label23->AutoSize = true;
 			this->label23->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label23->Location = System::Drawing::Point(233, 335);
+			this->label23->Location = System::Drawing::Point(233, 328);
 			this->label23->Name = L"label23";
 			this->label23->Size = System::Drawing::Size(116, 20);
 			this->label23->TabIndex = 37;
@@ -960,7 +1039,7 @@ private: System::Windows::Forms::Button^ button5;
 			this->label24->AutoSize = true;
 			this->label24->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label24->Location = System::Drawing::Point(141, 335);
+			this->label24->Location = System::Drawing::Point(141, 328);
 			this->label24->Name = L"label24";
 			this->label24->Size = System::Drawing::Size(72, 20);
 			this->label24->TabIndex = 36;
@@ -1045,17 +1124,17 @@ private: System::Windows::Forms::Button^ button5;
 			// 
 			// buttonNoShow
 			// 
-			this->buttonNoShow->Location = System::Drawing::Point(346, 477);
+			this->buttonNoShow->Location = System::Drawing::Point(344, 439);
 			this->buttonNoShow->Name = L"buttonNoShow";
 			this->buttonNoShow->Size = System::Drawing::Size(75, 23);
-			this->buttonNoShow->TabIndex = 13;
+			this->buttonNoShow->TabIndex = 14;
 			this->buttonNoShow->Text = L"No Show";
 			this->buttonNoShow->UseVisualStyleBackColor = true;
 			this->buttonNoShow->Click += gcnew System::EventHandler(this, &AdminMenu::buttonNoShow_Click);
 			// 
 			// ButtonShow
 			// 
-			this->ButtonShow->Location = System::Drawing::Point(346, 477);
+			this->ButtonShow->Location = System::Drawing::Point(344, 439);
 			this->ButtonShow->Name = L"ButtonShow";
 			this->ButtonShow->Size = System::Drawing::Size(75, 23);
 			this->ButtonShow->TabIndex = 26;
@@ -1068,7 +1147,7 @@ private: System::Windows::Forms::Button^ button5;
 			this->lbl6->AutoSize = true;
 			this->lbl6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lbl6->Location = System::Drawing::Point(234, 477);
+			this->lbl6->Location = System::Drawing::Point(274, 439);
 			this->lbl6->Name = L"lbl6";
 			this->lbl6->Size = System::Drawing::Size(35, 20);
 			this->lbl6->TabIndex = 25;
@@ -1103,9 +1182,9 @@ private: System::Windows::Forms::Button^ button5;
 				static_cast<System::Byte>(0)));
 			this->lbl3->Location = System::Drawing::Point(234, 204);
 			this->lbl3->Name = L"lbl3";
-			this->lbl3->Size = System::Drawing::Size(26, 20);
+			this->lbl3->Size = System::Drawing::Size(77, 20);
 			this->lbl3->TabIndex = 22;
-			this->lbl3->Text = L"ID";
+			this->lbl3->Text = L"Hire Date";
 			this->lbl3->Click += gcnew System::EventHandler(this, &AdminMenu::lbl3_Click);
 			// 
 			// label6
@@ -1113,11 +1192,11 @@ private: System::Windows::Forms::Button^ button5;
 			this->label6->AutoSize = true;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(141, 477);
+			this->label6->Location = System::Drawing::Point(139, 439);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(92, 20);
+			this->label6->Size = System::Drawing::Size(111, 20);
 			this->label6->TabIndex = 21;
-			this->label6->Text = L"Pay:           $";
+			this->label6->Text = L"Weekly Pay:  $";
 			// 
 			// label5
 			// 
@@ -1148,9 +1227,10 @@ private: System::Windows::Forms::Button^ button5;
 				static_cast<System::Byte>(0)));
 			this->label3->Location = System::Drawing::Point(141, 204);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(30, 20);
+			this->label3->Size = System::Drawing::Size(81, 20);
 			this->label3->TabIndex = 18;
-			this->label3->Text = L"ID:";
+			this->label3->Text = L"Hire Date:";
+			this->label3->Click += gcnew System::EventHandler(this, &AdminMenu::label3_Click);
 			// 
 			// lbl2
 			// 
@@ -1264,6 +1344,7 @@ private: System::Windows::Forms::Button^ button5;
 		textBox6->Hide();
 		textBox7->Hide();
 		textBox8->Hide();
+		textBox10->Hide();
 		button3->Hide();
 
 		textBox9->Hide();
@@ -1288,6 +1369,8 @@ private: System::Windows::Forms::Button^ button5;
 		buttonNo->Hide();
 		buttonYes->Hide();
 		label13->Hide();
+		label30->Hide();
+		label31->Hide();
 
 		label14->Hide();
 		label15->Hide();
@@ -1312,7 +1395,7 @@ private: System::Windows::Forms::Button^ button5;
 
 		OleDbCommand^ cmd = conn->CreateCommand();
 		cmd->CommandType = CommandType::Text;
-		cmd->CommandText = "select [Firstname],[Lastname], [Email],[Address1],[Zipcode], [PhoneNumber], [HourlyPay], [Position] from EmployeeInfo where ([ID] = @ID)  ";
+		cmd->CommandText = "select [Firstname],[Lastname], [Email],[Address1], [City],[State],[Zipcode], [HireDate], [PhoneNumber], [SalaryPay], [Position] from EmployeeInfo where ([ID] = @ID)  ";
 		cmd->Parameters->AddWithValue("@ID", ID);
 
 		OleDbDataReader^ myReader = cmd->ExecuteReader();
@@ -1323,25 +1406,24 @@ private: System::Windows::Forms::Button^ button5;
 			LastName = myReader["Lastname"]->ToString();
 			email = myReader["Email"]->ToString();
 			phone = myReader["PhoneNumber"]->ToString();
-			pay = myReader["HourlyPay"]->ToString();
+			Hire = myReader["HireDate"]->ToString();
+			pay = myReader["SalaryPay"]->ToString();
 			Department = myReader["Position"]->ToString();
 			Address = myReader["Address1"]->ToString();
+			City = myReader["City"]->ToString();
+			State = myReader["State"]->ToString();
 			Zip = myReader["Zipcode"]->ToString();
 		}
 
-
-		array<String^>^ w = Address->Split(',');
-		Street = String::Format("{0}", w);
-		City = String::Format("{1}", w);
-
 		lbl1->Text = LastName + ", " + Name;
 		lbl2->Text = Department;
-		lbl3->Text = word;
+		lbl3->Text = Hire;
+		label28->Text = word;
 		lbl4->Text = email;
 		lbl5->Text = phone;
 		lbl6->Text = pay;
-		label23->Text = Street;
-		label25->Text = City;
+		label23->Text = Address;
+		label27->Text = City + ", " + State;
 		label26->Text = Zip;
 	}
 	private: System::Void ButtonShow_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1364,7 +1446,7 @@ private: System::Windows::Forms::Button^ button5;
 		conn2->Open();
 		OleDbCommand^ cmd2 = conn2->CreateCommand();
 		cmd2->CommandType = CommandType::Text;
-		cmd2->CommandText = "select [ID],[Firstname],[Lastname], [Position],[Address1],[Zipcode], [Email], [DateofBirth], [PhoneNumber],[HourlyPay] , [Hours] from EmployeeInfo where  ([ID] = @ID) and ([Position] = 'Employee' or [Position] = 'employee' or [Position] = 'EMPLOYEE')  ";
+		cmd2->CommandText = "select [ID],[Firstname],[Lastname], [Position], [PayType], [Email], [PhoneNumber],[HourlyPay] , [Hours], [HireDate] from EmployeeInfo where  ([ID] = @ID) and ([Position] = 'Employee' or [Position] = 'employee' or [Position] = 'EMPLOYEE')  ";
 
 		//error checking
 		if (textBox1->Text == "")
@@ -1389,20 +1471,23 @@ private: System::Windows::Forms::Button^ button5;
 				word1 = myReader["ID"]->ToString();
 				NameE = myReader["Firstname"]->ToString();
 				LastNameE = myReader["Lastname"]->ToString();
+				HireE = myReader["PayType"]->ToString();
 				emailE = myReader["Email"]->ToString();
 				phoneE = myReader["PhoneNumber"]->ToString();
 				payE = myReader["HourlyPay"]->ToString();
 				DepartmentE = myReader["Position"]->ToString();
-			//	DOB = myReader["DateofBirth"]->ToString();
+				HireDateE = myReader["HireDate"]->ToString();
 				CurrHours = myReader["Hours"]->ToString();
 			}
+
+			label30->Text = HireE;
 
 			lbl8->Text = DepartmentE;
 			lbl7->Text = LastNameE + "," + NameE;
 			lbl9->Text = emailE;
 			lbl10->Text = phoneE;
 			lbl11->Text = payE;
-			lbl12->Text = "Need Hired Date Column in Access";
+			lbl12->Text = HireDateE;
 			lbl14->Text = LastNameE + "," + NameE;
 			lbl15->Text = CurrHours;
 			lbl16->Text = word;
@@ -1432,6 +1517,9 @@ private: System::Windows::Forms::Button^ button5;
 			lbl16->Show();
 			lbl17->Show();
 			lbl18->Show();
+
+			label30->Show();
+			label31->Show();
 		}
 	}
 
@@ -1468,6 +1556,9 @@ private: System::Windows::Forms::Button^ button5;
 		label9->Hide();
 		label10->Hide();
 		label11->Hide();
+
+		label30->Hide();
+		label31->Hide();
 
 		lbl7->Hide();
 		lbl8->Hide();
@@ -1602,32 +1693,38 @@ private: System::Windows::Forms::Button^ button5;
 		textBox6->Show();
 		textBox7->Show();
 		textBox8->Show();
+		textBox10->Show();
 		button3->Show();
 	}
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 
-	if (textBox6->Text == "" || textBox7->Text == "" || textBox8->Text == "" ) {
+	if (textBox6->Text == "" || textBox7->Text == "" || textBox8->Text == "" || textBox10->Text == "") {
 
-		MessageBox::Show("Enter Data in the three boxes");
+		MessageBox::Show("Enter Data in the four boxes");
 		return;
-
 	}
 
-
-	if ( textBox6->Text->Contains(",")) {
+	Regex^ Ru = gcnew Regex("^(\\b\\D+\\b)?\\s*(\\b.*?\\d.*?\\b)\\s*(\\b\\D+\\b)?$");
+	if (!(Ru->IsMatch(textBox6->Text))){
 
 		MessageBox::Show("Enter valid Street Number and name");
 		return;
 
 	}
 
-	Regex^ R = gcnew Regex("^[a-zA-Z',.\\s-]{1,25}$");
-	if (!(R->IsMatch(textBox7->Text)))
+	Regex^ R = gcnew Regex("^[a-zA-Z\\s-]+$");
+	if (!(R->IsMatch(textBox10->Text)))
 	{
-		MessageBox::Show("Enter valid City, State ");
+		MessageBox::Show("Enter valid City");
 		return;
 	}
 
+	Regex^ Ra = gcnew Regex("^(?:(A[KLRZ]|C[AOT]|D[CE]|FL|GA|HI|I[ADLN]|K[SY]|LA|M[ADEINOST]|N[CDEHJMVY]|O[HKR]|P[AR]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY]))$");
+	if (!(Ra->IsMatch(textBox7->Text)))
+	{
+		MessageBox::Show("Enter a 2 letter US State");
+		return;
+	}
 
 
 	Regex^ Re = gcnew Regex("^[0-9]{5}(?:-[0-9]{4})?$");
@@ -1644,14 +1741,17 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 		conn->Open();
 		OleDbCommand^ cmd = conn->CreateCommand();
 		cmd->CommandType = CommandType::Text;
-		cmd->CommandText = "UPDATE EmployeeInfo SET [Address1] = @Address , [Zipcode] = @Zipcode WHERE ID = @ID";
-		cmd->Parameters->AddWithValue("@Address", textBox6->Text + ", " + textBox7->Text);
+		cmd->CommandText = "UPDATE EmployeeInfo SET [Address1] = @Address , [City] = @City , [State] = @State ,[Zipcode] = @Zipcode WHERE ID = @ID";
+		cmd->Parameters->AddWithValue("@Address", textBox6->Text);
+		cmd->Parameters->AddWithValue("@City", textBox10->Text);
+		cmd->Parameters->AddWithValue("@State", textBox7->Text);
 		cmd->Parameters->AddWithValue("@Zipcode", textBox8->Text);
 		cmd->Parameters->AddWithValue("@ID", ID); // Int32::Parse(lbl3->Text));
 
 
 		textBox6->Hide();
 		textBox7->Hide();
+		textBox10->Hide();
 		textBox8->Hide();
 		button3->Hide();
 
@@ -1661,7 +1761,7 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 
 
 		label23->Text = textBox6->Text;
-		label25->Text = textBox7->Text;
+		label27->Text = textBox10->Text + ", " + textBox7->Text;
 		label26->Text = textBox8->Text;
 
 
@@ -1759,6 +1859,10 @@ private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e
 	this->Hide();
 	viewPay->ShowDialog();
 
+}
+private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void label31_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
