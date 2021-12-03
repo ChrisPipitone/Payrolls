@@ -1309,6 +1309,8 @@ private: System::Void enterBttn_Click(System::Object^ sender, System::EventArgs^
 			cmd->CommandText = "SELECT * FROM EmployeeInfo WHERE [ID] = @id";
 			cmd->Parameters->AddWithValue("@id", textBox1->Text);
 
+
+			//retrieve employee info from database
 			OleDbDataReader^ reader = cmd->ExecuteReader();
 			while (reader->Read())
 			{
@@ -1316,30 +1318,55 @@ private: System::Void enterBttn_Click(System::Object^ sender, System::EventArgs^
 				firstName = reader["Firstname"]->ToString();
 				lastName = reader["Lastname"]->ToString();
 				dateOfHire = reader["DateofBirth"]->ToString();
+				status = comboBox4->Text;
 			}
 			conn->Close();
-			//conn->ChangeDatabase(ConnectionPath::connectionPrevious);
 			
-			conn = gcnew OleDbConnection(ConnectionPath::connectionPrevious);
-			conn->Open();
-			cmd = conn->CreateCommand();
-			cmd->CommandType = CommandType::Text;
-			cmd->CommandText = "Insert into pastEmployees ([ID], [FirstName], [LastName], [DOH], [Status])"
+		
+			//inset employee into previous employee database
+			OleDbConnection^ conn2 = gcnew OleDbConnection(ConnectionPath::connectionPrevious);
+			conn2->Open();
+			OleDbCommand^ cmd2 = conn2->CreateCommand();
+			cmd2->CommandType = CommandType::Text;
+			cmd2->CommandText = "Insert into Previous ([ID], [FirstName], [LastName], [DOH], [Status])"
 				+ " VALUES (@ID, @FirstName, @LastName, @DOH, @Status)";
 
-			cmd->Parameters->AddWithValue("@ID", Int32::Parse(id));
-			cmd->Parameters->AddWithValue("@FirstName", firstName);
-			cmd->Parameters->AddWithValue("@LastName", lastName);
-			cmd->Parameters->AddWithValue("@DOH", dateOfHire);
-			cmd->Parameters->AddWithValue("@Status", status);
-			//try catch?
-			//System.Data.OleDb.OleDbException: 
+			cmd2->Parameters->AddWithValue("@ID", Int32::Parse(id));
+			cmd2->Parameters->AddWithValue("@FirstName", firstName);
+			cmd2->Parameters->AddWithValue("@LastName", lastName);
+			cmd2->Parameters->AddWithValue("@DOH", dateOfHire);
+			cmd2->Parameters->AddWithValue("@Status", status);
 
-			MessageBox::Show(conn->DataSource->ToString());
+			try
+			{
+				cmd2->ExecuteNonQuery();
+			}
+			catch (System::Data::OleDb::OleDbException^ e)
+			{
+				MessageBox::Show("ERROR Remove Employee Failed");
+				return;
+			}
+			conn2->Close();
 
-			cmd->ExecuteNonQuery();
-			conn->Close();
 
+			//delete employe from active employee database
+			conn = gcnew OleDbConnection(ConnectionPath::connectionString);
+			conn->Open();
+			cmd = conn->CreateCommand();
+			cmd->CommandText = "DELETE * FROM EmployeeInfo WHERE [ID] = @id";
+			cmd->Parameters->AddWithValue("@id", textBox1->Text);
+
+			try
+			{
+				cmd->ExecuteNonQuery();
+			}
+			catch (System::Data::OleDb::OleDbException^ e)
+			{
+				MessageBox::Show("ERROR Delete Employee Failed");
+				return;
+			}
+
+			//clean up
 			MessageBox::Show("Remove Employee Succeed");
 			comboBox4->Hide();
 			this->Close();
