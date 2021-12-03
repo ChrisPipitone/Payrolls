@@ -107,6 +107,9 @@ namespace Payrolls {
 	private: System::Windows::Forms::Label^ label24;
 	private: System::Windows::Forms::RadioButton^ radioButton2;
 	private: System::Windows::Forms::RadioButton^ radioButton1;
+	private: System::Windows::Forms::ComboBox^ comboBox4;
+	private: System::Windows::Forms::Label^ label25;
+	private: System::Windows::Forms::Button^ enterBttn;
 
 
 	protected:
@@ -174,6 +177,9 @@ namespace Payrolls {
 			this->label24 = (gcnew System::Windows::Forms::Label());
 			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
+			this->comboBox4 = (gcnew System::Windows::Forms::ComboBox());
+			this->label25 = (gcnew System::Windows::Forms::Label());
+			this->enterBttn = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -543,8 +549,8 @@ namespace Payrolls {
 			this->button4->Margin = System::Windows::Forms::Padding(2);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(150, 36);
-			this->button4->TabIndex = 21;
-			this->button4->Text = L"Delete Record";
+			this->button4->TabIndex = 16;
+			this->button4->Text = L"Move to Past Employed";
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &UpdateEmployee::button4_Click);
 			// 
@@ -605,7 +611,7 @@ namespace Payrolls {
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(656, 472);
+			this->pictureBox1->Location = System::Drawing::Point(657, 523);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(54, 44);
 			this->pictureBox1->TabIndex = 47;
@@ -715,12 +721,52 @@ namespace Payrolls {
 			this->radioButton1->UseVisualStyleBackColor = true;
 			this->radioButton1->CheckedChanged += gcnew System::EventHandler(this, &UpdateEmployee::radioButton1_CheckedChanged);
 			// 
+			// comboBox4
+			// 
+			this->comboBox4->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->comboBox4->FormattingEnabled = true;
+			this->comboBox4->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Terminated", L"Quit", L"Retired", L"Deceased" });
+			this->comboBox4->Location = System::Drawing::Point(278, 507);
+			this->comboBox4->Margin = System::Windows::Forms::Padding(2);
+			this->comboBox4->Name = L"comboBox4";
+			this->comboBox4->Size = System::Drawing::Size(142, 21);
+			this->comboBox4->TabIndex = 56;
+			comboBox4->Hide();
+			// 
+			// label25
+			// 
+			this->label25->AutoSize = true;
+			this->label25->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label25->Location = System::Drawing::Point(129, 507);
+			this->label25->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label25->Name = L"label25";
+			this->label25->Size = System::Drawing::Size(145, 18);
+			this->label25->TabIndex = 57;
+			this->label25->Text = L"Reason For Leaving:";
+			label25->Hide();
+			// 
+			// enterBttn
+			// 
+			this->enterBttn->Location = System::Drawing::Point(448, 507);
+			this->enterBttn->Margin = System::Windows::Forms::Padding(2);
+			this->enterBttn->Name = L"enterBttn";
+			this->enterBttn->Size = System::Drawing::Size(129, 22);
+			this->enterBttn->TabIndex = 58;
+			this->enterBttn->Text = L"Enter";
+			this->enterBttn->UseVisualStyleBackColor = true;
+			this->enterBttn->Click += gcnew System::EventHandler(this, &UpdateEmployee::enterBttn_Click);
+			enterBttn->Hide();
+			// 
 			// UpdateEmployee
 			// 
 			this->AccessibleName = L"";
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(710, 514);
+			this->ClientSize = System::Drawing::Size(710, 566);
+			this->Controls->Add(this->enterBttn);
+			this->Controls->Add(this->label25);
+			this->Controls->Add(this->comboBox4);
 			this->Controls->Add(this->radioButton2);
 			this->Controls->Add(this->radioButton1);
 			this->Controls->Add(this->textBox14);
@@ -1206,28 +1252,13 @@ namespace Payrolls {
 			MessageBox::Show("This ID does not exist within the Database");
 			return;
 		}
+		
+		MessageBox::Show("Select a reason for removal");
+		comboBox4->Show();
+		label25->Show();
+		enterBttn->Show();
 
-		String^ message = "Confirm Deleting Employee Record";
-		String^ title = "Delete Record";
-		MessageBoxButtons buttons = MessageBoxButtons::YesNo;
-		Windows::Forms::DialogResult result = MessageBox::Show(message, title, buttons);
-		if (result == Windows::Forms::DialogResult::Yes) {
-			OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
-			conn->Open();
-			OleDbCommand^ cmd = conn->CreateCommand();
-			cmd->CommandType = CommandType::Text;
-			cmd->CommandText = "DELETE FROM EmployeeInfo WHERE [ID] = @ID";
-			cmd->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
-			cmd->ExecuteNonQuery();
-			conn->Close();
-			MessageBox::Show("Delete Employee Succeed");
-			this->Close();
-			otherPage->Show();
-		}
-		else {
-			this->Close();
-			otherPage->Show();
-		}
+		
 	}
 	private: System::Void textBox9_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -1254,6 +1285,73 @@ private: System::Void radioButton2_CheckedChanged(System::Object^ sender, System
 		comboBox1->Text = "None/Purchase Later";
 		comboBox2->Text = "None/Purchase Later";
 		comboBox3->Text = "None/Purchase Later";
+	}
+}
+private: System::Void enterBttn_Click(System::Object^ sender, System::EventArgs^ e) {
+	System::String^ id;
+	System::String^ lastName;
+	System::String^ firstName;
+	System::String^ dateOfHire;
+	System::String^ status;
+	
+	if (comboBox4->Text == "")
+		return;
+	else
+	{
+		String^ message = "Confirm To Remove Employee Record";
+		String^ title = "Remove Record";
+		MessageBoxButtons buttons = MessageBoxButtons::YesNo;
+		Windows::Forms::DialogResult result = MessageBox::Show(message, title, buttons);
+		if (result == Windows::Forms::DialogResult::Yes) {
+			OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
+			conn->Open();
+			OleDbCommand^ cmd = conn->CreateCommand();
+			cmd->CommandText = "SELECT * FROM EmployeeInfo WHERE [ID] = @id";
+			cmd->Parameters->AddWithValue("@id", textBox1->Text);
+
+			OleDbDataReader^ reader = cmd->ExecuteReader();
+			while (reader->Read())
+			{
+				id = reader["ID"]->ToString();
+				firstName = reader["Firstname"]->ToString();
+				lastName = reader["Lastname"]->ToString();
+				dateOfHire = reader["DateofBirth"]->ToString();
+			}
+			conn->Close();
+			//conn->ChangeDatabase(ConnectionPath::connectionPrevious);
+			
+			conn = gcnew OleDbConnection(ConnectionPath::connectionPrevious);
+			conn->Open();
+			cmd = conn->CreateCommand();
+			cmd->CommandType = CommandType::Text;
+			cmd->CommandText = "Insert into pastEmployees ([ID], [FirstName], [LastName], [DOH], [Status])"
+				+ " VALUES (@ID, @FirstName, @LastName, @DOH, @Status)";
+
+			cmd->Parameters->AddWithValue("@ID", Int32::Parse(id));
+			cmd->Parameters->AddWithValue("@FirstName", firstName);
+			cmd->Parameters->AddWithValue("@LastName", lastName);
+			cmd->Parameters->AddWithValue("@DOH", dateOfHire);
+			cmd->Parameters->AddWithValue("@Status", status);
+			//try catch?
+			//System.Data.OleDb.OleDbException: 
+
+			MessageBox::Show(conn->DataSource->ToString());
+
+			cmd->ExecuteNonQuery();
+			conn->Close();
+
+			MessageBox::Show("Remove Employee Succeed");
+			comboBox4->Hide();
+			this->Close();
+			otherPage->Show();
+		}
+		else {
+			comboBox4->Hide();
+			label25->Hide();
+			enterBttn->Hide();
+			this->Close();
+			otherPage->Show();
+		}
 	}
 }
 };
