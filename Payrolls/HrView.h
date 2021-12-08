@@ -73,7 +73,7 @@ namespace Payrolls {
             // button2
             // 
             this->button2->Location = System::Drawing::Point(50, 198);
-            this->button2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+            this->button2->Margin = System::Windows::Forms::Padding(2);
             this->button2->Name = L"button2";
             this->button2->Size = System::Drawing::Size(138, 47);
             this->button2->TabIndex = 1;
@@ -84,10 +84,10 @@ namespace Payrolls {
             // button3
             // 
             this->button3->Location = System::Drawing::Point(321, 198);
-            this->button3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+            this->button3->Margin = System::Windows::Forms::Padding(2);
             this->button3->Name = L"button3";
             this->button3->Size = System::Drawing::Size(138, 47);
-            this->button3->TabIndex = 2;
+            this->button3->TabIndex = 3;
             this->button3->Text = L"Update/Remove Employee";
             this->button3->UseVisualStyleBackColor = true;
             this->button3->Click += gcnew System::EventHandler(this, &HrView::button3_Click);
@@ -97,7 +97,7 @@ namespace Payrolls {
             this->button5->Location = System::Drawing::Point(166, 109);
             this->button5->Name = L"button5";
             this->button5->Size = System::Drawing::Size(177, 52);
-            this->button5->TabIndex = 4;
+            this->button5->TabIndex = 2;
             this->button5->Text = L"View Pay Stub";
             this->button5->UseVisualStyleBackColor = true;
             this->button5->Click += gcnew System::EventHandler(this, &HrView::button5_Click);
@@ -109,7 +109,7 @@ namespace Payrolls {
             this->linkLabel1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->linkLabel1->Name = L"linkLabel1";
             this->linkLabel1->Size = System::Drawing::Size(40, 13);
-            this->linkLabel1->TabIndex = 5;
+            this->linkLabel1->TabIndex = 4;
             this->linkLabel1->TabStop = true;
             this->linkLabel1->Text = L"Logout";
             this->linkLabel1->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &HrView::linkLabel1_LinkClicked);
@@ -134,7 +134,7 @@ namespace Payrolls {
             this->Controls->Add(this->button3);
             this->Controls->Add(this->button2);
             this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-            this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+            this->Margin = System::Windows::Forms::Padding(2);
             this->Name = L"HrView";
             this->Text = L"HR Main Menu";
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();

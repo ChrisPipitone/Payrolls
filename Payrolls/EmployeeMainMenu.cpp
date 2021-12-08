@@ -40,7 +40,10 @@ void Payrolls::EmployeeMainMenu::fillData(System::String^ empID)
 		this->Emp_lastName->Text = reader["Lastname"]->ToString();
 		this->Emp_lastName_glance->Text = this->Emp_lastName->Text;
 
-		this->Emp_dob->Text = reader["DateofBirth"]->ToString();
+		this->label2->Text = reader["PayType"]->ToString();
+		this->label9->Text = this->label2->Text;
+
+		this->Emp_dob->Text = reader["HireDate"]->ToString();
 
 
 		this->Emp_sex->Text = reader["Gender"]->ToString();
@@ -52,47 +55,65 @@ void Payrolls::EmployeeMainMenu::fillData(System::String^ empID)
 		//text box's in personal info user can edit and sumbit changes in that panel to these values 
 		this->prefEmail_textbox->Text = reader["Email"]->ToString();
 		this->phoneNumber_textBox->Text = reader["PhoneNumber"]->ToString();
-	
+		this->textBox1->Text = reader["Address1"]->ToString();
+		this->textBox2->Text = reader["City"]->ToString();
+		this->textBox3->Text = reader["State"]->ToString();
+		this->textBox4->Text = reader["Zipcode"]->ToString();
+		
 		//Benefits
 		empHealthPackage_label->Text = reader["HealthCoverage"]->ToString();
 		empDentalPackage_label->Text = reader["DentalCoverage"]->ToString();
 		empVisionPackage_label->Text = reader["VisionCoverage"]->ToString();
 
-
-		if (empHealthPackage_label->Text == "None")
-			benefitName_label1->Text = "None Chosen";
+		if (empDentalPackage_label->Text == "Can't Purchase") {
+			benefitName_label1->Text = "Part time cannot purchase Benefits";
+			benefitName_label2->Text = " ";
+			benefitName_label3->Text = " ";
+		}
 		else
-			benefitName_label1->Text = "Health";
+		{
+			if (empHealthPackage_label->Text == "None/Purchase Later")
+				benefitName_label1->Text = "Health benefit Not Chosen";
+			else
+				benefitName_label1->Text = "Health";
 
-		if (empDentalPackage_label->Text == "None")
-			benefitName_label3->Text = "None Chosen";
-		else
-			benefitName_label2->Text = "Dental";
+			if (empDentalPackage_label->Text == "None/Purchase Later")
+				benefitName_label2->Text = "Dental benefit Not Chosen";
+			else
+				benefitName_label2->Text = "Dental";
 
-		if (empVisionPackage_label->Text == "None")
-			benefitName_label3->Text = "None Chosen";
-		else
-			benefitName_label3->Text = "Vision";
-
+			if (empVisionPackage_label->Text == "None/Purchase Later")
+				benefitName_label3->Text = "Vision Benefit not Chosen";
+			else
+				benefitName_label3->Text = "Vision";
+		}
 		System::String^ cost;
-		if (empHealthPackage_label->Text == "None")
-			cost = "0";
-		else
-			cost = "30";
-		healthCost_label->Text = cost + "% of you gross income.";
 
-		if (empDentalPackage_label->Text == "None")
+		if (empDentalPackage_label->Text == "Can't Purchase") {
 			cost = "0";
-		else
-			cost = "30";
-		dentalCost_label->Text = cost + "% of you gross income.";
+			healthCost_label->Text = cost + "% of you gross income.";
+			dentalCost_label->Text = cost + "% of you gross income.";
+			visionCost_label->Text = cost + "% of you gross income.";
+		}
+		else {
+			if (empHealthPackage_label->Text == "None/Purchase Later")
+				cost = "0";
+			else
+				cost = "30";
+			healthCost_label->Text = cost + "% of you gross income.";
 
-		if (empVisionPackage_label->Text == "None")
-			cost = "0";
-		else
-			cost = "30";
-		visionCost_label->Text = cost + "% of you gross income.";
+			if (empDentalPackage_label->Text == "None/Purchase Later")
+				cost = "0";
+			else
+				cost = "30";
+			dentalCost_label->Text = cost + "% of you gross income.";
 
+			if (empVisionPackage_label->Text == "None/Purchase Later")
+				cost = "0";
+			else
+				cost = "30";
+			visionCost_label->Text = cost + "% of you gross income.";
+		}
 		//end benefits 
 
 

@@ -54,6 +54,8 @@ namespace Payrolls {
 
 	private: System::ComponentModel::IContainer^ components;
 
+		   private:
+			   String^ Crypt;
 
 
 
@@ -131,7 +133,7 @@ namespace Payrolls {
 			this->textBox1->Location = System::Drawing::Point(646, 270);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(275, 28);
-			this->textBox1->TabIndex = 4;
+			this->textBox1->TabIndex = 0;
 			this->textBox1->TextChanged += gcnew System::EventHandler(this, &LoginMenu::textBox1_TextChanged);
 			// 
 			// textBox2
@@ -139,24 +141,25 @@ namespace Payrolls {
 			this->textBox2->Location = System::Drawing::Point(646, 323);
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(275, 28);
-			this->textBox2->TabIndex = 5;
+			this->textBox2->TabIndex = 2;
 			this->textBox2->TextChanged += gcnew System::EventHandler(this, &LoginMenu::textBox2_TextChanged);
 			// 
 			// comboBox1
 			// 
+			this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"HR", L"Admin", L"Employee" });
 			this->comboBox1->Location = System::Drawing::Point(646, 385);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(281, 30);
-			this->comboBox1->TabIndex = 6;
+			this->comboBox1->TabIndex = 3;
 			// 
 			// button1
 			// 
 			this->button1->Location = System::Drawing::Point(646, 452);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(207, 51);
-			this->button1->TabIndex = 7;
+			this->button1->TabIndex = 4;
 			this->button1->Text = L"Login";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &LoginMenu::button1_Click);
@@ -227,6 +230,21 @@ namespace Payrolls {
 				return;
 			}
 
+			Crypt = textBox2->Text;
+
+			// To Read encrypted password erase -> /**/
+			/*
+			
+			String^ en = "";
+			String^ s = Crypt;
+			for (int i = 0; i < s->Length; i++) {    //go through each char
+				char c = s[i];
+				int shifted = (int)c + 10;			//shift 10 places
+				en += (char)shifted;					//turn back into char and add to String
+			}
+			
+			Crypt = en;
+			*/
 
 			//use employee id to pull employee data from data base to fill menu details
 			System::String^ empID = textBox1->Text;
@@ -238,7 +256,7 @@ namespace Payrolls {
 			cmd->CommandType = CommandType::Text;
 			cmd->CommandText = "select * from EmployeeInfo where ([ID] = @ID) and ([Password] = @Password)";
 			cmd->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
-			cmd->Parameters->AddWithValue("@Password", textBox2->Text);
+			cmd->Parameters->AddWithValue("@Password", Crypt);
 			cmd->ExecuteNonQuery();
 			DataTable^ dt = gcnew DataTable();
 			OleDbDataAdapter^ da = gcnew OleDbDataAdapter(cmd);
