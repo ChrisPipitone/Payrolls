@@ -125,23 +125,6 @@ namespace Payrolls {
 	private: System::Windows::Forms::TextBox^ textBox1;
 	private: System::Windows::Forms::Button^ buttonSearch;
 	private: System::Windows::Forms::TabPage^ tab2Page2;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	private: System::Windows::Forms::TabPage^ tabPage1;
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Button^ button1;
@@ -199,33 +182,13 @@ private: System::Windows::Forms::ColumnHeader^ columnHeader3;
 
 private: System::Windows::Forms::ColumnHeader^ columnHeader5;
 private: System::Windows::Forms::ColumnHeader^ columnHeader6;
-private: System::Windows::Forms::Label^ label17;
-private: System::Windows::Forms::Label^ label16;
+
+
 private: System::Windows::Forms::TextBox^ textBox3;
 private: System::Windows::Forms::TextBox^ textBox2;
 private: System::Windows::Forms::Label^ label15;
 private: System::Windows::Forms::Label^ label14;
 private: System::Windows::Forms::Button^ button6;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	private:
 		/// <summary>
@@ -268,8 +231,6 @@ private: System::Windows::Forms::Button^ button6;
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->buttonSearch = (gcnew System::Windows::Forms::Button());
 			this->tab2Page2 = (gcnew System::Windows::Forms::TabPage());
-			this->label17 = (gcnew System::Windows::Forms::Label());
-			this->label16 = (gcnew System::Windows::Forms::Label());
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->label15 = (gcnew System::Windows::Forms::Label());
@@ -678,8 +639,6 @@ private: System::Windows::Forms::Button^ button6;
 			// tab2Page2
 			// 
 			this->tab2Page2->BackColor = System::Drawing::SystemColors::Control;
-			this->tab2Page2->Controls->Add(this->label17);
-			this->tab2Page2->Controls->Add(this->label16);
 			this->tab2Page2->Controls->Add(this->textBox3);
 			this->tab2Page2->Controls->Add(this->textBox2);
 			this->tab2Page2->Controls->Add(this->label15);
@@ -697,38 +656,16 @@ private: System::Windows::Forms::Button^ button6;
 			this->tab2Page2->Text = L"Time Sheet";
 			this->tab2Page2->Click += gcnew System::EventHandler(this, &AdminMenu::tab2Page2_Click);
 			// 
-			// label17
-			// 
-			this->label17->AutoSize = true;
-			this->label17->Location = System::Drawing::Point(198, 149);
-			this->label17->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
-			this->label17->Name = L"label17";
-			this->label17->Size = System::Drawing::Size(95, 20);
-			this->label17->TabIndex = 45;
-			this->label17->Text = L"#Last Name";
-			// 
-			// label16
-			// 
-			this->label16->AutoSize = true;
-			this->label16->Location = System::Drawing::Point(30, 149);
-			this->label16->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
-			this->label16->Name = L"label16";
-			this->label16->Size = System::Drawing::Size(95, 20);
-			this->label16->TabIndex = 44;
-			this->label16->Text = L"#First Name";
-			// 
 			// textBox3
 			// 
-			this->textBox3->Location = System::Drawing::Point(159, 258);
-			this->textBox3->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->textBox3->Location = System::Drawing::Point(106, 168);
 			this->textBox3->Name = L"textBox3";
 			this->textBox3->Size = System::Drawing::Size(97, 26);
 			this->textBox3->TabIndex = 43;
 			// 
 			// textBox2
 			// 
-			this->textBox2->Location = System::Drawing::Point(298, 194);
-			this->textBox2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->textBox2->Location = System::Drawing::Point(199, 126);
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(104, 26);
 			this->textBox2->TabIndex = 42;
@@ -736,8 +673,7 @@ private: System::Windows::Forms::Button^ button6;
 			// label15
 			// 
 			this->label15->AutoSize = true;
-			this->label15->Location = System::Drawing::Point(30, 263);
-			this->label15->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label15->Location = System::Drawing::Point(20, 171);
 			this->label15->Name = L"label15";
 			this->label15->Size = System::Drawing::Size(123, 20);
 			this->label15->TabIndex = 41;
@@ -746,8 +682,7 @@ private: System::Windows::Forms::Button^ button6;
 			// label14
 			// 
 			this->label14->AutoSize = true;
-			this->label14->Location = System::Drawing::Point(30, 197);
-			this->label14->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label14->Location = System::Drawing::Point(20, 128);
 			this->label14->Name = L"label14";
 			this->label14->Size = System::Drawing::Size(259, 20);
 			this->label14->TabIndex = 40;
@@ -755,13 +690,13 @@ private: System::Windows::Forms::Button^ button6;
 			// 
 			// button6
 			// 
-			this->button6->Location = System::Drawing::Point(530, 188);
-			this->button6->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->button6->Location = System::Drawing::Point(353, 122);
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(162, 37);
 			this->button6->TabIndex = 39;
 			this->button6->Text = L"Enter";
 			this->button6->UseVisualStyleBackColor = true;
+			this->button6->Click += gcnew System::EventHandler(this, &AdminMenu::button6_Click);
 			// 
 			// empHours_list
 			// 
@@ -769,6 +704,8 @@ private: System::Windows::Forms::Button^ button6;
 				this->columnHeader1,
 					this->columnHeader2, this->columnHeader3, this->columnHeader5, this->columnHeader6
 			});
+			this->empHours_list->FullRowSelect = true;
+			this->empHours_list->GridLines = true;
 			this->empHours_list->HideSelection = false;
 			this->empHours_list->Location = System::Drawing::Point(34, 326);
 			this->empHours_list->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
@@ -795,7 +732,7 @@ private: System::Windows::Forms::Button^ button6;
 			// columnHeader5
 			// 
 			this->columnHeader5->Text = L"Entered Hours";
-			this->columnHeader5->Width = 82;
+			//this->columnHeader5->Width = 82;
 			// 
 			// columnHeader6
 			// 
@@ -1844,35 +1781,42 @@ private: System::Void label31_Click(System::Object^ sender, System::EventArgs^ e
 }
 private: System::Void timeSheet_startButton_Click(System::Object^ sender, System::EventArgs^ e) {
 	
-	String^ message = "Once Started you can not stop";
-	String^ title = "Remove Record";
-	MessageBoxButtons buttons = MessageBoxButtons::YesNo;
-	Windows::Forms::DialogResult result = MessageBox::Show(message, title, buttons);
-	if (result == Windows::Forms::DialogResult::Yes) {
-
-		OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
-		conn->Open();
-		OleDbCommand^ cmd = conn->CreateCommand();
+	OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
+	conn->Open();
+	OleDbCommand^ cmd = conn->CreateCommand();
 		
-		//this part needs a reader
-		//create a list of all the ids in the db 
-		cmd->CommandText = "SELECT Firstname,Lastname,ID FROM EmployeeInfo";
-		OleDbDataReader^ reader = cmd->ExecuteReader();
-		while (reader->Read())
-		{
-			ListViewItem^ item = gcnew ListViewItem(reader["ID"]->ToString());
+	//create a list of all the ids in the db 
+	cmd->CommandText = "SELECT Firstname,Lastname,ID FROM EmployeeInfo";
+	OleDbDataReader^ reader = cmd->ExecuteReader();
+	while (reader->Read())
+	{
+		ListViewItem^ item = gcnew ListViewItem(reader["ID"]->ToString());
 	
-			item->SubItems->Add(reader["Firstname"]->ToString());
-			item->SubItems->Add(reader["Lastname"]->ToString());
-			empHours_list->Items->Add(item);
-		}
-		conn->Close();
-
-		//update their hours
-		//cmd->CommandText = "UPDATE EmployeeInfo SET [Hours] = @Hours, [OvertimeHours] = @OvertimeHours WHERE [ID] = @ID";
-		//cmd->Parameters->AddWithValue("@Hours", Int32::Parse(textBox->Text));
-		//cmd->Parameters->AddWithValue("@OvertimeHours", Int32::Parse(textBox->Text));
+		item->SubItems->Add(reader["Firstname"]->ToString());
+		item->SubItems->Add(reader["Lastname"]->ToString());
+		empHours_list->Items->Add(item);
 	}
+	conn->Close();
+}
+
+private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
+	//update selected emps hours
+	OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
+	conn->Open();
+	OleDbCommand^ cmd = conn->CreateCommand();
+	cmd->CommandText = "UPDATE EmployeeInfo SET [Hours] = @Hours, [OvertimeHours] = @OvertimeHours WHERE [ID] = @ID";
+
+	MessageBox::Show(empHours_list->SelectedItems->ToString());
+	cmd->Parameters->AddWithValue("@ID", Int32::Parse(empHours_list->SelectedItems[0]->ToString()));
+	
+	
+	cmd->Parameters->AddWithValue("@Hours", Int32::Parse(textBox2->Text));
+	cmd->Parameters->AddWithValue("@OvertimeHours", Int32::Parse(textBox3->Text));
+
+	cmd->ExecuteNonQuery();
+
+	conn->Close();
+
 }
 };
 }

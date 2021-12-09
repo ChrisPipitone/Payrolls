@@ -28,6 +28,9 @@ namespace Payrolls {
 		UpdateEmployee(void)
 		{
 			InitializeComponent();
+			enterBttn->Hide();
+			label25->Hide();
+				comboBox4->Hide();
 			//
 			//TODO: Add the constructor code here
 			//
@@ -731,7 +734,7 @@ namespace Payrolls {
 			this->comboBox4->Name = L"comboBox4";
 			this->comboBox4->Size = System::Drawing::Size(142, 21);
 			this->comboBox4->TabIndex = 56;
-			comboBox4->Hide();
+		
 			// 
 			// label25
 			// 
@@ -744,7 +747,7 @@ namespace Payrolls {
 			this->label25->Size = System::Drawing::Size(145, 18);
 			this->label25->TabIndex = 57;
 			this->label25->Text = L"Reason For Leaving:";
-			label25->Hide();
+
 			// 
 			// enterBttn
 			// 
@@ -756,7 +759,7 @@ namespace Payrolls {
 			this->enterBttn->Text = L"Enter";
 			this->enterBttn->UseVisualStyleBackColor = true;
 			this->enterBttn->Click += gcnew System::EventHandler(this, &UpdateEmployee::enterBttn_Click);
-			enterBttn->Hide();
+	
 			// 
 			// UpdateEmployee
 			// 
