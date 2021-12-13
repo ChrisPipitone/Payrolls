@@ -56,7 +56,8 @@ namespace Payrolls {
 		String^ phoneE;
 	private:
 		String^ DepartmentE;
-
+	private:
+		String^ word;
 
 
 
@@ -183,8 +184,8 @@ private: System::Windows::Forms::ToolStripButton^ InfoAtGlance_button;
 private: System::Windows::Forms::ToolStripSeparator^ toolStripSeparator4;
 private: System::Windows::Forms::ToolStripButton^ viewBenefits_button;
 private: System::Windows::Forms::ToolStripSeparator^ toolStripSeparator2;
-private: System::Windows::Forms::ToolStripButton^ viewTimesheet_button;
-private: System::Windows::Forms::ToolStripSeparator^ toolStripSeparator6;
+
+
 private: System::Windows::Forms::ToolStripButton^ toolStripButton1;
 private: System::Windows::Forms::ToolStripSeparator^ toolStripSeparator5;
 private: System::Windows::Forms::ToolStripButton^ logout_button;
@@ -212,6 +213,7 @@ private: System::Windows::Forms::Label^ label11;
 private: System::Windows::Forms::Label^ label12;
 private: System::Windows::Forms::Label^ label13;
 private: System::Windows::Forms::Label^ lbl7;
+private: System::Windows::Forms::Button^ button1;
 
 
 
@@ -345,6 +347,7 @@ private: System::Windows::Forms::Label^ lbl7;
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->payStub_title_label = (gcnew System::Windows::Forms::Label());
 			this->infoGlance_panel = (gcnew System::Windows::Forms::Panel());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->benefitName_label3 = (gcnew System::Windows::Forms::Label());
@@ -395,17 +398,12 @@ private: System::Windows::Forms::Label^ lbl7;
 			this->toolStripSeparator4 = (gcnew System::Windows::Forms::ToolStripSeparator());
 			this->viewBenefits_button = (gcnew System::Windows::Forms::ToolStripButton());
 			this->toolStripSeparator2 = (gcnew System::Windows::Forms::ToolStripSeparator());
-			this->viewTimesheet_button = (gcnew System::Windows::Forms::ToolStripButton());
-			this->toolStripSeparator6 = (gcnew System::Windows::Forms::ToolStripSeparator());
 			this->toolStripButton1 = (gcnew System::Windows::Forms::ToolStripButton());
 			this->toolStripSeparator5 = (gcnew System::Windows::Forms::ToolStripSeparator());
 			this->logout_button = (gcnew System::Windows::Forms::ToolStripButton());
 			this->toolStrip1 = (gcnew System::Windows::Forms::ToolStrip());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
-			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->label30 = (gcnew System::Windows::Forms::Label());
 			this->label31 = (gcnew System::Windows::Forms::Label());
 			this->lbl10 = (gcnew System::Windows::Forms::Label());
@@ -415,6 +413,9 @@ private: System::Windows::Forms::Label^ lbl7;
 			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->lbl7 = (gcnew System::Windows::Forms::Label());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
+			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->editPersonal_panel->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			this->viewPaystub_panel->SuspendLayout();
@@ -756,6 +757,7 @@ private: System::Windows::Forms::Label^ lbl7;
 			// 
 			// infoGlance_panel
 			// 
+			this->infoGlance_panel->Controls->Add(this->button1);
 			this->infoGlance_panel->Controls->Add(this->label9);
 			this->infoGlance_panel->Controls->Add(this->label10);
 			this->infoGlance_panel->Controls->Add(this->benefitName_label3);
@@ -776,6 +778,16 @@ private: System::Windows::Forms::Label^ lbl7;
 			this->infoGlance_panel->Name = L"infoGlance_panel";
 			this->infoGlance_panel->Size = System::Drawing::Size(1112, 657);
 			this->infoGlance_panel->TabIndex = 13;
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(784, 212);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(145, 51);
+			this->button1->TabIndex = 101;
+			this->button1->Text = L"View Paystub";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::button1_Click_1);
 			// 
 			// label9
 			// 
@@ -985,7 +997,7 @@ private: System::Windows::Forms::Label^ lbl7;
 			this->panel1->Controls->Add(this->pictureBox9);
 			this->panel1->Location = System::Drawing::Point(0, 0);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(1112, 652);
+			this->panel1->Size = System::Drawing::Size(1115, 652);
 			this->panel1->TabIndex = 105;
 			// 
 			// pictureBox8
@@ -1274,21 +1286,6 @@ private: System::Windows::Forms::Label^ lbl7;
 			this->toolStripSeparator2->Name = L"toolStripSeparator2";
 			this->toolStripSeparator2->Size = System::Drawing::Size(6, 25);
 			// 
-			// viewTimesheet_button
-			// 
-			this->viewTimesheet_button->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
-			this->viewTimesheet_button->ImageTransparentColor = System::Drawing::Color::Magenta;
-			this->viewTimesheet_button->Name = L"viewTimesheet_button";
-			this->viewTimesheet_button->Size = System::Drawing::Size(93, 22);
-			this->viewTimesheet_button->Text = L"View Timesheet";
-			this->viewTimesheet_button->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::viewTimesheet_button_Click);
-			// 
-			// toolStripSeparator6
-			// 
-			this->toolStripSeparator6->Name = L"toolStripSeparator6";
-			this->toolStripSeparator6->Size = System::Drawing::Size(6, 25);
-			this->toolStripSeparator6->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::toolStripSeparator6_Click);
-			// 
 			// toolStripButton1
 			// 
 			this->toolStripButton1->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
@@ -1316,10 +1313,10 @@ private: System::Windows::Forms::Label^ lbl7;
 			// toolStrip1
 			// 
 			this->toolStrip1->ImageScalingSize = System::Drawing::Size(24, 24);
-			this->toolStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(11) {
+			this->toolStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(9) {
 				this->editPersonalInfo_button,
 					this->toolStripSeparator1, this->InfoAtGlance_button, this->toolStripSeparator4, this->viewBenefits_button, this->toolStripSeparator2,
-					this->viewTimesheet_button, this->toolStripSeparator6, this->toolStripButton1, this->toolStripSeparator5, this->logout_button
+					this->toolStripButton1, this->toolStripSeparator5, this->logout_button
 			});
 			this->toolStrip1->Location = System::Drawing::Point(0, 0);
 			this->toolStrip1->Name = L"toolStrip1";
@@ -1332,7 +1329,7 @@ private: System::Windows::Forms::Label^ lbl7;
 			// 
 			this->panel2->Location = System::Drawing::Point(0, 28);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(1115, 654);
+			this->panel2->Size = System::Drawing::Size(1116, 654);
 			this->panel2->TabIndex = 104;
 			// 
 			// panel3
@@ -1351,39 +1348,8 @@ private: System::Windows::Forms::Label^ lbl7;
 			this->panel3->Controls->Add(this->button4);
 			this->panel3->Location = System::Drawing::Point(1, 28);
 			this->panel3->Name = L"panel3";
-			this->panel3->Size = System::Drawing::Size(1114, 651);
+			this->panel3->Size = System::Drawing::Size(1115, 651);
 			this->panel3->TabIndex = 105;
-			// 
-			// button3
-			// 
-			this->button3->Location = System::Drawing::Point(758, 133);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(75, 23);
-			this->button3->TabIndex = 127;
-			this->button3->Text = L"Reset";
-			this->button3->UseVisualStyleBackColor = true;
-			this->button3->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::button3_Click);
-			// 
-			// textBox5
-			// 
-			this->textBox5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->textBox5->Location = System::Drawing::Point(443, 126);
-			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(250, 26);
-			this->textBox5->TabIndex = 122;
-			// 
-			// button4
-			// 
-			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button4->Location = System::Drawing::Point(201, 123);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(187, 33);
-			this->button4->TabIndex = 123;
-			this->button4->Text = L"Search Employee";
-			this->button4->UseVisualStyleBackColor = true;
-			this->button4->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::button4_Click);
 			// 
 			// label30
 			// 
@@ -1483,6 +1449,37 @@ private: System::Windows::Forms::Label^ lbl7;
 			this->lbl7->Size = System::Drawing::Size(152, 24);
 			this->lbl7->TabIndex = 128;
 			this->lbl7->Text = L"Employee Name";
+			// 
+			// button3
+			// 
+			this->button3->Location = System::Drawing::Point(758, 133);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(75, 23);
+			this->button3->TabIndex = 127;
+			this->button3->Text = L"Reset";
+			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::button3_Click);
+			// 
+			// textBox5
+			// 
+			this->textBox5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->textBox5->Location = System::Drawing::Point(443, 126);
+			this->textBox5->Name = L"textBox5";
+			this->textBox5->Size = System::Drawing::Size(250, 26);
+			this->textBox5->TabIndex = 122;
+			// 
+			// button4
+			// 
+			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button4->Location = System::Drawing::Point(201, 123);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(187, 33);
+			this->button4->TabIndex = 123;
+			this->button4->Text = L"Search Employee";
+			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &EmployeeMainMenu::button4_Click);
 			// 
 			// EmployeeMainMenu
 			// 
@@ -1698,6 +1695,20 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 }
 private: System::Void toolStripButton1_Click(System::Object^ sender, System::EventArgs^ e) {
 
+	lbl7->Hide();
+	lbl8->Hide();
+	lbl9->Hide();
+	lbl10->Hide();
+	label30->Hide();
+
+
+	label31->Hide();
+	label13->Hide();
+	label12->Hide();
+	label11->Hide();
+
+
+
 	this->infoGlance_panel->Hide();
 	this->viewBenefits_panel->Hide();
 	this->viewPaystub_panel->Hide();
@@ -1794,6 +1805,15 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 	label13->Hide();
 	label12->Hide();
 	label11->Hide();
+}
+private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+
+
+	ViewPaystub^ viewPay = gcnew ViewPaystub(ID);
+	viewPay->otherPage = this;
+	this->Hide();
+	viewPay->ShowDialog();
+
 }
 };
 }

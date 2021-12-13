@@ -40,10 +40,10 @@ void Payrolls::EmployeeMainMenu::fillData(System::String^ empID)
 		this->Emp_lastName->Text = reader["Lastname"]->ToString();
 		this->Emp_lastName_glance->Text = this->Emp_lastName->Text;
 
-		//this->label2->Text = reader["PayType"]->ToString();
+		this->label2->Text = reader["PayType"]->ToString();
 		this->label9->Text = this->label2->Text;
 
-//		this->Emp_dob->Text = reader["HireDate"]->ToString();
+		this->Emp_dob->Text = reader["HireDate"]->ToString();
 
 
 		this->Emp_sex->Text = reader["Gender"]->ToString();
@@ -56,8 +56,8 @@ void Payrolls::EmployeeMainMenu::fillData(System::String^ empID)
 		this->prefEmail_textbox->Text = reader["Email"]->ToString();
 		this->phoneNumber_textBox->Text = reader["PhoneNumber"]->ToString();
 		this->textBox1->Text = reader["Address1"]->ToString();
-//		this->textBox2->Text = reader["City"]->ToString();
-	//	this->textBox3->Text = reader["State"]->ToString();
+		this->textBox2->Text = reader["City"]->ToString();
+		this->textBox3->Text = reader["State"]->ToString();
 		this->textBox4->Text = reader["Zipcode"]->ToString();
 		
 		//Benefits
