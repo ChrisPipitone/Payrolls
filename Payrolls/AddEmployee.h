@@ -5,6 +5,8 @@
 #include "NYTax.h"
 #include "Benfits.h"
 #include"CheckID.h"
+#include "NJTax.h"
+#include "CTTax.h"
 
 namespace Payrolls {
 
@@ -119,6 +121,9 @@ namespace Payrolls {
 		String^ pas = "1111";
 	private:
 		String^ Zero = "0";
+	private: System::Windows::Forms::Label^ label16;
+	private: System::Windows::Forms::ComboBox^ comboBox4;
+
 
 	protected:
 
@@ -180,204 +185,207 @@ namespace Payrolls {
 			this->radioButton3 = (gcnew System::Windows::Forms::RadioButton());
 			this->textBox15 = (gcnew System::Windows::Forms::TextBox());
 			this->label15 = (gcnew System::Windows::Forms::Label());
+			this->label16 = (gcnew System::Windows::Forms::Label());
+			this->comboBox4 = (gcnew System::Windows::Forms::ComboBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(17, 32);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label1->Location = System::Drawing::Point(34, 62);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(67, 13);
+			this->label1->Size = System::Drawing::Size(133, 25);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Employee ID";
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(100, 32);
-			this->textBox1->Margin = System::Windows::Forms::Padding(2);
+			this->textBox1->Location = System::Drawing::Point(200, 62);
+			this->textBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(81, 20);
+			this->textBox1->Size = System::Drawing::Size(158, 31);
 			this->textBox1->TabIndex = 1;
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(17, 61);
-			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label2->Location = System::Drawing::Point(34, 117);
+			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(29, 13);
+			this->label2->Size = System::Drawing::Size(55, 25);
 			this->label2->TabIndex = 2;
 			this->label2->Text = L"SSN";
 			// 
 			// textBox3
 			// 
-			this->textBox3->Location = System::Drawing::Point(100, 61);
-			this->textBox3->Margin = System::Windows::Forms::Padding(2);
+			this->textBox3->Location = System::Drawing::Point(200, 117);
+			this->textBox3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(81, 20);
+			this->textBox3->Size = System::Drawing::Size(158, 31);
 			this->textBox3->TabIndex = 3;
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(17, 89);
-			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label3->Location = System::Drawing::Point(34, 171);
+			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(57, 13);
+			this->label3->Size = System::Drawing::Size(116, 25);
 			this->label3->TabIndex = 4;
 			this->label3->Text = L"First Name";
 			// 
 			// textBox4
 			// 
-			this->textBox4->Location = System::Drawing::Point(100, 89);
-			this->textBox4->Margin = System::Windows::Forms::Padding(2);
+			this->textBox4->Location = System::Drawing::Point(200, 171);
+			this->textBox4->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(81, 20);
+			this->textBox4->Size = System::Drawing::Size(158, 31);
 			this->textBox4->TabIndex = 4;
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(17, 126);
-			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label4->Location = System::Drawing::Point(34, 242);
+			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(58, 13);
+			this->label4->Size = System::Drawing::Size(115, 25);
 			this->label4->TabIndex = 6;
 			this->label4->Text = L"Last Name";
 			// 
 			// textBox5
 			// 
-			this->textBox5->Location = System::Drawing::Point(100, 123);
-			this->textBox5->Margin = System::Windows::Forms::Padding(2);
+			this->textBox5->Location = System::Drawing::Point(200, 237);
+			this->textBox5->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(81, 20);
+			this->textBox5->Size = System::Drawing::Size(158, 31);
 			this->textBox5->TabIndex = 5;
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(17, 186);
-			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label5->Location = System::Drawing::Point(34, 358);
+			this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(42, 13);
+			this->label5->Size = System::Drawing::Size(83, 25);
 			this->label5->TabIndex = 8;
 			this->label5->Text = L"Gender";
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(17, 154);
-			this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label6->Location = System::Drawing::Point(34, 296);
+			this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(30, 13);
+			this->label6->Size = System::Drawing::Size(57, 25);
 			this->label6->TabIndex = 10;
 			this->label6->Text = L"DOB";
 			// 
 			// textBox7
 			// 
-			this->textBox7->Location = System::Drawing::Point(420, 29);
-			this->textBox7->Margin = System::Windows::Forms::Padding(2);
+			this->textBox7->Location = System::Drawing::Point(840, 56);
+			this->textBox7->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox7->Name = L"textBox7";
-			this->textBox7->Size = System::Drawing::Size(165, 20);
+			this->textBox7->Size = System::Drawing::Size(326, 31);
 			this->textBox7->TabIndex = 12;
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(349, 32);
-			this->label7->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label7->Location = System::Drawing::Point(698, 62);
+			this->label7->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(45, 13);
+			this->label7->Size = System::Drawing::Size(91, 25);
 			this->label7->TabIndex = 12;
 			this->label7->Text = L"Address";
 			// 
 			// textBox8
 			// 
-			this->textBox8->Location = System::Drawing::Point(420, 150);
-			this->textBox8->Margin = System::Windows::Forms::Padding(2);
+			this->textBox8->Location = System::Drawing::Point(840, 288);
+			this->textBox8->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox8->Name = L"textBox8";
-			this->textBox8->Size = System::Drawing::Size(165, 20);
+			this->textBox8->Size = System::Drawing::Size(326, 31);
 			this->textBox8->TabIndex = 16;
 			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(349, 149);
-			this->label8->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label8->Location = System::Drawing::Point(698, 287);
+			this->label8->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(38, 13);
+			this->label8->Size = System::Drawing::Size(74, 25);
 			this->label8->TabIndex = 14;
 			this->label8->Text = L"Phone";
 			// 
 			// textBox9
 			// 
-			this->textBox9->Location = System::Drawing::Point(420, 185);
-			this->textBox9->Margin = System::Windows::Forms::Padding(2);
+			this->textBox9->Location = System::Drawing::Point(840, 356);
+			this->textBox9->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox9->Name = L"textBox9";
-			this->textBox9->Size = System::Drawing::Size(165, 20);
+			this->textBox9->Size = System::Drawing::Size(326, 31);
 			this->textBox9->TabIndex = 17;
 			// 
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(349, 185);
-			this->label9->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label9->Location = System::Drawing::Point(698, 356);
+			this->label9->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(32, 13);
+			this->label9->Size = System::Drawing::Size(65, 25);
 			this->label9->TabIndex = 16;
 			this->label9->Text = L"Email";
 			// 
 			// textBox11
 			// 
-			this->textBox11->Location = System::Drawing::Point(98, 214);
-			this->textBox11->Margin = System::Windows::Forms::Padding(2);
+			this->textBox11->Location = System::Drawing::Point(196, 412);
+			this->textBox11->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox11->Name = L"textBox11";
-			this->textBox11->Size = System::Drawing::Size(81, 20);
+			this->textBox11->Size = System::Drawing::Size(158, 31);
 			this->textBox11->TabIndex = 8;
 			// 
 			// label12
 			// 
 			this->label12->AutoSize = true;
-			this->label12->Location = System::Drawing::Point(17, 248);
-			this->label12->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label12->Location = System::Drawing::Point(34, 477);
+			this->label12->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(44, 13);
+			this->label12->Size = System::Drawing::Size(89, 25);
 			this->label12->TabIndex = 23;
 			this->label12->Text = L"Position";
 			// 
 			// textBox13
 			// 
-			this->textBox13->Location = System::Drawing::Point(98, 245);
-			this->textBox13->Margin = System::Windows::Forms::Padding(2);
+			this->textBox13->Location = System::Drawing::Point(196, 471);
+			this->textBox13->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox13->Name = L"textBox13";
-			this->textBox13->Size = System::Drawing::Size(81, 20);
+			this->textBox13->Size = System::Drawing::Size(158, 31);
 			this->textBox13->TabIndex = 9;
 			// 
 			// label14
 			// 
 			this->label14->AutoSize = true;
-			this->label14->Location = System::Drawing::Point(15, 282);
-			this->label14->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label14->Location = System::Drawing::Point(30, 542);
+			this->label14->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label14->Name = L"label14";
-			this->label14->Size = System::Drawing::Size(69, 13);
+			this->label14->Size = System::Drawing::Size(136, 25);
 			this->label14->TabIndex = 27;
 			this->label14->Text = L"Hourly Wage";
 			// 
 			// textBox14
 			// 
-			this->textBox14->Location = System::Drawing::Point(96, 282);
-			this->textBox14->Margin = System::Windows::Forms::Padding(2);
+			this->textBox14->Location = System::Drawing::Point(192, 542);
+			this->textBox14->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox14->Name = L"textBox14";
-			this->textBox14->Size = System::Drawing::Size(81, 20);
+			this->textBox14->Size = System::Drawing::Size(158, 31);
 			this->textBox14->TabIndex = 10;
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(190, 391);
+			this->button3->Location = System::Drawing::Point(380, 752);
+			this->button3->Margin = System::Windows::Forms::Padding(6, 6, 6, 6);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(134, 32);
+			this->button3->Size = System::Drawing::Size(268, 62);
 			this->button3->TabIndex = 24;
 			this->button3->Text = L"Enter";
 			this->button3->UseVisualStyleBackColor = true;
@@ -385,10 +393,10 @@ namespace Payrolls {
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(367, 391);
-			this->button4->Margin = System::Windows::Forms::Padding(2);
+			this->button4->Location = System::Drawing::Point(734, 752);
+			this->button4->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(126, 32);
+			this->button4->Size = System::Drawing::Size(252, 62);
 			this->button4->TabIndex = 25;
 			this->button4->Text = L"Back";
 			this->button4->UseVisualStyleBackColor = true;
@@ -396,71 +404,76 @@ namespace Payrolls {
 			// 
 			// dateTimePicker1
 			// 
-			this->dateTimePicker1->Location = System::Drawing::Point(100, 154);
+			this->dateTimePicker1->Location = System::Drawing::Point(200, 296);
+			this->dateTimePicker1->Margin = System::Windows::Forms::Padding(6, 6, 6, 6);
 			this->dateTimePicker1->Name = L"dateTimePicker1";
-			this->dateTimePicker1->Size = System::Drawing::Size(183, 20);
+			this->dateTimePicker1->Size = System::Drawing::Size(362, 31);
 			this->dateTimePicker1->TabIndex = 6;
 			this->dateTimePicker1->ValueChanged += gcnew System::EventHandler(this, &AddEmployee::dateTimePicker1_ValueChanged);
 			// 
 			// label10
 			// 
 			this->label10->AutoSize = true;
-			this->label10->Location = System::Drawing::Point(349, 122);
+			this->label10->Location = System::Drawing::Point(698, 235);
+			this->label10->Margin = System::Windows::Forms::Padding(6, 0, 6, 0);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(46, 13);
+			this->label10->Size = System::Drawing::Size(89, 25);
 			this->label10->TabIndex = 42;
 			this->label10->Text = L"Zipcode";
 			// 
 			// textBox6
 			// 
-			this->textBox6->Location = System::Drawing::Point(420, 120);
+			this->textBox6->Location = System::Drawing::Point(840, 231);
+			this->textBox6->Margin = System::Windows::Forms::Padding(6, 6, 6, 6);
 			this->textBox6->Name = L"textBox6";
-			this->textBox6->Size = System::Drawing::Size(100, 20);
+			this->textBox6->Size = System::Drawing::Size(196, 31);
 			this->textBox6->TabIndex = 15;
 			// 
 			// label18
 			// 
 			this->label18->AutoSize = true;
-			this->label18->Location = System::Drawing::Point(17, 214);
+			this->label18->Location = System::Drawing::Point(34, 412);
+			this->label18->Margin = System::Windows::Forms::Padding(6, 0, 6, 0);
 			this->label18->Name = L"label18";
-			this->label18->Size = System::Drawing::Size(26, 13);
+			this->label18->Size = System::Drawing::Size(50, 25);
 			this->label18->TabIndex = 44;
 			this->label18->Text = L"Age";
 			// 
 			// textBox10
 			// 
-			this->textBox10->Location = System::Drawing::Point(98, 186);
+			this->textBox10->Location = System::Drawing::Point(196, 358);
+			this->textBox10->Margin = System::Windows::Forms::Padding(6, 6, 6, 6);
 			this->textBox10->Name = L"textBox10";
-			this->textBox10->Size = System::Drawing::Size(83, 20);
+			this->textBox10->Size = System::Drawing::Size(162, 31);
 			this->textBox10->TabIndex = 7;
 			// 
 			// label11
 			// 
 			this->label11->AutoSize = true;
-			this->label11->Location = System::Drawing::Point(318, 261);
-			this->label11->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label11->Location = System::Drawing::Point(636, 502);
+			this->label11->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(87, 13);
+			this->label11->Size = System::Drawing::Size(173, 25);
 			this->label11->TabIndex = 46;
 			this->label11->Text = L"Health Coverage";
 			// 
 			// label13
 			// 
 			this->label13->AutoSize = true;
-			this->label13->Location = System::Drawing::Point(318, 295);
-			this->label13->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label13->Location = System::Drawing::Point(636, 567);
+			this->label13->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(87, 13);
+			this->label13->Size = System::Drawing::Size(173, 25);
 			this->label13->TabIndex = 47;
 			this->label13->Text = L"Dental Coverage";
 			// 
 			// label17
 			// 
 			this->label17->AutoSize = true;
-			this->label17->Location = System::Drawing::Point(318, 325);
-			this->label17->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label17->Location = System::Drawing::Point(636, 625);
+			this->label17->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label17->Name = L"label17";
-			this->label17->Size = System::Drawing::Size(84, 13);
+			this->label17->Size = System::Drawing::Size(170, 25);
 			this->label17->TabIndex = 48;
 			this->label17->Text = L"Vision Coverage";
 			// 
@@ -472,10 +485,10 @@ namespace Payrolls {
 				L"None/Purchase Later", L"Premium Package", L"Gold Package",
 					L"Silver Package"
 			});
-			this->comboBox1->Location = System::Drawing::Point(424, 256);
-			this->comboBox1->Margin = System::Windows::Forms::Padding(2);
+			this->comboBox1->Location = System::Drawing::Point(848, 492);
+			this->comboBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(160, 21);
+			this->comboBox1->Size = System::Drawing::Size(316, 33);
 			this->comboBox1->TabIndex = 21;
 			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &AddEmployee::comboBox1_SelectedIndexChanged);
 			// 
@@ -487,10 +500,10 @@ namespace Payrolls {
 				L"None/Purchase Later", L"Premium Package", L"Gold Package",
 					L"Silver Package"
 			});
-			this->comboBox2->Location = System::Drawing::Point(424, 290);
-			this->comboBox2->Margin = System::Windows::Forms::Padding(2);
+			this->comboBox2->Location = System::Drawing::Point(848, 558);
+			this->comboBox2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->comboBox2->Name = L"comboBox2";
-			this->comboBox2->Size = System::Drawing::Size(160, 21);
+			this->comboBox2->Size = System::Drawing::Size(316, 33);
 			this->comboBox2->TabIndex = 22;
 			// 
 			// comboBox3
@@ -501,63 +514,65 @@ namespace Payrolls {
 				L"None/Purchase Later", L"Premium Package", L"Gold Package",
 					L"Silver Package"
 			});
-			this->comboBox3->Location = System::Drawing::Point(424, 323);
-			this->comboBox3->Margin = System::Windows::Forms::Padding(2);
+			this->comboBox3->Location = System::Drawing::Point(848, 621);
+			this->comboBox3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->comboBox3->Name = L"comboBox3";
-			this->comboBox3->Size = System::Drawing::Size(160, 21);
+			this->comboBox3->Size = System::Drawing::Size(316, 33);
 			this->comboBox3->TabIndex = 23;
 			// 
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(596, 391);
+			this->pictureBox1->Location = System::Drawing::Point(1192, 752);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(6, 6, 6, 6);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(46, 45);
+			this->pictureBox1->Size = System::Drawing::Size(92, 87);
 			this->pictureBox1->TabIndex = 52;
 			this->pictureBox1->TabStop = false;
 			// 
 			// textBox12
 			// 
-			this->textBox12->Location = System::Drawing::Point(420, 61);
-			this->textBox12->Margin = System::Windows::Forms::Padding(2);
+			this->textBox12->Location = System::Drawing::Point(840, 117);
+			this->textBox12->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox12->Name = L"textBox12";
-			this->textBox12->Size = System::Drawing::Size(165, 20);
+			this->textBox12->Size = System::Drawing::Size(326, 31);
 			this->textBox12->TabIndex = 13;
 			// 
 			// label19
 			// 
 			this->label19->AutoSize = true;
-			this->label19->Location = System::Drawing::Point(349, 64);
-			this->label19->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label19->Location = System::Drawing::Point(698, 123);
+			this->label19->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label19->Name = L"label19";
-			this->label19->Size = System::Drawing::Size(24, 13);
+			this->label19->Size = System::Drawing::Size(49, 25);
 			this->label19->TabIndex = 54;
 			this->label19->Text = L"City";
 			// 
 			// textBox16
 			// 
-			this->textBox16->Location = System::Drawing::Point(420, 92);
-			this->textBox16->Margin = System::Windows::Forms::Padding(2);
+			this->textBox16->Location = System::Drawing::Point(840, 177);
+			this->textBox16->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox16->Name = L"textBox16";
-			this->textBox16->Size = System::Drawing::Size(47, 20);
+			this->textBox16->Size = System::Drawing::Size(90, 31);
 			this->textBox16->TabIndex = 14;
 			// 
 			// label20
 			// 
 			this->label20->AutoSize = true;
-			this->label20->Location = System::Drawing::Point(349, 95);
-			this->label20->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label20->Location = System::Drawing::Point(698, 183);
+			this->label20->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label20->Name = L"label20";
-			this->label20->Size = System::Drawing::Size(32, 13);
+			this->label20->Size = System::Drawing::Size(62, 25);
 			this->label20->TabIndex = 56;
 			this->label20->Text = L"State";
 			// 
 			// radioButton1
 			// 
 			this->radioButton1->AutoSize = true;
-			this->radioButton1->Location = System::Drawing::Point(321, 220);
+			this->radioButton1->Location = System::Drawing::Point(642, 423);
+			this->radioButton1->Margin = System::Windows::Forms::Padding(6, 6, 6, 6);
 			this->radioButton1->Name = L"radioButton1";
-			this->radioButton1->Size = System::Drawing::Size(66, 17);
+			this->radioButton1->Size = System::Drawing::Size(128, 29);
 			this->radioButton1->TabIndex = 18;
 			this->radioButton1->TabStop = true;
 			this->radioButton1->Text = L"Part time";
@@ -567,9 +582,10 @@ namespace Payrolls {
 			// radioButton2
 			// 
 			this->radioButton2->AutoSize = true;
-			this->radioButton2->Location = System::Drawing::Point(420, 220);
+			this->radioButton2->Location = System::Drawing::Point(840, 423);
+			this->radioButton2->Margin = System::Windows::Forms::Padding(6, 6, 6, 6);
 			this->radioButton2->Name = L"radioButton2";
-			this->radioButton2->Size = System::Drawing::Size(63, 17);
+			this->radioButton2->Size = System::Drawing::Size(124, 29);
 			this->radioButton2->TabIndex = 19;
 			this->radioButton2->TabStop = true;
 			this->radioButton2->Text = L"Full time";
@@ -579,9 +595,10 @@ namespace Payrolls {
 			// radioButton3
 			// 
 			this->radioButton3->AutoSize = true;
-			this->radioButton3->Location = System::Drawing::Point(525, 220);
+			this->radioButton3->Location = System::Drawing::Point(1050, 423);
+			this->radioButton3->Margin = System::Windows::Forms::Padding(6, 6, 6, 6);
 			this->radioButton3->Name = L"radioButton3";
-			this->radioButton3->Size = System::Drawing::Size(54, 17);
+			this->radioButton3->Size = System::Drawing::Size(104, 29);
 			this->radioButton3->TabIndex = 20;
 			this->radioButton3->TabStop = true;
 			this->radioButton3->Text = L"Salary";
@@ -590,27 +607,50 @@ namespace Payrolls {
 			// 
 			// textBox15
 			// 
-			this->textBox15->Location = System::Drawing::Point(96, 282);
-			this->textBox15->Margin = System::Windows::Forms::Padding(2);
+			this->textBox15->Location = System::Drawing::Point(192, 542);
+			this->textBox15->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox15->Name = L"textBox15";
-			this->textBox15->Size = System::Drawing::Size(81, 20);
+			this->textBox15->Size = System::Drawing::Size(158, 31);
 			this->textBox15->TabIndex = 60;
 			// 
 			// label15
 			// 
 			this->label15->AutoSize = true;
-			this->label15->Location = System::Drawing::Point(15, 282);
-			this->label15->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label15->Location = System::Drawing::Point(30, 542);
+			this->label15->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label15->Name = L"label15";
-			this->label15->Size = System::Drawing::Size(68, 13);
+			this->label15->Size = System::Drawing::Size(134, 25);
 			this->label15->TabIndex = 61;
 			this->label15->Text = L"Week Salary";
 			// 
+			// label16
+			// 
+			this->label16->AutoSize = true;
+			this->label16->Location = System::Drawing::Point(34, 611);
+			this->label16->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label16->Name = L"label16";
+			this->label16->Size = System::Drawing::Size(182, 25);
+			this->label16->TabIndex = 62;
+			this->label16->Text = L"Applied Tax State";
+			// 
+			// comboBox4
+			// 
+			this->comboBox4->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->comboBox4->FormattingEnabled = true;
+			this->comboBox4->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"New York", L"New Jersey", L"Connecticut" });
+			this->comboBox4->Location = System::Drawing::Point(224, 608);
+			this->comboBox4->Margin = System::Windows::Forms::Padding(4);
+			this->comboBox4->Name = L"comboBox4";
+			this->comboBox4->Size = System::Drawing::Size(316, 33);
+			this->comboBox4->TabIndex = 63;
+			// 
 			// AddEmployee
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(12, 25);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(640, 437);
+			this->ClientSize = System::Drawing::Size(1280, 840);
+			this->Controls->Add(this->comboBox4);
+			this->Controls->Add(this->label16);
 			this->Controls->Add(this->textBox15);
 			this->Controls->Add(this->label15);
 			this->Controls->Add(this->radioButton3);
@@ -657,7 +697,7 @@ namespace Payrolls {
 			this->Controls->Add(this->label1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"AddEmployee";
 			this->Text = L"AddEmployee";
 			this->Load += gcnew System::EventHandler(this, &AddEmployee::AddEmployee_Load);
@@ -698,10 +738,19 @@ namespace Payrolls {
 		GrossIncome gross;
 		FedTax fTax;
 		NYTax nTax;
+		NJTax njTax;
+		CTTax ctTax;
 		Benfits benfit;
 		int overtimeHour;
 		double overtimePay;
 		double grossIncome;
+		double nyTax;
+		double nJTax;
+		double cTTax;
+		double health;
+		double dental;
+		double vision;
+		double netPay;
 
 		Regex^ R1 = gcnew Regex("^[0-9]{1,6}$");
 		if (!(R1->IsMatch(textBox1->Text)))
@@ -758,7 +807,7 @@ namespace Payrolls {
 			}
 
 
-			
+
 		}
 
 		if (payType == "Salary")
@@ -775,8 +824,8 @@ namespace Payrolls {
 				MessageBox::Show("Enter a correct amount of Week Salary");
 				return;
 			}
-			
-			overtimeHour = Convert::ToDouble(0);
+
+			overtimeHour = 0;
 			overtimePay = Convert::ToDouble(0);
 			grossIncome = Convert::ToDouble(textBox15->Text);
 
@@ -831,9 +880,9 @@ namespace Payrolls {
 		try
 		{
 			if (payType != "Salary") {
-				overtimeHour = gross.calculateOvertimeHour(Hours);
+				overtimeHour = gross.calculateOvertimeHour(Hours, payType);
 				overtimePay = gross.CalculateOvertimePay(overtimeHour, Convert::ToDouble(textBox14->Text));
-				grossIncome = gross.CalculateGrossIncome(Hours, overtimePay, Convert::ToDouble(textBox14->Text));
+				grossIncome = gross.CalculateGrossIncome(Hours, overtimePay, Convert::ToDouble(textBox14->Text), payType);
 			}
 		}
 
@@ -842,29 +891,61 @@ namespace Payrolls {
 			return;
 		}
 
+		if (comboBox4->Text == "") {
+			MessageBox::Show("Select An Applied Tax State", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
 
 		double fedTax = fTax.FedTaxRate(grossIncome);
-		double nyTax = nTax.NYTaxRate(grossIncome);
-
+		if (comboBox4->Text == "New York") {
+			nyTax = nTax.NYTaxRate(grossIncome);
+			nJTax = 0.00;
+			cTTax = 0.00;
+		}
+		else if (comboBox4->Text == "New Jersey") {
+			nJTax = njTax.NJTaxRate(grossIncome);
+			nyTax = 0.00;
+			cTTax = 0.00;
+		}
+		else {
+			cTTax = ctTax.CTTaxRate(grossIncome);
+			nyTax = 0.00;
+			nJTax = 0.00;
+		}
 		if (((comboBox1->Text == "") || (comboBox2->Text == "") || (comboBox3->Text == "")) && payType != "Part time")
 		{
 			MessageBox::Show("Select An Option For Each Benefit! None Is A Choice.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
 		}
-
 		else
 		{
 			try {
 				if (payType == "Part time") {
-				//	double health = benfit.CalculateHealthCoverage(grossIncome, comboBox1->Text);
-				//	double netPay = grossIncome - (fedTax + nyTax + health);
-					double netPay = grossIncome - (fedTax + nyTax );
+					//	double health = benfit.CalculateHealthCoverage(grossIncome, comboBox1->Text);
+					//	double netPay = grossIncome - (fedTax + nyTax + health);
+					if (comboBox4->Text == "New York") {
+						double netPay = grossIncome - (fedTax + nyTax);
+					}
+					else if (comboBox4->Text == "New Jersey") {
+						double netPay = grossIncome - (fedTax + nJTax);
+					}
+					else {
+						double netPay = grossIncome - (fedTax + cTTax);
+					}
 				}
 				else {
-					double health = benfit.CalculateHealthCoverage(grossIncome, comboBox1->Text);
-					double dental = benfit.CalculateDentalCoverage(grossIncome, comboBox2->Text);
-					double vision = benfit.CalculateVisionCoverage(grossIncome, comboBox3->Text);
-					double netPay = grossIncome - (fedTax + nyTax + health + dental + vision);
+					health = benfit.CalculateHealthCoverage(grossIncome, comboBox1->Text);
+					dental = benfit.CalculateDentalCoverage(grossIncome, comboBox2->Text);
+					vision = benfit.CalculateVisionCoverage(grossIncome, comboBox3->Text);
+					if (comboBox4->Text == "New York") {
+						netPay = grossIncome - (fedTax + nyTax + health + dental + vision);
+					}
+					else if (comboBox4->Text == "New Jersy") {
+						netPay = grossIncome - (fedTax + nJTax + health + dental + vision);
+					}
+					else {
+						netPay = grossIncome - (fedTax + cTTax + health + dental + vision);
+					}
 				}
 				OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
 				conn->Open();
@@ -873,22 +954,21 @@ namespace Payrolls {
 
 				cmd->CommandText = "Insert into EmployeeInfo ([ID], [Password], [SSN], [Firstname], [Lastname], [DateofBirth]," +
 					"[Age], [Gender], [Email], [PhoneNumber], [Address1], [City], [State], [Zipcode], [Position], " +
-					//[Hours], [OvertimeHours], [OvertimePay], " +
-					"[HourlyPay], [SalaryPay] ," +
-					//[Weeklygrosspay], 
+					//"[Hours], [OvertimeHours], [OvertimePay], " +
+					"[HourlyPay], [SalaryPay], " +
+					//"[Weeklygrosspay], "
 					"[PayType],  [HireDate], [HealthCoverage], " +
-					"[DentalCoverage], [VisionCoverage]) " +
+					"[DentalCoverage], [VisionCoverage], [AppliedTaxState]) " +
 					//"[FederalTax],[NYTax],[HealthCost],[DentalCost],[VisionCost], " + 
-					//[Netpay])" +
+					//"[Netpay])" +
 					"VALUES(@ID,@Password,@SSN,@Firstname,@Lastname,@DateofBirth,@Age,@Gender,@Email,@PhoneNumber,@Address1,@City,@State,@Zipcode,@Position, " +
-					//@Hours,@OvertimeHours,@OvertimePay, " +
+					//"@Hours,@OvertimeHours,@OvertimePay, " +
 					"@HourlyPay, @SalaryPay, " +
-					//@Weeklygrosspay, " +
-					"@PayType, @HireDate,  @HealthCoverage, " +
-					"@DentalCoverage, @VisionCoverage) ";// +
-					//@FederalTax,@NYTax,@HealthCost,@DentalCost,@VisionCost, " +
-					
-					//@Netpay)";
+					//"@Weeklygrosspay, " +
+					"@PayType, @HireDate, @HealthCoverage, " +
+					"@DentalCoverage, @VisionCoverage, @AppliedTaxState)"; //+
+					//"@FederalTax,@NYTax,@HealthCost,@DentalCost,@VisionCost, " +
+					//"@Netpay)";
 
 				/*try
 				{*/
@@ -909,14 +989,14 @@ namespace Payrolls {
 				cmd->Parameters->AddWithValue("@Position", textBox13->Text);
 
 
-					if (payType != "Salary") {
-						cmd->Parameters->AddWithValue("@HourlyPay",Convert::ToDouble(textBox14->Text));
-						cmd->Parameters->AddWithValue("@SalaryPay", Convert::ToDouble(NULL));
-					}
-					else {
-						cmd->Parameters->AddWithValue("@HourlyPay", Convert::ToDouble(NULL));
-						cmd->Parameters->AddWithValue("@SalaryPay", Convert::ToDouble(textBox15->Text));
-					}
+				if (payType != "Salary") {
+					cmd->Parameters->AddWithValue("@HourlyPay", Convert::ToDouble(textBox14->Text));
+					cmd->Parameters->AddWithValue("@SalaryPay", Convert::ToDouble(NULL));
+				}
+				else {
+					cmd->Parameters->AddWithValue("@HourlyPay", Convert::ToDouble(NULL));
+					cmd->Parameters->AddWithValue("@SalaryPay", Convert::ToDouble(textBox15->Text));
+				}
 
 
 				cmd->Parameters->AddWithValue("@PayType", payType);
@@ -932,22 +1012,22 @@ namespace Payrolls {
 					cmd->Parameters->AddWithValue("@DentalCoverage", comboBox2->Text);
 					cmd->Parameters->AddWithValue("@VisionCoverage", comboBox3->Text);
 				}
-				
-			
-				//cmd->Parameters->AddWithValue("@Hours", Int32::Parse(HO));
-				//cmd->Parameters->AddWithValue("@OvertimeHours", overtimeHour);
-				//cmd->Parameters->AddWithValue("@OvertimePay", overtimePay);
-				
+
+				cmd->Parameters->AddWithValue("@AppliedTaxState", comboBox4->Text);
+				/*cmd->Parameters->AddWithValue("@Hours", Int32::Parse(HO));
+				cmd->Parameters->AddWithValue("@OvertimeHours", overtimeHour);
+				cmd->Parameters->AddWithValue("@OvertimePay", overtimePay);
 
 
-				//cmd->Parameters->AddWithValue("@Weeklygrosspay", grossIncome);
-			
-				//cmd->Parameters->AddWithValue("@FederalTax", fedTax);
-				//cmd->Parameters->AddWithValue("@NYTax", nyTax);
-				//cmd->Parameters->AddWithValue("@HealthCost", health);
-				//cmd->Parameters->AddWithValue("@DentalCost", dental);
-				//cmd->Parameters->AddWithValue("@VisionCost", vision);
-				//cmd->Parameters->AddWithValue("@Netpay", netPay);
+
+				cmd->Parameters->AddWithValue("@Weeklygrosspay", grossIncome);
+
+				cmd->Parameters->AddWithValue("@FederalTax", fedTax);
+				cmd->Parameters->AddWithValue("@NYTax", nyTax);
+				cmd->Parameters->AddWithValue("@HealthCost", health);
+				cmd->Parameters->AddWithValue("@DentalCost", dental);
+				cmd->Parameters->AddWithValue("@VisionCost", vision);
+				cmd->Parameters->AddWithValue("@Netpay", netPay);*/
 				/*try
 				{*/
 				/*}*/
@@ -964,8 +1044,9 @@ namespace Payrolls {
 				try {
 					cmd->ExecuteNonQuery();
 				}
-				catch(System::Exception^ e)
+				catch (System::Exception^ e)
 				{
+					MessageBox::Show("Added Employee Failed");
 					return;
 				}
 				conn->Close();
@@ -981,56 +1062,56 @@ namespace Payrolls {
 	}
 	private: System::Void dateTimePicker1_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
-private: System::Void radioButton2_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
-	label15->Hide();		
-	textBox15->Hide();
-	label14->Show();
-	textBox14->Show();
-	Hours = 40;
-	HO = "40";
-	payType = "Full time";
+	private: System::Void radioButton2_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+		label15->Hide();
+		textBox15->Hide();
+		label14->Show();
+		textBox14->Show();
+		Hours = 40;
+		HO = "40";
+		payType = "Full time";
 
-	label11->Show();
-	label13->Show();
-	label17->Show();
-	comboBox1->Show();
-	comboBox2->Show();
-	comboBox3->Show();
-}
-private: System::Void radioButton1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
-	label15->Hide();
-	textBox15->Hide();
-	label14->Show();
-	textBox14->Show();
-	Hours = 20;
-	HO = "20";
-	payType = "Part time";
+		label11->Show();
+		label13->Show();
+		label17->Show();
+		comboBox1->Show();
+		comboBox2->Show();
+		comboBox3->Show();
+	}
+	private: System::Void radioButton1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+		label15->Hide();
+		textBox15->Hide();
+		label14->Show();
+		textBox14->Show();
+		Hours = 20;
+		HO = "20";
+		payType = "Part time";
 
-	label11->Hide();
-	label13->Hide();
-	label17->Hide();
-	comboBox1->Hide();
-	comboBox2->Hide();
-	comboBox3->Hide();
-}
-private: System::Void radioButton3_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
-	label14->Hide();
-	textBox14->Hide();
-	label15->Show();
-	textBox15->Show();
-	Hours = 40;
-	HO = "40";
-	payType = "Salary";
+		label11->Hide();
+		label13->Hide();
+		label17->Hide();
+		comboBox1->Hide();
+		comboBox2->Hide();
+		comboBox3->Hide();
+	}
+	private: System::Void radioButton3_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+		label14->Hide();
+		textBox14->Hide();
+		label15->Show();
+		textBox15->Show();
+		Hours = 40;
+		HO = "40";
+		payType = "Salary";
 
-	label11->Show();
-	label13->Show();
-	label17->Show();
-	comboBox1->Show();
-	comboBox2->Show();
-	comboBox3->Show();
-}
-private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-};
+		label11->Show();
+		label13->Show();
+		label17->Show();
+		comboBox1->Show();
+		comboBox2->Show();
+		comboBox3->Show();
+	}
+	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	};
 }
 

@@ -3,6 +3,8 @@
 #include "GrossIncome.h"
 #include "FedTax.h"
 #include "NYTax.h"
+#include "NJTax.h"
+#include "CTTax.h"
 #include "Benfits.h"
 #include "ConnectionPath.h"
 #include"CheckID.h"
@@ -28,6 +30,9 @@ namespace Payrolls {
 		UpdateEmployee(void)
 		{
 			InitializeComponent();
+			enterBttn->Hide();
+			label25->Hide();
+			comboBox4->Hide();
 			//
 			//TODO: Add the constructor code here
 			//
@@ -76,17 +81,8 @@ namespace Payrolls {
 	private: System::Windows::Forms::Label^ label18;
 	private: System::Windows::Forms::TextBox^ textBox10;
 	private: System::Windows::Forms::Label^ label19;
-
 	private: System::Windows::Forms::Label^ label21;
-
-
-
 	private: System::Windows::Forms::Button^ button4;
-
-
-
-
-
 	private: System::Windows::Forms::Label^ label27;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private: System::Windows::Forms::ComboBox^ comboBox2;
@@ -96,7 +92,6 @@ namespace Payrolls {
 	private: System::Windows::Forms::Label^ label20;
 	private: System::Windows::Forms::TextBox^ textBox12;
 	private: System::Windows::Forms::Label^ label22;
-
 	private:
 		String^ A;
 	private:
@@ -110,6 +105,8 @@ namespace Payrolls {
 	private: System::Windows::Forms::ComboBox^ comboBox4;
 	private: System::Windows::Forms::Label^ label25;
 	private: System::Windows::Forms::Button^ enterBttn;
+	private: System::Windows::Forms::Label^ label26;
+	private: System::Windows::Forms::ComboBox^ comboBox5;
 
 
 	protected:
@@ -180,6 +177,8 @@ namespace Payrolls {
 			this->comboBox4 = (gcnew System::Windows::Forms::ComboBox());
 			this->label25 = (gcnew System::Windows::Forms::Label());
 			this->enterBttn = (gcnew System::Windows::Forms::Button());
+			this->label26 = (gcnew System::Windows::Forms::Label());
+			this->comboBox5 = (gcnew System::Windows::Forms::ComboBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -731,7 +730,6 @@ namespace Payrolls {
 			this->comboBox4->Name = L"comboBox4";
 			this->comboBox4->Size = System::Drawing::Size(142, 21);
 			this->comboBox4->TabIndex = 56;
-			comboBox4->Hide();
 			// 
 			// label25
 			// 
@@ -744,7 +742,6 @@ namespace Payrolls {
 			this->label25->Size = System::Drawing::Size(145, 18);
 			this->label25->TabIndex = 57;
 			this->label25->Text = L"Reason For Leaving:";
-			label25->Hide();
 			// 
 			// enterBttn
 			// 
@@ -756,7 +753,29 @@ namespace Payrolls {
 			this->enterBttn->Text = L"Enter";
 			this->enterBttn->UseVisualStyleBackColor = true;
 			this->enterBttn->Click += gcnew System::EventHandler(this, &UpdateEmployee::enterBttn_Click);
-			enterBttn->Hide();
+			// 
+			// label26
+			// 
+			this->label26->AutoSize = true;
+			this->label26->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label26->Location = System::Drawing::Point(335, 401);
+			this->label26->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label26->Name = L"label26";
+			this->label26->Size = System::Drawing::Size(125, 18);
+			this->label26->TabIndex = 59;
+			this->label26->Text = L"Applied Tax State:";
+			// 
+			// comboBox5
+			// 
+			this->comboBox5->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->comboBox5->FormattingEnabled = true;
+			this->comboBox5->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"New York", L"New Jersey", L"Connecticut" });
+			this->comboBox5->Location = System::Drawing::Point(464, 401);
+			this->comboBox5->Margin = System::Windows::Forms::Padding(2);
+			this->comboBox5->Name = L"comboBox5";
+			this->comboBox5->Size = System::Drawing::Size(142, 21);
+			this->comboBox5->TabIndex = 60;
 			// 
 			// UpdateEmployee
 			// 
@@ -764,6 +783,8 @@ namespace Payrolls {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(710, 566);
+			this->Controls->Add(this->comboBox5);
+			this->Controls->Add(this->label26);
 			this->Controls->Add(this->enterBttn);
 			this->Controls->Add(this->label25);
 			this->Controls->Add(this->comboBox4);
@@ -874,7 +895,7 @@ namespace Payrolls {
 			textBox12->Text = reader["State"]->ToString();
 			textBox5->Text = reader["Zipcode"]->ToString();
 			textBox6->Text = reader["Position"]->ToString();
-			
+
 			textBox7->Text = reader["Hours"]->ToString();
 
 			textBox8->Text = reader["HourlyPay"]->ToString();
@@ -885,6 +906,7 @@ namespace Payrolls {
 
 			textBox9->Text = reader["Password"]->ToString();
 			textBox10->Text = reader["Age"]->ToString();
+			comboBox5->Text = reader["AppliedTaxState"]->ToString();
 		}
 		conn->Close();
 
@@ -952,7 +974,7 @@ namespace Payrolls {
 			textBox14->Text = "Part time";
 			type = "Part time";
 		}
-		else if (radioButton2->Checked){
+		else if (radioButton2->Checked) {
 			textBox14->Text = "Full time";
 			type = "Full time";
 		}
@@ -960,6 +982,8 @@ namespace Payrolls {
 		GrossIncome gross;
 		FedTax fTax;
 		NYTax nTax;
+		NJTax nJTax;
+		CTTax cTax;
 		Benfits benfit;
 
 		if (textBox1->Text == "")
@@ -976,7 +1000,6 @@ namespace Payrolls {
 
 
 		/*
-
 		GrossIncome gross;
 		FedTax fTax;
 		NYTax nTax;
@@ -1031,11 +1054,12 @@ namespace Payrolls {
 
 			try
 			{
-				
-				overtimeHour = gross.calculateOvertimeHour(Int32::Parse(textBox7->Text));
-				overtimePay = gross.CalculateOvertimePay(overtimeHour, Convert::ToDouble(textBox8->Text));
-				grossIncome = gross.CalculateGrossIncome(Int32::Parse(textBox7->Text), overtimePay, Convert::ToDouble(textBox8->Text));
-				
+				if (type != "Salary")
+				{
+					overtimeHour = gross.calculateOvertimeHour(Int32::Parse(textBox7->Text), type);
+					overtimePay = gross.CalculateOvertimePay(overtimeHour, Convert::ToDouble(textBox8->Text));
+					grossIncome = gross.CalculateGrossIncome(Int32::Parse(textBox7->Text), overtimePay, Convert::ToDouble(textBox8->Text), type);
+				}
 			}
 
 			catch (System::FormatException^ e)
@@ -1119,9 +1143,9 @@ namespace Payrolls {
 			MessageBox::Show("Enter valid hours ");
 			return;
 		}
-		
-		
-		if ((Int32::Parse(textBox7->Text))>40 && textBox14->Text == "Full time")
+
+
+		if ((Int32::Parse(textBox7->Text)) > 40 && textBox14->Text == "Full time")
 		{
 			MessageBox::Show("Send notification to Admin about worker " + textBox1->Text + ". He/She worked overtime", "Notification");
 		}
@@ -1133,7 +1157,29 @@ namespace Payrolls {
 
 
 		double fedTax = fTax.FedTaxRate(grossIncome);
-		double nyTax = nTax.NYTaxRate(grossIncome);
+		double nyTax;
+		double njTax;
+		double ctTax;
+
+		if (comboBox5->Text == "") {
+			MessageBox::Show("Select an applied tax state!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+		if (comboBox5->Text == "New York") {
+			nyTax = nTax.NYTaxRate(grossIncome);
+			njTax = 0.00;
+			ctTax = 0.00;
+		}
+		else if (comboBox5->Text == "New Jersey") {
+			njTax = nJTax.NJTaxRate(grossIncome);
+			nyTax = 0.00;
+			ctTax = 0.00;
+		}
+		else {
+			ctTax = cTax.CTTaxRate(grossIncome);
+			nyTax = 0.00;
+			njTax = 0.00;
+		}
 
 		if (((comboBox1->Text == "") || (comboBox2->Text == "") || (comboBox3->Text == "")) && type != "Part time")
 		{
@@ -1151,87 +1197,108 @@ namespace Payrolls {
 		double health;
 		double dental;
 		double vision;
+		double ssa = benfit.CalculateSSAWithholding(grossIncome);
+		double retire401k;
 
 		if (type == "Part time") {
-			deduction = fedTax + nyTax ;
-			health = 0;
-			dental = 0;
-			vision = 0;
+			if (comboBox5->Text == "New York") {
+				deduction = fedTax + nyTax + ssa;
+			}
+			else if (comboBox5->Text == "New Jersey") {
+				deduction = fedTax + njTax + ssa;
+			}
+			else
+				deduction = fedTax + ctTax + ssa;
+			health = 0.00;
+			dental = 0.00;
+			vision = 0.00;
+			retire401k = 0.00;
 		}
 
 		else {
 			health = benfit.CalculateHealthCoverage(grossIncome, comboBox1->Text);
 			dental = benfit.CalculateDentalCoverage(grossIncome, comboBox2->Text);
 			vision = benfit.CalculateVisionCoverage(grossIncome, comboBox3->Text);
-			deduction = fedTax + nyTax + health + dental + vision;
+			retire401k = benfit.Calculate401k(grossIncome);
+			if (comboBox5->Text == "New York")
+				deduction = fedTax + nyTax + health + dental + vision + ssa + retire401k;
+			else if (comboBox5->Text == "New Jersey")
+				deduction = fedTax + njTax + health + dental + vision + ssa + retire401k;
+			else
+				deduction = fedTax + ctTax + health + dental + vision + ssa + retire401k;
 		}
-
 		double netPay = grossIncome - deduction;
 
 		//try
 	//	{
-			OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
-			conn->Open();
-			OleDbCommand^ cmd = conn->CreateCommand();
-			cmd->CommandType = CommandType::Text;
-			cmd->CommandText = "UPDATE EmployeeInfo SET [Email] = @Email, [PhoneNumber] = @PhoneNumber, [Address1] = @Address, [City] = @City, [State] = @State, [Zipcode] = @Zipcode, [Position] = @Position, " +
-				"[Hours] = @Hours, [HourlyPay] = @HourlyPay, [SalaryPay] = @SalaryPay, [PayType] = @PayType , [Password] = @Password, [OvertimeHours] = @OvertimeHours, [OvertimePay] = @OvertimePay, " +
-				"[Weeklygrosspay] = @Weeklygrosspay, [Age] = @Age, [FederalTax] = @FederalTax, [NYTax] = @NYTax, [HealthCost] = @HealthCost, [DentalCost] = @DentalCost, " +
-				"[VisionCost] = @VisionCost, [Netpay] = @Netpay, [HealthCoverage] = @HealthCoverage, [DentalCoverage] = @DentalCoverage, [VisionCoverage] = @VisionCoverage  WHERE ID = @ID";
-			cmd->Parameters->AddWithValue("@Email", textBox2->Text);
-			cmd->Parameters->AddWithValue("@PhoneNumber", textBox3->Text);
-			cmd->Parameters->AddWithValue("@Address", textBox4->Text);
-			cmd->Parameters->AddWithValue("@City", textBox11->Text);
-			cmd->Parameters->AddWithValue("@State", textBox12->Text);
+		OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
+		conn->Open();
+		OleDbCommand^ cmd = conn->CreateCommand();
+		cmd->CommandType = CommandType::Text;
+		cmd->CommandText = "UPDATE EmployeeInfo SET [Email] = @Email, [PhoneNumber] = @PhoneNumber, [Address1] = @Address, [City] = @City, [State] = @State, [Zipcode] = @Zipcode, [Position] = @Position, " +
+			"[Hours] = @Hours, [HourlyPay] = @HourlyPay, [SalaryPay] = @SalaryPay, [PayType] = @PayType , [Password] = @Password, [OvertimeHours] = @OvertimeHours, [OvertimePay] = @OvertimePay, " +
+			"[Weeklygrosspay] = @Weeklygrosspay, [Age] = @Age, [FederalTax] = @FederalTax, [NYTax] = @NYTax, [HealthCost] = @HealthCost, [DentalCost] = @DentalCost, " +
+			"[VisionCost] = @VisionCost, [Netpay] = @Netpay, [HealthCoverage] = @HealthCoverage, [DentalCoverage] = @DentalCoverage, [VisionCoverage] = @VisionCoverage, [AppliedTaxState] = @AppliedTaxState, " +
+			"[NJTax] = @NJTax, [CTTax] = @CTTax, [SSAWithholding] = @SSAWithholding, [401K] = @401K WHERE ID = @ID";
+		cmd->Parameters->AddWithValue("@Email", textBox2->Text);
+		cmd->Parameters->AddWithValue("@PhoneNumber", textBox3->Text);
+		cmd->Parameters->AddWithValue("@Address", textBox4->Text);
+		cmd->Parameters->AddWithValue("@City", textBox11->Text);
+		cmd->Parameters->AddWithValue("@State", textBox12->Text);
 
-			cmd->Parameters->AddWithValue("@Zipcode", textBox5->Text);
-			cmd->Parameters->AddWithValue("@Position", textBox6->Text);
-			cmd->Parameters->AddWithValue("@Hours", Int32::Parse(textBox7->Text) - overtimeHour);
-			cmd->Parameters->AddWithValue("@HourlyPay", Convert::ToDouble(textBox8->Text));
-			cmd->Parameters->AddWithValue("@SalaryPay", Convert::ToDouble(textBox13->Text));
+		cmd->Parameters->AddWithValue("@Zipcode", textBox5->Text);
+		cmd->Parameters->AddWithValue("@Position", textBox6->Text);
+		cmd->Parameters->AddWithValue("@Hours", Int32::Parse(textBox7->Text) - overtimeHour);
+		cmd->Parameters->AddWithValue("@HourlyPay", Convert::ToDouble(textBox8->Text));
+		cmd->Parameters->AddWithValue("@SalaryPay", Convert::ToDouble(textBox13->Text));
 
-			cmd->Parameters->AddWithValue("@PayType",textBox14->Text);
+		cmd->Parameters->AddWithValue("@PayType", textBox14->Text);
 
-			cmd->Parameters->AddWithValue("@Password", textBox9->Text);
-			cmd->Parameters->AddWithValue("@OvertimeHours", overtimeHour);
-			cmd->Parameters->AddWithValue("@OvertimePay", overtimePay);
-			cmd->Parameters->AddWithValue("@Weeklygrosspay", grossIncome);
-			cmd->Parameters->AddWithValue("@Age", Int32::Parse(textBox10->Text));
-			cmd->Parameters->AddWithValue("@FederalTax", fedTax);
-			cmd->Parameters->AddWithValue("@NYTax", nyTax);
-			cmd->Parameters->AddWithValue("@HealthCost", health);
-			cmd->Parameters->AddWithValue("@DentalCost", dental);
-			cmd->Parameters->AddWithValue("@VisionCost", vision);
-			cmd->Parameters->AddWithValue("@Netpay", netPay);
+		cmd->Parameters->AddWithValue("@Password", textBox9->Text);
+		cmd->Parameters->AddWithValue("@OvertimeHours", overtimeHour);
+		cmd->Parameters->AddWithValue("@OvertimePay", overtimePay);
+		cmd->Parameters->AddWithValue("@Weeklygrosspay", grossIncome);
+		cmd->Parameters->AddWithValue("@Age", Int32::Parse(textBox10->Text));
+		cmd->Parameters->AddWithValue("@FederalTax", fedTax);
+		cmd->Parameters->AddWithValue("@NYTax", nyTax);
+		cmd->Parameters->AddWithValue("@HealthCost", health);
+		cmd->Parameters->AddWithValue("@DentalCost", dental);
+		cmd->Parameters->AddWithValue("@VisionCost", vision);
+		cmd->Parameters->AddWithValue("@Netpay", netPay);
 
-			if (type == "Part time") {
-				cmd->Parameters->AddWithValue("@HealthCoverage", "Can't Purchase");
-				cmd->Parameters->AddWithValue("@DentalCoverage", "Can't Purchase");
-				cmd->Parameters->AddWithValue("@VisionCoverage", "Can't Purchase");
-			}
-			else {
-				cmd->Parameters->AddWithValue("@HealthCoverage", comboBox1->Text);
-				cmd->Parameters->AddWithValue("@DentalCoverage", comboBox2->Text);
-				cmd->Parameters->AddWithValue("@VisionCoverage", comboBox3->Text);
-			}
-			cmd->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
-			cmd->ExecuteNonQuery();
-			conn->Close();
-			MessageBox::Show("Update Employee Succeed");
-			this->Close();
-			otherPage->Show();
+		if (type == "Part time") {
+			cmd->Parameters->AddWithValue("@HealthCoverage", "Can't Purchase");
+			cmd->Parameters->AddWithValue("@DentalCoverage", "Can't Purchase");
+			cmd->Parameters->AddWithValue("@VisionCoverage", "Can't Purchase");
+		}
+		else {
+			cmd->Parameters->AddWithValue("@HealthCoverage", comboBox1->Text);
+			cmd->Parameters->AddWithValue("@DentalCoverage", comboBox2->Text);
+			cmd->Parameters->AddWithValue("@VisionCoverage", comboBox3->Text);
+		}
+		cmd->Parameters->AddWithValue("@AppliedTaxState", comboBox5->Text);
+		cmd->Parameters->AddWithValue("@NJTax", njTax);
+		cmd->Parameters->AddWithValue("@CTax", ctTax);
+		cmd->Parameters->AddWithValue("@SSAWithholding", ssa);
+		cmd->Parameters->AddWithValue("@401K", retire401k);
+		cmd->Parameters->AddWithValue("@ID", Int32::Parse(textBox1->Text));
+		cmd->ExecuteNonQuery();
+		conn->Close();
+		MessageBox::Show("Update Employee Succeed");
+		this->Close();
+		otherPage->Show();
 		//}
 		//catch (System::FormatException^ e)
 		//{
 			//return;
 		//}
 
-			label19->Hide();
-			label21->Hide();
-			label27->Hide();
-			comboBox1->Hide();
-			comboBox2->Hide();
-			comboBox3->Hide();
+		label19->Hide();
+		label21->Hide();
+		label27->Hide();
+		comboBox1->Hide();
+		comboBox2->Hide();
+		comboBox3->Hide();
 
 	}
 	private: System::Void label6_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1252,13 +1319,13 @@ namespace Payrolls {
 			MessageBox::Show("This ID does not exist within the Database");
 			return;
 		}
-		
+
 		MessageBox::Show("Select a reason for removal");
 		comboBox4->Show();
 		label25->Show();
 		enterBttn->Show();
 
-		
+
 	}
 	private: System::Void textBox9_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -1271,115 +1338,115 @@ namespace Payrolls {
 		comboBox1->Hide();
 		comboBox2->Hide();
 		comboBox3->Hide();
-		
+
 	}
-private: System::Void radioButton2_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
-	label19->Show();
-	label21->Show();
-	label27->Show();
-	comboBox1->Show();
-	comboBox2->Show();
-	comboBox3->Show();
+	private: System::Void radioButton2_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+		label19->Show();
+		label21->Show();
+		label27->Show();
+		comboBox1->Show();
+		comboBox2->Show();
+		comboBox3->Show();
 
-	if (type == "Part time") {
-		comboBox1->Text = "None/Purchase Later";
-		comboBox2->Text = "None/Purchase Later";
-		comboBox3->Text = "None/Purchase Later";
-	}
-}
-private: System::Void enterBttn_Click(System::Object^ sender, System::EventArgs^ e) {
-	System::String^ id;
-	System::String^ lastName;
-	System::String^ firstName;
-	System::String^ dateOfHire;
-	System::String^ status;
-	
-	if (comboBox4->Text == "")
-		return;
-	else
-	{
-		String^ message = "Confirm To Remove Employee Record";
-		String^ title = "Remove Record";
-		MessageBoxButtons buttons = MessageBoxButtons::YesNo;
-		Windows::Forms::DialogResult result = MessageBox::Show(message, title, buttons);
-		if (result == Windows::Forms::DialogResult::Yes) {
-			OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
-			conn->Open();
-			OleDbCommand^ cmd = conn->CreateCommand();
-			cmd->CommandText = "SELECT * FROM EmployeeInfo WHERE [ID] = @id";
-			cmd->Parameters->AddWithValue("@id", textBox1->Text);
-
-
-			//retrieve employee info from database
-			OleDbDataReader^ reader = cmd->ExecuteReader();
-			while (reader->Read())
-			{
-				id = reader["ID"]->ToString();
-				firstName = reader["Firstname"]->ToString();
-				lastName = reader["Lastname"]->ToString();
-				dateOfHire = reader["DateofBirth"]->ToString();
-				status = comboBox4->Text;
-			}
-			conn->Close();
-			
-		
-			//inset employee into previous employee database
-			OleDbConnection^ conn2 = gcnew OleDbConnection(ConnectionPath::connectionPrevious);
-			conn2->Open();
-			OleDbCommand^ cmd2 = conn2->CreateCommand();
-			cmd2->CommandType = CommandType::Text;
-			cmd2->CommandText = "Insert into Previous ([ID], [FirstName], [LastName], [DOH], [Status])"
-				+ " VALUES (@ID, @FirstName, @LastName, @DOH, @Status)";
-
-			cmd2->Parameters->AddWithValue("@ID", Int32::Parse(id));
-			cmd2->Parameters->AddWithValue("@FirstName", firstName);
-			cmd2->Parameters->AddWithValue("@LastName", lastName);
-			cmd2->Parameters->AddWithValue("@DOH", dateOfHire);
-			cmd2->Parameters->AddWithValue("@Status", status);
-
-			try
-			{
-				cmd2->ExecuteNonQuery();
-			}
-			catch (System::Data::OleDb::OleDbException^ e)
-			{
-				MessageBox::Show("ERROR Remove Employee Failed");
-				return;
-			}
-			conn2->Close();
-
-
-			//delete employe from active employee database
-			conn = gcnew OleDbConnection(ConnectionPath::connectionString);
-			conn->Open();
-			cmd = conn->CreateCommand();
-			cmd->CommandText = "DELETE * FROM EmployeeInfo WHERE [ID] = @id";
-			cmd->Parameters->AddWithValue("@id", textBox1->Text);
-
-			try
-			{
-				cmd->ExecuteNonQuery();
-			}
-			catch (System::Data::OleDb::OleDbException^ e)
-			{
-				MessageBox::Show("ERROR Delete Employee Failed");
-				return;
-			}
-
-			//clean up
-			MessageBox::Show("Remove Employee Succeed");
-			comboBox4->Hide();
-			this->Close();
-			otherPage->Show();
-		}
-		else {
-			comboBox4->Hide();
-			label25->Hide();
-			enterBttn->Hide();
-			this->Close();
-			otherPage->Show();
+		if (type == "Part time") {
+			comboBox1->Text = "None/Purchase Later";
+			comboBox2->Text = "None/Purchase Later";
+			comboBox3->Text = "None/Purchase Later";
 		}
 	}
-}
-};
+	private: System::Void enterBttn_Click(System::Object^ sender, System::EventArgs^ e) {
+		System::String^ id;
+		System::String^ lastName;
+		System::String^ firstName;
+		System::String^ dateOfHire;
+		System::String^ status;
+
+		if (comboBox4->Text == "")
+			return;
+		else
+		{
+			String^ message = "Confirm To Remove Employee Record";
+			String^ title = "Remove Record";
+			MessageBoxButtons buttons = MessageBoxButtons::YesNo;
+			Windows::Forms::DialogResult result = MessageBox::Show(message, title, buttons);
+			if (result == Windows::Forms::DialogResult::Yes) {
+				OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
+				conn->Open();
+				OleDbCommand^ cmd = conn->CreateCommand();
+				cmd->CommandText = "SELECT * FROM EmployeeInfo WHERE [ID] = @id";
+				cmd->Parameters->AddWithValue("@id", textBox1->Text);
+
+
+				//retrieve employee info from database
+				OleDbDataReader^ reader = cmd->ExecuteReader();
+				while (reader->Read())
+				{
+					id = reader["ID"]->ToString();
+					firstName = reader["Firstname"]->ToString();
+					lastName = reader["Lastname"]->ToString();
+					dateOfHire = reader["HireDate"]->ToString();
+					status = comboBox4->Text;
+				}
+				conn->Close();
+
+
+				//inset employee into previous employee database
+				OleDbConnection^ conn2 = gcnew OleDbConnection(ConnectionPath::connectionPrevious);
+				conn2->Open();
+				OleDbCommand^ cmd2 = conn2->CreateCommand();
+				cmd2->CommandType = CommandType::Text;
+				cmd2->CommandText = "Insert into Previous ([ID], [FirstName], [LastName], [DOH], [Status])"
+					+ " VALUES (@ID, @FirstName, @LastName, @DOH, @Status)";
+
+				cmd2->Parameters->AddWithValue("@ID", Int32::Parse(id));
+				cmd2->Parameters->AddWithValue("@FirstName", firstName);
+				cmd2->Parameters->AddWithValue("@LastName", lastName);
+				cmd2->Parameters->AddWithValue("@DOH", dateOfHire);
+				cmd2->Parameters->AddWithValue("@Status", status);
+
+				try
+				{
+					cmd2->ExecuteNonQuery();
+				}
+				catch (System::Data::OleDb::OleDbException^ e)
+				{
+					MessageBox::Show("ERROR Remove Employee Failed");
+					return;
+				}
+				conn2->Close();
+
+
+				//delete employe from active employee database
+				conn = gcnew OleDbConnection(ConnectionPath::connectionString);
+				conn->Open();
+				cmd = conn->CreateCommand();
+				cmd->CommandText = "DELETE * FROM EmployeeInfo WHERE [ID] = @id";
+				cmd->Parameters->AddWithValue("@id", textBox1->Text);
+
+				try
+				{
+					cmd->ExecuteNonQuery();
+				}
+				catch (System::Data::OleDb::OleDbException^ e)
+				{
+					MessageBox::Show("ERROR Delete Employee Failed");
+					return;
+				}
+
+				//clean up
+				MessageBox::Show("Remove Employee Succeed");
+				comboBox4->Hide();
+				this->Close();
+				otherPage->Show();
+			}
+			else {
+				comboBox4->Hide();
+				label25->Hide();
+				enterBttn->Hide();
+				this->Close();
+				otherPage->Show();
+			}
+		}
+	}
+	};
 }

@@ -121,6 +121,7 @@
     <ClInclude Include="Benfits.h" />
     <ClInclude Include="CheckID.h" />
     <ClInclude Include="ConnectionPath.h" />
+    <ClInclude Include="CTTax.h" />
     <ClInclude Include="EmployeeMainMenu.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -136,6 +137,7 @@
     <ClInclude Include="AdminMenu.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="NJTax.h" />
     <ClInclude Include="NYTax.h" />
     <ClInclude Include="UpdateEmployee.h">
       <FileType>CppForm</FileType>
@@ -147,11 +149,13 @@
   <ItemGroup>
     <ClCompile Include="AddEmployee.cpp" />
     <ClCompile Include="Benfits.cpp" />
+    <ClCompile Include="CTTax.cpp" />
     <ClCompile Include="EmployeeMainMenu.cpp" />
     <ClCompile Include="FedTax.cpp" />
     <ClCompile Include="LoginMenu.cpp" />
     <ClCompile Include="GrossIncome.cpp" />
     <ClCompile Include="HrView.cpp" />
+    <ClCompile Include="NJTax.cpp" />
     <ClCompile Include="NYTax.cpp" />
     <ClCompile Include="UpdateEmployee.cpp" />
     <ClCompile Include="ViewPaystub.cpp" />

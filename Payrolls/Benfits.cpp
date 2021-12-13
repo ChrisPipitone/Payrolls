@@ -70,3 +70,13 @@ double Benfits::CalculateHealthBenfits(double salary)
 {
     return 0.0;
 }
+
+double Benfits::CalculateSSAWithholding(double salary)
+{
+    return round((salary * 0.062) * 100.0) / 100.0;
+}
+
+double Benfits::Calculate401k(double salary)
+{
+    return round((salary * 0.043) * 100.0) / 100.0;
+}

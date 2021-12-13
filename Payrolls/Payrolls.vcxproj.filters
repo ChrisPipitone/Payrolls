@@ -57,6 +57,12 @@
     <ClInclude Include="CheckID.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CTTax.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NJTax.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GrossIncome.cpp">
@@ -88,6 +94,12 @@
     </ClCompile>
     <ClCompile Include="ViewPaystub.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CTTax.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NJTax.cpp">
+      <Filter>Resource Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
