@@ -4,6 +4,7 @@
 #include"CheckID.h"
 #include "ViewPaystub.h"
 #include <string>
+#include<array>
 
 namespace Payrolls {
 
@@ -103,72 +104,6 @@ namespace Payrolls {
 		String^ HireE;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	   private:
 		   String^ Hire;
 private: System::Windows::Forms::TabPage^ tab2;
@@ -193,8 +128,10 @@ private: System::Windows::Forms::Button^ buttonReset;
 private: System::Windows::Forms::TextBox^ textBox1;
 private: System::Windows::Forms::Button^ buttonSearch;
 private: System::Windows::Forms::TabPage^ tab2Page2;
-private: System::Windows::Forms::TextBox^ textBox3;
-private: System::Windows::Forms::TextBox^ textBox2;
+
+
+
+
 private: System::Windows::Forms::Label^ label15;
 private: System::Windows::Forms::Label^ label14;
 private: System::Windows::Forms::Button^ button6;
@@ -246,30 +183,14 @@ private: System::Windows::Forms::Label^ label2;
 private: System::Windows::Forms::Label^ lbl1;
 private: System::Windows::Forms::Label^ label1;
 private: System::Windows::Forms::TabControl^ tab1;
-private: System::Windows::Forms::Label^ label13;
-private: System::Windows::Forms::Button^ buttonNo;
-private: System::Windows::Forms::Button^ buttonYes;
+
+
 private: System::Windows::Forms::Label^ label12;
-private: System::Windows::Forms::LinkLabel^ linkResign;
+private: System::Windows::Forms::TextBox^ idBox;
+private: System::Windows::Forms::TextBox^ otBox;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+private: System::Windows::Forms::TextBox^ hoursBox;
+private: System::Windows::Forms::Button^ button7;
 
 	private:
 		/// <summary>
@@ -291,12 +212,7 @@ private: System::Windows::Forms::LinkLabel^ linkResign;
 			this->label30 = (gcnew System::Windows::Forms::Label());
 			this->label31 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
-			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->LogOut2 = (gcnew System::Windows::Forms::LinkLabel());
-			this->buttonNo = (gcnew System::Windows::Forms::Button());
-			this->buttonYes = (gcnew System::Windows::Forms::Button());
-			this->label12 = (gcnew System::Windows::Forms::Label());
-			this->linkResign = (gcnew System::Windows::Forms::LinkLabel());
 			this->lbl12 = (gcnew System::Windows::Forms::Label());
 			this->lbl11 = (gcnew System::Windows::Forms::Label());
 			this->lbl10 = (gcnew System::Windows::Forms::Label());
@@ -312,8 +228,11 @@ private: System::Windows::Forms::LinkLabel^ linkResign;
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->buttonSearch = (gcnew System::Windows::Forms::Button());
 			this->tab2Page2 = (gcnew System::Windows::Forms::TabPage());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->button7 = (gcnew System::Windows::Forms::Button());
+			this->otBox = (gcnew System::Windows::Forms::TextBox());
+			this->hoursBox = (gcnew System::Windows::Forms::TextBox());
+			this->idBox = (gcnew System::Windows::Forms::TextBox());
+			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->label15 = (gcnew System::Windows::Forms::Label());
 			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->button6 = (gcnew System::Windows::Forms::Button());
@@ -382,7 +301,7 @@ private: System::Windows::Forms::LinkLabel^ linkResign;
 			this->tab2->Controls->Add(this->tabControl1);
 			this->tab2->Location = System::Drawing::Point(4, 22);
 			this->tab2->Name = L"tab2";
-			this->tab2->Padding = System::Windows::Forms::Padding(3, 3, 3, 3);
+			this->tab2->Padding = System::Windows::Forms::Padding(3);
 			this->tab2->Size = System::Drawing::Size(818, 593);
 			this->tab2->TabIndex = 1;
 			this->tab2->Text = L"Search Employees";
@@ -404,12 +323,7 @@ private: System::Windows::Forms::LinkLabel^ linkResign;
 			this->tab1Page2->Controls->Add(this->label30);
 			this->tab1Page2->Controls->Add(this->label31);
 			this->tab1Page2->Controls->Add(this->pictureBox2);
-			this->tab1Page2->Controls->Add(this->label13);
 			this->tab1Page2->Controls->Add(this->LogOut2);
-			this->tab1Page2->Controls->Add(this->buttonNo);
-			this->tab1Page2->Controls->Add(this->buttonYes);
-			this->tab1Page2->Controls->Add(this->label12);
-			this->tab1Page2->Controls->Add(this->linkResign);
 			this->tab1Page2->Controls->Add(this->lbl12);
 			this->tab1Page2->Controls->Add(this->lbl11);
 			this->tab1Page2->Controls->Add(this->lbl10);
@@ -426,7 +340,7 @@ private: System::Windows::Forms::LinkLabel^ linkResign;
 			this->tab1Page2->Controls->Add(this->buttonSearch);
 			this->tab1Page2->Location = System::Drawing::Point(4, 22);
 			this->tab1Page2->Name = L"tab1Page2";
-			this->tab1Page2->Padding = System::Windows::Forms::Padding(3, 3, 3, 3);
+			this->tab1Page2->Padding = System::Windows::Forms::Padding(3);
 			this->tab1Page2->Size = System::Drawing::Size(810, 567);
 			this->tab1Page2->TabIndex = 0;
 			this->tab1Page2->Text = L"Employee Detail";
@@ -453,7 +367,6 @@ private: System::Windows::Forms::LinkLabel^ linkResign;
 			this->label31->Size = System::Drawing::Size(47, 20);
 			this->label31->TabIndex = 37;
 			this->label31->Text = L"Type:";
-			this->label31->Click += gcnew System::EventHandler(this, &AdminMenu::label31_Click);
 			// 
 			// pictureBox2
 			// 
@@ -463,19 +376,6 @@ private: System::Windows::Forms::LinkLabel^ linkResign;
 			this->pictureBox2->Size = System::Drawing::Size(46, 45);
 			this->pictureBox2->TabIndex = 36;
 			this->pictureBox2->TabStop = false;
-			// 
-			// label13
-			// 
-			this->label13->AutoSize = true;
-			this->label13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label13->ForeColor = System::Drawing::Color::Red;
-			this->label13->Location = System::Drawing::Point(147, 424);
-			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(201, 24);
-			this->label13->TabIndex = 17;
-			this->label13->Text = L"Resignation sent to HR";
-			this->label13->Click += gcnew System::EventHandler(this, &AdminMenu::label13_Click);
 			// 
 			// LogOut2
 			// 
@@ -487,52 +387,6 @@ private: System::Windows::Forms::LinkLabel^ linkResign;
 			this->LogOut2->TabStop = true;
 			this->LogOut2->Text = L"LogOut";
 			this->LogOut2->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &AdminMenu::LogOut2_LinkClicked);
-			// 
-			// buttonNo
-			// 
-			this->buttonNo->Location = System::Drawing::Point(294, 453);
-			this->buttonNo->Name = L"buttonNo";
-			this->buttonNo->Size = System::Drawing::Size(75, 23);
-			this->buttonNo->TabIndex = 5;
-			this->buttonNo->Text = L"No";
-			this->buttonNo->UseVisualStyleBackColor = true;
-			this->buttonNo->Click += gcnew System::EventHandler(this, &AdminMenu::buttonNo_Click);
-			// 
-			// buttonYes
-			// 
-			this->buttonYes->Location = System::Drawing::Point(197, 453);
-			this->buttonYes->Name = L"buttonYes";
-			this->buttonYes->Size = System::Drawing::Size(75, 23);
-			this->buttonYes->TabIndex = 4;
-			this->buttonYes->Text = L"Yes";
-			this->buttonYes->UseVisualStyleBackColor = true;
-			this->buttonYes->Click += gcnew System::EventHandler(this, &AdminMenu::buttonYes_Click);
-			// 
-			// label12
-			// 
-			this->label12->AutoSize = true;
-			this->label12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label12->Location = System::Drawing::Point(95, 453);
-			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(64, 20);
-			this->label12->TabIndex = 14;
-			this->label12->Text = L"Confirm";
-			// 
-			// linkResign
-			// 
-			this->linkResign->AutoSize = true;
-			this->linkResign->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->linkResign->ForeColor = System::Drawing::Color::Red;
-			this->linkResign->LinkColor = System::Drawing::Color::Red;
-			this->linkResign->Location = System::Drawing::Point(95, 404);
-			this->linkResign->Name = L"linkResign";
-			this->linkResign->Size = System::Drawing::Size(177, 20);
-			this->linkResign->TabIndex = 3;
-			this->linkResign->TabStop = true;
-			this->linkResign->Text = L"Notify resignation to HR";
-			this->linkResign->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &AdminMenu::linkResign_LinkClicked);
 			// 
 			// lbl12
 			// 
@@ -693,8 +547,11 @@ private: System::Windows::Forms::LinkLabel^ linkResign;
 			// tab2Page2
 			// 
 			this->tab2Page2->BackColor = System::Drawing::SystemColors::Control;
-			this->tab2Page2->Controls->Add(this->textBox3);
-			this->tab2Page2->Controls->Add(this->textBox2);
+			this->tab2Page2->Controls->Add(this->button7);
+			this->tab2Page2->Controls->Add(this->otBox);
+			this->tab2Page2->Controls->Add(this->hoursBox);
+			this->tab2Page2->Controls->Add(this->idBox);
+			this->tab2Page2->Controls->Add(this->label12);
 			this->tab2Page2->Controls->Add(this->label15);
 			this->tab2Page2->Controls->Add(this->label14);
 			this->tab2Page2->Controls->Add(this->button6);
@@ -703,27 +560,53 @@ private: System::Windows::Forms::LinkLabel^ linkResign;
 			this->tab2Page2->Controls->Add(this->pictureBox3);
 			this->tab2Page2->Location = System::Drawing::Point(4, 22);
 			this->tab2Page2->Name = L"tab2Page2";
-			this->tab2Page2->Padding = System::Windows::Forms::Padding(3, 3, 3, 3);
+			this->tab2Page2->Padding = System::Windows::Forms::Padding(3);
 			this->tab2Page2->Size = System::Drawing::Size(810, 567);
 			this->tab2Page2->TabIndex = 1;
 			this->tab2Page2->Text = L"Time Sheet";
 			this->tab2Page2->Click += gcnew System::EventHandler(this, &AdminMenu::tab2Page2_Click);
 			// 
-			// textBox3
+			// button7
 			// 
-			this->textBox3->Location = System::Drawing::Point(251, 99);
-			this->textBox3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(78, 20);
-			this->textBox3->TabIndex = 43;
+			this->button7->Location = System::Drawing::Point(230, 165);
+			this->button7->Margin = System::Windows::Forms::Padding(2);
+			this->button7->Name = L"button7";
+			this->button7->Size = System::Drawing::Size(108, 24);
+			this->button7->TabIndex = 48;
+			this->button7->Text = L"Remove Hours";
+			this->button7->UseVisualStyleBackColor = true;
+			this->button7->Click += gcnew System::EventHandler(this, &AdminMenu::button7_Click);
 			// 
-			// textBox2
+			// otBox
 			// 
-			this->textBox2->Location = System::Drawing::Point(251, 71);
-			this->textBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(78, 20);
-			this->textBox2->TabIndex = 42;
+			this->otBox->Location = System::Drawing::Point(252, 96);
+			this->otBox->Name = L"otBox";
+			this->otBox->Size = System::Drawing::Size(86, 20);
+			this->otBox->TabIndex = 47;
+			// 
+			// hoursBox
+			// 
+			this->hoursBox->Location = System::Drawing::Point(252, 70);
+			this->hoursBox->Name = L"hoursBox";
+			this->hoursBox->Size = System::Drawing::Size(79, 20);
+			this->hoursBox->TabIndex = 46;
+			// 
+			// idBox
+			// 
+			this->idBox->Location = System::Drawing::Point(252, 44);
+			this->idBox->Name = L"idBox";
+			this->idBox->Size = System::Drawing::Size(79, 20);
+			this->idBox->TabIndex = 45;
+			// 
+			// label12
+			// 
+			this->label12->AutoSize = true;
+			this->label12->Location = System::Drawing::Point(177, 47);
+			this->label12->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label12->Name = L"label12";
+			this->label12->Size = System::Drawing::Size(70, 13);
+			this->label12->TabIndex = 44;
+			this->label12->Text = L"Employee ID:";
 			// 
 			// label15
 			// 
@@ -748,7 +631,7 @@ private: System::Windows::Forms::LinkLabel^ linkResign;
 			// button6
 			// 
 			this->button6->Location = System::Drawing::Point(230, 137);
-			this->button6->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button6->Margin = System::Windows::Forms::Padding(2);
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(108, 24);
 			this->button6->TabIndex = 39;
@@ -789,11 +672,12 @@ private: System::Windows::Forms::LinkLabel^ linkResign;
 			// columnHeader5
 			// 
 			this->columnHeader5->Text = L"Entered Hours";
+			this->columnHeader5->Width = 114;
 			// 
 			// columnHeader6
 			// 
 			this->columnHeader6->Text = L"Overtime Hours";
-			this->columnHeader6->Width = 87;
+			this->columnHeader6->Width = 325;
 			// 
 			// timeSheet_startButton
 			// 
@@ -857,7 +741,7 @@ private: System::Windows::Forms::LinkLabel^ linkResign;
 			this->tabPage1->Controls->Add(this->label1);
 			this->tabPage1->Location = System::Drawing::Point(4, 22);
 			this->tabPage1->Name = L"tabPage1";
-			this->tabPage1->Padding = System::Windows::Forms::Padding(3, 3, 3, 3);
+			this->tabPage1->Padding = System::Windows::Forms::Padding(3);
 			this->tabPage1->Size = System::Drawing::Size(818, 593);
 			this->tabPage1->TabIndex = 0;
 			this->tabPage1->Text = L"Admin Menu";
@@ -1206,7 +1090,6 @@ private: System::Windows::Forms::LinkLabel^ linkResign;
 			this->label3->Size = System::Drawing::Size(81, 20);
 			this->label3->TabIndex = 18;
 			this->label3->Text = L"Hire Date:";
-			this->label3->Click += gcnew System::EventHandler(this, &AdminMenu::label3_Click);
 			// 
 			// lbl2
 			// 
@@ -1329,11 +1212,6 @@ private: System::Windows::Forms::LinkLabel^ linkResign;
 		lbl11->Hide();
 		lbl12->Hide();
 
-		linkResign->Hide();
-		label12->Hide();
-		buttonNo->Hide();
-		buttonYes->Hide();
-		label13->Hide();
 		label30->Hide();
 		label31->Hide();
 
@@ -1450,7 +1328,7 @@ private: System::Windows::Forms::LinkLabel^ linkResign;
 			label9->Show();
 			label10->Show();
 			label11->Show();
-			linkResign->Show();
+	
 
 			lbl7->Show();
 
@@ -1468,23 +1346,7 @@ private: System::Windows::Forms::LinkLabel^ linkResign;
 		this->Hide();
 		otherform->Show();
 	}
-	private: System::Void linkResign_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
-		label12->Show();
-		buttonNo->Show();
-		buttonYes->Show();
-	}
-	private: System::Void buttonYes_Click(System::Object^ sender, System::EventArgs^ e) {
-		linkResign->Hide();
-		label12->Hide();
-		buttonNo->Hide();
-		buttonYes->Hide();
-		label13->Show();
-	}
-	private: System::Void buttonNo_Click(System::Object^ sender, System::EventArgs^ e) {
-		label12->Hide();
-		buttonNo->Hide();
-		buttonYes->Hide();
-	}
+	
 	private: System::Void label13_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void buttonReset_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1503,14 +1365,6 @@ private: System::Windows::Forms::LinkLabel^ linkResign;
 		lbl10->Hide();
 		lbl11->Hide();
 		lbl12->Hide();
-
-		linkResign->Hide();
-		label12->Hide();
-		buttonNo->Hide();
-		buttonYes->Hide();
-		label13->Hide();
-
-
 	}
 	private: System::Void tab2Page2_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -1774,19 +1628,20 @@ private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e
 	viewPay->otherPage = this;
 	this->Hide();
 	viewPay->ShowDialog();
-
 }
-private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void label31_Click(System::Object^ sender, System::EventArgs^ e) {
-}
+	  
 private: System::Void timeSheet_startButton_Click(System::Object^ sender, System::EventArgs^ e) {
-	
+
 	OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
 	conn->Open();
 	OleDbCommand^ cmd = conn->CreateCommand();
 		
+	//init all hours = 0
+	cmd->CommandText = "UPDATE EmployeeInfo SET [Hours] = 0, [OvertimeHours] = 0";
+	cmd->ExecuteNonQuery();
+
 	//create a list of all the ids in the db 
+	cmd = conn->CreateCommand();
 	cmd->CommandText = "SELECT Firstname,Lastname,ID FROM EmployeeInfo";
 	OleDbDataReader^ reader = cmd->ExecuteReader();
 	while (reader->Read())
@@ -1801,26 +1656,94 @@ private: System::Void timeSheet_startButton_Click(System::Object^ sender, System
 }
 
 private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
-	//update selected emps hours
-	OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
-	conn->Open();
-	OleDbCommand^ cmd = conn->CreateCommand();
-	cmd->CommandText = "UPDATE EmployeeInfo SET [Hours] = @Hours, [OvertimeHours] = @OvertimeHours WHERE [ID] = @ID";
+	try {
+		//update selected emps hours in database
+		OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
+		conn->Open();
+		OleDbCommand^ cmd = conn->CreateCommand();
+		cmd->CommandText = "UPDATE EmployeeInfo SET [Hours] = @Hours, [OvertimeHours] = @OvertimeHours WHERE ID = @ID";
+		cmd->Parameters->AddWithValue("@Hours", Int32::Parse(hoursBox->Text));
+		cmd->Parameters->AddWithValue("@OvertimeHours", Int32::Parse(otBox->Text));
+		cmd->Parameters->AddWithValue("@ID", idBox->Text);
 
-	//empHours_list->SelectedItems[0]->ToString() doesnt actually return the emps id not sure how to do that yet 
-	//need to select an emp from the list then be able to accesss their id for this query
+		cmd->ExecuteNonQuery();
 
-	MessageBox::Show(empHours_list->SelectedItems->ToString());
-	cmd->Parameters->AddWithValue("@ID", Int32::Parse(empHours_list->SelectedItems[0]->ToString()));
+		conn->Close();
+
+		
+		//clear list
+		empHours_list->Items->Clear();
+
+		OleDbConnection^ conn2 = gcnew OleDbConnection(ConnectionPath::connectionString);
+		conn2->Open();
+		OleDbCommand^ cmd2 = conn2->CreateCommand();
+
+		//refill a list of all the ids in the db 
+		cmd2->CommandText = "SELECT Firstname,Lastname,ID,Hours,OvertimeHours FROM EmployeeInfo";
+
+		OleDbDataReader^ reader = cmd2->ExecuteReader();
+		while (reader->Read())
+		{
+			ListViewItem^ item = gcnew ListViewItem(reader["ID"]->ToString());
+
+			item->SubItems->Add(reader["Firstname"]->ToString());
+			item->SubItems->Add(reader["Lastname"]->ToString());
+			item->SubItems->Add(reader["Hours"]->ToString());
+			item->SubItems->Add(reader["OvertimeHours"]->ToString());
+			empHours_list->Items->Add(item);
+		}
+		conn2->Close();
+		
+	}
+	catch (System::FormatException^ e)
+	{
+		return;
+	}
 	
-	
-	cmd->Parameters->AddWithValue("@Hours", Int32::Parse(textBox2->Text));
-	cmd->Parameters->AddWithValue("@OvertimeHours", Int32::Parse(textBox3->Text));
+}
+private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
+	try {
+		//update selected emps hours in database
+		OleDbConnection^ conn = gcnew OleDbConnection(ConnectionPath::connectionString);
+		conn->Open();
+		OleDbCommand^ cmd = conn->CreateCommand();
+		cmd->CommandText = "UPDATE EmployeeInfo SET [Hours] = 0, [OvertimeHours] = 0 WHERE ID = @ID";
+		
+		cmd->Parameters->AddWithValue("@ID", idBox->Text);
 
-	cmd->ExecuteNonQuery();
+		cmd->ExecuteNonQuery();
 
-	conn->Close();
+		conn->Close();
 
+
+		//clear list
+		empHours_list->Items->Clear();
+
+		OleDbConnection^ conn2 = gcnew OleDbConnection(ConnectionPath::connectionString);
+		conn2->Open();
+		OleDbCommand^ cmd2 = conn2->CreateCommand();
+
+		//refill a list of all the ids in the db 
+		cmd2->CommandText = "SELECT Firstname,Lastname,ID,Hours,OvertimeHours FROM EmployeeInfo";
+
+		OleDbDataReader^ reader = cmd2->ExecuteReader();
+		while (reader->Read())
+		{
+			ListViewItem^ item = gcnew ListViewItem(reader["ID"]->ToString());
+
+			item->SubItems->Add(reader["Firstname"]->ToString());
+			item->SubItems->Add(reader["Lastname"]->ToString());
+			item->SubItems->Add(reader["Hours"]->ToString());
+			item->SubItems->Add(reader["OvertimeHours"]->ToString());
+			empHours_list->Items->Add(item);
+		}
+		conn2->Close();
+
+	}
+	catch (System::FormatException^ e)
+	{
+		return;
+	}
 }
 };
 }
