@@ -14,4 +14,4 @@ How to Run
 - Clone the repository 
 - Make sure the file paths in ConnectionPath.h match reflect where you have the database files saved
 - Run in VS Studio 
-- Use the Login credentials provided in the terrible access database files
+- Use the Login credentials provided in the access database files
