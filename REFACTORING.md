@@ -48,6 +48,7 @@ This isn't a small fix — it's the core refactor. Everything else is secondary.
 - `.sln` / `.vcxproj` — Windows/Visual Studio only, not portable
 - `.resx` files — Windows Forms designer XML, useless outside VS
 - `.accdb` files — Microsoft Access, Windows-only binary format
+- No `compile_commands.json` — clangd can't provide accurate diagnostics without it
 
 ---
 
@@ -55,7 +56,7 @@ This isn't a small fix — it's the core refactor. Everything else is secondary.
 
 ```
 Payrolls/
-├── Makefile
+├── CMakeLists.txt
 ├── README.md
 ├── REFACTORING.md
 ├── .gitignore
@@ -106,36 +107,36 @@ Payrolls/
 
 ---
 
-## Makefile
+## CMake
 
-```makefile
-CXX      := g++
-CXXFLAGS := -std=c++17 -Wall -Wextra -Iinclude
-LDFLAGS  := -lsqlite3
+```cmake
+cmake_minimum_required(VERSION 3.20)
+project(payrolls CXX)
 
-SRC_DIR  := src
-OBJ_DIR  := build
-BIN      := payrolls
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)  # generates compile_commands.json for clangd
 
-SRCS     := $(shell find $(SRC_DIR) -name '*.cpp')
-OBJS     := $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
+find_package(SQLite3 REQUIRED)
 
-.PHONY: all clean
+file(GLOB_RECURSE SRCS src/*.cpp)
 
-all: $(BIN)
-
-$(BIN): $(OBJS)
-	$(CXX) $(OBJS) -o $@ $(LDFLAGS)
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
-	@mkdir -p $(dir $@)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-clean:
-	rm -rf $(OBJ_DIR) $(BIN)
+add_executable(payrolls ${SRCS})
+target_include_directories(payrolls PRIVATE include)
+target_link_libraries(payrolls PRIVATE SQLite3::SQLite3)
+target_compile_options(payrolls PRIVATE -Wall -Wextra)
 ```
 
-Run: `make && ./payrolls`
+Build:
+
+```bash
+cmake -B build
+cmake --build build
+ln -sf build/compile_commands.json .   # clangd picks this up
+./build/payrolls
+```
+
+For tests, add a `add_executable(tests ...)` target and use `ctest`.
 
 ---
 
@@ -248,7 +249,7 @@ Strip C++/CLI entirely:
 | `OleDbConnection^` / OleDb entirely | SQLite via `sqlite3.h` |
 | All `using namespace System` | (delete) |
 | `.resx` files | (delete) |
-| `.sln` / `.vcxproj` | `Makefile` |
+| `.sln` / `.vcxproj` | `CMakeLists.txt` |
 
 Also in this phase:
 - Set up target directory structure (`include/`, `src/`, `tests/`, `data/`)
@@ -256,7 +257,7 @@ Also in this phase:
 - Split all headers from implementations — no function bodies in `.h` files
 - Add `data/schema.sql` to replace the binary `.accdb` files in version control
 
-**Done when:** `make && ./payrolls` works on a fresh Linux/Mac machine after `apt install libsqlite3-dev` (or `brew install sqlite3`).
+**Done when:** `cmake -B build && cmake --build build && ./build/payrolls` works on a fresh Linux/Mac machine after `apt install libsqlite3-dev cmake` (or `brew install sqlite3 cmake`).
 
 ---
 
@@ -347,9 +348,9 @@ assert(benefits.calculate401k(1000.0)           == 43.00);
 
 Use a minimal test framework — either raw `assert()` calls in `tests/run_tests.cpp`, or add [Catch2](https://github.com/catchorg/Catch2) as a single-header include.
 
-Add a `make test` target to the Makefile.
+Add a test executable target to `CMakeLists.txt` and run with `ctest --test-dir build`.
 
-**Done when:** `make test` runs all assertions green.
+**Done when:** `ctest --test-dir build` runs all assertions green.
 
 ---
 
@@ -409,7 +410,7 @@ Connection closes when `DbConnection` goes out of scope — no manual cleanup, n
 
 Work in this order — each step compiles and runs before moving to the next.
 
-1. **Set up Makefile + new directory structure** — move files, get a stub `main.cpp` compiling
+1. **Set up `CMakeLists.txt` + new directory structure** — move files, get a stub `main.cpp` compiling; symlink `compile_commands.json` for clangd
 2. **Strip all C++/CLI** — replace `System::String^` → `std::string`, `ref class` → `class`, remove all `gcnew`
 3. **Split headers from implementations** — gut `CheckID.h`, move all function bodies to `.cpp` files
 4. **Fix tax inheritance** — abstract `Tax` base, all state tax classes extend it
@@ -426,8 +427,8 @@ Work in this order — each step compiles and runs before moving to the next.
 
 ```
 build/
-*.o
 payrolls
+compile_commands.json
 *.accdb
 ```
 

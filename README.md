@@ -39,7 +39,7 @@ The original project used C++/CLI — Microsoft's .NET extension — because Win
 | Area | From | To | Why |
 |---|---|---|---|
 | Language | C++/CLI (`System::String^`, `ref class`) | Standard C++17 | Portability, industry standard, works with `g++`/`clang++` |
-| Build | Visual Studio `.sln` | `Makefile` | Run from any terminal on any OS |
+| Build | Visual Studio `.sln` | CMake | Cross-platform, generates `compile_commands.json` for tooling |
 | Database | Microsoft Access (`.accdb`) | SQLite | Cross-platform, no install required, version-controllable schema |
 | UI | Windows Forms | CLI (`std::cin`/`std::cout`) | No platform dependency, separates logic from presentation |
 | Tax calculation | Flat rate applied to full income | Correct marginal brackets | Current math produces wrong results |
@@ -49,7 +49,7 @@ The original project used C++/CLI — Microsoft's .NET extension — because Win
 
 ### Refactoring Steps (in order)
 
-1. Set up `Makefile` + new directory structure, stub `main.cpp` compiling
+1. Set up `CMakeLists.txt` + new directory structure, stub `main.cpp` compiling
 2. Strip all C++/CLI — replace `System::String^` with `std::string`, remove `gcnew`, `ref class`
 3. Split headers from implementations — no function bodies in `.h` files
 4. Build abstract `Tax` base class, make all state tax classes inherit from it
