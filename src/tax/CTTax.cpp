@@ -1,4 +1,4 @@
-#include "CTTax.h"
+#include "payrolls/tax/CTTax.h"
 #include <cmath>
 
 double CTTax::CTTaxRate(double grossIncome) {

@@ -1,4 +1,4 @@
-#include "FedTax.h"
+#include "payrolls/tax/FedTax.h"
 #include<cmath>
 
 double FedTax::FedTaxRate(double grossIncome) {

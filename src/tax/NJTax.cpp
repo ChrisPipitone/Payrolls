@@ -1,4 +1,4 @@
-#include "NJTax.h"
+#include "payrolls/tax/NJTax.h"
 #include <cmath>
 
 double NJTax::NJTaxRate(double grossIncome) {
