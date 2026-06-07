@@ -8,7 +8,7 @@ You have `.cpp` files. You need to turn them into a binary. You could type:
 g++ -std=c++17 -Wall -Iinclude src/main.cpp src/tax/FedTax.cpp -lsqlite3 -o payrolls
 ```
 
-That works. But when you have 30 files across 6 folders, that command becomes unmaintainable. You also need to recompile only the files that changed, not everything. And you need it to work on Linux *and* Mac without changing anything.
+That works. But when you have 30 files across 6 folders, that command becomes unmaintainable. You also need to recompile only the files that changed, not everything. And you need it to work on Linux _and_ Mac without changing anything.
 
 That's what CMake is for.
 
@@ -30,6 +30,28 @@ Step 2: `cmake --build build` — runs the generated build files, compiles only 
 
 You write `CMakeLists.txt` once. CMake handles the rest.
 
+┌─────────────────────┬──────────────────────┬──────────────────────────────────────────────────────────────────────────────────────────────────────┬──────────────────────────────────────┐
+│ Cmd │ Phase │ Does │ Runs how often │
+├─────────────────────┼──────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────┤
+│ cmake -B build │ configure + generate │ Read CMakeLists.txt, find deps (sqlite3), detect compiler, write build/ (Makefiles or Ninja + cache) │ once, or when CMakeLists.txt changes │
+├─────────────────────┼──────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────┤
+│ cmake --build build │ build │ Run the generated Makefile/Ninja → actually compile + link → payrolls binary │ every code change │
+└─────────────────────┴──────────────────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────┴──────────────────────────────────────┘
+
+Analogy: -B = CMake writes the makefile. --build = runs the make.
+
+-B build = "put generated build files in dir build". -S . = source dir (implied as cwd if omitted).
+
+Typical loop:
+cmake -B build # once
+cmake --build build # repeat after each edit
+
+cmake --build build is portable wrapper — calls make or ninja under hood so you don't care which generator. Could cd build && make instead, but --build works same on every platform (your Arch + macOS).
+
+Re-run cmake -B build only when you change CMakeLists.txt (add file, new dep). Edited .cpp? Just --build. Even if you forget — --build auto-detects dirty CMakeLists.txt and re-configures itself.
+
+Nuke: rm -rf build then cmake -B build fresh.
+
 ---
 
 ## Reading CMakeLists.txt line by line
@@ -37,52 +59,62 @@ You write `CMakeLists.txt` once. CMake handles the rest.
 ```cmake
 cmake_minimum_required(VERSION 3.20)
 ```
+
 "Fail early if CMake is too old to understand this file."
 
 ```cmake
 project(payrolls CXX)
 ```
+
 "This project is called `payrolls` and uses C++."
 
 ```cmake
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 ```
+
 "Use C++17. Error if the compiler doesn't support it — don't silently fall back."
 
 ```cmake
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 ```
+
 "Write a `compile_commands.json` file. clangd (your LSP) reads this to know your include paths and flags, so it gives accurate diagnostics in your editor."
 
 ```cmake
 find_package(SQLite3 REQUIRED)
 ```
+
 "Find SQLite3 on this machine. Error if it's not installed."
 
 ```cmake
 file(GLOB_RECURSE SRCS src/*.cpp)
 ```
+
 "Collect every `.cpp` file under `src/` into a variable called `SRCS`."
 
 ```cmake
 add_executable(payrolls ${SRCS})
 ```
+
 "Build an executable named `payrolls` from those source files."
 
 ```cmake
 target_include_directories(payrolls PRIVATE include)
 ```
+
 "When compiling `payrolls`, add `include/` to the header search path. Same as `-Iinclude`. `PRIVATE` means this only applies to `payrolls`, not to anything that links against it."
 
 ```cmake
 target_link_libraries(payrolls PRIVATE SQLite3::SQLite3)
 ```
+
 "Link the SQLite3 library into `payrolls`. Same as `-lsqlite3`, but CMake also pulls in the right include paths and flags automatically."
 
 ```cmake
 target_compile_options(payrolls PRIVATE -Wall -Wextra)
 ```
+
 "Enable extra warnings when compiling `payrolls`."
 
 ---
@@ -114,13 +146,13 @@ ln -sf build/compile_commands.json .
 
 ## Common commands
 
-| What | Command |
-|---|---|
-| Configure (first time or after CMakeLists changes) | `cmake -B build` |
-| Build | `cmake --build build` |
-| Run | `./build/payrolls` |
-| Clean | `cmake --build build --target clean` |
-| Nuke and reconfigure | `rm -rf build && cmake -B build` |
+| What                                               | Command                              |
+| -------------------------------------------------- | ------------------------------------ |
+| Configure (first time or after CMakeLists changes) | `cmake -B build`                     |
+| Build                                              | `cmake --build build`                |
+| Run                                                | `./build/payrolls`                   |
+| Clean                                              | `cmake --build build --target clean` |
+| Nuke and reconfigure                               | `rm -rf build && cmake -B build`     |
 
 ---
 

@@ -1,5 +1,6 @@
 # Payrolls
-*City University of New York, College of Staten Island — Bachelor of Computer Science*
+
+_City University of New York, College of Staten Island — Bachelor of Computer Science_
 
 **Software Engineering Course CSC430 — Group Project**
 
@@ -36,16 +37,16 @@ The original project used C++/CLI — Microsoft's .NET extension — because Win
 
 ### Planned Changes
 
-| Area | From | To | Why |
-|---|---|---|---|
-| Language | C++/CLI (`System::String^`, `ref class`) | Standard C++17 | Portability, industry standard, works with `g++`/`clang++` |
-| Build | Visual Studio `.sln` | CMake | Cross-platform, generates `compile_commands.json` for tooling |
-| Database | Microsoft Access (`.accdb`) | SQLite | Cross-platform, no install required, version-controllable schema |
-| UI | Windows Forms | CLI (`std::cin`/`std::cout`) | No platform dependency, separates logic from presentation |
-| Tax calculation | Flat rate applied to full income | Correct marginal brackets | Current math produces wrong results |
-| Tax classes | Four identical standalone classes | Inheritance from abstract `Tax` base | Eliminates duplication, enables polymorphism |
-| Employee type | Magic string `"Part time"` | `enum class EmployeeType` | Type-safe, no typo bugs |
-| Directory structure | Flat, all files in one folder | `include/`, `src/`, `tests/`, `data/` | Standard C++ project layout |
+| Area                | From                                     | To                                    | Why                                                                                                                 |
+| ------------------- | ---------------------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Language            | C++/CLI (`System::String^`, `ref class`) | Standard C++17                        | Portability, industry standard, works with `g++`/`clang++`                                                          |
+| Build               | Visual Studio `.sln`                     | CMake                                 | It's standard in the industries I want to break into. Cross-platform, generates `compile_commands.json` for tooling |
+| Database            | Microsoft Access (`.accdb`)              | SQLite                                | Cross-platform, no install required, version-controllable schema                                                    |
+| UI                  | Windows Forms                            | CLI (`std::cin`/`std::cout`)          | No platform dependency, separates logic from presentation                                                           |
+| Tax calculation     | Flat rate applied to full income         | Correct marginal brackets             | Current math produces wrong results                                                                                 |
+| Tax classes         | Four identical standalone classes        | Inheritance from abstract `Tax` base  | Eliminates duplication, enables polymorphism                                                                        |
+| Employee type       | Magic string `"Part time"`               | `enum class EmployeeType`             | Type-safe, no typo bugs                                                                                             |
+| Directory structure | Flat, all files in one folder            | `include/`, `src/`, `tests/`, `data/` | Standard C++ project layout                                                                                         |
 
 ### Refactoring Steps (in order)
 
