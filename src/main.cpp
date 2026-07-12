@@ -4,7 +4,6 @@
 #include <string.h>
 
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof(a[0]))
-#define CTRLD 4
 
 struct RoleMenuChoice {
   const char *choice_name;
@@ -22,9 +21,23 @@ void print_in_middle(WINDOW *win, int starty, int startx, int width,
                      char *string, chtype color);
 
 // These will be moved l8r
-void employee_view() {}
+void employee_view() {
+  printw("Hello %s", "HELLLLOOOOOO"); // like printf
+  refresh();                          // flush stdscr to terminal
+}
 void hr_view() {}
 void manager_view() {}
+
+void handle_nav(MENU *menu, int c) {
+  if (c == KEY_DOWN || c == 'j')
+    menu_driver(menu, REQ_DOWN_ITEM);
+  if (c == KEY_UP || c == 'k')
+    menu_driver(menu, REQ_UP_ITEM);
+  if (c == KEY_LEFT || c == 'h')
+    menu_driver(menu, REQ_LEFT_ITEM);
+  if (c == KEY_RIGHT || c == 'l')
+    menu_driver(menu, REQ_RIGHT_ITEM);
+}
 
 int main() {
   ITEM **my_items;
@@ -77,13 +90,9 @@ int main() {
   wrefresh(my_menu_win);
 
   while (!exit_selected && (c = wgetch(my_menu_win)) != KEY_F(1)) {
+
+    handle_nav(my_menu, c);
     switch (c) {
-    case KEY_DOWN:
-      menu_driver(my_menu, REQ_DOWN_ITEM);
-      break;
-    case KEY_UP:
-      menu_driver(my_menu, REQ_UP_ITEM);
-      break;
     case '\n':
     case KEY_ENTER:
       int idx = item_index(current_item(my_menu));
