@@ -17,7 +17,9 @@ private:
   WINDOW *view_win;
 
 public:
-  EmployeeView() : view_win(newwin(20, 80, 8, 8)) { keypad(view_win, TRUE); }
+  EmployeeView() : view_win(newwin(LINES, COLS, 0, 0)) {
+    keypad(view_win, TRUE);
+  }
   ~EmployeeView() { delwin(view_win); }
 
   void draw();
