@@ -1,6 +1,13 @@
 #pragma once
-#include <curses.h>
+#include <menu.h>
 #include <string>
+
+#define ARRAY_SIZE(a) (sizeof(a) / sizeof(a[0]))
+
+struct NcursesGuard {
+  NcursesGuard() { initscr(); }
+  ~NcursesGuard() { endwin(); }
+};
 
 inline void print_in_middle(WINDOW *win, int starty, int startx, int width,
                             const std::string &str, chtype color) {
