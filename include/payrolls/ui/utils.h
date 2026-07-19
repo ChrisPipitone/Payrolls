@@ -9,6 +9,20 @@ struct NcursesGuard {
   ~NcursesGuard() { endwin(); }
 };
 
+inline bool handle_menu_nav(MENU *menu, int c) {
+  if (c == KEY_DOWN || c == 'j')
+    menu_driver(menu, REQ_DOWN_ITEM);
+  else if (c == KEY_UP || c == 'k')
+    menu_driver(menu, REQ_UP_ITEM);
+  else if (c == KEY_LEFT || c == 'h')
+    menu_driver(menu, REQ_LEFT_ITEM);
+  else if (c == KEY_RIGHT || c == 'l')
+    menu_driver(menu, REQ_RIGHT_ITEM);
+  else
+    return false;
+
+  return true;
+}
 inline void print_in_middle(WINDOW *win, int starty, int startx, int width,
                             const std::string &str, chtype color) {
   int x, y;

@@ -17,17 +17,6 @@ constexpr RoleMenuChoice role_menu_choice[] = {
 void hr_view() {}
 void manager_view() {}
 
-void handle_nav(MENU *menu, int c) {
-  if (c == KEY_DOWN || c == 'j')
-    menu_driver(menu, REQ_DOWN_ITEM);
-  if (c == KEY_UP || c == 'k')
-    menu_driver(menu, REQ_UP_ITEM);
-  if (c == KEY_LEFT || c == 'h')
-    menu_driver(menu, REQ_LEFT_ITEM);
-  if (c == KEY_RIGHT || c == 'l')
-    menu_driver(menu, REQ_RIGHT_ITEM);
-}
-
 int main() {
   // Initialize curses
   NcursesGuard ncurses;
@@ -76,7 +65,7 @@ int main() {
   bool exit_selected = false;
   while (!exit_selected && (c = wgetch(main_menu_win)) != KEY_F(1)) {
 
-    handle_nav(my_menu, c);
+    handle_menu_nav(main_menu, c);
     switch (c) {
     case '\n':
     case KEY_ENTER:
