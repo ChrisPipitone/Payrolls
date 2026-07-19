@@ -1,7 +1,6 @@
-#include <cstdlib>
-#include <curses.h>
+#include "payrolls/ui/EmployeeView.h"
+#include "payrolls/ui/utils.h"
 #include <menu.h>
-#include <string.h>
 
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof(a[0]))
 
@@ -17,14 +16,6 @@ constexpr RoleMenuChoice role_menu_choice[] = {
     {"Exit", ""},
 };
 
-void print_in_middle(WINDOW *win, int starty, int startx, int width,
-                     char *string, chtype color);
-
-// These will be moved l8r
-void employee_view() {
-  printw("Hello %s", "HELLLLOOOOOO"); // like printf
-  refresh();                          // flush stdscr to terminal
-}
 void hr_view() {}
 void manager_view() {}
 
@@ -66,7 +57,7 @@ int main() {
   my_menu = new_menu((ITEM **)my_items);
 
   /* Create the window to be associated with the menu */
-  my_menu_win = newwin(10, 40, 4, 4);
+  my_menu_win = centered_win(10, 40);
   keypad(my_menu_win, TRUE);
 
   /* Set main window and sub window */
@@ -97,9 +88,13 @@ int main() {
     case KEY_ENTER:
       int idx = item_index(current_item(my_menu));
       switch (idx) {
-      case 0:
-        employee_view();
+      case 0: {
+        EmployeeView ev;
+        ev.render();
+        touchwin(my_menu_win);
+        wrefresh(my_menu_win);
         break;
+      }
       case 1:
         hr_view();
         break;
@@ -120,28 +115,4 @@ int main() {
   for (i = 0; i < n_choices; ++i)
     free_item(my_items[i]);
   endwin();
-}
-
-void print_in_middle(WINDOW *win, int starty, int startx, int width,
-                     char *string, chtype color) {
-  int length, x, y;
-  int temp;
-
-  if (win == NULL)
-    win = stdscr;
-  getyx(win, y, x);
-  if (startx != 0)
-    x = startx;
-  if (starty != 0)
-    y = starty;
-  if (width == 0)
-    width = 80;
-
-  length = strlen(string);
-  temp = (width - length) / 2;
-  x = startx + (int)temp;
-  wattron(win, color);
-  mvwprintw(win, y, x, "%s", string);
-  wattroff(win, color);
-  refresh();
 }

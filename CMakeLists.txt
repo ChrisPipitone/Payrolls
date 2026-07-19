@@ -20,6 +20,7 @@ add_executable(csi_payrolls
   src/tax/FedTax.cpp
   src/tax/NJTax.cpp
   src/tax/NYTax.cpp
+  src/ui/EmployeeView.cpp
 )
 
 target_include_directories(csi_payrolls PRIVATE include ${CURSES_INCLUDE_DIRS})
