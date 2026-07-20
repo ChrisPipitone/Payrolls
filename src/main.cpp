@@ -62,32 +62,23 @@ int main() {
   wrefresh(main_menu_win);
 
   int c;
-  bool exit_selected = false;
-  while (!exit_selected && (c = wgetch(main_menu_win)) != KEY_F(1)) {
-
-    handle_menu_nav(main_menu, c);
-    switch (c) {
-    case '\n':
-    case KEY_ENTER:
+  while ((c = wgetch(main_menu_win)) != KEY_F(1)) {
+    // selection made, if navigation continue
+    if (!handle_menu_nav(main_menu, c) && (c == '\n' || c == KEY_ENTER)) {
       int idx = item_index(current_item(main_menu));
-      switch (idx) {
-      case 0: {
+      if (idx == 3) break;  //
+      if (idx == 0) {       // Employee Selected
         EmployeeView ev;
         ev.render();
         touchwin(main_menu_win);
         wrefresh(main_menu_win);
-        break;
       }
-      case 1:
+      if (idx == 0) {  // Employee Selected
         hr_view();
-        break;
-      case 2:
-        manager_view();
-        break;
-      case 3:
-        exit_selected = true;
       }
-      break;
+      if (idx == 0) {  // Employee Selected
+        manager_view();
+      }
     }
     wrefresh(main_menu_win);
   }
