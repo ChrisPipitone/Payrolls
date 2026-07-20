@@ -1,10 +1,11 @@
-#include "payrolls/ui/EmployeeView.h"
-#include "payrolls/ui/utils.h"
 #include <vector>
 
+#include "payrolls/ui/EmployeeView.h"
+#include "payrolls/ui/utils.h"
+
 struct RoleMenuChoice {
-  const char *choice_name;
-  const char *description;
+  const char* choice_name;
+  const char* description;
 };
 
 constexpr RoleMenuChoice role_menu_choice[] = {
@@ -28,17 +29,16 @@ int main() {
 
   // Create Main Menu items
   int n_menu_items = ARRAY_SIZE(role_menu_choice);
-  std::vector<ITEM *> menu_items(n_menu_items + 1, nullptr);
+  std::vector<ITEM*> menu_items(n_menu_items + 1, nullptr);
   for (auto i = 0; i < n_menu_items; i++) {
-    menu_items[i] = new_item(role_menu_choice[i].choice_name,
-                             role_menu_choice[i].description);
+    menu_items[i] = new_item(role_menu_choice[i].choice_name, role_menu_choice[i].description);
   }
 
   // Create Main Menu
-  MENU *main_menu = new_menu(menu_items.data());
+  MENU* main_menu = new_menu(menu_items.data());
 
   /* Create the window to be associated with the menu */
-  WINDOW *main_menu_win = centered_win(10, 40);
+  WINDOW* main_menu_win = centered_win(10, 40);
   keypad(main_menu_win, TRUE);
 
   /* Set main window and sub window */
@@ -86,7 +86,6 @@ int main() {
   // Unpost and free all the memory taken up
   unpost_menu(main_menu);
   free_menu(main_menu);
-  for (auto *item : menu_items)
-    if (item)
-      free_item(item);
+  for (auto* item : menu_items)
+    if (item) free_item(item);
 }
