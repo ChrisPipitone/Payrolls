@@ -8,6 +8,7 @@ std::vector<KeyHint> EmployeeView::hints() const {
 }
 
 void EmployeeView::draw() {
+  wclear(view_win);
   box(view_win, 0, 0);
   int w = getmaxx(view_win);
   print_in_middle(view_win, 1, 0, w, "Employee View", COLOR_PAIR(1));
@@ -20,13 +21,10 @@ void EmployeeView::draw() {
 }
 
 void EmployeeView::render() {
-  bool exit_selected = false;
-  wclear(view_win);
-  mvwprintw(view_win, LINES - 3, 3, "q to exit EmployeeView");
   int c = 0;
   do {
     draw();
-  } while (!exit_selected && (c = wgetch(view_win)) != 'q');
+  } while ((c = wgetch(view_win)) != 'q');
 
   werase(view_win);
   wrefresh(view_win);
