@@ -2,6 +2,11 @@
 
 #include "payrolls/ui/utils.h"
 
+std::vector<KeyHint> EmployeeView::hints() const {
+  static const std::vector<KeyHint> h = {{"q", "Return to Main Menu"}};
+  return h;
+}
+
 void EmployeeView::draw() {
   box(view_win, 0, 0);
   int w = getmaxx(view_win);
@@ -9,6 +14,8 @@ void EmployeeView::draw() {
   mvwaddch(view_win, 2, 0, ACS_LTEE);
   mvwhline(view_win, 2, 1, ACS_HLINE, w - 2);
   mvwaddch(view_win, 2, w - 1, ACS_RTEE);
+
+  draw_hints();
   wrefresh(view_win);
 }
 

@@ -1,6 +1,8 @@
 #pragma once
-#include <menu.h>
 #include <string>
+#include <vector>
+
+#include "payrolls/ui/View.h"
 
 struct Employee {
   int id;
@@ -11,17 +13,15 @@ struct EmployeeViewState {
   Employee curr_employee;
 };
 
-class EmployeeView {
-private:
+class EmployeeView : public View {
+ public:
+  EmployeeView() = default;
+  ~EmployeeView() = default;
+
+  void draw() override;
+  void render() override;
+
+ private:
   EmployeeViewState state;
-  WINDOW *view_win;
-
-public:
-  EmployeeView() : view_win(newwin(LINES, COLS, 0, 0)) {
-    keypad(view_win, TRUE);
-  }
-  ~EmployeeView() { delwin(view_win); }
-
-  void draw();
-  void render();
+  std::vector<KeyHint> hints() const override;
 };
