@@ -2,7 +2,7 @@
 
 #include "payrolls/ui/utils.h"
 
-std::vector<KeyHint> EmployeeView::hints() const {
+const std::vector<KeyHint>& EmployeeView::hints() const {
   static const std::vector<KeyHint> h = {{"q", "Return to Main Menu"}};
   return h;
 }

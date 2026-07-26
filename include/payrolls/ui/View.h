@@ -32,5 +32,5 @@ class View {
  protected:
   WINDOW* view_win;
   WINDOW* hint_der_win;
-  virtual std::vector<KeyHint> hints() const = 0;
+  virtual const std::vector<KeyHint>& hints() const = 0;
 };

@@ -23,5 +23,5 @@ class EmployeeView : public View {
 
  private:
   EmployeeViewState state;
-  std::vector<KeyHint> hints() const override;
+  const std::vector<KeyHint>& hints() const override;
 };
