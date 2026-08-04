@@ -20,6 +20,7 @@ add_executable(csi_payrolls
   src/tax/FedTax.cpp
   src/tax/NJTax.cpp
   src/tax/NYTax.cpp
+  src/ui/App.cpp
   src/ui/View.cpp
   src/ui/EmployeeView.cpp
   src/ui/MainMenuView.cpp
