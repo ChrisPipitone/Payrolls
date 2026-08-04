@@ -1,5 +1,6 @@
 #pragma once
 #include <menu.h>
+
 #include <string>
 
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof(a[0]))
@@ -9,7 +10,7 @@ struct NcursesGuard {
   ~NcursesGuard() { endwin(); }
 };
 
-inline bool handle_menu_nav(MENU *menu, int c) {
+inline bool handle_menu_nav(MENU* menu, int c) {
   if (c == KEY_DOWN || c == 'j')
     menu_driver(menu, REQ_DOWN_ITEM);
   else if (c == KEY_UP || c == 'k')
@@ -23,19 +24,15 @@ inline bool handle_menu_nav(MENU *menu, int c) {
 
   return true;
 }
-inline void print_in_middle(WINDOW *win, int starty, int startx, int width,
-                            const std::string &str, chtype color) {
+inline void print_in_middle(WINDOW* win, int starty, int startx, int width, const std::string& str,
+                            chtype color) {
   int x, y;
 
-  if (win == NULL)
-    win = stdscr;
+  if (win == NULL) win = stdscr;
   getyx(win, y, x);
-  if (startx != 0)
-    x = startx;
-  if (starty != 0)
-    y = starty;
-  if (width == 0)
-    width = 80;
+  if (startx != 0) x = startx;
+  if (starty != 0) y = starty;
+  if (width == 0) width = 80;
 
   int length = static_cast<int>(str.length());
   x = startx + (width - length) / 2;
@@ -45,7 +42,7 @@ inline void print_in_middle(WINDOW *win, int starty, int startx, int width,
   refresh();
 }
 
-inline WINDOW *centered_win(int h, int w) {
+inline WINDOW* centered_win(int h, int w) {
   int rows, cols;
   getmaxyx(stdscr, rows, cols);
   return newwin(h, w, (rows - h) / 2, (cols - w) / 2);
