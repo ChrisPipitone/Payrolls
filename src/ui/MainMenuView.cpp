@@ -16,8 +16,10 @@ MainMenuView::MainMenuView() : main_menu(nullptr), menu_items(kOptions.size() + 
 
   // Set menu to main window and sub window
   set_menu_win(main_menu, view_win);
-  set_menu_sub(main_menu, derwin(view_win, 6, 38, 3, 1));
+
   // worry about these hard coded values later
+  menu_sub_win = derwin(view_win, 6, 38, 3, 1);
+  set_menu_sub(main_menu, menu_sub_win);
 
   // Set menu mark to the string " * "
   set_menu_mark(main_menu, " * ");
@@ -26,8 +28,9 @@ MainMenuView::MainMenuView() : main_menu(nullptr), menu_items(kOptions.size() + 
 }
 
 MainMenuView::~MainMenuView() {
-  unpost_menu(main_menu);
   free_menu(main_menu);
+  unpost_menu(main_menu);
+  delwin(menu_sub_win);
   for (auto* item : menu_items)
     if (item) free_item(item);
   // window is destoried by parent dtor
@@ -39,7 +42,6 @@ const std::vector<KeyHint>& MainMenuView::hints() const {
 }
 
 void MainMenuView::on_render() {
-  wclear(view_win);
   // Print a border around the main window and print a title
   box(view_win, 0, 0);
   int w = getmaxx(view_win);
@@ -50,6 +52,7 @@ void MainMenuView::on_render() {
 
   draw_hints();
   wnoutrefresh(view_win);
+  wnoutrefresh(menu_sub_win);
 }
 
 void MainMenuView::on_event(int key) {

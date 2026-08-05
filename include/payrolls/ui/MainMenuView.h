@@ -19,6 +19,7 @@ class MainMenuView : public View {
 
  private:
   MENU* main_menu;
+  WINDOW* menu_sub_win;
   const std::vector<KeyHint>& hints() const override;
   std::vector<ITEM*> menu_items;
   static constexpr std::array<MainMenuOption, 4> kOptions = {{
