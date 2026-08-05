@@ -18,8 +18,8 @@ class EmployeeView : public View {
   EmployeeView() = default;
   ~EmployeeView() = default;
 
-  void draw() override;
-  void render() override;
+  void on_render() override;
+  void on_event(int key) override;
 
  private:
   EmployeeViewState state;

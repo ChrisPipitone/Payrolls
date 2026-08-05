@@ -14,8 +14,8 @@ class MainMenuView : public View {
  public:
   MainMenuView();
   ~MainMenuView();
-  void draw() override;
-  void render() override;
+  void on_render() override;
+  void on_event(int key) override;
 
  private:
   MENU* main_menu;

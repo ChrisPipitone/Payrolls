@@ -1,5 +1,6 @@
 #include "payrolls/ui/EmployeeView.h"
 
+#include "payrolls/ui/App.h"
 #include "payrolls/ui/utils.h"
 
 const std::vector<KeyHint>& EmployeeView::hints() const {
@@ -7,7 +8,7 @@ const std::vector<KeyHint>& EmployeeView::hints() const {
   return h;
 }
 
-void EmployeeView::draw() {
+void EmployeeView::on_render() {
   wclear(view_win);
   box(view_win, 0, 0);
   int w = getmaxx(view_win);
@@ -17,15 +18,9 @@ void EmployeeView::draw() {
   mvwaddch(view_win, 2, w - 1, ACS_RTEE);
 
   draw_hints();
-  wrefresh(view_win);
+  wnoutrefresh(view_win);
 }
 
-void EmployeeView::render() {
-  int c = 0;
-  do {
-    draw();
-  } while ((c = wgetch(view_win)) != 'q');
-
-  werase(view_win);
-  wrefresh(view_win);
+void EmployeeView::on_event(int key) {
+  if (key == 'q') App::Get().stop();
 }

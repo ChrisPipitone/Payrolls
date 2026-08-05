@@ -1,7 +1,9 @@
+
 #include "payrolls/ui/MainMenuView.h"
 
 #include <menu.h>
 
+#include "payrolls/ui/App.h"
 #include "payrolls/ui/EmployeeView.h"
 #include "payrolls/ui/utils.h"
 
@@ -36,7 +38,7 @@ const std::vector<KeyHint>& MainMenuView::hints() const {
   return h;
 }
 
-void MainMenuView::draw() {
+void MainMenuView::on_render() {
   wclear(view_win);
   // Print a border around the main window and print a title
   box(view_win, 0, 0);
@@ -47,30 +49,17 @@ void MainMenuView::draw() {
   mvwaddch(view_win, 2, w - 1, ACS_RTEE);
 
   draw_hints();
-  wrefresh(view_win);
+  wnoutrefresh(view_win);
 }
 
-void MainMenuView::render() {
-  int c = 0;
-  do {
-    draw();
-    // selection made, if navigation continue
-    if (!handle_menu_nav(main_menu, c) && (c == '\n' || c == KEY_ENTER)) {
-      int idx = item_index(current_item(main_menu));
-      if (idx == 3) break;
-      if (idx == 0) {
-        EmployeeView ev;
-        ev.render();
-      }
-      if (idx == 1) {  // other view
-        break;
-      }
-      if (idx == 2) {  // other view
-        break;
-      }
-    }
-  } while ((c = wgetch(view_win)) != 'q');
+void MainMenuView::on_event(int key) {
+  handle_menu_nav(main_menu, key);
 
-  werase(view_win);
-  wrefresh(view_win);
+  if (key == 'q') App::Get().stop();
+
+  if (key == '\n' || key == KEY_ENTER) {
+    int idx = item_index(current_item(main_menu));
+    if (idx == 0) App::Get().navigate_to<EmployeeView>();
+    if (idx == 3) App::Get().stop();
+  }
 }

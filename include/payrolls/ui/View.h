@@ -1,5 +1,5 @@
 #pragma once
-#include <ncurses.h>
+#include <panel.h>
 
 #include <string_view>
 #include <vector>
@@ -10,6 +10,8 @@ struct KeyHint {
 };
 
 class View {
+  friend class App;
+
  public:
   View();
   virtual ~View();
@@ -17,20 +19,19 @@ class View {
   View& operator=(const View&) = delete;  // no copy assign
   View(View&&) = delete;                  // no move constructor
   View& operator=(View&&) = delete;       // no move assignment
-  /* Rule of 5
-   Moving a View would transfer view_win + hint_der_win ownership (null out the old). Valid but
-   complex — derwin parent-child relationships make this fragile. For a TUI view tied to a terminal
-   region : delete them.
-   */
 
   void draw_hints();
 
   // review later for Template Method
-  virtual void draw() = 0;
-  virtual void render() = 0;
+  virtual void on_render() = 0;
+  virtual void on_update() {};
+  virtual void on_event(int key) = 0;
 
  protected:
   WINDOW* view_win;
-  WINDOW* hint_der_win;
   virtual const std::vector<KeyHint>& hints() const = 0;
+
+ private:
+  PANEL* panel = nullptr;
+  WINDOW* hint_der_win;
 };
