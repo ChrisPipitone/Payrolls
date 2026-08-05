@@ -28,8 +28,8 @@ MainMenuView::MainMenuView() : main_menu(nullptr), menu_items(kOptions.size() + 
 }
 
 MainMenuView::~MainMenuView() {
-  free_menu(main_menu);
   unpost_menu(main_menu);
+  free_menu(main_menu);
   delwin(menu_sub_win);
   for (auto* item : menu_items)
     if (item) free_item(item);
