@@ -20,7 +20,7 @@ void App::run() {
 
   // Main Application loop
   while (is_running) {
-    int c = getch();
+    int c = wgetch(view_stack.back()->view_win);
 
     raise_event(c);
 
