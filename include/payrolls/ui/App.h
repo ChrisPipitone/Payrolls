@@ -28,9 +28,6 @@ class App {
     auto view = std::make_unique<TView>();
     show_panel(view->panel);
     view_stack.push_back(std::move(view));
-
-    update_panels();
-    doupdate();
   }
 
  private:
