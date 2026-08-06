@@ -39,7 +39,6 @@ inline void print_in_middle(WINDOW* win, int starty, int startx, int width, cons
   wattron(win, color);
   mvwprintw(win, y, x, "%s", str.c_str());
   wattroff(win, color);
-  refresh();
 }
 
 inline WINDOW* centered_win(int h, int w) {
