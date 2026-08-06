@@ -4,12 +4,11 @@
 #include "payrolls/ui/utils.h"
 
 const std::vector<KeyHint>& EmployeeView::hints() const {
-  static const std::vector<KeyHint> h = {{"q", "Return to Main Menu"}};
+  static const std::vector<KeyHint> h = {{"q", "Exit"}};
   return h;
 }
 
 void EmployeeView::on_render() {
-  wclear(view_win);
   box(view_win, 0, 0);
   int w = getmaxx(view_win);
   print_in_middle(view_win, 1, 0, w, "Employee View", COLOR_PAIR(1));
