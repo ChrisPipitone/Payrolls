@@ -17,12 +17,21 @@ MainMenuView::MainMenuView() : main_menu(nullptr), menu_items(kOptions.size() + 
   // Set menu to main window and sub window
   set_menu_win(main_menu, view_win);
 
-  // worry about these hard coded values later
-  menu_sub_win = derwin(view_win, 6, 38, 3, 1);
-  set_menu_sub(main_menu, menu_sub_win);
-
-  // Set menu mark to the string " * "
+  // Mark must be set before scale_menu so width includes mark chars
   set_menu_mark(main_menu, " * ");
+
+  // Center Menu in Window
+  int menu_h, menu_w;
+  scale_menu(main_menu, &menu_h, &menu_w);
+
+  int win_h = getmaxy(view_win);
+  int win_w = getmaxx(view_win);
+  const int content_top = 3;
+  const int content_h = (win_h - 4) - content_top;
+  int start_y = content_top + (content_h - menu_h) / 2;
+  int start_x = (win_w - menu_w) / 2;
+  menu_sub_win = derwin(view_win, menu_h, menu_w, start_y, start_x);
+  set_menu_sub(main_menu, menu_sub_win);
 
   post_menu(main_menu);
 }
