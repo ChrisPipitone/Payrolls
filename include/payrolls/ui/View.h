@@ -4,8 +4,6 @@
 #include <string_view>
 #include <vector>
 
-#include "payrolls/ui/Section.h"
-
 struct KeyHint {
   std::string_view key;
   std::string_view action;
@@ -32,7 +30,6 @@ class View {
  protected:
   WINDOW* view_win;
   virtual const std::vector<KeyHint>& hints() const = 0;
-  virtual const std::vector<Section>& sections() const = 0;
 
  private:
   PANEL* panel = nullptr;

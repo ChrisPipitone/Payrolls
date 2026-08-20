@@ -10,7 +10,7 @@ class Section {
   Section(const Section&) = delete;
   Section& operator=(const Section&) = delete;
 
-  virtual void render() = 0;
+  virtual void on_render() = 0;
   virtual bool on_key(int key) { return false; };
   void set_focused(bool f) { focused = f; };
 
