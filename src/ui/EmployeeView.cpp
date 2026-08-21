@@ -15,7 +15,7 @@ EmployeeView::EmployeeView() {
   left.add_leaf(1, std::make_unique<EmployeeBenefitsSection>(view_win));
   root_node.add_leaf(1, std::make_unique<EmployeePayrollSection>(view_win));
 
-  build_layout_rectanges(root_node, content_rect());
+  assign_rects(root_node, content_rect());
 }
 
 const std::vector<KeyHint>& EmployeeView::hints() const {

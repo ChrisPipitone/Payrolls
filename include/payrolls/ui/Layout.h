@@ -28,7 +28,7 @@ struct LayoutNode {
   };
 };
 
-inline void build_layout_rectanges(LayoutNode& n, Rect r) {
+inline void assign_rects(LayoutNode& n, Rect r) {
   int total = (n.axis == Axis::Row) ? r.w : r.h;  // which number am I cutting?
   int sum = 0;
   for (auto& c : n.children) sum += c.weight;  // denominator
@@ -48,7 +48,7 @@ inline void build_layout_rectanges(LayoutNode& n, Rect r) {
     if (c.leaf)
       c.leaf->set_rect(sub);  // base case — recursion stops
     else
-      build_layout_rectanges(*c.subtree, sub);  // recursive case — go deeper
+      assign_rects(*c.subtree, sub);  // recursive case — go deeper
 
     prev = edge;
   }
