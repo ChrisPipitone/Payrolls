@@ -15,17 +15,21 @@ struct LayoutNode {
 
   std::vector<Child> children;
 
-  void add_leaf(const int weight, std::unique_ptr<Section> s) {
+  void add_leaf(int weight, std::unique_ptr<Section> s) {
     Child child{weight, std::move(s), nullptr};
     children.push_back(std::move(child));
-  };
+  }
 
   LayoutNode& add_split(int weight, Axis axis) {
-    Child child = {weight, nullptr, std::unique_ptr<LayoutNode>(new LayoutNode{axis, {}})};
-    children.push_back(std::move(child));  // this new node is a child of who called it
+    auto new_node = std::make_unique<LayoutNode>();
+    new_node->axis = axis;
 
-    return *children.back().subtree;
-  };
+    // parent node vector owns the child
+    Child child = {weight, nullptr, std::move(new_node)};
+    children.push_back(std::move(child));
+
+    return *children.back().subtree;  // return a reference to the child
+  }
 };
 
 inline void assign_rects(LayoutNode& n, Rect r) {
