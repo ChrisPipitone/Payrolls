@@ -57,3 +57,13 @@ inline void assign_rects(LayoutNode& n, Rect r) {
     prev = edge;
   }
 }
+
+inline void traversal(LayoutNode& node) {
+  for (auto& child : node.children) {
+    if (child.leaf) {
+      // template function here
+    } else {
+      traversal(*child.subtree);
+    }
+  }
+}
