@@ -1,9 +1,11 @@
 #pragma once
 #include <ncurses.h>
 
+#include "payrolls/ui/Rect.h"
+
 class Section {
  public:
-  Section(WINDOW* parent, int h, int w, int y, int x) : section_win(derwin(parent, h, w, y, x)) {}
+  Section(WINDOW* parent) : parent_(parent) {}
   virtual ~Section() {
     if (section_win) delwin(section_win);
   }
@@ -13,9 +15,15 @@ class Section {
   virtual void on_render() = 0;
   virtual bool on_key(int key) { return false; };
   void set_focused(bool f) { focused = f; };
+  void set_rect(const Rect& r) {
+    if (section_win) delwin(section_win);
+    section_win = derwin(parent_, r.h, r.w, r.y, r.x);
+    rect_ = r;
+  }
 
- private:
  protected:
+  Rect rect_ = {0, 0, 0, 0};
+  WINDOW* parent_ = nullptr;
+  WINDOW* section_win = nullptr;
   bool focused = false;
-  WINDOW* section_win;
 };

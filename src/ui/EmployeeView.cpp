@@ -2,12 +2,20 @@
 
 #include "payrolls/ui/App.h"
 #include "payrolls/ui/EmployeeInfoSection.h"
+#include "payrolls/ui/Layout.h"
 #include "payrolls/ui/utils.h"
 
 EmployeeView::EmployeeView() {
-  sections_.push_back(std::make_unique<EmployeeInfoSection>(view_win, 30, 90, 4, 5));
-  sections_.push_back(std::make_unique<EmployeeBenefitsSection>(view_win, 10, 90, 35, 5));
-  sections_.push_back(std::make_unique<EmployeePayrollSection>(view_win, 41, 90, 4, 95));
+  // build sections
+  root_node.axis = Axis::Row;
+
+  LayoutNode& left = root_node.add_split(1, Axis::Col);
+
+  left.add_leaf(3, std::make_unique<EmployeeInfoSection>(view_win));
+  left.add_leaf(1, std::make_unique<EmployeeBenefitsSection>(view_win));
+  root_node.add_leaf(1, std::make_unique<EmployeePayrollSection>(view_win));
+
+  build_layout_rectanges(root_node, content_rect());
 }
 
 const std::vector<KeyHint>& EmployeeView::hints() const {
@@ -23,8 +31,10 @@ void EmployeeView::on_render() {
   mvwhline(view_win, 2, 1, ACS_HLINE, w - 2);
   mvwaddch(view_win, 2, w - 1, ACS_RTEE);
 
-  for (auto& section : sections_) {
-    section->on_render();
+  // something for finding focused section. possibly from base class
+  // render sections <- traversal is wrong but testing add_leaf
+  for (auto& node : root_node.children) {
+    if (node.leaf) node.leaf->on_render();
   }
 
   draw_hints();

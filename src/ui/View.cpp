@@ -23,3 +23,5 @@ void View::draw_hints() {
   }
   wnoutrefresh(hint_der_win);
 }
+
+Rect View::content_rect() const { return {LINES - 7, COLS - 2, 3, 1}; }

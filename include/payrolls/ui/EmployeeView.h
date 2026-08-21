@@ -1,9 +1,7 @@
 #pragma once
-#include <memory>
 #include <string>
 #include <vector>
 
-#include "payrolls/ui/Section.h"
 #include "payrolls/ui/View.h"
 
 struct Employee {
@@ -25,6 +23,5 @@ class EmployeeView : public View {
 
  private:
   EmployeeViewState state;
-  std::vector<std::unique_ptr<Section>> sections_;
   const std::vector<KeyHint>& hints() const override;
 };
