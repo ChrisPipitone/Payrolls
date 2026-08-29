@@ -58,12 +58,15 @@ inline void assign_rects(LayoutNode& n, Rect r) {
   }
 }
 
-inline void traversal(LayoutNode& node) {
+// idk i'll have to figure out how to make this more generic and have less code re-use later
+template <class F>
+inline void traversal(LayoutNode& node, F& fn) {
   for (auto& child : node.children) {
     if (child.leaf) {
       // template function here
+      fn(child.leaf.get());
     } else {
-      traversal(*child.subtree);
+      traversal(*child.subtree, fn);
     }
   }
 }

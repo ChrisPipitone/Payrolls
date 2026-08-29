@@ -31,11 +31,7 @@ void EmployeeView::on_render() {
   mvwhline(view_win, 2, 1, ACS_HLINE, w - 2);
   mvwaddch(view_win, 2, w - 1, ACS_RTEE);
 
-  // something for finding focused section. possibly from base class
-  // render sections <- traversal is wrong but testing add_leaf
-  for (auto& node : root_node.children) {
-    if (node.leaf) node.leaf->on_render();
-  }
+  traverse_render(root_node);
 
   draw_hints();
   wnoutrefresh(view_win);
@@ -43,4 +39,15 @@ void EmployeeView::on_render() {
 
 void EmployeeView::on_event(int key) {
   if (key == 'q') App::Get().stop();
+}
+
+// should be replaced at some point by a generic template or something
+void EmployeeView::traverse_render(LayoutNode& node) {
+  for (auto& child : node.children) {
+    if (child.leaf) {
+      child.leaf->on_render();
+    } else {
+      traverse_render(*child.subtree);
+    }
+  }
 }
