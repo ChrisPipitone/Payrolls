@@ -23,6 +23,7 @@ add_executable(csi_payrolls
   src/ui/App.cpp
   src/ui/View.cpp
   src/ui/EmployeeView.cpp
+  src/ui/EmployeeBenefitSection.cpp
   src/ui/MainMenuView.cpp
 )
 
