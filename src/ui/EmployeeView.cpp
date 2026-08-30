@@ -1,6 +1,7 @@
 #include "payrolls/ui/EmployeeView.h"
 
 #include "payrolls/ui/App.h"
+#include "payrolls/ui/EmployeeBenefitSection.h"
 #include "payrolls/ui/EmployeeInfoSection.h"
 #include "payrolls/ui/Layout.h"
 #include "payrolls/ui/utils.h"
@@ -16,6 +17,8 @@ EmployeeView::EmployeeView() {
   root_node.add_leaf(1, std::make_unique<EmployeePayrollSection>(view_win));
 
   assign_rects(root_node, content_rect());
+  // set start focus, should this be more systemized?
+  focused_ = left.children.back().leaf.get();
 }
 
 const std::vector<KeyHint>& EmployeeView::hints() const {
@@ -39,6 +42,9 @@ void EmployeeView::on_render() {
 
 void EmployeeView::on_event(int key) {
   if (key == 'q') App::Get().stop();
+  focused_->on_event(key);
+  // should have sometype of feedback i guees that it handled it
+  // correctly?
 }
 
 // should be replaced at some point by a generic template or something
