@@ -17,13 +17,18 @@ EmployeeView::EmployeeView() {
   root_node.add_leaf(1, std::make_unique<EmployeePayrollSection>(view_win));
 
   assign_rects(root_node, content_rect());
+
   // set start focus, should this be more systemized?
   focused_ = left.children.back().leaf.get();
   focused_->set_focused(true);
 }
 
 const std::vector<KeyHint>& EmployeeView::hints() const {
-  static const std::vector<KeyHint> h = {{"q", "Exit"}};
+  static const std::vector<KeyHint> h = {{"q", "Exit"},
+                                         {"H", "Focus Left"},
+                                         {"L", "Focus Right"},
+                                         {"J", "Focus Down"},
+                                         {"K", "Focus Up"}};
   return h;
 }
 
