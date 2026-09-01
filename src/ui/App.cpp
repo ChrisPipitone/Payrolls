@@ -9,6 +9,7 @@ App::App() {
   curs_set(0);
   keypad(stdscr, TRUE);
   init_pair(1, COLOR_RED, COLOR_BLACK);
+  init_pair(2, COLOR_YELLOW, COLOR_BLACK);  // focused section border
 }
 
 App& App::Get() {

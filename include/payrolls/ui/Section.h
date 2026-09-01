@@ -23,6 +23,17 @@ class Section {
   Rect& get_rect() { return rect_; }
 
  protected:
+  void draw_border() {
+    if (!section_win) return;
+    if (!focused_) {
+      box(section_win, 0, 0);
+      return;
+    }
+    wattron(section_win, COLOR_PAIR(2) | A_BOLD);
+    box(section_win, 0, 0);
+    wattroff(section_win, COLOR_PAIR(2) | A_BOLD);
+  }
+
   Rect rect_ = {0, 0, 0, 0};
   WINDOW* parent_ = nullptr;
   WINDOW* section_win = nullptr;

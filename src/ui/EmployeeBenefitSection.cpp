@@ -51,7 +51,7 @@ void EmployeeBenefitsSection::on_render() {
     initialized_ = setup_menu();
   }
 
-  box(section_win, 0, 0);
+  draw_border();
 
   int w = getmaxx(section_win);
   print_in_middle(section_win, 1, 0, w, "Benefits", COLOR_PAIR(1));
