@@ -35,8 +35,7 @@ void EmployeeView::on_render() {
   mvwhline(view_win, 2, 1, ACS_HLINE, w - 2);
   mvwaddch(view_win, 2, w - 1, ACS_RTEE);
 
-  traverse_render(root_node);
-
+  for_each_section(root_node, [](Section& s) { s.on_render(); });
   draw_hints();
   wnoutrefresh(view_win);
 }
@@ -63,15 +62,4 @@ void EmployeeView::on_event(int key) {
   if (focused_) focused_->on_event(key);
 
   // error handling?
-}
-
-// should be replaced at some point by a generic template or something
-void EmployeeView::traverse_render(LayoutNode& node) {
-  for (auto& child : node.children) {
-    if (child.leaf) {
-      child.leaf->on_render();
-    } else {
-      traverse_render(*child.subtree);
-    }
-  }
 }

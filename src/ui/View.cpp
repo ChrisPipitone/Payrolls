@@ -45,10 +45,10 @@ bool View::change_focused_section(Dir direction) {
   std::pair best_score(INT_MAX, INT_MAX);
 
   // Applied to every leaf in the layout tree
-  auto visit = [&](Section* s) {
-    if (s == focused_) return;
+  auto visit = [&](Section& s) {
+    if (&s == focused_) return;
 
-    const Rect& candidate_rect = s->get_rect();
+    const Rect& candidate_rect = s.get_rect();
     // A zero-area rect is invisible but would still take focus and swallow every key
     if (candidate_rect.h <= 0 || candidate_rect.w <= 0) return;
 
@@ -96,13 +96,16 @@ bool View::change_focused_section(Dir direction) {
     const std::pair score(gap, rect_center_deviation);
     if (score < best_score) {
       best_score = score;
-      best_section = s;
+      best_section = &s;
     }
   };
 
-  traversal(root_node, visit);
+  for_each_section(root_node, visit);
   if (!best_section) return false;
 
+  // is there a better way to enforce this?
+  // that only one section can be focused = true
+  // at one time? is that worth it?
   focused_->set_focused(false);
   focused_ = best_section;
   focused_->set_focused(true);

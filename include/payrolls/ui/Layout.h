@@ -60,14 +60,12 @@ inline void assign_rects(LayoutNode& n, Rect r) {
   }
 }
 
-// idk i'll have to figure out how to make this more generic and have less code re-use later
 template <class F>
-inline void traversal(LayoutNode& node, F& fn) {
+inline void for_each_section(LayoutNode& node, F&& fn) {
   for (auto& child : node.children) {
-    if (child.leaf) {
-      fn(child.leaf.get());
-    } else {
-      traversal(*child.subtree, fn);
-    }
+    if (child.leaf)
+      fn(*child.leaf);
+    else
+      for_each_section(*child.subtree, fn);
   }
 }
