@@ -4,6 +4,8 @@
 
 #include "payrolls/ui/Section.h"
 
+enum class Dir { Left, Down, Up, Right };
+
 struct LayoutNode {
   Axis axis = Axis::Col;
 
@@ -63,7 +65,6 @@ template <class F>
 inline void traversal(LayoutNode& node, F& fn) {
   for (auto& child : node.children) {
     if (child.leaf) {
-      // template function here
       fn(child.leaf.get());
     } else {
       traversal(*child.subtree, fn);

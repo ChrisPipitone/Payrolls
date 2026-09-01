@@ -19,6 +19,7 @@ EmployeeView::EmployeeView() {
   assign_rects(root_node, content_rect());
   // set start focus, should this be more systemized?
   focused_ = left.children.back().leaf.get();
+  focused_->set_focused(true);
 }
 
 const std::vector<KeyHint>& EmployeeView::hints() const {
@@ -41,10 +42,27 @@ void EmployeeView::on_render() {
 }
 
 void EmployeeView::on_event(int key) {
+  // none of this is specific to EmployeeView
+  // The Section stuff is only if this View has Sections
+  // or is just a raw View
   if (key == 'q') App::Get().stop();
-  focused_->on_event(key);
-  // should have sometype of feedback i guees that it handled it
-  // correctly?
+  switch (key) {
+    case 'H':
+      change_focused_section(Dir::Left);
+      return;
+    case 'J':
+      change_focused_section(Dir::Down);
+      return;
+    case 'K':
+      change_focused_section(Dir::Up);
+      return;
+    case 'L':
+      change_focused_section(Dir::Right);
+      return;
+  }
+  if (focused_) focused_->on_event(key);
+
+  // error handling?
 }
 
 // should be replaced at some point by a generic template or something

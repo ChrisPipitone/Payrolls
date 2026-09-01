@@ -33,7 +33,8 @@ class View {
   WINDOW* view_win;
   LayoutNode root_node;
   virtual const std::vector<KeyHint>& hints() const = 0;
-  Section* focused_;
+  Section* focused_ = nullptr;
+  bool change_focused_section(Dir direction);
   Rect content_rect() const;
 
  private:
