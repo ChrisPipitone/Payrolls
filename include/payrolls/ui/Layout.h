@@ -34,6 +34,16 @@ struct LayoutNode {
   }
 };
 
+template <class F>
+inline void for_each_section(LayoutNode& node, F&& fn) {
+  for (auto& child : node.children) {
+    if (child.leaf)
+      fn(*child.leaf);
+    else
+      for_each_section(*child.subtree, fn);
+  }
+}
+
 inline void assign_rects(LayoutNode& n, Rect r) {
   int total = (n.axis == Axis::Row) ? r.w : r.h;  // which number am I cutting?
   int sum = 0;
@@ -57,15 +67,5 @@ inline void assign_rects(LayoutNode& n, Rect r) {
       assign_rects(*c.subtree, sub);  // recursive case — go deeper
 
     prev = edge;
-  }
-}
-
-template <class F>
-inline void for_each_section(LayoutNode& node, F&& fn) {
-  for (auto& child : node.children) {
-    if (child.leaf)
-      fn(*child.leaf);
-    else
-      for_each_section(*child.subtree, fn);
   }
 }
