@@ -63,6 +63,8 @@ void EmployeeView::on_event(int key) {
     case 'L':
       change_focused_section(Dir::Right);
       return;
+    default:
+      break;
   }
   if (focused_) focused_->on_event(key);
 
