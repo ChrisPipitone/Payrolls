@@ -38,8 +38,10 @@ bool EmployeeBenefitsSection::setup_menu() {
 }
 
 EmployeeBenefitsSection::~EmployeeBenefitsSection() {
-  unpost_menu(menu);
-  free_menu(menu);
+  if (!initialized_) {
+    unpost_menu(menu);
+    free_menu(menu);
+  }
   delwin(menu_sub_win);
   for (auto* item : menu_items)
     if (item) free_item(item);
@@ -58,7 +60,9 @@ void EmployeeBenefitsSection::on_render() {
 };
 
 void EmployeeBenefitsSection::on_event(int key) {
-  handle_menu_nav(menu, key);
+  if (!initialized_) {
+    handle_menu_nav(menu, key);
+  }
 
   if (key == '\n' || key == KEY_ENTER) {
     int idx = item_index(current_item(menu));
