@@ -34,7 +34,6 @@ class View {
   LayoutNode root_node;
   virtual const std::vector<KeyHint>& hints() const = 0;
   Section* focused_ = nullptr;
-  virtual Section* get_first_leaf(LayoutNode& node);
   bool change_focused_section(Dir direction);
   Rect content_rect() const;
 
