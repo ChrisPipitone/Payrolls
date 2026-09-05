@@ -44,6 +44,13 @@ inline void for_each_section(LayoutNode& node, F&& fn) {
   }
 }
 
+inline Section* get_first_leaf(LayoutNode& node) {
+  for (auto& c : node.children) {
+    if (c.leaf) return c.leaf.get();
+    if (c.subtree) return get_first_leaf(*c.subtree);
+  }
+  return nullptr;
+}
 inline void assign_rects(LayoutNode& n, Rect r) {
   int total = (n.axis == Axis::Row) ? r.w : r.h;  // which number am I cutting?
   int sum = 0;

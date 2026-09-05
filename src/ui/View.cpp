@@ -112,14 +112,4 @@ bool View::change_focused_section(Dir direction) {
   return true;
 }
 
-Section* View::get_first_leaf(LayoutNode& node) {
-  for (auto& c : node.children) {
-    if (c.leaf)
-      return c.leaf.get();  // why doesn't *c.leaf work here but it works in for_each_section?
-    else if (c.subtree)
-      get_first_leaf(node);
-  }
-  return nullptr;
-}
-
 Rect View::content_rect() const { return {LINES - 7, COLS - 2, 3, 1}; }

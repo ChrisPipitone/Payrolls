@@ -19,7 +19,7 @@ EmployeeView::EmployeeView() {
   assign_rects(root_node, content_rect());
 
   // set start focus, should this be more systemized?
-  focused_ = left.children.back().leaf.get();
+  focused_ = get_first_leaf(root_node);
   focused_->set_focused(true);
 }
 
