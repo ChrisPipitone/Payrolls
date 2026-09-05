@@ -12,7 +12,7 @@ class EmployeeBenefitsSection : public Section {
   EmployeeBenefitsSection(WINDOW* parent);
   ~EmployeeBenefitsSection();
   EmployeeBenefitsSection(const EmployeeBenefitsSection&) = delete;
-  EmployeeBenefitsSection operator=(const EmployeeBenefitsSection) = delete;
+  EmployeeBenefitsSection operator=(const EmployeeBenefitsSection&) = delete;
   virtual void on_render() override;
   virtual void on_event(int key) override;
 
