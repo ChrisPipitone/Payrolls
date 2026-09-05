@@ -17,10 +17,9 @@ class EmployeeBenefitsSection : public Section {
   virtual void on_event(int key) override;
 
  private:
-  MENU* menu;
-  WINDOW* menu_sub_win;
+  MENU* menu = nullptr;
+  WINDOW* menu_sub_win = nullptr;
   std::vector<ITEM*> menu_items;
   static constexpr std::array<std::string_view, 2> kOptions = {"Request HR", "Request Admin"};
-  bool initialized_ = false;
   bool setup_menu();
 };

@@ -38,19 +38,21 @@ bool EmployeeBenefitsSection::setup_menu() {
 }
 
 EmployeeBenefitsSection::~EmployeeBenefitsSection() {
-  if (!initialized_) {
+  if (menu) {
     unpost_menu(menu);
     free_menu(menu);
   }
-  delwin(menu_sub_win);
+
+  if (menu_sub_win) delwin(menu_sub_win);
+
   for (auto* item : menu_items)
     if (item) free_item(item);
   // window is destoried by parent dtor
 }
 
 void EmployeeBenefitsSection::on_render() {
-  if (!initialized_) {
-    initialized_ = setup_menu();
+  if (!menu) {
+    setup_menu();
   }
 
   draw_border();
@@ -60,10 +62,11 @@ void EmployeeBenefitsSection::on_render() {
 };
 
 void EmployeeBenefitsSection::on_event(int key) {
-  if (!initialized_) {
-    handle_menu_nav(menu, key);
+  if (!menu) {
+    return;
   }
 
+  handle_menu_nav(menu, key);
   if (key == '\n' || key == KEY_ENTER) {
     int idx = item_index(current_item(menu));
   }
